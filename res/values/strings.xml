@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright 2014 ParanoidAndroid Project
+  Copyright 2014 AICPAndroid Project
 
-  This file is part of Paranoid OTA.
+  This file is part of AICP OTA.
 
-  Paranoid OTA is free software: you can redistribute it and/or modify
+  AICP OTA is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  Paranoid OTA is distributed in the hope that it will be useful,
+  AICP OTA is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
+  along with AICP OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <resources>
 
     <!-- GENERAL -->
-    <string name="app_name">Paranoid OTA</string>
+    <string name="app_name">AICP OTA</string>
     <string name="title_checking">Checking...</string>
     <string name="check_for_updates">Check</string>
     <string name="no_additional_info">No additional information</string>
@@ -34,7 +34,7 @@
     <string name="rom_new_version">New ROM update found!</string>
     <string name="gapps_new_version">New Google apps update found!</string>
     <string name="no_updates">No system updates found</string>
-    <string name="system_update_found">A new system update was found and is ready to download.\nPlease check the notifications that may have appeared. They will lead you to ParanoidOTA from where you will be able to download and/or install the update.\n\nUpdate(s) found:\n%1$s</string>
+    <string name="system_update_found">A new system update was found and is ready to download.\nPlease check the notifications that may have appeared. They will lead you to AICP OTA from where you will be able to download and/or install the update.\n\nUpdate(s) found:\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">System info</string>
@@ -128,12 +128,6 @@
     <string name="settings_checktime_summary">Specify the time between each update check</string>
     <string name="settings_checkgapps_title">Check for Google apps</string>
     <string name="settings_checkgapps_summary">Check also for PA specific Google apps</string>
-    <string name="settings_gappstype_title">Google apps type</string>
-    <string name="settings_gappstype_summary">Choose between full, mini, micro and stock gapps package</string>
-    <string name="gapps_type_full">Full package</string>
-    <string name="gapps_type_mini">Mini package</string>
-    <string name="gapps_type_stock">Stock package</string>
-    <string name="gapps_type_micro">Micro package</string>
     <string name="time_notifications_never">Don\'t check</string>
     <string name="time_notifications_half_an_hour">Half an hour</string>
     <string name="time_notifications_an_hour">1 hour</string>
