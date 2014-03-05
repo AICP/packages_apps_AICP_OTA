@@ -100,10 +100,7 @@ public class GappsUpdater extends Updater {
 
     @Override
     public Version getVersion() {
-        if (mPlatform == null || mPlatform.isEmpty() || mVersion == null || mVersion.isEmpty()) {
-            return new Version();
-        }
-        return Version.fromGapps(mPlatform, mVersion);
+        return Version.fromGapps(getPlatform(), mVersion);
     }
 
     @Override

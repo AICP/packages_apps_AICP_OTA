@@ -22,22 +22,27 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
-    <com.aicp.aicpota.widget.PreferenceCategory 
+    <com.aicp.aicpota.widget.PreferenceCategory
         android:title="@string/settings" >
 
-	    <com.aicp.aicpota.widget.ListPreference
-	        android:key="checktime"
-	        android:title="@string/settings_checktime_title"
-	        android:summary="@string/settings_checktime_summary"
-	        android:dialogTitle="@string/settings_checktime_title"
-	        android:entries="@array/time_notifications_entries"
-	        android:entryValues="@array/time_notifications_values" />
+        <com.aicp.aicpota.widget.ListPreference
+            android:key="checktime"
+            android:title="@string/settings_checktime_title"
+            android:summary="@string/settings_checktime_summary"
+            android:dialogTitle="@string/settings_checktime_title"
+            android:entries="@array/time_notifications_entries"
+            android:entryValues="@array/time_notifications_values" />
 
-	    <com.aicp.aicpota.widget.CheckBoxPreference
-	        android:key="checkgapps"
-	        android:title="@string/settings_checkgapps_title"
-	        android:summary="@string/settings_checkgapps_summary" />
+        <com.aicp.aicpota.widget.CheckBoxPreference
+            android:key="checkgapps"
+            android:title="@string/settings_checkgapps_title"
+            android:summary="@string/settings_checkgapps_summary" />
 
-	</com.aicp.aicpota.widget.PreferenceCategory>
+        <com.aicp.aicpota.widget.Preference
+            android:key="goo"
+            android:title="@string/settings_goo"
+            android:summary="@string/settings_login_goo" />
+
+    </com.aicp.aicpota.widget.PreferenceCategory>
 
 </PreferenceScreen>
