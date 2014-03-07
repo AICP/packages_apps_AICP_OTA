@@ -7,7 +7,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v4_13 \
     volley
 
-LOCAL_PACKAGE_NAME := AICP_OTA
+LOCAL_PACKAGE_NAME := SchismOTA
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 
