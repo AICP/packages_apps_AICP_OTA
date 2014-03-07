@@ -38,11 +38,6 @@
             android:title="@string/settings_checkgapps_title"
             android:summary="@string/settings_checkgapps_summary" />
 
-        <com.aicp.aicpota.widget.Preference
-            android:key="goo"
-            android:title="@string/settings_goo"
-            android:summary="@string/settings_login_goo" />
-
     </com.aicp.aicpota.widget.PreferenceCategory>
 
 </PreferenceScreen>
