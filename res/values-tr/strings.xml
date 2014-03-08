@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2014 AICPAndroid Project
+
+  This file is part of AICP OTA.
+
+  AICP OTA is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  AICP OTA is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with AICP OTA.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">AICP OTA</string>
+    <string name="title_checking">Denetleniyor...</string>
+    <string name="check_for_updates">Denetle</string>
+    <string name="no_additional_info">Ek Bilgi Yok</string>
+
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">Güncellemeleri Denetle</string>
+    <string name="all_up_to_date">Sisteminiz güncel!</string>
+    <string name="rom_scanning">Sistem güncellemeleri denetleniyor...</string>
+    <string name="rom_gapps_new_version">Sistem güncellemesi bulundu!</string>
+    <string name="rom_new_version">Yeni ROM güncellemesi bulundu!</string>
+    <string name="gapps_new_version">Yeni GAPPS güncellemesi bulundu!</string>
+    <string name="no_updates">Yeni güncelleme yok</string>
+    <string name="system_update_found">İndirilmeye hazır yeni sistem güncellemesi bulundu.\nLütfen bildirimleri takip edin. Buradan, yeni güncellemelerinizi indirip kurabileceğiniz AICP OTA\'ya yönlendirileceksiniz.\n\nBulunan Güncellemeler:\n%1$s</string>
+
+    <!-- SYSTEM -->
+    <string name="system_title">Sistem Bilgisi</string>
+    <string name="system_rom">ROM versiyonu: %1$s</string>
+    <string name="system_gapps">GAPPS versiyonu: %1$s %2$s</string>
+    <string name="system_recovery">Recovery versyionu: %1$s</string>
+    <string name="system_recovery_unknown">Bilinmiyor</string>
+
+    <!-- UPDATES -->
+    <string name="updates">Güncellemeler</string>
+    <string name="updates_checking">Denetleniyor...</string>
+    <string name="updates_error">Hata</string>
+    <string name="updates_found">Sistem güncellemesi bulundu</string>
+    <string name="updates_uptodate">Sisteminiz Güncel</string>
+    <string name="no_updates_found">Güncelleme bulunmadı</string>
+    <string name="check_rom_updates_error">ROM güncelleme denetimi esnasında hata oluştu</string>
+    <string name="check_gapps_updates_error">GAPPS güncelleme denetimi esnasında hata oluştu</string>
+    <string name="system_update">Sistem güncellemesi bulundu.\nİndirmek istediğiniz güncellemeleri seçiniz.\n\nBulunan Güncellemeler:</string>
+    <string name="download_and_install">İndir ve Kur</string>
+    <string name="update_host">%1$s tarafından sağlanmaktadır.</string>
+
+    <!-- INSTALL -->
+    <string name="install">Kur</string>
+    <string name="install_title">Kuruluma Hazır</string>
+    <string name="install_info">Aşağıdaki güncellemeler indirildi ve kurulmaya hazır.\n\n\"Dosya Ekle\" butonuna basarak birden fazla zip\'li dosya ekleyebilirsiniz.</string>
+    <string name="add_file">Dosya Ekle</string>
+    <string name="install_now">Şimdi Kur</string>
+    <string name="calculating_md5">MD5sum kontrolü yapılıyor...</string>
+    <string name="md5_mismatch">MD5 uyumsuz</string>
+    <string name="md5_mismatch_summary">Alınan:\n%1$s\n\nBulunan:\n%2$s</string>
+    <string name="md5_install_anyway">Herşeye rağmen kuruluma devam et</string>
+    <string name="select_actions">Yapmak istediğiniz işlemi seçiniz</string>
+    <string name="backup">Yedek</string>
+    <string name="wipe_data">Wipe Data</string>
+    <string name="wipe_caches">Wipe Cache &amp; Dalvik</string>
+    <string name="remove_file_title">Dosyayı Sil</string>
+    <string name="remove_file_summary">Bu dosyayı listeden kaldırmak istiyor musunuz?\n\n%1$s</string>
+    <string name="file_manager_error">Zip dosyasını seçmek için gerekli uygulama bulunamadı. Lütfen bir Dosya Yönetici uygulaması kurunuz.</string>
+    <string name="alert_backup_space_title">Kalan boş alan:</string>
+    <string name="alert_backup_space_message">Belleğinizde %1$sGB\'dan az alan bulunmaktadır. Yedeklemeye devam edilsin mi?</string>
+    <string name="alert_backup_title">Yedek</string>
+    <string name="alert_backup_message">Yedek için isim belirleyin (uyumsuz karakterler silinecektir).\n\nAşağıdaki seçenekler sadece TWRP Recovery için geçerlidir.</string>
+    <string name="system">Sistem</string>
+    <string name="data">Data</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android secure</string>
+    <string name="sdext">SD-Ext</string>
+    <string name="alert_reboot_install_title">Güncellemeleri Kurunuz</string>
+    <string name="alert_reboot_one_message">Cihazınız yeniden başlatılıp güncellemeyi kuracaktır.</string>
+    <string name="alert_reboot_more_message">Cihazınız yeniden başlatılıp güncellemeyi kuracaktır.</string>
+    <string name="alert_reboot_now">Install now</string>
+
+    <!-- CHANGELOG -->
+    <string name="changelog">Değişim Günlüğü</string>
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">Sistem güncellemesi indiriliyor</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">İndirmeyi iptal et</string>
+    <string name="cancel_rom_download_alert_summary">Güncelleme indiriliyor. İptal edilsin mi?</string>
+    <string name="cancel_gapps_download_alert_summary">Güncelleme indiriliyor. İptal edilsin mi?</string>
+    <string name="cancel_download_alert_yes">Evet</string>
+    <string name="cancel_download_alert_no">Hayır</string>
+    <string name="new_system_update">Yeni sistem güncellemesi bulundu</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">İndirilebilir %1$s sistem güncellemesi var</string>
+    <string name="already_downloading_rom">Zaten ROM güncellemesi indirmektesiniz...</string>
+    <string name="already_downloading_gapps">Zaten GAPPS güncellemesi indirmektesiniz...</string>
+    <string name="cancel_download">İndirmeleri İptal Et</string>
+    <string name="downloading_info">İndirilen güncellemeler:\n%1$s</string>
+
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">HATA: İndirmeye Devam Edilemiyor!</string>
+    <string name="error_device_not_found">HATA: Sdcard bulunamadı</string>
+    <string name="error_file_already_exists">HATA: Dosya zaten var</string>
+    <string name="error_file_error">HATA: Depolama hatası</string>
+    <string name="error_http_data_error">HATA: Http hatası</string>
+    <string name="error_insufficient_space">HATA: Boş alan yok</string>
+    <string name="error_too_many_redirects">HATA: Çok fazla yönlendirme mevcut</string>
+    <string name="error_unhandled_http_code">HATA: Bilinmeyen http kodu</string>
+    <string name="error_unknown">HATA: Bilinmiyor</string>
+    <string name="error_device_not_found_title">Cihaz bulunamadı</string>
+    <string name="error_device_not_found_summary">Cihazınız için sistem güncellemesi bulunamadı. Lütfen kontrol ediniz.</string>
+    <string name="error_device_not_found_server">Cihazınız için sistem güncellemesi bulunamadı.</string>
+
+    <!-- SETTINGS -->
+    <string name="settings">Ayarlar</string>
+    <string name="settings_checktime_title">Güncelleme denetleme sıklığı</string>
+    <string name="settings_checktime_summary">Güncelleme denetleme aralığını belirleyin</string>
+    <string name="settings_checkgapps_title">GAPPS için denetle</string>
+    <string name="settings_checkgapps_summary">AICP GAPPS için ayrıca denetle</string>
+    <string name="time_notifications_never">Denetleme</string>
+    <string name="time_notifications_half_an_hour">30 dakika</string>
+    <string name="time_notifications_an_hour">1 saat</string>
+    <string name="time_notifications_two_hours">2 saat</string>
+    <string name="time_notifications_five_hours">5 saat</string>
+    <string name="time_notifications_daily">Günlük</string>
+    <string name="settings_goo">Goo.im</string>
+    <string name="settings_login_goo">Goo.im\'e giriş yapınız</string>
+    <string name="username">Kullanıcı Adı:</string>
+    <string name="password">Şifre:</string>
+    <string name="logged_out">Goo.im\'den çıkış yapıldı</string>
+    <string name="logged_in">%1$s olarak giriş yapıldı</string>
+    <string name="logging_in">Goo.im\'e giriş yapılıyor...</string>
+    <string name="error_logging_invalid">Geçersiz Kullanıcı Adı/Şifre</string>
+    <string name="error_logging_down">Sunucuya bağlanılamadı</string>
+    <string name="error_logging_in">Bilinmeyen Giriş Hatası</string>
+
+</resources>
