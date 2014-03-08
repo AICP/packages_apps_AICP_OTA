@@ -46,20 +46,20 @@ import java.io.Serializable;
 public class Version implements Serializable {
 
     private final String[] STATIC_REMOVE = { ".zip", "aicp_" };
-    private final String[] PHASES = { "NIGHTLY", "EXPERIMENTAL", "RELEASE", "GOLD" };
+    private final String[] PHASES = { "NIGHTLY", "EXPERIMENTAL", "RELEASE", "STABLE" };
 
     private static final String SEPARATOR = "-";
 
-    private static final int NIGHTLY = 0;
-    private static final int EXPERIMENTAL = 1;
-    private static final int RELEASE = 2;
-    private static final int GOLD = 3;
+    private static final int EXPERIMENTAL = 0;
+    private static final int RELEASE = 1;
+    private static final int NIGHTLY = 2;
+    private static final int STABLE = 3;
 
     private String mDevice;
     private int mMajor = 0;
     private int mMinor = 0;
     private int mMaintenance = 0;
-    private int mPhase = GOLD;
+    private int mPhase = STABLE;
     private int mPhaseNumber = 0;
     private String mDate = "0";
 
@@ -189,7 +189,7 @@ public class Version implements Serializable {
                 + mMinor
                 + (mMaintenance > 0 ? (separateMaintenance ? "." : "")
                         + mMaintenance : "")
-                + (mPhase != GOLD ? "-" + getPhaseName() + mPhaseNumber : "")
+                + (mPhase != STABLE ? "-" + getPhaseName() + mPhaseNumber : "")
                 + "-" + mDate;
     }
 
