@@ -219,55 +219,7 @@ public class DownloadHelper {
         sUpdateHandler.post(sUpdateProgress);
         sCallback.onDownloadStarted();
 
-        if (url.contains("goo.im")) {
-
-            if (sSettingsHelper.isLogged()) {
-
-                String login = sSettingsHelper.getLogin();
-                String lurl = url + "&hash=" + login;
-                realDownloadFile(lurl, fileName, md5, isRom);
-
-            } else {
-
-                new AsyncTask<Void, Void, Void>() {
-
-                    @Override
-                    protected Void doInBackground(Void... params) {
-
-                        InputStream is = null;
-                        try {
-                            URL getUrl = new URL(url);
-                            URLConnection conn = getUrl.openConnection();
-                            conn.connect();
-                            is = new BufferedInputStream(conn.getInputStream());
-                            byte[] buf = new byte[4096];
-                            while (is.read(buf) != -1) {
-                            }
-                            try {
-                                Thread.sleep(10500);
-                            } catch (InterruptedException e) {
-                            }
-                            realDownloadFile(url, fileName, md5, isRom);
-                            readdCallback();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            if (is != null) {
-                                try {
-                                    is.close();
-                                } catch (Exception e) {
-                                }
-                            }
-                        }
-                        return null;
-                    }
-
-                }.execute((Void)null);
-            }
-
-        } else {
-            realDownloadFile(url, fileName, md5, isRom);
-        }
+        realDownloadFile(url, fileName, md5, isRom);
 
     }
 

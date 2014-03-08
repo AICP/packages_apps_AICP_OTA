@@ -48,12 +48,10 @@ import com.aicp.aicpota.widget.Preference;
 public class SettingsActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener {
 
-    public static final String LOGIN_URL = "http://goo-inside.me/salt";
 
     private SettingsHelper mSettingsHelper;
     private ListPreference mCheckTime;
     private CheckBoxPreference mCheckGapps;
-    private Preference mGoo;
 
     @Override
     @SuppressWarnings("deprecation")
@@ -69,12 +67,9 @@ public class SettingsActivity extends PreferenceActivity implements
 
         mCheckTime = (ListPreference) findPreference(SettingsHelper.PROPERTY_CHECK_TIME);
         mCheckGapps = (CheckBoxPreference) findPreference(SettingsHelper.PROPERTY_CHECK_GAPPS);
-        mGoo = (Preference) findPreference("goo");
 
         mCheckTime.setValue(String.valueOf(mSettingsHelper.getCheckTime()));
         mCheckGapps.setChecked(mSettingsHelper.getCheckGapps());
-
-        updateSummaries();
 
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
@@ -83,15 +78,6 @@ public class SettingsActivity extends PreferenceActivity implements
     @Deprecated
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             android.preference.Preference preference) {
-        if (preference.getKey().equals("goo")) {
-            if (mSettingsHelper.isLogged()) {
-                mSettingsHelper.logout();
-                updateSummaries();
-                Utils.showToastOnUiThread(this, R.string.logged_out);
-            } else {
-                showLoginDialog();
-            }
-        }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -111,90 +97,5 @@ public class SettingsActivity extends PreferenceActivity implements
         if (SettingsHelper.PROPERTY_CHECK_TIME.equals(key)) {
             Utils.setAlarm(this, mSettingsHelper.getCheckTime(), false, true);
         }
-    }
-
-    private void updateSummaries() {
-        if (mSettingsHelper.isLogged()) {
-            mGoo.setSummary(getResources().getString(R.string.logged_in, mSettingsHelper.getLoginUserName()));
-        } else {
-            mGoo.setSummary(R.string.settings_login_goo);
-        }
-    }
-
-    public void showLoginDialog() {
-
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_login, null);
-        final EditText username = (EditText) view.findViewById(R.id.username);
-        final EditText password = (EditText) view.findViewById(R.id.password);
-
-        username.setText(mSettingsHelper.getLoginUserName());
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle(R.string.settings_login_goo)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        dialog.dismiss();
-
-                        final ProgressDialog progressDialog = new ProgressDialog(SettingsActivity.this);
-                        progressDialog.setIndeterminate(true);
-                        progressDialog.setMessage(getResources().getString(R.string.logging_in));
-                        progressDialog.setCancelable(false);
-                        progressDialog.setCanceledOnTouchOutside(false);
-                        progressDialog.show();
-
-                        String user = username.getText() == null ? "" : username.getText()
-                                .toString();
-                        String pass = password.getText() == null ? "" : password.getText()
-                                .toString();
-
-                        mSettingsHelper.setLoginUserName(user);
-
-                        try {
-                            String url = LOGIN_URL + "&username="
-                                    + URLEncoder.encode(user, "UTF-8") + "&password="
-                                    + URLEncoder.encode(pass, "UTF-8");
-                            new URLStringReader(new URLStringReaderListener() {
-
-                                @Override
-                                public void onReadEnd(String buffer) {
-                                    progressDialog.dismiss();
-                                    if (buffer != null && buffer.length() == 32) {
-                                        mSettingsHelper.login(buffer);
-                                        Utils.showToastOnUiThread(
-                                                SettingsActivity.this,
-                                                getResources().getString(R.string.logged_in,
-                                                        mSettingsHelper.getLoginUserName()));
-                                        updateSummaries();
-                                    } else if (buffer != null) {
-                                        Utils.showToastOnUiThread(SettingsActivity.this,
-                                                R.string.error_logging_invalid);
-                                    } else {
-                                        Utils.showToastOnUiThread(SettingsActivity.this, R.string.error_logging_down);
-                                    }
-                                }
-
-                                @Override
-                                public void onReadError(Exception ex) {
-                                    progressDialog.dismiss();
-                                    ex.printStackTrace();
-                                    Utils.showToastOnUiThread(SettingsActivity.this, R.string.error_logging_in);
-                                }
-
-                            }).execute(url);
-                        } catch (UnsupportedEncodingException ex) {
-                            // should never get here
-                        }
-                    }
-                })
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        dialog.dismiss();
-                    }
-                });
-        builder.setView(view);
-        builder.create().show();
     }
 }
