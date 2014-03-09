@@ -52,7 +52,7 @@
     <string name="no_updates_found">Güncelleme bulunmadı</string>
     <string name="check_rom_updates_error">ROM güncelleme denetimi esnasında hata oluştu</string>
     <string name="check_gapps_updates_error">GAPPS güncelleme denetimi esnasında hata oluştu</string>
-    <string name="system_update">Sistem güncellemesi bulundu.\nİndirmek istediğiniz güncellemeleri seçiniz.\n\nBulunan Güncellemeler:</string>
+    <string name="system_update">Sistem güncellemesi bulundu.\nOTA ile doğrudan kurulum, sadece TWRP Recovery ile mümkündür.\nCWM kullanıyorsanız lütfen manüel kurulum yapınız!!!\nİndirmek istediğiniz güncellemeleri seçiniz.\n\nBulunan Güncellemeler:</string>
     <string name="download_and_install">İndir ve Kur</string>
     <string name="update_host">%1$s tarafından sağlanmaktadır.</string>
 
