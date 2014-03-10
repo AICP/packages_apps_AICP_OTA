@@ -32,7 +32,7 @@ import java.io.Serializable;
  * C = major, integer from 0 to n, required
  * D = minor, integer from 0 to 9, required
  * E = maintenance, integer from 0 to n, not required
- * F = phase, possible values are A, B or RC, not required, default is gold/production
+ * F = phase, possible values are A, B or RC, not required
  * G = phase number, integer from 0 to n, not required
  * H = date, YYYYMMDD, not required, the format can be YYYYMMDDx where x is a letter (for gapps)
  *
@@ -46,7 +46,7 @@ import java.io.Serializable;
 public class Version implements Serializable {
 
     private final String[] STATIC_REMOVE = { ".zip", "aicp_" };
-    private final String[] PHASES = { "NIGHTLY", "EXPERIMENTAL", "RELEASE", "STABLE" };
+    private final String[] PHASES = { "EXPERIMENTAL", "RELEASE", "NIGHTLY", "STABLE" };
 
     private static final String SEPARATOR = "-";
 
@@ -115,24 +115,20 @@ public class Version implements Serializable {
 
         if (!Utils.isNumeric(split[2].substring(0, 1))) {
             version = split[2];
-            if (version.startsWith("N")) {
-                mPhase = NIGHTLY;
-                if (version.startsWith("NIGHTLY")) {
-                    version = version.substring(7);
-                } else {
-                    version = version.substring(1);
-                }
-            } else if (version.startsWith("E")) {
+            if (version.startsWith("E")) {
                 mPhase = EXPERIMENTAL;
                 if (version.startsWith("EXPERIMENTAL")) {
                     version = version.substring(12);
-                } else {
-                    version = version.substring(1);
+                }
+            } else if (version.startsWith("N")) {
+                mPhase = NIGHTLY;
+                if (version.startsWith("NIGHTLY")) {
+                    version = version.substring(7);
                 }
             } else if (version.startsWith("R")) {
                 mPhase = RELEASE;
                 version = version.substring(7);
-            }
+                }
             if (!version.isEmpty()) {
                 mPhaseNumber = Integer.parseInt(version);
             }
