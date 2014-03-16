@@ -53,7 +53,7 @@ import com.aicp.aicpota.widget.Card;
 
 public class MainActivity extends Activity implements UpdaterListener, DownloadCallback, OnNavigationListener {
 
-    private static final String CHANGELOG = "https://www.aicp-rom.com/";
+    private static final String CHANGELOG = "http://aicp-rom.com/";
     private static final String STATE = "STATE";
 
     public static final int STATE_UPDATES = 0;
