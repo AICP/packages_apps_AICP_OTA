@@ -86,12 +86,12 @@ public class GappsUpdater extends Updater {
 
     private int getTypeForSettings() {
         int type = SettingsHelper.GAPPS_FULL;
-        if ("fullinverted".equals(mType)) {
-            type = SettingsHelper.GAPPS_FULLINVERTED;
+        if ("micro".equals(mType)) {
+            type = SettingsHelper.GAPPS_MICRO;
         } else if ("mini".equals(mType)) {
             type = SettingsHelper.GAPPS_MINI;
-        } else if ("miniinverted".equals(mType)) {
-            type = SettingsHelper.GAPPS_MINIINVERTED;
+        } else if ("stock".equals(mType)) {
+            type = SettingsHelper.GAPPS_STOCK;
         }
         return type;
     }
@@ -116,11 +116,11 @@ public class GappsUpdater extends Updater {
     @Override
     public String getDevice() {
         switch (getSettingsHelper().getGappsType(getTypeForSettings())) {
-            case SettingsHelper.GAPPS_MINIINVERTED :
+            case SettingsHelper.GAPPS_MICRO :
                 return "gapps";
             case SettingsHelper.GAPPS_MINI :
                 return "gapps";
-            case SettingsHelper.GAPPS_FULLINVERTED:
+            case SettingsHelper.GAPPS_STOCK:
                 return "gapps";
             case SettingsHelper.GAPPS_FULL :
             default :
