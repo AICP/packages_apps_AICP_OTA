@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2014 AICPAndroid Project
+
+  This file is part of AICP OTA.
+
+  AICP OTA is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  AICP OTA is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with AICP OTA.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">AICP OTA</string>
+    <string name="title_checking">Controleren...</string>
+    <string name="check_for_updates">Controleren</string>
+    <string name="no_additional_info">Geen extra informatie</string>
+
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">Controleer voor updates</string>
+    <string name="all_up_to_date">U bent up-to-date!</string>
+    <string name="rom_scanning">Controleren voor systeem updates...</string>
+    <string name="rom_gapps_new_version">Systeem updates gevonden!</string>
+    <string name="rom_new_version">Nieuwe ROM update gevonden!</string>
+    <string name="gapps_new_version">Nieuwe Google apps update gevonden!</string>
+    <string name="no_updates">Geen systeem updates gevonden</string>
+    <string name="system_update_found">Een nieuwe systeem update is gevonden en is klaar om te downloaden.\nBekijk alstublieft de notificaties die mogelijk zijn verschenen. Zij zullen leiden naar AICP OTA waar via u de update kan downloaden en/of installeren.\n\nUpdate(s) gevonden:\n%1$s</string>
+
+    <!-- SYSTEM -->
+    <string name="system_title">Systeem info</string>
+    <string name="system_rom">ROM versie: %1$s</string>
+    <string name="system_gapps">Google apps versie: %1$s %2$s</string>
+    <string name="system_recovery">Recovery versie: %1$s</string>
+    <string name="system_recovery_unknown">Onbekend</string>
+
+    <!-- UPDATES -->
+    <string name="updates">Updates</string>
+    <string name="updates_checking">Controleren...</string>
+    <string name="updates_error">Fout</string>
+    <string name="updates_found">Systeem update gevonden</string>
+    <string name="updates_uptodate">U bent up-to-date!</string>
+    <string name="no_updates_found">Geen updates gevonden</string>
+    <string name="check_rom_updates_error">Fout bij het controleren van nieuwe ROM updates</string>
+    <string name="check_gapps_updates_error">Fout bij het controleren van Google apps updates</string>
+    <string name="system_update">Systeem update gevonden.\nTWRP recovery MOET worden gebruikt bij het installeren OTA(Over the air), of handmatig met CWM!!!\nSelecteer de update(s) die u wilt downloaden.\n\nUpdate(s) gevonden:</string>
+    <string name="download_and_install">Download en installeer</string>
+    <string name="update_host">Gehost bij %1$s</string>
+
+    <!-- INSTALL -->
+    <string name="install">Installeer</string>
+    <string name="install_title">Klaar om te installeren</string>
+    <string name="install_info">De volgende update(s) zijn klaar om te installeren.\n\nU kan meer zips toevoegen door te klikken op de \"Bestand toevoegen\" knop.</string>
+    <string name="add_file">Bestand toevoegen</string>
+    <string name="install_now">Nu installeren</string>
+    <string name="calculating_md5">MD5 sum aan het berekenen...</string>
+    <string name="md5_mismatch">MD5 verkeerde combinatie</string>
+    <string name="md5_mismatch_summary">Ontvangen:\n%1$s\n\nBerekend:\n%2$s</string>
+    <string name="md5_install_anyway">Toch doorgaan</string>
+    <string name="select_actions">Selecteer de acties die u graag wilt uitvoeren</string>
+    <string name="backup">Backup</string>
+    <string name="wipe_data">Wipe Gegevens</string>
+    <string name="wipe_caches">Wipe Cache &amp; Dalvik</string>
+    <string name="remove_file_title">Bestand verwijderen</string>
+    <string name="remove_file_summary">Wilt u het bestand verwijderen van de lijst?\n\n%1$s</string>
+    <string name="file_manager_error">Geen applicaties gevonden om het zip bestand te selecteren. Installeer een file manager alstublieft.</string>
+    <string name="alert_backup_space_title">Ruimte over</string>
+    <string name="alert_backup_space_message">Er is minder dan %1$sGB op de interne SD-kaart. Wilt u toch doorgaan met de backup?</string>
+    <string name="alert_backup_title">Backup</string>
+    <string name="alert_backup_message">Specificeer de backup naam (illegale karakters worden verwijderd).\n\nDe volgende opties zullen alleen werken met TWRP.</string>
+    <string name="system">Systeem</string>
+    <string name="data">Gegevens</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android secure</string>
+    <string name="sdext">SD-Ext</string>
+    <string name="alert_reboot_install_title">Update(s) installeren</string>
+    <string name="alert_reboot_one_message">Uw apparaat zal worden geherstart en de update installeren.</string>
+    <string name="alert_reboot_more_message">Uw apparaat zal worden geherstart en de updates installeren.</string>
+    <string name="alert_reboot_now">Nu installeren</string>
+
+    <!-- CHANGELOG -->
+    <string name="changelog">Wijzigingsoverzicht</string>
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">Systeem update downloaden...</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">Download annuleren</string>
+    <string name="cancel_rom_download_alert_summary">Wilt u de huidige ROM download annuleren?</string>
+    <string name="cancel_gapps_download_alert_summary">Wilt u de huidige Google apps download annuleren?</string>
+    <string name="cancel_download_alert_yes">Ja</string>
+    <string name="cancel_download_alert_no">Nee</string>
+    <string name="new_system_update">Nieuwe systeem update gevonden</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s updates beschikbaar om te downloaden</string>
+    <string name="already_downloading_rom">U bent al een ROM update aan het downloaden.</string>
+    <string name="already_downloading_gapps">U bent al een Google apps update aan het downloaden.</string>
+    <string name="cancel_download">Download(s) annuleren</string>
+    <string name="downloading_info">Update(s) aan het downloaden:\n%1$s</string>
+
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">Fout: De download kon niet worden hervat</string>
+    <string name="error_device_not_found">Fout: SD-kaart niet gemount</string>
+    <string name="error_file_already_exists">Fout: Bestand bestaat al</string>
+    <string name="error_file_error">Fout: Opslag fout</string>
+    <string name="error_http_data_error">Fout: Http fout</string>
+    <string name="error_insufficient_space">Fout: Geen ruimte over</string>
+    <string name="error_too_many_redirects">Fout: Te veel redirects</string>
+    <string name="error_unhandled_http_code">Fout: Onbehandelde http code</string>
+    <string name="error_unknown">Fout: Onbekend</string>
+    <string name="error_device_not_found_title">Apparaat niet gevonden</string>
+    <string name="error_device_not_found_summary">Een ROM voor uw apparaat is niet gevonden. Controleer handmatig alstublieft.</string>
+    <string name="error_device_not_found_server">Een ROM voor uw apparaat is niet gevonden.</string>
+
+    <!-- SETTINGS -->
+    <string name="settings">Instellingen</string>
+    <string name="settings_checktime_title">Update controle frequentie</string>
+    <string name="settings_checktime_summary">Specificeer de tijd tussen elke update controle</string>
+    <string name="settings_checkgapps_title">Controleer voor Google apps</string>
+    <string name="settings_checkgapps_summary">Controleer ook voor specifieke AICP Google apps</string>
+    <string name="time_notifications_never">Niet controleren</string>
+    <string name="time_notifications_half_an_hour">Een half uur</string>
+    <string name="time_notifications_an_hour">1 uur</string>
+    <string name="time_notifications_two_hours">2 uren</string>
+    <string name="time_notifications_five_hours">5 uren</string>
+    <string name="time_notifications_daily">Dagelijks</string>
+    <string name="settings_goo">Goo.im</string>
+    <string name="settings_login_goo">Login goo.im</string>
+    <string name="username">Gebruikersnaam</string>
+    <string name="password">Wachtwoord</string>
+    <string name="logged_out">Uitgelogd van goo.im</string>
+    <string name="logged_in">Ingelogd als %1$s</string>
+    <string name="logging_in">Goo.im inloggen...</string>
+    <string name="error_logging_invalid">Ongeldige gebruikersnaam/wachtwoord</string>
+    <string name="error_logging_down">Kan de server niet bereiken</string>
+    <string name="error_logging_in">Onbekende login fout</string>
+
+</resources>
