@@ -112,20 +112,22 @@ public class GappsUpdater extends Updater {
         return false;
     }
 
+
     @Override
     public String getDevice() {
         switch (getSettingsHelper().getGappsType(getTypeForSettings())) {
             case SettingsHelper.GAPPS_MICRO :
-                return "gapps";
+                return "gapps-micro";
             case SettingsHelper.GAPPS_MINI :
-                return "gapps";
+                return "gapps-mini";
             case SettingsHelper.GAPPS_STOCK:
                 return "gapps";
             case SettingsHelper.GAPPS_FULL :
             default :
-                return "gapps";
+                return "gapps-full";
         }
     }
+
 
     @Override
     public int getErrorStringId() {

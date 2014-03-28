@@ -20,6 +20,17 @@
 
 <resources>
 
+    <!-- GAPPS TYPE -->
+    <string-array name="gapps_type_entries">
+        <item>@string/gapps_type_full</item>
+        <item>@string/gapps_type_mini</item>
+    </string-array>
+    <string-array name="gapps_type_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+
     <!-- CHECK UPDATES FREQUENCY -->
     <string-array name="time_notifications_entries">
         <item>@string/time_notifications_never</item>
