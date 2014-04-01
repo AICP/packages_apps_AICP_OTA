@@ -132,8 +132,7 @@
     <string name="settings_gappstype_summary">Vyberte mezi kompletní, mini, mikro a výchozí verzí balíčku</string>
     <string name="gapps_type_full">Kompletní balíček</string>
     <string name="gapps_type_mini">Mini balíček</string>
-    <string name="gapps_type_stock">Výchozí balíček</string>
-    <string name="gapps_type_micro">Mikro balíček</string>
+    <string name="gapps_type_fullinverted">Mikro balíček</string>
     <string name="time_notifications_never">Nekontrolovat</string>
     <string name="time_notifications_half_an_hour">Půl hodina</string>
     <string name="time_notifications_an_hour">1 hodina</string>

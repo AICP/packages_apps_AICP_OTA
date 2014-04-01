@@ -132,8 +132,6 @@
     <string name="settings_gappstype_summary">Auswählen zwischen Full, Mini, Micro und Stock Gapps Paket</string>
     <string name="gapps_type_full">Full Paket</string>
     <string name="gapps_type_mini">Mini Paket</string>
-    <string name="gapps_type_stock">Stock Paket</string>
-    <string name="gapps_type_micro">Micro Paket</string>
     <string name="time_notifications_never">Niemals suchen</string>
     <string name="time_notifications_half_an_hour">30 Minuten</string>
     <string name="time_notifications_an_hour">1 Stunde</string>

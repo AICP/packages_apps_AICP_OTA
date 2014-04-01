@@ -40,10 +40,12 @@
     <string name="system_title">System info</string>
     <string name="system_rom">ROM version: %1$s</string>
     <string name="system_gapps">Google apps version: %1$s %2$s</string>
-    <string name="settings_gappstype_title">Google apps type</string>
-    <string name="settings_gappstype_summary">Choose between full, mini gapps package</string>
+    <string name="settings_gappstype_title">Google Gapps type</string>
+    <string name="settings_gappstype_summary">Choose between full, mini gnd Inverted gapps packages</string>
     <string name="gapps_type_full">Full package</string>
     <string name="gapps_type_mini">Mini package</string>
+    <string name="gapps_type_fullinverted">Full Inverted package</string>
+    <string name="gapps_type_miniinverted">Mini Inverted package</string>
 
     <string name="system_recovery">Recovery version: %1$s</string>
     <string name="system_recovery_unknown">Unknown</string>
