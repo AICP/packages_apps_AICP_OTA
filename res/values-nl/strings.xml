@@ -42,6 +42,11 @@
     <string name="system_gapps">Google apps versie: %1$s %2$s</string>
     <string name="system_recovery">Recovery versie: %1$s</string>
     <string name="system_recovery_unknown">Onbekend</string>
+	<string name="settings_gappstype_title">Google apps type</string>
+    <string name="settings_gappstype_summary">Kies tussen een volle of kleine gapps pakket</string>
+    <string name="gapps_type_full">Vol pakket</string>
+    <string name="gapps_type_mini">Klein pakket</string>
+
 
     <!-- UPDATES -->
     <string name="updates">Updates</string>
@@ -59,7 +64,7 @@
     <!-- INSTALL -->
     <string name="install">Installeer</string>
     <string name="install_title">Klaar om te installeren</string>
-    <string name="install_info">De volgende update(s) zijn klaar om te installeren.\n\nU kan meer zips toevoegen door te klikken op de \"Bestand toevoegen\" knop.</string>
+    <string name="install_info">De volgende update(s) zijn klaar om te installeren.\n\nU kunt meer zips toevoegen door te klikken op de \"Bestand toevoegen\" knop.</string>
     <string name="add_file">Bestand toevoegen</string>
     <string name="install_now">Nu installeren</string>
     <string name="calculating_md5">MD5 sum aan het berekenen...</string>
