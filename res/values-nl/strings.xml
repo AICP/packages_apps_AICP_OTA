@@ -22,7 +22,7 @@
 
     <!-- GENERAL -->
     <string name="app_name">AICP OTA</string>
-    <string name="title_checking">Controleren...</string>
+    <string name="title_checking">Aan het controleren...</string>
     <string name="check_for_updates">Controleren</string>
     <string name="no_additional_info">Geen extra informatie</string>
 
@@ -46,11 +46,13 @@
     <string name="settings_gappstype_summary">Kies tussen een volle of kleine gapps pakket</string>
     <string name="gapps_type_full">Vol pakket</string>
     <string name="gapps_type_mini">Klein pakket</string>
+	<string name="gapps_type_fullinverted">Vol Omgekeerde pakket</string>
+    <string name="gapps_type_miniinverted">Klein Omgekeerde pakket</string>
 
 
     <!-- UPDATES -->
     <string name="updates">Updates</string>
-    <string name="updates_checking">Controleren...</string>
+    <string name="updates_checking">Aan het controleren...</string>
     <string name="updates_error">Fout</string>
     <string name="updates_found">Systeem update gevonden</string>
     <string name="updates_uptodate">U bent up-to-date!</string>
@@ -58,11 +60,11 @@
     <string name="check_rom_updates_error">Fout bij het controleren van nieuwe ROM updates</string>
     <string name="check_gapps_updates_error">Fout bij het controleren van Google apps updates</string>
     <string name="system_update">Systeem update gevonden.\nTWRP recovery MOET worden gebruikt bij het installeren OTA(Over the air), of handmatig met CWM!!!\nSelecteer de update(s) die u wilt downloaden.\n\nUpdate(s) gevonden:</string>
-    <string name="download_and_install">Download en installeer</string>
+    <string name="download_and_install">Download en installeren</string>
     <string name="update_host">Gehost bij %1$s</string>
 
     <!-- INSTALL -->
-    <string name="install">Installeer</string>
+    <string name="install">Installeren</string>
     <string name="install_title">Klaar om te installeren</string>
     <string name="install_info">De volgende update(s) zijn klaar om te installeren.\n\nU kunt meer zips toevoegen door te klikken op de \"Bestand toevoegen\" knop.</string>
     <string name="add_file">Bestand toevoegen</string>
@@ -77,7 +79,7 @@
     <string name="wipe_caches">Wipe Cache &amp; Dalvik</string>
     <string name="remove_file_title">Bestand verwijderen</string>
     <string name="remove_file_summary">Wilt u het bestand verwijderen van de lijst?\n\n%1$s</string>
-    <string name="file_manager_error">Geen applicaties gevonden om het zip bestand te selecteren. Installeer een file manager alstublieft.</string>
+    <string name="file_manager_error">Geen applicaties gevonden om het zip bestand te selecteren. Installeer een bestandverkenner alstublieft.</string>
     <string name="alert_backup_space_title">Ruimte over</string>
     <string name="alert_backup_space_message">Er is minder dan %1$sGB op de interne SD-kaart. Wilt u toch doorgaan met de backup?</string>
     <string name="alert_backup_title">Backup</string>
@@ -90,15 +92,15 @@
     <string name="androidsecure">Android secure</string>
     <string name="sdext">SD-Ext</string>
     <string name="alert_reboot_install_title">Update(s) installeren</string>
-    <string name="alert_reboot_one_message">Uw apparaat zal worden geherstart en de update installeren.</string>
-    <string name="alert_reboot_more_message">Uw apparaat zal worden geherstart en de updates installeren.</string>
+    <string name="alert_reboot_one_message">Uw apparaat zal worden herstart en de update installeren.</string>
+    <string name="alert_reboot_more_message">Uw apparaat zal worden herstart en de updates installeren.</string>
     <string name="alert_reboot_now">Nu installeren</string>
 
     <!-- CHANGELOG -->
     <string name="changelog">Wijzigingsoverzicht</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
-    <string name="download_card_title">Systeem update downloaden...</string>
+    <string name="download_card_title">Systeem update aan het downloaden...</string>
     <string name="download_title">%1$s</string>
     <string name="cancel_download_alert_title">Download annuleren</string>
     <string name="cancel_rom_download_alert_summary">Wilt u de huidige ROM download annuleren?</string>
