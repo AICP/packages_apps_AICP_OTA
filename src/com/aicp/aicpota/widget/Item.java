@@ -73,6 +73,7 @@ public class Item extends LinearLayout {
 
         mTitleView = (TextView) view.findViewById(R.id.title);
         mTitleView.setText(title);
+        mDefaultColors = mTitleView.getTextColors();
         mPressedColor = context.getResources().getColor(R.color.item_pressed);
         mIconActiveColor = context.getResources().getColor(R.color.item_action);
         if (icon != null) {

@@ -42,6 +42,7 @@ import com.aicp.aicpota.R;
 import com.aicp.aicpota.activities.RequestFileActivity;
 import com.aicp.aicpota.activities.RequestFileActivity.RequestFileCallback;
 import com.aicp.aicpota.helpers.RebootHelper;
+import com.aicp.aicpota.Utils;
 import com.aicp.aicpota.widget.Card;
 import com.aicp.aicpota.widget.Item;
 import com.aicp.aicpota.widget.Item.OnItemClickListener;
@@ -143,7 +144,11 @@ public class InstallCard extends Card implements RequestFileCallback {
 
     @Override
     public void fileRequested(String filePath) {
-        addFile(new File(filePath), null);
+        if (filePath == null) {
+            Utils.showToastOnUiThread(getContext(), R.string.file_not_found);
+        } else {
+            addFile(new File(filePath), null);
+        }
     }
 
     public void addFile(Uri uri, final String md5) {
