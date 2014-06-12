@@ -30,7 +30,7 @@
   <string name="rom_new_version">Rastas ROM atnaujinimas!</string>
   <string name="gapps_new_version">Rastas Google programėlių atnaujinimas!</string>
   <string name="no_updates">Sistemos atnaujinimų nėra</string>
-  <string name="system_update_found">Rastas sistemos atnaujinimas paruoštas atsisiuntimui.\nPrašome patikrinti atsiradusius pranešimus. Jie nuves Jus į ParanoidOTA kur galėsite atsisiųsti ir/arba įdiegti atnaujinimus.\n\nRasti atnaujinimai:\n%1$s</string>
+  <string name="system_update_found">Rastas sistemos atnaujinimas paruoštas atsisiuntimui.\nPrašome patikrinti atsiradusius pranešimus. Jie nuves Jus į AicpOTA kur galėsite atsisiųsti ir/arba įdiegti atnaujinimus.\n\nRasti atnaujinimai:\n%1$s</string>
   <string name="system_title">Sistemos informacija</string>
   <string name="system_rom">ROM versija: %1$s</string>
   <string name="system_gapps">Google programėlių versija: %1$s %2$s</string>

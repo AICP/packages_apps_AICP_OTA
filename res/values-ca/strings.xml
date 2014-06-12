@@ -34,7 +34,7 @@
     <string name="rom_new_version">S\'ha trobat una nova versió de la ROM!</string>
     <string name="gapps_new_version">S\'ha trobat una nova versió de les Google apps!</string>
     <string name="no_updates">No s\'han trobat actualitzacions del sistema</string>
-    <string name="system_update_found">S\'ha trobat una nova actualització i està preparada per descarregar.\nPer favor comprova les notificacions que han aparegut. Elles te duran a ParanoidOTA des d\'on podràs descarregar i/o instal\·lar l\'actualització.\n\nActualització(ns) trobada:\n%1$s</string>
+    <string name="system_update_found">S\'ha trobat una nova actualització i està preparada per descarregar.\nPer favor comprova les notificacions que han aparegut. Elles te duran a AicpOTA des d\'on podràs descarregar i/o instal\·lar l\'actualització.\n\nActualització(ns) trobada:\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">Info del sistema</string>

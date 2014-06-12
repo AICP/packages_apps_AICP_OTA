@@ -30,7 +30,7 @@
   <string name="rom_new_version">Terdapat pembaruan ROM!</string>
   <string name="gapps_new_version">Terdapat pembaruan Google apps!</string>
   <string name="no_updates">Tidak ada pembaruan sistem</string>
-  <string name="system_update_found">Terdapat pembaruan sistem yang siap diunduh.\nSilakan memeriksa notifikasi yang telah muncul. Notifikasi tersebut akan membawa Anda ke ParanoidOTA di mana Anda dapat mengunduh dan/atau menginstall pembaruan.\n\nPembaruan ditemukan:\n%1$s</string>
+  <string name="system_update_found">Terdapat pembaruan sistem yang siap diunduh.\nSilakan memeriksa notifikasi yang telah muncul. Notifikasi tersebut akan membawa Anda ke AicpOTA di mana Anda dapat mengunduh dan/atau menginstall pembaruan.\n\nPembaruan ditemukan:\n%1$s</string>
   <string name="system_title">Informasi sistem</string>
   <string name="system_rom">Versi ROM: %1$s</string>
   <string name="system_gapps">Versi Google apps: %1$s %2$s</string>

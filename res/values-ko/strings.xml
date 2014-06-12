@@ -30,7 +30,7 @@
   <string name="rom_new_version">새 ROM 업데이트 발견!</string>
   <string name="gapps_new_version">새로운 Google apps 업데이트를 발견!</string>
   <string name="no_updates">시스템 업데이트가 없습니다</string>
-  <string name="system_update_found">새로운 시스템 업데이트가 발견됬고 다운로드 할 준비가 되었습니다.\n나타난 알림을 확인하여 주시기 바랍니다. 알림을 터치하여 업데이트를 다운로드 및 설치 할 수 있는 ParanoidOTA로 이동됩니다. \n\n 업데이트 발견됨:\n%1$s</string>
+  <string name="system_update_found">새로운 시스템 업데이트가 발견됬고 다운로드 할 준비가 되었습니다.\n나타난 알림을 확인하여 주시기 바랍니다. 알림을 터치하여 업데이트를 다운로드 및 설치 할 수 있는 AicpOTA로 이동됩니다. \n\n 업데이트 발견됨:\n%1$s</string>
   <string name="system_title">시스템 정보</string>
   <string name="system_rom">ROM 버전: %1$s</string>
   <string name="system_gapps">Google apps 버전: %1$s %2$s</string>

@@ -30,7 +30,7 @@
   <string name="rom_new_version">มีรุ่นของรอมที่ใหม่กว่า!</string>
   <string name="gapps_new_version">มีรุ่นของกูเกิ้ลแอพที่ใหม่กว่า!</string>
   <string name="no_updates">ไม่พบการอัพเดทของระบบ</string>
-  <string name="system_update_found">มีการปรับปรุงระบบใหม่ \nกรุณาตรวจสอบการเตือนที่อาจปรากฎขึ้น ซึ่งจะพาคุณไปดาวน์โหลด และ/หรือติดตั้ง ParanoidOTA \n\n.\n\nUpdate(s) found:\n%1$s</string>
+  <string name="system_update_found">มีการปรับปรุงระบบใหม่ \nกรุณาตรวจสอบการเตือนที่อาจปรากฎขึ้น ซึ่งจะพาคุณไปดาวน์โหลด และ/หรือติดตั้ง AicpOTA \n\n.\n\nUpdate(s) found:\n%1$s</string>
   <string name="system_title">ข้อมูลระบบ</string>
   <string name="system_rom">รุ่นรอม: %1$s</string>
   <string name="system_gapps">Google apps รุ่น: %1$s %2$s</string>

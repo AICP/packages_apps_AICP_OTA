@@ -30,7 +30,7 @@
   <string name="rom_new_version">Nieuwe ROM update gevonden!</string>
   <string name="gapps_new_version">Nieuwe Google apps update gevonden!</string>
   <string name="no_updates">Geen systeemupdates gevonden</string>
-  <string name="system_update_found">Een nieuwe systeemupdate is gevonden en is klaar om te downloaden.\nControleer de meldingen die mogelijk zijn verschenen. Deze zullen u leiden naar ParanoidOTA, vanwaar u de mogelijkheid krijgt voor het downloaden en/of installeren van de update.\n\nUpdate(s) gevonden:\n%1$s</string>
+  <string name="system_update_found">Een nieuwe systeemupdate is gevonden en is klaar om te downloaden.\nControleer de meldingen die mogelijk zijn verschenen. Deze zullen u leiden naar AicpOTA, vanwaar u de mogelijkheid krijgt voor het downloaden en/of installeren van de update.\n\nUpdate(s) gevonden:\n%1$s</string>
   <string name="system_title">Systeeminformatie</string>
   <string name="system_rom">ROM versie: %1$s</string>
   <string name="system_gapps">Google apps versie: %1$s %2$s</string>

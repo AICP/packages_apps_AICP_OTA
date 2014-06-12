@@ -30,7 +30,7 @@
   <string name="rom_new_version">Atrasts jauns ROM atjauninājums!</string>
   <string name="gapps_new_version">Atrasts jauns Google aplikāciju atjauninājums!</string>
   <string name="no_updates">Nav atrasti sistēmas atjauninājumi</string>
-  <string name="system_update_found">Atrasts jauns sistēmas atjauninājums un ir gatavs lejupielādei.\nLūdzu pārbaudiet paziņojumus kas varētu būt parādījušies. Tas jūs aizvedīs uz ParanoidOTA no kurienes jūs varēsiet lejupielādēt un/vai ieinstalēt atjauninājumu.\n\nAtjauninājums(i) atrasti:\n%1$s</string>
+  <string name="system_update_found">Atrasts jauns sistēmas atjauninājums un ir gatavs lejupielādei.\nLūdzu pārbaudiet paziņojumus kas varētu būt parādījušies. Tas jūs aizvedīs uz AicpOTA no kurienes jūs varēsiet lejupielādēt un/vai ieinstalēt atjauninājumu.\n\nAtjauninājums(i) atrasti:\n%1$s</string>
   <string name="system_title">Sistēmas info</string>
   <string name="system_rom">ROM versija: %1$s</string>
   <string name="system_gapps">Google aplikāciju versija: %1$s %2$s</string>

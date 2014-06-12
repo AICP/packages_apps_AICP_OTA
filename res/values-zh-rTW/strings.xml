@@ -30,7 +30,7 @@
   <string name="rom_new_version">找到新的 ROM 更新！</string>
   <string name="gapps_new_version">找到新的 Google 應用程式更新！</string>
   <string name="no_updates">沒有新的更新</string>
-  <string name="system_update_found">發現系統更新，並準備下載。\n請檢查通知可能已經出現，將會引導您到 ParanoidOTA 下載 並/或 安裝更新。\n\n發現系統更新：\n%1$s</string>
+  <string name="system_update_found">發現系統更新，並準備下載。\n請檢查通知可能已經出現，將會引導您到 AicpOTA 下載 並/或 安裝更新。\n\n發現系統更新：\n%1$s</string>
   <string name="system_title">系統資訊</string>
   <string name="system_rom">ROM 版本：%1$s</string>
   <string name="system_gapps">Google 應用程式版本：%1$s %2$s</string>

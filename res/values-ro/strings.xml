@@ -30,7 +30,7 @@
   <string name="rom_new_version">Actualizare de ROM gasită!</string>
   <string name="gapps_new_version">Actualizare de aplicaţii Google găsită!</string>
   <string name="no_updates">Nici o actualizare de sistem găsită</string>
-  <string name="system_update_found">O nouă actualizare de sistem a fost găsită şi este gata pentru descărcare.\nTe rugăm să verifici notificările care au apărut. Acestea te vor îndruma spre ParanoidOTA, unde vei putea să descarci şi/sau să instalezi actualizarea.\n\nActualizare(ri) găsită\n%1$s</string>
+  <string name="system_update_found">O nouă actualizare de sistem a fost găsită şi este gata pentru descărcare.\nTe rugăm să verifici notificările care au apărut. Acestea te vor îndruma spre AicpOTA, unde vei putea să descarci şi/sau să instalezi actualizarea.\n\nActualizare(ri) găsită\n%1$s</string>
   <string name="system_title">Informaţii despre sistem</string>
   <string name="system_rom">Versiune ROM: %1$s</string>
   <string name="system_gapps">Versiune aplicaţii Google: %1$s %2$s</string>

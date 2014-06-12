@@ -30,7 +30,7 @@
   <string name="rom_new_version">Nova atualização da ROM encontrada!</string>
   <string name="gapps_new_version">Nova atualização de aplicações Google encontrada!</string>
   <string name="no_updates">Não foram encontradas atualizações de sistema</string>
-  <string name="system_update_found">Uma nova atualização foi encontrada e está pronta para download.\nPor favor verifique a notificação que poderá ter aparecido. Esta vai levá-lo a ParanoidOTA onde irá poder fazer download e/ou instalar a atualização.\n\nAtualização(ões) encontradas:\n%1$s</string>
+  <string name="system_update_found">Uma nova atualização foi encontrada e está pronta para download.\nPor favor verifique a notificação que poderá ter aparecido. Esta vai levá-lo a AicpOTA onde irá poder fazer download e/ou instalar a atualização.\n\nAtualização(ões) encontradas:\n%1$s</string>
   <string name="system_title">Informações do sistema</string>
   <string name="system_rom">Versão da ROM: %1$s</string>
   <string name="system_gapps">Versão das aplicações Google: %1$s %2$s</string>

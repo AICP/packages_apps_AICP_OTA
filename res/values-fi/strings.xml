@@ -30,7 +30,7 @@
   <string name="rom_new_version">Uusi ROM päivitys löytyi!</string>
   <string name="gapps_new_version">Uusi Google apps päivitys löytyi!</string>
   <string name="no_updates">Ei uusia päivityksiä</string>
-  <string name="system_update_found">Uusi järjestelmäpäivitys löytyi ja on valmiina ladattavaksi.\nTarkista mahdolliset ilmoitukset. Ne ohjaavat sinut Paranoid päivityksiin, mistä voit ladata ja/tai asentaa päivityksen. \n\nPäivityksiä löytyi:\n%1$s</string>
+  <string name="system_update_found">Uusi järjestelmäpäivitys löytyi ja on valmiina ladattavaksi.\nTarkista mahdolliset ilmoitukset. Ne ohjaavat sinut Aicp päivityksiin, mistä voit ladata ja/tai asentaa päivityksen. \n\nPäivityksiä löytyi:\n%1$s</string>
   <string name="system_title">Järjestelmän tiedot</string>
   <string name="system_rom">ROM versio: %1$s</string>
   <string name="system_gapps">Google sovellusten versio: %1$s %2$s</string>

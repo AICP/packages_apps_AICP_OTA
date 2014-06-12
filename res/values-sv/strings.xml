@@ -30,7 +30,7 @@
   <string name="rom_new_version">Ny ROM uppdatering funnen!</string>
   <string name="gapps_new_version">Ny Google apps uppdatering funnen!</string>
   <string name="no_updates">Inga systemuppdateringar funna</string>
-  <string name="system_update_found">En ny systemuppdatering har hittats och är redo att laddas ner.\nVar god kontrollera eventuell notifiering. De kommer leda dig till ParanoidOTA där du kan ladda ner och/eller installera uppdateringen.\n\nUppdatering(ar) hittade:\n%1$s</string>
+  <string name="system_update_found">En ny systemuppdatering har hittats och är redo att laddas ner.\nVar god kontrollera eventuell notifiering. De kommer leda dig till AicpOTA där du kan ladda ner och/eller installera uppdateringen.\n\nUppdatering(ar) hittade:\n%1$s</string>
   <string name="system_title">Systeminformation</string>
   <string name="system_rom">ROM-version: %1$s</string>
   <string name="system_gapps">Google apps version: %1$s %2$s</string>

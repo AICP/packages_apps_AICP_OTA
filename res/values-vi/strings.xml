@@ -30,7 +30,7 @@
   <string name="rom_new_version">Có bản cập nhật ROM mới!</string>
   <string name="gapps_new_version">Tìm thấy bản cập nhật mới cho Google apps!</string>
   <string name="no_updates">Không có bản cập nhật hệ thống</string>
-  <string name="system_update_found">Tìm thấy bản cập nhật hệ thống mới, đã sẵn sàng cho tải về.\nVui lòng kiểm tra các thông báo có thể đã xuất hiện, nó sẽ dẫn bạn tới ParanoidOTA để tải về và cài đặt cập nhật.\n\nBản cập nhật mới:\n%1$s</string>
+  <string name="system_update_found">Tìm thấy bản cập nhật hệ thống mới, đã sẵn sàng cho tải về.\nVui lòng kiểm tra các thông báo có thể đã xuất hiện, nó sẽ dẫn bạn tới AicpOTA để tải về và cài đặt cập nhật.\n\nBản cập nhật mới:\n%1$s</string>
   <string name="system_title">Thông tin hệ thống</string>
   <string name="system_rom">Phiên bản ROM: %1$s</string>
   <string name="system_gapps">Phiên bản Google apps: %1$s %2$s</string>

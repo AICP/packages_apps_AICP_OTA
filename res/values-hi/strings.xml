@@ -30,7 +30,7 @@
   <string name="rom_new_version">नए ROM अद्यतन पाया!</string>
   <string name="gapps_new_version">नई Google apps अद्यतन पाया!</string>
   <string name="no_updates">आपके लिए कोई अपडेट नही है</string>
-  <string name="system_update_found">एक नया अभी तक का सिस्टम पाया था और उपलब्ध है दोव्न्लोअद के लिए ।\n हो सकता है कि सूचनाए प्रकट हुई हो, जाँच करें. वे तुम्हें अपडेट डाउनलोड और / या स्थापित करने में सक्षम हो जाएगा, जहां से आप ParanoidOTA में पोहोच जाओगे।\n\n अपडेट(स) मिले:\n%1$s</string>
+  <string name="system_update_found">एक नया अभी तक का सिस्टम पाया था और उपलब्ध है दोव्न्लोअद के लिए ।\n हो सकता है कि सूचनाए प्रकट हुई हो, जाँच करें. वे तुम्हें अपडेट डाउनलोड और / या स्थापित करने में सक्षम हो जाएगा, जहां से आप AicpOTA में पोहोच जाओगे।\n\n अपडेट(स) मिले:\n%1$s</string>
   <string name="system_title">सिस्टम जानकारी</string>
   <string name="system_rom">ROM संस्करण: %1$s</string>
   <string name="system_gapps">Google apps संस्करण: %1$s %2$s</string>
