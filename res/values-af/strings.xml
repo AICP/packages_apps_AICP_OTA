@@ -30,7 +30,7 @@
   <string name="rom_new_version">\'n Nuwe ROM weergawe is gevind!</string>
   <string name="gapps_new_version">\'n Nuwe Google program weergawe is gevind!</string>
   <string name="no_updates">Geen nuwe Stelsel weergawe is gevind nie</string>
-  <string name="system_update_found">\'n Nuwe weergawe van die stelsel is gevind, en is reg om afgelaai te word.\nAsseblief kyk na nuwe kennisgewings wat mag verskyn het. Dit sal U lui na AicpOTA, waar is die nuwe weergawe kan aflaai en dan installeer.\n\nNuwe weergawe(s) is gevind:\n%1$s</string>
+  <string name="system_update_found">\'n Nuwe weergawe van die stelsel is gevind, en is reg om afgelaai te word.\nAsseblief kyk na nuwe kennisgewings wat mag verskyn het. Dit sal U lui na ParanoidOTA, waar is die nuwe weergawe kan aflaai en dan installeer.\n\nNuwe weergawe(s) is gevind:\n%1$s</string>
   <string name="system_title">Stelsel inligting</string>
   <string name="system_rom">ROM weergame: %1$s</string>
   <string name="system_gapps">Google program weergawe: %1$s %2$s</string>

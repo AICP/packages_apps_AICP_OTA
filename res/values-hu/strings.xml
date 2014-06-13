@@ -30,7 +30,7 @@
   <string name="rom_new_version">Új ROM frissítés érhető el!</string>
   <string name="gapps_new_version">Új Google Apps frissítés érhető el!</string>
   <string name="no_updates">Nincs elérhető rendszer frissítés</string>
-  <string name="system_update_found">Egy új rendszer frissítés érhető el és készen áll a letöltésre.\nEllenőrizze a megjelent értesítéseket. Az értesítés a AicpOTA alkalmazáshoz vezet, ahol le tudja tölteni és/vagy telepíteni a frissítést.\n\nElérhető frissítések:\n%1$s</string>
+  <string name="system_update_found">Egy új rendszer frissítés érhető el és készen áll a letöltésre.\nEllenőrizze a megjelent értesítéseket. Az értesítés a ParanoidOTA alkalmazáshoz vezet, ahol le tudja tölteni és/vagy telepíteni a frissítést.\n\nElérhető frissítések:\n%1$s</string>
   <string name="system_title">Rendszer információ</string>
   <string name="system_rom">ROM verziója: %1$s</string>
   <string name="system_gapps">Google Apps verziója: %1$s %2$s</string>

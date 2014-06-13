@@ -34,7 +34,7 @@
     <string name="rom_new_version">Byla nalezena aktualizace ROM!</string>
     <string name="gapps_new_version">Byly nalezeny nové Google Apps!</string>
     <string name="no_updates">Nebyly nalezeny žádné aktualizace</string>
-    <string name="system_update_found">Byla nalezena systémová aktualizace a je připravena ke stažení.\nPodívejte se do notifikační lišty, kde se objeví oznámení o aktualizaci. Klepnutím na toto oznámení se přesunete do aplikace AicpOTA, kde si budete moci aktualizaci stáhnout a nainstalovat.\n\nNalezené aktualizace:\n%1$s</string>
+    <string name="system_update_found">Byla nalezena systémová aktualizace a je připravena ke stažení.\nPodívejte se do notifikační lišty, kde se objeví oznámení o aktualizaci. Klepnutím na toto oznámení se přesunete do aplikace ParanoidOTA, kde si budete moci aktualizaci stáhnout a nainstalovat.\n\nNalezené aktualizace:\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">Systémové info</string>

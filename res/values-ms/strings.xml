@@ -30,7 +30,7 @@
   <string name="rom_new_version">Kemaskini ROM baru ditemui!</string>
   <string name="gapps_new_version">Aplikasi Google yang baru ditemui!</string>
   <string name="no_updates">Tiada kemaskini  terhadap sistem ditemui</string>
-  <string name="system_update_found">Kemaskini terhapadap sistem baru ditemui dan sedia untuk di muat turun.\nSila semak notifikasi yang mungkin akan datang. Ia akan membawa anda kepada aplikasi Aicp OTA dimana abda boleh muat turun mengemaskini.\n\nKemaskini ditemui:\n%1$s</string>
+  <string name="system_update_found">Kemaskini terhapadap sistem baru ditemui dan sedia untuk di muat turun.\nSila semak notifikasi yang mungkin akan datang. Ia akan membawa anda kepada aplikasi Paranoid OTA dimana abda boleh muat turun mengemaskini.\n\nKemaskini ditemui:\n%1$s</string>
   <string name="system_title">Info sistem</string>
   <string name="system_rom">Versi ROM: %1$s</string>
   <string name="system_gapps">Versi aplikasi Google: %1$s %2$s</string>

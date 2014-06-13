@@ -30,7 +30,7 @@
   <string name="rom_new_version">发现ROM更新!</string>
   <string name="gapps_new_version">发现GAPPS更新!</string>
   <string name="no_updates">未发现系统更新</string>
-  <string name="system_update_found">发现系统更新并准备下载.\n请检查可能出现的通知. 他们会引导你至AicpOTA下载并/或安装更新.\n\n发现更新:\n%1$s</string>
+  <string name="system_update_found">发现系统更新并准备下载.\n请检查可能出现的通知. 他们会引导你至ParanoidOTA下载并/或安装更新.\n\n发现更新:\n%1$s</string>
   <string name="system_title">系统信息</string>
   <string name="system_rom">ROM 版本: %1$s</string>
   <string name="system_gapps">GAPPS 版本: %1$s %2$s</string>

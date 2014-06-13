@@ -30,7 +30,7 @@
   <string name="rom_new_version">Ново ROM ажурирање пронађено!</string>
   <string name="gapps_new_version">Ново Google apps ажурирање пронађено!</string>
   <string name="no_updates">Нема нових системских ажурирања</string>
-  <string name="system_update_found">Ново системско ажурирање је пронађено и спремно је за преузимање.\nМолимо проверите нотификације које су се можда појавиле. Оне ће Вас одвести до AicpOTA одакле ћете моћи да преузмете и/или инсталирате ажурирање.\n\nПронађена ажурирања:\n%1$s</string>
+  <string name="system_update_found">Ново системско ажурирање је пронађено и спремно је за преузимање.\nМолимо проверите нотификације које су се можда појавиле. Оне ће Вас одвести до ParanoidOTA одакле ћете моћи да преузмете и/или инсталирате ажурирање.\n\nПронађена ажурирања:\n%1$s</string>
   <string name="system_title">Информације о систему</string>
   <string name="system_rom">Верзија ROM-а: %1$s</string>
   <string name="system_gapps">Верзија Google apps: %1$s %2$s</string>

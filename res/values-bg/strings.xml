@@ -30,7 +30,7 @@
   <string name="rom_new_version">Има нова версия на ROM-a!</string>
   <string name="gapps_new_version">Има нова версия на Google Apps!</string>
   <string name="no_updates">Няма по-нова версия</string>
-  <string name="system_update_found">Намерена е актуализация и е готова за сваляне.\nМоля проверете за известия в лентата. Те ще ви отведат до AicpOTA, откъдето ще можете да се сдобиете с най-новата версия!\n\nНамерена(и) актуализация(и)\n%1$s</string>
+  <string name="system_update_found">Намерена е актуализация и е готова за сваляне.\nМоля проверете за известия в лентата. Те ще ви отведат до ParanoidOTA, откъдето ще можете да се сдобиете с най-новата версия!\n\nНамерена(и) актуализация(и)\n%1$s</string>
   <string name="system_title">Информация за системата</string>
   <string name="system_rom">ROM версия: %1$s</string>
   <string name="system_gapps">Google apps версия: %1$s %2$s</string>
