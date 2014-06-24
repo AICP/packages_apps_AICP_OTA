@@ -127,8 +127,18 @@ public class Version implements Serializable {
                 }
             } else if (version.startsWith("R")) {
                 mPhase = RELEASE;
-                version = version.substring(7);
+                if (version.startsWith("RELEASE")) {
+                    version = version.substring(7);
                 }
+            }
+            else {
+                // If we get here version == split[2], which means it
+                // is a non-empty string. We don't want to do parseInt
+                // on that as it will cause an FC. So we set version
+                // to "".
+                version = "";
+            }
+
             if (!version.isEmpty()) {
                 mPhaseNumber = Integer.parseInt(version);
             }
