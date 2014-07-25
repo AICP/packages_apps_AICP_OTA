@@ -70,8 +70,8 @@ import java.util.List;
 public class MainActivity extends Activity implements UpdaterListener, DownloadCallback,
         OnItemClickListener {
 
-    private static final String CHANGELOG = "https://plus.google.com/app/basic/+ParanoidAndroidCorner/posts";
-    private static final String GOOGLEPLUS = "https://plus.google.com/communities/112514149478109338346";
+    private static final String CHANGELOG = "https://plus.google.com/app/basic/communities/101008638920580274588";
+    private static final String GOOGLEPLUS = "https://plus.google.com/u/0/communities/101008638920580274588";
     private static final String STATE = "STATE";
 
     public static final int STATE_UPDATES = 0;

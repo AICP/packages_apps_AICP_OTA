@@ -32,9 +32,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class PaServer implements Server {
+public class AICPServer implements Server {
 
-    private static final String URL = "http://api.paranoidandroid.co/updates/%s";
+    private static final String URL = "http://updates.aicp-rom.com/update.php?device=%s";
 
     private String mDevice = null;
     private String mError = null;

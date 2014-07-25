@@ -46,11 +46,6 @@
             android:entries="@array/gapps_type_entries"
             android:entryValues="@array/gapps_type_values" />
 
-        <com.paranoid.paranoidota.widget.Preference
-            android:key="goo"
-            android:title="@string/settings_goo"
-            android:summary="@string/settings_login_goo" />
-
     </com.paranoid.paranoidota.widget.PreferenceCategory>
 
 </PreferenceScreen>

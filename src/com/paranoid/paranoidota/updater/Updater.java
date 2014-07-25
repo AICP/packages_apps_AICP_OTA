@@ -178,13 +178,13 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
                     String fileName = info.getFilename();
                     if ((gappsType == SettingsHelper.GAPPS_MINI && !fileName.contains("-mini"))
                             ||
-                            (gappsType == SettingsHelper.GAPPS_STOCK && !fileName
-                                    .contains("-stock"))
+                            (gappsType == SettingsHelper.GAPPS_FULLINVERTED && !fileName
+                                    .contains("-fullinverted"))
                             ||
                             (gappsType == SettingsHelper.GAPPS_FULL && !fileName.contains("-full"))
                             ||
-                            (gappsType == SettingsHelper.GAPPS_MICRO && !fileName
-                                    .contains("-micro"))) {
+                            (gappsType == SettingsHelper.GAPPS_MINIINVERTED && !fileName
+                                    .contains("-miniinverted"))) {
                         list.remove(i);
                         i--;
                         continue;

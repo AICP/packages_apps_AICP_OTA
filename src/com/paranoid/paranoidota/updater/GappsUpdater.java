@@ -25,7 +25,7 @@ import com.paranoid.paranoidota.R;
 import com.paranoid.paranoidota.Utils;
 import com.paranoid.paranoidota.Version;
 import com.paranoid.paranoidota.helpers.SettingsHelper;
-import com.paranoid.paranoidota.updater.server.GooServer;
+import com.paranoid.paranoidota.updater.server.AICPServer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,10 +34,10 @@ import java.util.Properties;
 public class GappsUpdater extends Updater {
 
     private static final String PROPERTIES_FILE = "/system/etc/g.prop";
-    private static final String VERSION_PROPERTY = "ro.addon.pa_version";
+    private static final String VERSION_PROPERTY = "ro.addon.aicp_version";
     private static final String VERSION_PROPERTY_EXT = "ro.addon.version";
     private static final String PLATFORM_PROPERTY = "ro.build.version.release";
-    private static final String TYPE_PROPERTY = "ro.addon.pa_type";
+    private static final String TYPE_PROPERTY = "ro.addon.aicp_type";
 
     private Version mRomVersion;
     private String mPlatform;
@@ -45,8 +45,8 @@ public class GappsUpdater extends Updater {
     private String mType;
 
     public GappsUpdater(Context context, boolean fromAlarm) {
-        super(context, new Server[] {
-                new GooServer(context, false)
+        super(context, new Server[] { 
+                new AICPServer() 
         }, fromAlarm);
 
         mRomVersion = new Version(RomUpdater.getVersionString(context));
@@ -92,12 +92,12 @@ public class GappsUpdater extends Updater {
 
     private int getTypeForSettings() {
         int type = SettingsHelper.GAPPS_FULL;
-        if ("micro".equals(mType)) {
-            type = SettingsHelper.GAPPS_MICRO;
+        if ("fullinverted".equals(mType)) {
+            type = SettingsHelper.GAPPS_FULLINVERTED;
         } else if ("mini".equals(mType)) {
             type = SettingsHelper.GAPPS_MINI;
-        } else if ("stock".equals(mType)) {
-            type = SettingsHelper.GAPPS_STOCK;
+        } else if ("miniinverted".equals(mType)) {
+            type = SettingsHelper.GAPPS_MINIINVERTED;
         }
         return type;
     }
@@ -125,15 +125,15 @@ public class GappsUpdater extends Updater {
                 + mRomVersion.getMinor() + "/";
         int type = getSettingsHelper().getGappsType(getTypeForSettings());
         switch (type) {
-            case SettingsHelper.GAPPS_MICRO:
-                return gapps + "Micro-Modular GApps";
-            case SettingsHelper.GAPPS_MINI:
-                return gapps + "Mini-Modular GApps";
-            case SettingsHelper.GAPPS_STOCK:
-                return gapps + "Google Stock GApps";
-            case SettingsHelper.GAPPS_FULL:
-            default:
-                return gapps + "Full-Modular GApps";
+          case SettingsHelper.GAPPS_FULLINVERTED :
+                return "gapps-fullinverted";
+            case SettingsHelper.GAPPS_MINI :
+                return "gapps-mini";
+            case SettingsHelper.GAPPS_MINIINVERTED:
+                return "gapps-miniinverted";
+            case SettingsHelper.GAPPS_FULL :
+            default :
+                return "gapps-full";
         }
     }
 

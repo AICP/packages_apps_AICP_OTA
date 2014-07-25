@@ -47,24 +47,24 @@ import java.io.Serializable;
 public class Version implements Serializable {
 
     private final String[] STATIC_REMOVE = {
-            ".zip", "pa_"
+            ".zip", "aicp_"
     };
     private final String[] PHASES = {
-            "ALPHA", "BETA", "RC", ""
+            "EXPERIMENTAL", "RELEASE", "NIGHTLY", "STABLE"
     };
 
     private static final String SEPARATOR = "-";
 
-    private static final int ALPHA = 0;
-    private static final int BETA = 1;
-    private static final int RELEASE_CANDIDATE = 2;
-    private static final int GOLD = 3;
+    private static final int EXPERIMENTAL = 0;
+    private static final int RELEASE = 1;
+    private static final int NIGHTLY = 2;
+    private static final int STABLE = 3;
 
     private String mDevice;
     private int mMajor = 0;
     private int mMinor = 0;
     private int mMaintenance = 0;
-    private int mPhase = GOLD;
+    private int mPhase = STABLE;
     private int mPhaseNumber = 0;
     private String mDate = "0";
 
@@ -121,23 +121,24 @@ public class Version implements Serializable {
 
             if (!Utils.isNumeric(split[2].substring(0, 1))) {
                 version = split[2];
-                if (version.startsWith("A")) {
-                    mPhase = ALPHA;
-                    if (version.startsWith("ALPHA")) {
-                        version = version.substring(5);
+
+                if (version.startsWith("E")) {
+                    mPhase = EXPERIMENTAL;
+                    if (version.startsWith("EXPERIMENTAL")) {
+                        version = version.substring(12);
                     } else {
                         version = version.substring(1);
                     }
-                } else if (version.startsWith("B")) {
-                    mPhase = BETA;
-                    if (version.startsWith("BETA")) {
-                        version = version.substring(4);
+                } else if (version.startsWith("N")) {
+                    mPhase = NIGHTLY;
+                    if (version.startsWith("NIGHTLY")) {
+                        version = version.substring(7);
                     } else {
                         version = version.substring(1);
                     }
-                } else if (version.startsWith("RC")) {
-                    mPhase = RELEASE_CANDIDATE;
-                    version = version.substring(2);
+                } else if (version.startsWith("R")) {
+                    mPhase = RELEASE;
+                    version = version.substring(7);
                 }
                 if (!version.isEmpty()) {
                     mPhaseNumber = Integer.parseInt(version);
@@ -200,7 +201,7 @@ public class Version implements Serializable {
                 + mMinor
                 + (mMaintenance > 0 ? "."
                         + mMaintenance : "")
-                + (mPhase != GOLD ? " " + getPhaseName() + mPhaseNumber : "")
+                + (mPhase != STABLE ? " " + getPhaseName() + mPhaseNumber : "")
                 + " (" + mDate + ")";
     }
 

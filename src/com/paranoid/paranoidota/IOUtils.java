@@ -38,9 +38,9 @@ public class IOUtils {
             .getAbsolutePath();
 
     public static final String DOWNLOAD_PATH = new File(Environment
-            .getExternalStorageDirectory(), "paranoidota/").getAbsolutePath();
+            .getExternalStorageDirectory(), "AICP_ota/").getAbsolutePath();
 
-    private static final String PREFIX = "pa_";
+    private static final String PREFIX = "aicp_";
     private static final String SUFFIX = ".zip";
 
     private static Properties sDictionary;
