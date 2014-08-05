@@ -1,0 +1,21 @@
+<? Xml version = "1.0" encoding = "UTF-8"?>
+<! -
+  Copyright 2014 ParanoidAndroid Projekt
+
+  Diese Datei ist Teil von Paranoid OTA.
+
+  Paranoid OTA ist freie Software: Sie können sie weitergeben und / oder modifizieren
+  es unter den Bedingungen der GNU General Public License, wie von veröffentlichten
+  die Free Software Foundation, entweder Version 3 der Lizenz oder
+  (Nach Ihrer Option) jeder späteren Version.
+
+  Paranoid OTA wird in der Hoffnung verteilt, dass es nützlich sein,
+  aber OHNE JEDE GARANTIE; sogar ohne die implizite Garantie der
+  Oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK. Siehe
+  GNU General Public License für weitere Details.
+
+  Sie sollten eine Kopie der GNU General Public License erhalten haben
+  zusammen mit Paranoid OTA. Wenn nicht, sehen <http://www.gnu.org/licenses/>.
+->
+
+<resources>
