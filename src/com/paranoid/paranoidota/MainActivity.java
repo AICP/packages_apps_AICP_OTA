@@ -21,6 +21,7 @@ package com.paranoid.paranoidota;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -67,12 +68,18 @@ import com.paranoid.paranoidota.widget.Card;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.ads.*;
+
+
 public class MainActivity extends Activity implements UpdaterListener, DownloadCallback,
         OnItemClickListener {
 
     private static final String CHANGELOG = "https://plus.google.com/app/basic/communities/101008638920580274588";
     private static final String GOOGLEPLUS = "https://plus.google.com/u/0/communities/101008638920580274588";
     private static final String STATE = "STATE";
+
+    private AdView adView;
+    private static final String AD_UNIT_ID = "ca-app-pub-8304196545054985/9751051934";
 
     public static final int STATE_UPDATES = 0;
     public static final int STATE_DOWNLOAD = 1;
@@ -111,6 +118,22 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         mSavedInstanceState = savedInstanceState;
 
         setContentView(R.layout.activity_main);
+
+        // Create an ad.
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.SMART_BANNER);
+        adView.setAdUnitId(AD_UNIT_ID);
+
+        // Add the AdView to the view hierarchy. The view will have no size
+        // until the ad is loaded.
+        LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout);
+        layout.addView(adView);
+
+        // Create an ad request. 
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        // Start loading the ad in the background.
+        adView.loadAd(adRequest);
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -328,12 +351,18 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     protected void onResume() {
         super.onResume();
         DownloadHelper.registerCallback(this);
+        if (adView != null) {
+           adView.resume();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         DownloadHelper.unregisterCallback();
+         if (adView != null) {
+           adView.resume();
+        }
     }
 
     @Override
@@ -474,4 +503,14 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 break;
         }
     }
+
+  @Override
+  public void onDestroy() {
+    // Destroy the AdView.
+    if (adView != null) {
+      adView.destroy();
+    }
+    super.onDestroy();
+  }
+
 }

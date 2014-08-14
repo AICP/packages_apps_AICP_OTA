@@ -47,6 +47,9 @@
 
     <dimen name="item_padding">10dp</dimen>
 
+    <!-- Google Banner Margin -->
+    <dimen name="banner_bottom_margin">46dp</dimen>
+
     <integer name="anim_duration">400</integer>
 
 </resources>

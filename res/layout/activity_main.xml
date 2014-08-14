@@ -54,6 +54,7 @@
 	 
 	     <ScrollView
 	         android:layout_width="fill_parent"
+                 android:layout_marginBottom="@dimen/banner_bottom_margin"
 	         android:layout_height="wrap_content">
 	 
 	         <LinearLayout
@@ -67,6 +68,17 @@
 	     </ScrollView>
 
     </LinearLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/linearLayout"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="bottom"
+              android:layout_alignParentBottom="true"
+              android:layout_alignBottom="@+id/drawer_layout">
+</LinearLayout>
+
 
     <ListView
         android:id="@+id/left_drawer"
