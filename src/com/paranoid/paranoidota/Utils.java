@@ -61,7 +61,7 @@ public class Utils {
     public static final String CHECK_DOWNLOADS_FINISHED = "com.paranoid.paranoidota.Utils.CHECK_DOWNLOADS_FINISHED";
     public static final String CHECK_DOWNLOADS_ID = "com.paranoid.paranoidota.Utils.CHECK_DOWNLOADS_ID";
     public static final String MOD_VERSION = "ro.modversion";
-    public static final String RO_PA_VERSION = "ro.pa.version";
+    public static final String RO_PA_VERSION = "ro.aicp.version";
     public static final int ROM_ALARM_ID = 122303221;
     public static final int GAPPS_ALARM_ID = 122303222;
 
