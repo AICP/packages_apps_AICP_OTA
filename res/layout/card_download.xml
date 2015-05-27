@@ -18,7 +18,7 @@
   along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.paranoid.paranoidota"
+    xmlns:app="http://schemas.android.com/apk/res/com.aicp.aicpota"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
@@ -66,7 +66,7 @@
         android:layout_marginTop="@dimen/card_separator_padding"
         android:background="@color/card_border" />
 
-    <com.paranoid.paranoidota.widget.Item
+    <com.aicp.aicpota.widget.Item
         android:id="@+id/cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
