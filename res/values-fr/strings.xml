@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2014 ParanoidAndroid Project
+
+  This file is part of Paranoid OTA.
+
+  Paranoid OTA is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Paranoid OTA is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">OTA AICP</string>
+    <string name="title_checking">Vérification...</string>
+    <string name="check_for_updates">Vérifier</string>
+    <string name="no_additional_info">Aucune information supplémentaire</string>
+    <string name="drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="drawer_close">Fermer le tiroir de navigation</string>
+
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">Vérifier les mises à jour</string>
+    <string name="all_up_to_date">Vous êtes à jour !</string>
+    <string name="rom_scanning">Vérification des mises à jour système...</string>
+    <string name="rom_gapps_new_version">Mises à jour système trouvé!</string>
+    <string name="rom_new_version">Nouvelle mise à jour de la ROM trouvé!</string>
+    <string name="gapps_new_version">Nouvelle mise à jour des apps Google trouvé!</string>
+    <string name="no_updates">Pas de mises à jour système trouvés</string>
+    <string name="system_update_found">Une nouvelle mise à jour du système a été trouvé et est prêt à être télécharger .\nSvp vérifier les notifications qui ont pu apparaître. Elles vous meneront vers l\'OTA et vous serez en mesure de télécharger et/ou installer la mise à jour. \n\nMaj(s) Trouvé(s):\n%1$s</string>
+
+    <!-- SYSTEM -->
+    <string name="system_title">Infos système</string>
+    <string name="system_rom">Version de la ROM: %1$s</string>
+    <string name="system_gapps">Version des Gaaps: %1$s %2$s</string>
+    <string name="system_recovery">Version du Recovery: %1$s</string>
+    <string name="system_recovery_unknown">Inconnu</string>
+
+    <!-- UPDATES -->
+    <string name="updates">Mises à jour</string>
+    <string name="updates_checking">Vérification...</string>
+    <string name="updates_error">Erreur</string>
+    <string name="updates_found">Mise à jour du système trouvé</string>
+    <string name="updates_uptodate">Vous êtes à jour</string>
+    <string name="no_updates_found">Aucune mise à jour trouvé</string>
+    <string name="check_rom_updates_error">Erreur en vérifiant les mises à jour de la ROM</string>
+    <string name="check_gapps_updates_error">Erreur en vérifiant les mises à jour des apps Google</string>
+    <string name="system_update">Mise à jour système trouvé\nSéléctionner la/les mise(s) à jour que vous souhaitez télécharger.\n\Maj(s) trouvé:</string>
+    <string name="download_and_install">Télécharger et installer</string>
+    <string name="update_host">Hébergé sur %1$s</string>
+
+    <!-- INSTALL -->
+    <string name="install">Installer</string>
+    <string name="install_title">Prêt à installer</string>
+    <string name="install_info">Les mises à jour suivantes sont prêtes à être installées.\n\nVous pouvez ajouter plus de .zip en cliquant sur le bouton \"Ajouter un fichier\"</string>
+    <string name="add_file">Ajouter un fichier</string>
+    <string name="install_now">Installer maintenant</string>
+    <string name="calculating_md5">Calcul de la somme MD5...</string>
+    <string name="md5_mismatch">Disparité de la somme MD5</string>
+    <string name="md5_mismatch_summary">Reçu:\n%1$s\n\nCalculé:\n%2$s</string>
+    <string name="md5_install_anyway">Continuer malgré tout</string>
+    <string name="select_actions">Sélectionnez les actions que vous souhaitez effectuer</string>
+    <string name="backup">Sauvegarde</string>
+    <string name="wipe_data">Effacer les Données</string>
+    <string name="wipe_caches">Effacer le Cache &amp; Dalvik</string>
+    <string name="remove_file_title">Supprimer le fichier</string>
+    <string name="remove_file_summary">Voulez-vous supprimer le fichier de la liste ?\n\n%1$s</string>
+    <string name="file_manager_error">Pas applications trouvées pour sélectionner le fichier .zip Veuiller installer un gestionnaire de fichiers.</string>
+    <string name="alert_backup_space_title">Espace utiliser</string>
+    <string name="alert_backup_space_message">Il y\'a moins de %1$sGB dans la mémoire interne.Voulez-vous continuer la sauvegarde ?</string>
+    <string name="alert_backup_title">Sauvegarde</string>
+    <string name="alert_backup_message">Indiquer le nom de la sauvegarde (Les caractères illégaux seront supprimés).\n\nLes options suivantes ne fonctionneront que dans TWRP.</string>
+    <string name="system">Système</string>
+    <string name="data">Données</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android secure</string>
+    <string name="sdext">SD-Ext</string>
+    <string name="alert_reboot_install_title">Installer la/les mise(s) à jour</string>
+    <string name="alert_reboot_one_message">Votre appareil va redémarrer et installer la mise à jour.</string>
+    <string name="alert_reboot_more_message">Votre appareil va redémarrer et installer les mises à jour.</string>
+    <string name="alert_reboot_now">Installer maintenant</string>
+    <string name="file_not_found">Impossible d\'ajouter le fichier</string>
+
+    <!-- CHANGELOG -->
+    <string name="changelog">Changement</string>
+
+    <!-- GOOGLEPLUS -->
+    <string name="google_plus">Google+</string>
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">Téléchargement de la mise à jour du système</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">Annuler le téléchargement</string>
+    <string name="cancel_rom_download_alert_summary">Voulez-vous annuler le téléchargement de la ROM?</string>
+    <string name="cancel_gapps_download_alert_summary">Voulez-vous annuler le téléchargement des apps Google?</string>
+    <string name="cancel_download_alert_yes">Oui</string>
+    <string name="cancel_download_alert_no">Non</string>
+    <string name="new_system_update">Nouvelle mise à jour du système trouvé</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s mises à jour disponibles pour le téléchargement</string>
+    <string name="already_downloading_rom">Vous êtes déjà en train de télécharger une mise à jour de la ROM.</string>
+    <string name="already_downloading_gapps">Vous êtes déjà en train de télécharger une mise à jour des apps Google.</string>
+    <string name="cancel_download">Annuler le/les téléchargement(s)</string>
+    <string name="downloading_info">Mise(s) à jour en téléchargement:\n%1$s</string>
+
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">Erreur: Le téléchargement n'a pas pu être repris</string>
+    <string name="error_device_not_found">Erreur: La sdcard n\'est pas monté</string>
+    <string name="error_file_already_exists">Erreur: Le fichier existe déjà</string>
+    <string name="error_file_error">Erreur: erreur de stockage</string>
+    <string name="error_http_data_error">Erreur: Erreur HTTP</string>
+    <string name="error_insufficient_space">Erreur: Plus d\'espace disponible</string>
+    <string name="error_too_many_redirects">Erreur: Trop de redirections</string>
+    <string name="error_unhandled_http_code">Erreur : Code HTTP</string>
+    <string name="error_unknown">Erreur : Inconnu</string>
+    <string name="error_device_not_found_title">Périphérique introuvable</string>
+    <string name="error_device_not_found_summary">Une ROM pour votre appareil n\'a pas été trouvé. S'\il vous plaît vérifier manuellement.</string>
+    <string name="error_device_not_found_server">Une ROM pour votre appareil n\'a pas été trouvé.</string>
+
+    <!-- SETTINGS -->
+    <string name="settings">Paramètres</string>
+    <string name="settings_checktime_title">Fréquence de vérification des mises à jour</string>
+    <string name="settings_checktime_summary">Spécifier le temps entre chaque vérification de mise à jour</string>
+    <string name="settings_checkgapps_title">Vérifiez pour les apps Google</string>
+    <string name="settings_checkgapps_summary">Vérifiez aussi pour les apps PA aussi</string>
+    <string name="settings_gappstype_title">Type des Gapps</string>
+    <string name="settings_gappstype_summary">Choissirer entre le mode complet,petit,miniscule ou de base des Gapps</string>
+    <string name="gapps_type_full">Ensemble complet</string>
+    <string name="gapps_type_mini">Ensemble Mini</string>
+    <string name="gapps_type_fullinverted">Ensemble complet inversé</string>
+    <string name="gapps_type_miniinverted">Ensemble mini inversé</string>
+    <string name="time_notifications_never">Ne pas vérifie</string>
+    <string name="time_notifications_half_an_hour">Une demi-heure</string>
+    <string name="time_notifications_an_hour">1 heure</string>
+    <string name="time_notifications_two_hours">2 heures</string>
+    <string name="time_notifications_five_hours">5 heures</string>
+    <string name="time_notifications_daily">Tous les jours</string>
+
+</resources>
