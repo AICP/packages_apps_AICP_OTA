@@ -263,7 +263,7 @@ public class Utils {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setContentTitle(resources.getString(R.string.new_system_update))
                 .setSmallIcon(R.drawable.ic_launcher_mono)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_launcher))
+                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_aicp_ota))
                 .setContentIntent(pIntent);
 
         String contextText = "";
