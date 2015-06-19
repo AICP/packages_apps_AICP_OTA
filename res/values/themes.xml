@@ -28,7 +28,7 @@
     <style name="ActionBar" 
             parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/actionbar_background</item>
-        <item name="android:icon">@drawable/ic_launcher_plain</item>
+        <item name="android:icon">@drawable/ic_aicp_ota</item>
     </style>
 
     <style name="Checkbox"
