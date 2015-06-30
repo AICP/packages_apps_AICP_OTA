@@ -23,7 +23,6 @@ package com.aicp.aicpota.activities;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
@@ -38,8 +37,6 @@ public class SettingsActivity extends PreferenceActivity implements
  
     private SettingsHelper mSettingsHelper;
     private ListPreference mCheckTime;
-    private CheckBoxPreference mCheckGapps;
-    private ListPreference mGappsType;
  
     @Override
     @SuppressWarnings("deprecation")
@@ -54,12 +51,8 @@ public class SettingsActivity extends PreferenceActivity implements
         addPreferencesFromResource(R.layout.activity_settings);
 
         mCheckTime = (ListPreference) findPreference(SettingsHelper.PROPERTY_CHECK_TIME);
-        mCheckGapps = (CheckBoxPreference) findPreference(SettingsHelper.PROPERTY_CHECK_GAPPS);
-        mGappsType = (ListPreference) findPreference(SettingsHelper.PROPERTY_GAPPS_TYPE);
 
         mCheckTime.setValue(String.valueOf(mSettingsHelper.getCheckTime()));
-        mCheckGapps.setChecked(mSettingsHelper.getCheckGapps());
-        mGappsType.setValue(String.valueOf(mSettingsHelper.getGappsType()));
 
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }

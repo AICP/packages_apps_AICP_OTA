@@ -278,7 +278,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
     public void checkUpdates() {
         mRomUpdater.check();
-        mGappsUpdater.check();
     }
 
     @Override
