@@ -29,7 +29,7 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="@color/drawer_list_item_background"
         android:duplicateParentState="true"
         android:gravity="center_vertical"
 	    android:paddingLeft="@dimen/drawer_item_padding_left"
