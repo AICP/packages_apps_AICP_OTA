@@ -72,6 +72,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         OnItemClickListener {
 
     private static final String CHANGELOG = "https://plus.google.com/app/basic/communities/101008638920580274588";
+    private static final String DOWNLOAD = "http://dwnld.aicp-rom.com/?device=";
     private static final String GOOGLEPLUS = "https://plus.google.com/u/0/communities/101008638920580274588";
     private static final String STATE = "STATE";
 
@@ -103,6 +104,8 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     private Bundle mSavedInstanceState;
 
     private int mState = STATE_UPDATES;
+
+    private String mDevice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -278,6 +281,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
     public void checkUpdates() {
         mRomUpdater.check();
+        mDevice=mRomUpdater.getDevice();
     }
 
     @Override
@@ -300,7 +304,11 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 startActivity(browserIntent);
                 break;
             case 3:
-                browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(CHANGELOG));
+                if(mDevice == null || mDevice.isEmpty()) {
+                    browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(CHANGELOG));
+                } else {
+                    browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(DOWNLOAD + mDevice));
+                }
                 startActivity(browserIntent);
                 break;
             case 4:
