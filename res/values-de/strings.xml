@@ -21,7 +21,7 @@
 <resources>
 
     <!-- GENERAL -->
-    <string name="app_name">Paranoid OTA</string>
+    <string name="app_name">AICP OTA</string>
     <string name="title_checking">Suchen...</string>
     <string name="check_for_updates">suchen</string>
     <string name="no_additional_info">Keine weiteren Informationen</string>
@@ -36,7 +36,7 @@
     <string name="rom_new_version">Neues ROM Update gefunden!</string>
     <string name="gapps_new_version">Neues Google Apps Update gefunden!</string>
     <string name="no_updates">Keine System Updates gefunden</string>
-    <string name="system_update_found">Ein neues System Update wurde gefunden und ist nun bereit zum Herunterladen.\nBitte pruefe die Benachrichtigungen falls solche erscheinen. Diese werden dich dann zu ParanoidOTA, von wo aus du die Updates dann Herunterladen oder/und Installieren kannst.\n\nUpdate(s) gefunden:\n%1$s</string>
+    <string name="system_update_found">Ein neues System Update wurde gefunden und ist nun bereit zum Herunterladen.\nBitte pruefe die Benachrichtigungen falls solche erscheinen. Diese werden dich dann zu AICP OTA, von wo aus du die Updates dann Herunterladen oder/und Installieren kannst.\n\nUpdate(s) gefunden:\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">System Info</string>

@@ -32,7 +32,7 @@
     <string name="rom_new_version">Есть новые обновления!</string>
     <string name="gapps_new_version">Есть новые обновления приложений Google!</string>
     <string name="no_updates">Системные обновления не найдены</string>
-    <string name="system_update_found">"Новые обновления найдены и готовы для загрузки.\nПожалуйста, проверьте уведомления, которые возможно появились. Они приведут вас к ParanoidOTA откуда вы сможете скачать и/или установить обновление.\n\nОбновление(я) найдено:\n%1$s"</string>
+    <string name="system_update_found">"Новые обновления найдены и готовы для загрузки.\nПожалуйста, проверьте уведомления, которые возможно появились. Они приведут вас к AICP OTA откуда вы сможете скачать и/или установить обновление.\n\nОбновление(я) найдено:\n%1$s"</string>
     <string name="system_title">Информация о системе</string>
     <string name="system_rom">Версия прошивки: %1$s</string>
     <string name="system_gapps">Версия приложений Google: %1$s %2$s</string>

@@ -36,7 +36,7 @@
     <string name="rom_new_version">Novo ažuriranje ROM-a dostupno!</string>
     <string name="gapps_new_version">Dostupna su nova ažuriranja za Google aplikacije!</string>
     <string name="no_updates">Nema sistemskih ažuriranja</string>
-    <string name="system_update_found">Novo ažuriranje sistema je spremno za preuzimanje.\nProverite notifikacije koje su se možda pojavile. Odvešće vas na ParanoidOTA gde ćete ih moći preuzeti i/ili instalirati.\n\nAžuriranja nađeno:\n%1$s</string>
+    <string name="system_update_found">Novo ažuriranje sistema je spremno za preuzimanje.\nProverite notifikacije koje su se možda pojavile. Odvešće vas na AICP OTA gde ćete ih moći preuzeti i/ili instalirati.\n\nAžuriranja nađeno:\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">Informacije o sistemu</string>
