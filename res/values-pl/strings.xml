@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2014 ParanoidAndroid Project
+
+  This file is part of Paranoid OTA.
+
+  Paranoid OTA is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Paranoid OTA is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">AICP OTA</string>
+    <string name="title_checking">Sprawdzanie...</string>
+    <string name="check_for_updates">Sprawdź</string>
+    <string name="no_additional_info">Brak dodatkowych informacji</string>
+    <string name="drawer_open">Otwórz szufladę nawigacji</string>
+    <string name="drawer_close">Zamknij szufladę informacji</string>
+
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">Sprawdź aktualizacje</string>
+    <string name="all_up_to_date">Masz najnowszą wersję systemu!</string>
+    <string name="rom_scanning">Sprawdzanie dostępności aktualizacji systemu...</string>
+    <string name="rom_gapps_new_version">Znaleziono aktualizacje systemu!</string>
+    <string name="rom_new_version">Znaleziono nową aktualizację ROMu!</string>
+    <string name="gapps_new_version">Znaleziono aktualizację Gapps!</string>
+    <string name="no_updates">Nie znaleziono żadnych aktualizacji</string>
+    <string name="system_update_found">Nowa aktualizacja systemu została znaleziona i jest gotowa do pobrania.\nProszę sprawdzić, czy pojawiły się nowe powiadomienia. Doprowadzą Cię one do ParanoidOTA, skąd będziesz mógł pobrać i/lub zainstalować aktualizację\n\nZnalezione aktualizacje:\n%1$s</string>
+
+    <!-- SYSTEM -->
+    <string name="system_title">Informacje o systemie</string>
+    <string name="system_rom">Wersja ROMu: %1$s</string>
+    <string name="system_gapps">Wersja Gapps: %1$s %2$s</string>
+    <string name="system_recovery">Wersja Recovery: %1$s</string>
+    <string name="system_recovery_unknown">Nieznana</string>
+
+    <!-- UPDATES -->
+    <string name="updates">Aktualizacje</string>
+    <string name="updates_checking">Sprawdzanie...</string>
+    <string name="updates_error">Błąd</string>
+    <string name="updates_found">Znaleziono aktualizację systemu</string>
+    <string name="updates_uptodate">Masz najnowszą wersję systemu</string>
+    <string name="no_updates_found">Nie znaleziono żadnych aktualizacji</string>
+    <string name="check_rom_updates_error">Błąd podczas sprawdzania aktualizacji ROMu</string>
+    <string name="check_gapps_updates_error">Błąd podczas sprawdzania aktualizacji Gapps</string>
+    <string name="system_update">Aktualizacja systemu znaleziona.\nWybierz aktualizacje, które chcesz pobrać.\n\Znalezione aktualizacje:</string>
+    <string name="download_and_install">Pobierz i zainstaluj</string>
+    <string name="update_host">Hostowane na %1$s</string>
+
+    <!-- INSTALL -->
+    <string name="install">Instaluj</string>
+    <string name="install_title">Gotowe do instalacji</string>
+    <string name="install_info">Następujące aktualizacje są gotowe do zainstalowania.\n\nMożesz dodać więcej zipów klikając na przycisk \"Dodaj plik\".</string>
+    <string name="add_file">Dodaj plik</string>
+    <string name="install_now">Instaluj</string>
+    <string name="calculating_md5">Sprawdzanie sum kontrolnych MD5...</string>
+    <string name="md5_mismatch">Niezgodność podczas sprawdzania sum kontrolnych MD5</string>
+    <string name="md5_mismatch_summary">Otrzymano:\n%1$s\n\nSprawdzono:\n%2$s</string>
+    <string name="md5_install_anyway">Kontynuuj mimo to</string>
+    <string name="select_actions">Wybierz akcje, które chcesz wykonać</string>
+    <string name="backup">Kopia zapasowa</string>
+    <string name="wipe_data">Wyczyść Data</string>
+    <string name="wipe_caches">Wyczyść Cache &amp; Dalvik</string>
+    <string name="remove_file_title">Usuń pliki</string>
+    <string name="remove_file_summary">Czy chcesz usunąć plik z listy?\n\n%1$s</string>
+    <string name="file_manager_error">Nie znaleziono aplikacji, aby wybrać plik zip. Proszę zainstalować menedżer plików.</string>
+    <string name="alert_backup_space_title">Wolne miejsce</string>
+    <string name="alert_backup_space_message">Pozostało mniej niż %1$sGB wolnego miejsca na wewnętrznej karcie pamięci. Czy na pewno chcesz kontynuować tworzenie kopii zapasowej?</string>
+    <string name="alert_backup_title">Kopia zapasowa</string>
+    <string name="alert_backup_message">Określ nazwę kopii zapasowej (niedozwolone znaki zostaną usunięte).\n\nNastępujące opcję będą działać jedynie w TWRP.</string>
+    <string name="system">System</string>
+    <string name="data">Data</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android secure</string>
+    <string name="sdext">SD-Ext</string>
+    <string name="alert_reboot_install_title">Instaluj aktualizacje</string>
+    <string name="alert_reboot_one_message">Urządzenie uruchomi się ponownie i zainstaluje aktualizację.</string>
+    <string name="alert_reboot_more_message">Urządzenie uruchomi się ponownie i zainstaluje aktualizacje.</string>
+    <string name="alert_reboot_now">Instaluj</string>
+    <string name="file_not_found">Nie można dodać pliku</string>
+
+    <!-- CHANGELOG -->
+    <string name="changelog">Dziennik zmian</string>
+
+    <!-- GOOGLEPLUS -->
+    <string name="google_plus">Google+</string>
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">Pobieranie aktualizacji systemu</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">Anuluj pobieranie</string>
+    <string name="cancel_rom_download_alert_summary">Czy chcesz anulować pobieranie ROMu?</string>
+    <string name="cancel_gapps_download_alert_summary">Czy chcesz anulować pobieranie aplikacji Google?</string>
+    <string name="cancel_download_alert_yes">Tak</string>
+    <string name="cancel_download_alert_no">Nie</string>
+    <string name="new_system_update">Znaleziono nową aktualizację systemu</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s aktualizacji dostępnych do pobrania</string>
+    <string name="already_downloading_rom">Jesteś już w trakcie pobierania aktualizacji ROMu.</string>
+    <string name="already_downloading_gapps">Jesteś już w trakcie pobierania Gapps.</string>
+    <string name="cancel_download">Anuluj pobieranie</string>
+    <string name="downloading_info">Pobierane aktualizacje:\n%1$s</string>
+
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">Błąd: Pobieranie nie może zostać wznowione</string>
+    <string name="error_device_not_found">Błąd: Karta pamięci nie jest zamontowana</string>
+    <string name="error_file_already_exists">Błąd: Taki plik już instnieje</string>
+    <string name="error_file_error">Błąd: Błąd pamięci masowej</string>
+    <string name="error_http_data_error">Błąd: Błąd Http</string>
+    <string name="error_insufficient_space">Błąd: Zbyt mało wolnego miejsca</string>
+    <string name="error_too_many_redirects">Błąd: Zbyt wiele przekierowań</string>
+    <string name="error_unhandled_http_code">Błąd: Nieobsługiwany kod Http</string>
+    <string name="error_unknown">Błąd: Nieznany</string>
+    <string name="error_device_not_found_title">Urządzenie nie zostało znalezione</string>
+    <string name="error_device_not_found_summary">Nie znaleziono ROMu dla Twojego urządzenia. Spróbuj sprawdzić ręcznie.</string>
+    <string name="error_device_not_found_server">Nie znaleziono ROMu dla Twojego urządzenia.</string>
+
+    <!-- SETTINGS -->
+    <string name="settings">Ustawienia</string>
+    <string name="settings_checktime_title">Częstotliwość sprawdzania aktualizacji</string>
+    <string name="settings_checktime_summary">Określ, jak często ma być sprawdzana dostępność nowych aktualizacji</string>
+    <string name="settings_checkgapps_title">Sprawdzanie Gapps</string>
+    <string name="settings_checkgapps_summary">Sprawdzanie specyficznych PA Gapps</string>
+    <string name="settings_gappstype_title">Rodzaj Gapps</string>
+    <string name="settings_gappstype_summary">Wybierz rodzaj Gapps: Full, Mini lub Micro</string>
+    <string name="gapps_type_full">Pakiet Full</string>
+    <string name="gapps_type_mini">Pakiet Mini</string>
+    <string name="gapps_type_fullinverted">Pakiet Full Inverted</string>
+    <string name="gapps_type_miniinverted">Pakiet Mini Inverted</string>
+    <string name="time_notifications_never">Nie sprawdzaj automatycznie</string>
+    <string name="time_notifications_half_an_hour">Co 30 minut</string>
+    <string name="time_notifications_an_hour">Co godzinę</string>
+    <string name="time_notifications_two_hours">Co 2 godziny</string>
+    <string name="time_notifications_five_hours">Co 5 godzin</string>
+    <string name="time_notifications_daily">Codziennie</string>
+
+</resources>
