@@ -145,6 +145,6 @@
     <string name="time_notifications_an_hour">1 ora</string>
     <string name="time_notifications_two_hours">2 ore</string>
     <string name="time_notifications_five_hours">5 ore</string>
-    <string name="time_notifications_daily">Giornaliero (solo al boot)</string>
+    <string name="time_notifications_daily">Giornaliero</string>
 
 </resources>
