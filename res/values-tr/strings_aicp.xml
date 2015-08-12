@@ -61,7 +61,7 @@
     <!-- INSTALL -->
     <string name="install">Yükle</string>
     <string name="install_title">Yüklemeye Hazır</string>
-    <string name="install_info">The following update(s) are ready to be installed.\n\nYou can add more zips by clicking on the \"Add file\" button.</string>
+    <string name="install_info">Aşağıdaki güncelleme(ler) yüklenmeye hazır. \n\nKuyruğa başka zip dosyaları eklemek için \"Dosya Ekle\" butonuna dokunun.</string>
     <string name="add_file">Dosya Ekle</string>
     <string name="install_now">Şimdi Yükle</string>
     <string name="calculating_md5">MD5 Değeri Hesaplanıyor...</string>
@@ -86,7 +86,7 @@
     <string name="boot">Boot</string>
     <string name="androidsecure">Android secure</string>
     <string name="sdext">SD-Ext</string>
-    <string name="alert_reboot_install_title">Güncelleme(ler)i Yükle</string>
+    <string name="alert_reboot_install_title">Güncelleme(ler)\'i Yükle</string>
     <string name="alert_reboot_one_message">Cihazınız yeniden başlayacak ve güncellemeyi yükleyecek.</string>
     <string name="alert_reboot_more_message">Cihazınız yeniden başlayacak ve güncellemeyi yükleyecek..</string>
     <string name="alert_reboot_now">Şimdi Yükle</string>
