@@ -116,7 +116,7 @@
 
     <!-- DOWNLOAD ERRORS -->
     <string name="error_cannot_resume">エラー: ダウンロードを再開できませんでした</string>
-    <string name="error_device_not_found">エラー: マウントされていません/string>
+    <string name="error_device_not_found">エラー: マウントされていません/</string>
     <string name="error_file_already_exists">エラー: すでにファイルがあります</string>
     <string name="error_file_error">エラー: ストレージエラー</string>
     <string name="error_http_data_error">エラー: HTTPエラー</string>
