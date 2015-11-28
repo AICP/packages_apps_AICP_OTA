@@ -35,5 +35,11 @@
             parent="@android:style/Widget.Holo.Light.CompoundButton.CheckBox">
         <item name="android:button">@drawable/checkbox</item>
     </style>
+  
+   <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:colorPrimary">@color/actionbar_background</item>
+   </style>
+
 
 </resources>
