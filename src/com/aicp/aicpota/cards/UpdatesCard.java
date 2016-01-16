@@ -288,7 +288,8 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
         for (int i = 0; packages != null && i < packages.length; i++) {
             CheckBox check = new CheckBox(context, null);
             check.setTag(R.id.title, packages[i]);
-            check.setText(packages[i].getFilename());
+            check.setText(" " + packages[i].getFilename());
+            check.setTextColor(R.color.card_text);
             check.setOnCheckedChangeListener(this);
             check.setChecked(i == 0);
             mLayout.addView(check);
