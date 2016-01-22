@@ -20,10 +20,13 @@
 
 package com.aicp.aicpota;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -31,6 +34,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.text.SpannableString;
@@ -47,6 +52,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aicp.aicpota.Utils.NotificationInfo;
 import com.aicp.aicpota.activities.SettingsActivity;
@@ -79,6 +85,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     public static final int STATE_UPDATES = 0;
     public static final int STATE_DOWNLOAD = 1;
     public static final int STATE_INSTALL = 2;
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -106,6 +113,8 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     private int mState = STATE_UPDATES;
 
     private String mDevice;
+
+    private LinearLayout itemView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +153,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                LinearLayout itemView;
                 String item = getItem(position);
 
                 if (convertView == null) {
@@ -335,6 +343,9 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     @Override
     protected void onResume() {
         super.onResume();
+        if (!checkStoragePermission()) {
+            requestPermission();
+        }
         DownloadHelper.registerCallback(this);
     }
 
@@ -480,6 +491,36 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
             case STATE_INSTALL:
                 mTitle.setText(R.string.install);
                 break;
+        }
+    }
+
+    private boolean checkStoragePermission() {
+        int result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            ActivityCompat.requestPermissions(this, new String[] {
+                Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, R.string.permission_granted_dialog_title, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, R.string.permission_not_granted_dialog_title, Toast.LENGTH_LONG).show();
+                }
+            return;
         }
     }
 }

@@ -4,22 +4,19 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES += $(call all-java-files-under, src)
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    android-support-v4_13 \
-    volley
+    android-support-v4 \
+    volley \
+    android-support-v7-appcompat \
+    android-support-v13 \
 
+LOCAL_SDK_VERSION := current
 LOCAL_PACKAGE_NAME := AICP_OTA
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_PROGUARD_ENABLED := disabled
 
-LOCAL_SDK_VERSION := 22
-
 include $(BUILD_PACKAGE)
 
-# Support library v4
 include $(CLEAR_VARS)
-
-LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
-    android-support-v4_13:/libs/android-support-v4.jar
 
 include $(BUILD_MULTI_PREBUILT)
