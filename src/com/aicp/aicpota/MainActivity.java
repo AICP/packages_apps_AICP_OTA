@@ -22,8 +22,10 @@ package com.aicp.aicpota;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -31,6 +33,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.text.SpannableString;
@@ -47,6 +51,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import android.Manifest;
 
 import com.aicp.aicpota.Utils.NotificationInfo;
 import com.aicp.aicpota.activities.SettingsActivity;
@@ -69,7 +75,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity implements UpdaterListener, DownloadCallback,
-        OnItemClickListener {
+        OnItemClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final String CHANGELOG = "https://plus.google.com/app/basic/communities/101008638920580274588";
     private static final String DOWNLOAD = "http://dwnld.aicp-rom.com/?device=";
@@ -79,6 +85,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     public static final int STATE_UPDATES = 0;
     public static final int STATE_DOWNLOAD = 1;
     public static final int STATE_INSTALL = 2;
+    private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -115,6 +122,16 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         mSavedInstanceState = savedInstanceState;
 
         setContentView(R.layout.activity_main);
+
+        // But check permissions first 
+        int permissionCheck = ContextCompat.checkSelfPermission(getContext(),
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            // permission not granted, request it from the user
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+        }
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -480,6 +497,30 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
             case STATE_INSTALL:
                 mTitle.setText(R.string.install);
                 break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[],
+                                           int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
+                // if request is cancelled, the result arrays are empty
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay!
+                    // startDownload();
+                } else {
+                    // permission was not granted, cannot download
+                    new AlertDialog.Builder(this)
+                            .setTitle(R.string.permission_not_granted_dialog_title)
+                            .setMessage(R.string.permission_not_granted_dialog_message)
+                            .setPositiveButton(R.string.dialog_ok, null)
+                            .show();
+                    return;
+                }
+                break;
+            }
         }
     }
 }
