@@ -39,7 +39,6 @@ public class GappsUpdater extends Updater {
     private static final String PLATFORM_PROPERTY = "ro.build.version.release";
     private static final String TYPE_PROPERTY = "ro.addon.aicp_type";
 
-    private Version mRomVersion;
     private String mPlatform;
     private String mVersion = "0";
     private String mType;
@@ -49,7 +48,7 @@ public class GappsUpdater extends Updater {
                 new AICPServer() 
         }, fromAlarm);
 
-        mRomVersion = new Version(RomUpdater.getVersionString(context));
+        new Version(RomUpdater.getVersionString(context));
 
         File file = new File(PROPERTIES_FILE);
         if (file.exists()) {
@@ -62,18 +61,23 @@ public class GappsUpdater extends Updater {
                 }
                 mType = properties.getProperty(TYPE_PROPERTY);
                 mPlatform = Utils.getProp(PLATFORM_PROPERTY);
-                mPlatform = mPlatform.replace(".", "");
-                while (mPlatform.length() < 3) {
-                    mPlatform = mPlatform + "0";
+                if (mPlatform != null) {
+                    mPlatform = mPlatform.replace(".", "");
+                }
+                if (mPlatform != null) {
+                    while (mPlatform.length() < 3) {
+                        mPlatform = mPlatform + "0";
+                    }
                 }
                 if (versionString != null && !"".equals(versionString)) {
                     String[] version = versionString.split("-");
-                    for (int i = 0; i < version.length; i++) {
+                    for (String aVersion : version) {
                         try {
-                            Integer.parseInt(new String(new char[] {
-                                    version[i].charAt(0)
+                            //noinspection ResultOfMethodCallIgnored
+                            Integer.parseInt(new String(new char[]{
+                                    aVersion.charAt(0)
                             }));
-                            mVersion = version[i];
+                            mVersion = aVersion;
                             break;
                         } catch (NumberFormatException ex) {
                             // ignore
@@ -102,7 +106,7 @@ public class GappsUpdater extends Updater {
         return type;
     }
 
-    public String getPlatform() {
+    private String getPlatform() {
         return mPlatform == null ? "0" : mPlatform;
     }
 
@@ -121,8 +125,6 @@ public class GappsUpdater extends Updater {
 
     @Override
     public String getDevice() {
-        final String gapps = "GApps/Android " + mRomVersion.getMajor() + "."
-                + mRomVersion.getMinor() + "/";
         int type = getSettingsHelper().getGappsType(getTypeForSettings());
         switch (type) {
           case SettingsHelper.GAPPS_FULLINVERTED :

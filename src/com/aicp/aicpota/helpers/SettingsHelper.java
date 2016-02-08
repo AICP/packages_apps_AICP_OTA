@@ -31,24 +31,24 @@ public class SettingsHelper {
     public static final int GAPPS_MINIINVERTED = 3;
 
     public static final String PROPERTY_CHECK_TIME = "checktime";
-    public static final String PROPERTY_CHECK_GAPPS = "checkgapps";
-    public static final String PROPERTY_GAPPS_TYPE = "gappstype";
-    public static final String PROPERTY_LOGIN = "goologin";
-    public static final String PROPERTY_LOGIN_USERNAME = "goologinusername";
+    private static final String PROPERTY_CHECK_GAPPS = "checkgapps";
+    private static final String PROPERTY_GAPPS_TYPE = "gappstype";
+    private static final String PROPERTY_LOGIN = "goologin";
+    private static final String PROPERTY_LOGIN_USERNAME = "goologinusername";
 
-    public static final String DOWNLOAD_ROM_ID = "download_rom_id";
-    public static final String DOWNLOAD_GAPPS_ID = "download_gapps_id";
-    public static final String DOWNLOAD_ROM_MD5 = "download_rom_md5";
-    public static final String DOWNLOAD_GAPPS_MD5 = "download_gapps_md5";
-    public static final String DOWNLOAD_ROM_FILENAME = "download_rom_filaname";
-    public static final String DOWNLOAD_GAPPS_FILENAME = "download_gapps_filename";
+    private static final String DOWNLOAD_ROM_ID = "download_rom_id";
+    private static final String DOWNLOAD_GAPPS_ID = "download_gapps_id";
+    private static final String DOWNLOAD_ROM_MD5 = "download_rom_md5";
+    private static final String DOWNLOAD_GAPPS_MD5 = "download_gapps_md5";
+    private static final String DOWNLOAD_ROM_FILENAME = "download_rom_filaname";
+    private static final String DOWNLOAD_GAPPS_FILENAME = "download_gapps_filename";
 
     private static final String DEFAULT_CHECK_TIME = "18000000"; // five hours
     private static final boolean DEFAULT_CHECK_GAPPS = true;
 
     private static int DEFAULT_GAPPS_TYPE = GAPPS_FULL;
 
-    private SharedPreferences settings;
+    private final SharedPreferences settings;
 
     public SettingsHelper(Context context) {
 
@@ -124,18 +124,6 @@ public class SettingsHelper {
         return settings.getString(DOWNLOAD_GAPPS_FILENAME, null);
     }
 
-    public void logout() {
-        savePreference(PROPERTY_LOGIN, "");
-    }
-
-    public void login(String value) {
-        savePreference(PROPERTY_LOGIN, value);
-    }
-
-    public void setLoginUserName(String value) {
-        savePreference(PROPERTY_LOGIN_USERNAME, value);
-    }
-
     public boolean isLogged() {
         return !"".equals(settings.getString(PROPERTY_LOGIN, ""));
     }
@@ -144,19 +132,15 @@ public class SettingsHelper {
         return settings.getString(PROPERTY_LOGIN, "");
     }
 
-    public String getLoginUserName() {
-        return settings.getString(PROPERTY_LOGIN_USERNAME, null);
-    }
-
     private void savePreference(String preference, String value) {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(preference, value);
-        editor.commit();
+        editor.apply();
     }
 
     private void removePreference(String preference) {
         SharedPreferences.Editor editor = settings.edit();
         editor.remove(preference);
-        editor.commit();
+        editor.apply();
     }
 }

@@ -39,7 +39,7 @@ import java.io.FileOutputStream;
 
 public class RebootHelper {
 
-    private RecoveryHelper mRecoveryHelper;
+    private final RecoveryHelper mRecoveryHelper;
 
     public RebootHelper(RecoveryHelper recoveryHelper) {
         mRecoveryHelper = recoveryHelper;
@@ -195,13 +195,15 @@ public class RebootHelper {
         try {
 
             File f = new File("/cache/recovery/command");
+            //noinspection ResultOfMethodCallIgnored
             f.delete();
 
             int[] recoveries = new int[] {
                     Utils.TWRP, Utils.CWM_BASED
             };
 
-            for (int i = 0; i < recoveries.length; i++) {
+            int i = 0;
+            while (i < recoveries.length) {
                 String file = mRecoveryHelper.getCommandsFile(recoveries[i]);
 
                 FileOutputStream os = null;
@@ -213,7 +215,7 @@ public class RebootHelper {
                         files[k] = mRecoveryHelper.getRecoveryFilePath(recoveries[i], items[k]);
                     }
 
-                    String[] commands = mRecoveryHelper.getCommands(recoveries[i], files, items,
+                    String[] commands = mRecoveryHelper.getCommands(recoveries[i], files,
                             wipeData, wipeCaches, backupFolder, backupOptions);
                     if (commands != null) {
                         int size = commands.length, j = 0;
@@ -224,10 +226,12 @@ public class RebootHelper {
                 } finally {
                     if (os != null) {
                         os.close();
-                        Utils.setPermissions("/cache/recovery/" + file, 0644,
-                                android.os.Process.myUid(), 2001);
+                        //noinspection OctalInteger
+                        Utils.setPermissions("/cache/recovery/" + file,
+                                android.os.Process.myUid());
                     }
                 }
+                i++;
             }
 
             ((PowerManager) context.getSystemService(Activity.POWER_SERVICE)).reboot("recovery");

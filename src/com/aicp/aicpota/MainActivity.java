@@ -23,7 +23,6 @@ package com.aicp.aicpota;
 import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -33,6 +32,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -84,14 +84,13 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
     public static final int STATE_UPDATES = 0;
     public static final int STATE_DOWNLOAD = 1;
-    public static final int STATE_INSTALL = 2;
+    private static final int STATE_INSTALL = 2;
     private static final int PERMISSION_REQUEST_CODE = 1;
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private RecoveryHelper mRecoveryHelper;
     private RebootHelper mRebootHelper;
     private DownloadCallback mDownloadCallback;
 
@@ -126,11 +125,14 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setIcon(R.drawable.aicp_mono);
+        }
 
         Resources res = getResources();
-        List<String> itemText = new ArrayList<String>();
+        List<String> itemText = new ArrayList<>();
         itemText.add(res.getString(R.string.updates));
         itemText.add(res.getString(R.string.install));
         itemText.add(res.getString(R.string.google_plus));
@@ -138,7 +140,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         itemText.add(res.getString(R.string.settings));
 
         final Drawable[] icons = new Drawable[] {
-                null, null, null, null, res.getDrawable(R.drawable.ic_settings)
+                null, null, null, null, res.getDrawable(R.drawable.ic_settings,null)
         };
 
         mCardsLayout = (LinearLayout) findViewById(R.id.cards_layout);
@@ -204,7 +206,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
         Utils.setRobotoThin(mContext, findViewById(R.id.mainlayout));
 
-        mRecoveryHelper = new RecoveryHelper(this);
+        RecoveryHelper mRecoveryHelper = new RecoveryHelper(this);
         mRebootHelper = new RebootHelper(mRecoveryHelper);
 
         mRomUpdater = new RomUpdater(this, false);
@@ -219,7 +221,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
         if (mSavedInstanceState == null) {
 
-            IOUtils.init(this);
+            IOUtils.init();
 
             mCardsLayout.setAnimation(AnimationUtils.loadAnimation(this, R.anim.up_from_bottom));
 
@@ -245,11 +247,11 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         }
 
         if (!Utils.alarmExists(this, true)) {
-            Utils.setAlarm(this, true, true);
+            Utils.setAlarm(this, true);
         }
 
         if (!Utils.alarmExists(this, false)) {
-            Utils.setAlarm(this, true, false);
+            Utils.setAlarm(this, false);
         }
     }
 
@@ -371,17 +373,10 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
-    public void setState(int state) {
-        setState(state, false, false);
-    }
-
-    public void setState(int state, boolean animate, boolean fromRotation) {
+    private void setState(int state, boolean animate, boolean fromRotation) {
         setState(state, animate, null, null, null, false, fromRotation);
     }
 
@@ -391,11 +386,11 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         switch (state) {
             case STATE_UPDATES:
                 if (mSystemCard == null) {
-                    mSystemCard = new SystemCard(mContext, null, mRomUpdater, mGappsUpdater,
+                    mSystemCard = new SystemCard(mContext, mRomUpdater, mGappsUpdater,
                             mSavedInstanceState);
                 }
                 if (mUpdatesCard == null) {
-                    mUpdatesCard = new UpdatesCard(mContext, null, mRomUpdater, mGappsUpdater,
+                    mUpdatesCard = new UpdatesCard(mContext, mRomUpdater, mGappsUpdater,
                             mSavedInstanceState);
                 }
                 addCards(new Card[] {
@@ -404,7 +399,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 break;
             case STATE_DOWNLOAD:
                 if (mDownloadCard == null) {
-                    mDownloadCard = new DownloadCard(mContext, null, infos, mSavedInstanceState);
+                    mDownloadCard = new DownloadCard(mContext, infos, mSavedInstanceState);
                 } else {
                     mDownloadCard.setInitialInfos(infos);
                 }
@@ -414,7 +409,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 break;
             case STATE_INSTALL:
                 if (mInstallCard == null) {
-                    mInstallCard = new InstallCard(mContext, null, mRebootHelper,
+                    mInstallCard = new InstallCard(mContext, mRebootHelper,
                             mSavedInstanceState);
                 }
                 if (!DownloadHelper.isDownloading(!isRom)) {
@@ -435,7 +430,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         updateTitle();
     }
 
-    public void addCards(Card[] cards, boolean animate, boolean remove) {
+    private void addCards(Card[] cards, boolean animate, boolean remove) {
         mCardsLayout.clearAnimation();
         if (remove) {
             mCardsLayout.removeAllViews();
@@ -496,11 +491,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
     private boolean checkStoragePermission() {
         int result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
+        return result == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermission() {
@@ -512,7 +503,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -520,7 +511,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 } else {
                     Toast.makeText(this, R.string.permission_not_granted_dialog_title, Toast.LENGTH_LONG).show();
                 }
-            return;
         }
     }
 }

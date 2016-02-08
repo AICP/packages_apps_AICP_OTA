@@ -47,9 +47,6 @@ import java.io.Serializable;
  */
 public class Version implements Serializable {
 
-    private final String[] STATIC_REMOVE = {
-            ".zip", "aicp_"
-    };
     private final String[] PHASES = {
             "EXPERIMENTAL", "RELEASE", "NIGHTLY", "STABLE"
     };
@@ -74,6 +71,9 @@ public class Version implements Serializable {
 
     public Version(String fileName) {
 
+        String[] STATIC_REMOVE = {
+                ".zip", "aicp_"
+        };
         for (String remove : STATIC_REMOVE) {
             fileName = fileName.replace(remove, "");
         }
@@ -86,9 +86,7 @@ public class Version implements Serializable {
         while (split[1].matches("\\w+\\.?")) {
             String[] newSplit = new String[split.length - 1];
             newSplit[0] = split[0];
-            for (int i = 2; i < split.length; i++) {
-                newSplit[i - 1] = split[i];
-            }
+            System.arraycopy(split, 2, newSplit, 1, split.length - 2);
             split = newSplit;
             if (split.length <= 1) {
                 break;
@@ -102,7 +100,7 @@ public class Version implements Serializable {
 
         try {
             String version = split[1];
-            int index = -1;
+            int index;
             if ((index = version.indexOf(".")) > 0) {
                 mMajor = Integer.parseInt(version.substring(0, index));
                 version = version.substring(index + 1);
@@ -155,40 +153,32 @@ public class Version implements Serializable {
         }
     }
 
-    public String getDevice() {
-        return mDevice;
-    }
-
-    public int getMajor() {
+    private int getMajor() {
         return mMajor;
     }
 
-    public int getMinor() {
+    private int getMinor() {
         return mMinor;
     }
 
-    public int getMaintenance() {
+    private int getMaintenance() {
         return mMaintenance;
     }
 
-    public int getPhase() {
+    private int getPhase() {
         return mPhase;
     }
 
-    public String getPhaseName() {
+    private String getPhaseName() {
         return PHASES[mPhase];
     }
 
-    public int getPhaseNumber() {
+    private int getPhaseNumber() {
         return mPhaseNumber;
     }
 
-    public String getDate() {
+    private String getDate() {
         return mDate;
-    }
-
-    public boolean isEmpty() {
-        return mMajor == 0;
     }
 
     public String toString() {

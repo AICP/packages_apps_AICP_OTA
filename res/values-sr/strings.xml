@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 ParanoidAndroid Project
 
@@ -22,7 +22,6 @@
 
     <!-- GENERAL -->
     <string name="app_name">AICP OTA</string>
-    <string name="title_checking">Proveravam…</string>
     <string name="check_for_updates">Proveri</string>
     <string name="no_additional_info">Nema dodatnih informacija</string>
     <string name="drawer_open">Open navigation drawer</string>
@@ -42,13 +41,10 @@
     <string name="system_title">Informacije o sistemu</string>
     <string name="system_rom">ROM verzija: %1$s</string>
     <string name="system_gapps">Verzija Google aplikacija: %1$s %2$s</string>
-    <string name="system_recovery">Recovery verzija: %1$s</string>
-    <string name="system_recovery_unknown">Nepoznato</string>
 
     <!-- UPDATES -->
     <string name="updates">Ažuriranja</string>
     <string name="updates_checking">Proveravam…</string>
-    <string name="updates_error">Greška</string>
     <string name="updates_found">Nađeno ažuriranje sistema</string>
     <string name="updates_uptodate">Imate poslednju verziju</string>
     <string name="no_updates_found">Nema ažuriranja</string>
@@ -96,7 +92,6 @@
     <string name="changelog">Izmene</string>
 
     <!-- GOOGLEPLUS -->
-    <string name="google_plus">Google+</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">Preuzmi ažuriranja za sistem</string>
@@ -124,29 +119,17 @@
     <string name="error_too_many_redirects">Greška: Previše redirekcija</string>
     <string name="error_unhandled_http_code">Greška: Nije moguće obraditi http kod</string>
     <string name="error_unknown">Greška: Nepoznata</string>
-    <string name="error_device_not_found_title">Uređaj nije nađen</string>
-    <string name="error_device_not_found_summary">ROM za vaš uređaj nije nađen. Proverite ručno.</string>
-    <string name="error_device_not_found_server">ROM za vaš uređaj nije nađen.</string>
 
     <!-- SETTINGS -->
     <string name="settings">Podešavanja</string>
     <string name="settings_checktime_title">Frekvencija provere ažuriranja</string>
     <string name="settings_checktime_summary">Podesi vreme između provere za ažuriranja</string>
-    <string name="settings_checkgapps_title">Proveri Google aplikacije</string>
-    <string name="settings_checkgapps_summary">Takođe proveri za PA specifične Google aplikacije</string>
-    <string name="settings_gappstype_title">Tip Google aplikacija</string>
-    <string name="settings_gappstype_summary">Izaberite između Pun, Mini, Mikro i Podrazumevanog paketa</string>
-    <string name="gapps_type_full">Pun paket</string>
-    <string name="gapps_type_mini">Mini paket</string>
-    <string name="gapps_type_fullinverted">Pun invertovan paket</string>
-    <string name="gapps_type_miniinverted">Mini invertovan paket</string>
     <string name="time_notifications_never">Ne proveravaj</string>
     <string name="time_notifications_half_an_hour">Pola sata</string>
     <string name="time_notifications_an_hour">1 sat</string>
     <string name="time_notifications_two_hours">2 sata</string>
     <string name="time_notifications_five_hours">5 sati</string>
     <string name="time_notifications_daily">Dnevno</string>
-    <string name="gapps_type_micro">Mikro Paket</string>
-    <string name="gapps_type_stock">Podrazumevani paket</string>
+    <string name="content_description">content_description</string>
 
 </resources>

@@ -19,7 +19,7 @@
  */
  
 package com.aicp.aicpota.activities;
- 
+
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
- 
+
 import com.aicp.aicpota.R;
 import com.aicp.aicpota.Utils;
 import com.aicp.aicpota.helpers.SettingsHelper;
@@ -36,8 +36,7 @@ public class SettingsActivity extends PreferenceActivity implements
          OnSharedPreferenceChangeListener {
  
     private SettingsHelper mSettingsHelper;
-    private ListPreference mCheckTime;
- 
+
     @Override
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +45,12 @@ public class SettingsActivity extends PreferenceActivity implements
 
         super.onCreate(savedInstanceState);
 
+        //noinspection ConstantConditions
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         addPreferencesFromResource(R.layout.activity_settings);
 
-        mCheckTime = (ListPreference) findPreference(SettingsHelper.PROPERTY_CHECK_TIME);
+        ListPreference mCheckTime = (ListPreference) findPreference(SettingsHelper.PROPERTY_CHECK_TIME);
 
         mCheckTime.setValue(String.valueOf(mSettingsHelper.getCheckTime()));
 

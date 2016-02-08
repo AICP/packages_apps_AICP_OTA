@@ -28,9 +28,9 @@ import java.util.List;
 
 public interface Server {
 
-    public String getUrl(String device, Version version);
+    String getUrl(String device, Version version);
 
-    public List<PackageInfo> createPackageInfoList(JSONObject response) throws Exception;
+    List<PackageInfo> createPackageInfoList(JSONObject response) throws Exception;
 
-    public String getError();
+    String getError();
 }

@@ -43,7 +43,7 @@ public class DownloadHelper {
 
     private static Context sContext;
     private static SettingsHelper sSettingsHelper;
-    private static Handler sUpdateHandler = new Handler();
+    private static final Handler sUpdateHandler = new Handler();
 
     private static DownloadManager sDownloadManager;
     private static DownloadCallback sCallback;
@@ -51,18 +51,18 @@ public class DownloadHelper {
     private static boolean sDownloadingRom = false;
     private static boolean sDownloadingGapps = false;
 
-    public static interface DownloadCallback {
+    public interface DownloadCallback {
 
-        public abstract void onDownloadStarted();
+        void onDownloadStarted();
 
-        public abstract void onDownloadProgress(int progress);
+        void onDownloadProgress(int progress);
 
-        public abstract void onDownloadFinished(Uri uri, String md5, boolean isRom);
+        void onDownloadFinished(Uri uri, String md5, boolean isRom);
 
-        public abstract void onDownloadError(String reason);
+        void onDownloadError(String reason);
     }
 
-    private static Runnable sUpdateProgress = new Runnable() {
+    private static final Runnable sUpdateProgress = new Runnable() {
 
         public void run() {
             if (!sDownloadingRom && !sDownloadingGapps) {
@@ -187,7 +187,7 @@ public class DownloadHelper {
                                 .getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
                         sCallback.onDownloadFinished(Uri.parse(uriString), md5, isRom);
                     }
-                    downloadSuccesful(id, isRom);
+                    downloadSuccesful(isRom);
                     break;
                 default:
                     cancelDownload(id, isRom);
@@ -196,25 +196,11 @@ public class DownloadHelper {
         } else {
             removeDownload(id, isRom, true);
         }
-        if (cursor != null) {
-            cursor.close();
-        }
+        cursor.close();
     }
 
     public static boolean isDownloading(boolean rom) {
         return rom ? sDownloadingRom : sDownloadingGapps;
-    }
-
-    public static boolean isDownloading(boolean rom, String fileName) {
-        if (sDownloadingRom) {
-            String downloadName = sSettingsHelper.getDownloadRomName();
-            return fileName.equals(downloadName);
-        }
-        if (sDownloadingGapps) {
-            String downloadName = sSettingsHelper.getDownloadGappsName();
-            return fileName.equals(downloadName);
-        }
-        return false;
     }
 
     public static void downloadFile(final String url, final String fileName, final String md5,
@@ -244,12 +230,9 @@ public class DownloadHelper {
                             URLConnection conn = getUrl.openConnection();
                             conn.connect();
                             is = new BufferedInputStream(conn.getInputStream());
-                            byte[] buf = new byte[4096];
-                            while (is.read(buf) != -1) {
-                            }
                             try {
                                 Thread.sleep(10500);
-                            } catch (InterruptedException e) {
+                            } catch (InterruptedException ignored) {
                             }
                             realDownloadFile(url, fileName, md5, isRom);
                             readdCallback();
@@ -259,7 +242,7 @@ public class DownloadHelper {
                             if (is != null) {
                                 try {
                                     is.close();
-                                } catch (Exception e) {
+                                } catch (Exception ignored) {
                                 }
                             }
                         }
@@ -280,11 +263,10 @@ public class DownloadHelper {
         request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setVisibleInDownloadsUi(false);
         request.setTitle(sContext.getResources().getString(R.string.download_title,
-                new Object[] {
-                    fileName
-                }));
+                fileName));
         File file = new File(IOUtils.DOWNLOAD_PATH);
         if (!file.exists()) {
+            //noinspection ResultOfMethodCallIgnored
             file.mkdirs();
         }
         request.setDestinationUri(Uri.fromFile(new File(IOUtils.DOWNLOAD_PATH, fileName)));
@@ -314,7 +296,7 @@ public class DownloadHelper {
         sCallback.onDownloadFinished(null, null, isRom);
     }
 
-    private static void downloadSuccesful(long id, boolean isRom) {
+    private static void downloadSuccesful(boolean isRom) {
         if (isRom) {
             sDownloadingRom = false;
             sSettingsHelper.setDownloadRomId(null, null, null);
@@ -399,9 +381,7 @@ public class DownloadHelper {
         query.setFilterById(romId);
         Cursor cursor = sDownloadManager.query(query);
         sDownloadingRom = cursor.moveToFirst();
-        if (cursor != null) {
-            cursor.close();
-        }
+        cursor.close();
         if (romId >= 0L && !sDownloadingRom) {
             removeDownload(romId, true, false);
         }
@@ -411,9 +391,7 @@ public class DownloadHelper {
         query.setFilterById(gappsId);
         cursor = sDownloadManager.query(query);
         sDownloadingGapps = cursor.moveToFirst();
-        if (cursor != null) {
-            cursor.close();
-        }
+        cursor.close();
         if (gappsId >= 0L && !sDownloadingGapps) {
             removeDownload(romId, false, false);
         }
@@ -421,7 +399,7 @@ public class DownloadHelper {
 
     private static int getDownloadError(Cursor cursor) {
         int columnReason = cursor.getColumnIndex(DownloadManager.COLUMN_REASON);
-        int reasonText = -1;
+        int reasonText;
         try {
             int reason = cursor.getInt(columnReason);
             switch (reason) {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 ParanoidAndroid Project
 
@@ -22,7 +22,6 @@
 
     <!-- GENERAL -->
     <string name="app_name">AICP OTA</string>
-    <string name="title_checking">Controllo...</string>
     <string name="check_for_updates">Controlla</string>
     <string name="no_additional_info">Nessuna Info</string>
     <string name="drawer_open">Apri navigation drawer</string>
@@ -31,24 +30,21 @@
     <!-- SYSTEM ACTIVITY -->
     <string name="check_for_updates_long">Controllo update</string>
     <string name="all_up_to_date">Sei Aggiornato</string>
-    <string name="rom_scanning">Controllo updates...</string>
+    <string name="rom_scanning">Controllo updates…</string>
     <string name="rom_gapps_new_version">Nuovo update trovato!</string>
     <string name="rom_new_version">Nuova ROM trovata!</string>
     <string name="gapps_new_version">Nuove Gapps trovate!</string>
     <string name="no_updates">Nessuno system update trovato</string>
-    <string name="system_update_found">Un nuovo system update è stato trovato ed è pronto al download.</string>
+    <string name="system_update_found">Un nuovo system update è stato trovato ed è pronto al download.found:\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">System info</string>
     <string name="system_rom">Versione ROM: %1$s</string>
     <string name="system_gapps">Versione Gapps: %1$s %2$s</string>
-    <string name="system_recovery">Versione Recovery: %1$s</string>
-    <string name="system_recovery_unknown">Sconosciuta</string>
 
     <!-- UPDATES -->
     <string name="updates">Aggiornamenti</string>
-    <string name="updates_checking">Controllo...</string>
-    <string name="updates_error">Errore</string>
+    <string name="updates_checking">Controllo…</string>
     <string name="updates_found">Nuovo update trovato</string>
     <string name="updates_uptodate">Sei Aggiornato</string>
     <string name="no_updates_found">Nessuno update trovato</string>
@@ -64,7 +60,7 @@
     <string name="install_info">Il seguente update sono pronti all\'installazione.\n\nPuoi aggiungere altri file clicca sul tasto \"Add file\".</string>
     <string name="add_file">Add file</string>
     <string name="install_now">Installa ora</string>
-    <string name="calculating_md5">Calcolo MD5 sum...</string>
+    <string name="calculating_md5">Calcolo MD5 sum…</string>
     <string name="md5_mismatch">MD5 mismatch</string>
     <string name="md5_mismatch_summary">Received:\n%1$s\n\nCalculated:\n%2$s</string>
     <string name="md5_install_anyway">Continua comunque</string>
@@ -96,7 +92,6 @@
     <string name="changelog">Changelog</string>
 
     <!-- GOOGLEPLUS -->
-    <string name="google_plus">Google+</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">Downloading update</string>
@@ -124,22 +119,11 @@
     <string name="error_too_many_redirects">Errore: Too many redirects</string>
     <string name="error_unhandled_http_code">Errore: Unhandled http code</string>
     <string name="error_unknown">Errore: Sconosciuto</string>
-    <string name="error_device_not_found_title">Device non trovato</string>
-    <string name="error_device_not_found_summary">La ROM per il tuo dispositivo non è stata trovata. Controlla manualmente.</string>
-    <string name="error_device_not_found_server">la ROM per il tuo dispositivo non è stata trovata.</string>
 
     <!-- SETTINGS -->
     <string name="settings">Impostazioni</string>
     <string name="settings_checktime_title">Frequenza controllo aggiornamento</string>
     <string name="settings_checktime_summary">Specifica il tempo di controllo degli update</string>
-    <string name="settings_checkgapps_title">Controllo Gapps</string>
-    <string name="settings_checkgapps_summary">Controllo anche per PA Gapps</string>
-    <string name="settings_gappstype_title"> Tipo Gapps</string>
-    <string name="settings_gappstype_summary">Controllo tra full, mini, micro and stock gapps package</string>
-    <string name="gapps_type_full">Full package</string>
-    <string name="gapps_type_mini">Mini package</string>
-    <string name="gapps_type_fullinverted">Full Inverted package</string>
-    <string name="gapps_type_miniinverted">Mini Inverted package</string>
     <string name="time_notifications_never">Non controllare</string>
     <string name="time_notifications_half_an_hour">Mezz\'ora</string>
     <string name="time_notifications_an_hour">1 ora</string>

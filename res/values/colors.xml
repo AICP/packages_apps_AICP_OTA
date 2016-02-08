@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 ParanoidAndroid Project
 
@@ -19,19 +19,18 @@
 -->
 
 <resources>
-    <color name="actionbar_background">#00796b</color>
-    <color name="app_background">#e0e0e0</color>
-    <color name="text_light">#2196f3</color>
-    <color name="card_text">#00796b</color>
-    <color name="card_text_error">#f44336</color>
-    <color name="card_title_text">#00796b</color>
-    <color name="card_light_text">#2196f3</color>
-    <color name="card_grid_text">#00796b</color>
-    <color name="card_separator">#ffe5e5e5</color>
-    <color name="card_border">#ffdedede</color>
-    <color name="card_background">#ffffffff</color>
-    <color name="item_pressed">#fff8f8f8</color>
-    <color name="item_action">#00796b</color>
-    <color name="drawer_list_item_background">#00796b</color>
-    <color name="primary_dark">#004d40</color>
+    <color name="actionbar_background">#2196F3</color>
+    <color name="app_background">#2196f3</color>
+    <color name="card_text">#f8f8f8</color>
+    <color name="card_text_error">#F44336</color>
+    <color name="card_title_text">#ffffff</color>
+    <color name="card_grid_text">#212121</color>
+    <color name="card_separator">#33ffffff</color>
+    <color name="card_border">#1565C0</color>
+    <color name="card_background">#1976D2</color>
+    <color name="item_pressed">#33ffffff</color>
+    <color name="item_action">#FFFFFF</color>
+    <color name="drawer_list_item_background">#ffffff</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="accent_color">#ff9800</color>
 </resources>

@@ -19,8 +19,6 @@
 
 package com.aicp.aicpota.helpers.recovery;
 
-import android.content.Context;
-
 public abstract class RecoveryInfo {
 
     private int id;
@@ -28,14 +26,14 @@ public abstract class RecoveryInfo {
     private String internalSdcard = null;
     private String externalSdcard = null;
 
-    public RecoveryInfo() {
+    RecoveryInfo() {
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
@@ -43,7 +41,7 @@ public abstract class RecoveryInfo {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
@@ -51,7 +49,7 @@ public abstract class RecoveryInfo {
         return internalSdcard;
     }
 
-    public void setInternalSdcard(String sdcard) {
+    void setInternalSdcard(String sdcard) {
         this.internalSdcard = sdcard;
     }
 
@@ -59,13 +57,12 @@ public abstract class RecoveryInfo {
         return externalSdcard;
     }
 
-    public void setExternalSdcard(String sdcard) {
+    void setExternalSdcard(String sdcard) {
         this.externalSdcard = sdcard;
     }
 
     public abstract String getCommandsFile();
 
-    public abstract String[] getCommands(Context context, String[] items, String[] originalItems,
-            boolean wipeData, boolean wipeCaches, String backupFolder, String backupOptions)
-            throws Exception;
+    public abstract String[] getCommands(String[] items,
+                                         boolean wipeData, boolean wipeCaches, String backupFolder, String backupOptions);
 }

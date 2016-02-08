@@ -36,23 +36,19 @@ public class AICPServer implements Server {
 
     private static final String URL = "http://updates.aicp-rom.com/update.php?device=%s";
 
-    private String mDevice = null;
     private String mError = null;
     private Version mVersion;
 
     @Override
     public String getUrl(String device, Version version) {
-        mDevice = device;
         mVersion = version;
-        return String.format(URL, new Object[] {
-                device
-        });
+        return String.format(URL, device);
     }
 
     @Override
     public List<PackageInfo> createPackageInfoList(JSONObject response) throws Exception {
         mError = null;
-        List<PackageInfo> list = new ArrayList<PackageInfo>();
+        List<PackageInfo> list = new ArrayList<>();
         mError = response.optString("error");
         if (mError == null || mError.isEmpty()) {
             JSONArray updates = response.getJSONArray("updates");
@@ -67,8 +63,8 @@ public class AICPServer implements Server {
                 }
                 Version version = new Version(filename);
                 if (Version.compare(mVersion, version) < 0) {
-                    list.add(new UpdatePackage(mDevice, filename, version, file.getString("size"),
-                            file.getString("url"), file.getString("md5"), false));
+                    list.add(new UpdatePackage(filename, version, file.getString("size"),
+                            file.getString("url"), file.getString("md5")));
                 }
             }
         }

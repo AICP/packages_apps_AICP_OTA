@@ -23,6 +23,7 @@ import android.content.Context;
 import android.util.SparseArray;
 
 import com.aicp.aicpota.IOUtils;
+import com.aicp.aicpota.R;
 import com.aicp.aicpota.Utils;
 import com.aicp.aicpota.helpers.recovery.CwmBasedRecovery;
 import com.aicp.aicpota.helpers.recovery.RecoveryInfo;
@@ -30,18 +31,15 @@ import com.aicp.aicpota.helpers.recovery.TwrpRecovery;
 
 public class RecoveryHelper {
 
-    private SparseArray<RecoveryInfo> mRecoveries = new SparseArray<RecoveryInfo>();
-    private Context mContext;
+    private final SparseArray<RecoveryInfo> mRecoveries = new SparseArray<>();
 
     public RecoveryHelper(Context context) {
-
-        mContext = context;
 
         mRecoveries.put(Utils.CWM_BASED, new CwmBasedRecovery(context));
         mRecoveries.put(Utils.TWRP, new TwrpRecovery());
     }
 
-    public RecoveryInfo getRecovery(int id) {
+    private RecoveryInfo getRecovery(int id) {
         for (int i = 0; i < mRecoveries.size(); i++) {
             int key = mRecoveries.keyAt(i);
             RecoveryInfo info = mRecoveries.get(key);
@@ -56,15 +54,24 @@ public class RecoveryHelper {
 
         RecoveryInfo info = getRecovery(id);
 
-        return info.getCommandsFile();
+        if (info != null) {
+            return info.getCommandsFile();
+        }
+        return null;
     }
 
     public String getRecoveryFilePath(int id, String filePath) {
 
         RecoveryInfo info = getRecovery(id);
 
-        String internalStorage = info.getInternalSdcard();
-        String externalStorage = info.getExternalSdcard();
+        String internalStorage = null;
+        if (info != null) {
+            internalStorage = info.getInternalSdcard();
+        }
+        String externalStorage = null;
+        if (info != null) {
+            externalStorage = info.getExternalSdcard();
+        }
 
         String primarySdcard = IOUtils.getPrimarySdCard();
         String secondarySdcard = IOUtils.getSecondarySdCard();
@@ -73,7 +80,7 @@ public class RecoveryHelper {
                 primarySdcard,
                 "/mnt/sdcard",
                 "/storage/sdcard/",
-                "/sdcard",
+                String.valueOf(R.string.sdcard),
                 "/storage/sdcard0",
                 "/storage/emulated/0"
         };
@@ -104,12 +111,15 @@ public class RecoveryHelper {
         return filePath;
     }
 
-    public String[] getCommands(int id, String[] items, String[] originalItems, boolean wipeData,
-            boolean wipeCaches, String backupFolder, String backupOptions) throws Exception {
+    public String[] getCommands(int id, String[] items, boolean wipeData,
+                                boolean wipeCaches, String backupFolder, String backupOptions) {
 
         RecoveryInfo info = getRecovery(id);
 
-        return info.getCommands(mContext, items, originalItems, wipeData, wipeCaches, backupFolder,
-                backupOptions);
+        if (info != null) {
+            return info.getCommands(items, wipeData, wipeCaches, backupFolder,
+                    backupOptions);
+        }
+        return null;
     }
 }

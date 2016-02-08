@@ -25,6 +25,7 @@ import android.os.Environment;
 import android.os.storage.StorageManager;
 
 import com.aicp.aicpota.IOUtils;
+import com.aicp.aicpota.R;
 import com.aicp.aicpota.Utils;
 
 import java.util.ArrayList;
@@ -47,11 +48,10 @@ public class CwmBasedRecovery extends RecoveryInfo {
     }
 
     @Override
-    public String[] getCommands(Context context, String[] items, String[] originalItems,
-            boolean wipeData, boolean wipeCaches, String backupFolder, String backupOptions)
-            throws Exception {
+    public String[] getCommands(String[] items,
+                                boolean wipeData, boolean wipeCaches, String backupFolder, String backupOptions) {
 
-        List<String> commands = new ArrayList<String>();
+        List<String> commands = new ArrayList<>();
 
         int size = items.length, i = 0;
 
@@ -93,20 +93,20 @@ public class CwmBasedRecovery extends RecoveryInfo {
         String path, dirPath;
         dirPath = path = Environment.getExternalStorageDirectory().getAbsolutePath();
         dirPath = replace(
-                replace(replace(dirPath, "/mnt/sdcard", "/sdcard"), "/mnt/emmc", "/emmc"), path,
-                "/sdcard");
+                replace(replace(dirPath, "/mnt/sdcard", String.valueOf(R.string.sdcard)), "/mnt/emmc", "/emmc"), path,
+                String.valueOf(R.string.sdcard));
         if (Build.VERSION.SDK_INT > 16) {
             String emulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET");
             if ((emulatedStorageTarget != null) && (path.startsWith(emulatedStorageTarget))) {
                 String number = path.replace(emulatedStorageTarget, "");
-                dirPath = replace(dirPath, "/sdcard", "/sdcard" + number);
+                dirPath = replace(dirPath, String.valueOf(R.string.sdcard), String.valueOf(R.string.sdcard) + number);
             }
             String emulatedStorageSource = System.getenv("EMULATED_STORAGE_SOURCE");
             if (emulatedStorageSource != null) {
                 dirPath = replace(dirPath, emulatedStorageSource, "/data/media");
             }
             if (emulatedStorageTarget == null && emulatedStorageSource == null
-                    && "/storage/sdcard0".equals(path) && "/sdcard".equals(dirPath)) {
+                    && "/storage/sdcard0".equals(path) && String.valueOf(R.string.sdcard).equals(dirPath)) {
                 dirPath = path;
             }
         } else if (dirPath.startsWith("/mnt/emmc")) {
@@ -124,13 +124,16 @@ public class CwmBasedRecovery extends RecoveryInfo {
             if (Build.VERSION.SDK_INT >= 14) {
                 volumePaths = volumePaths(paramContext);
                 if (volumePaths != null) {
-                    volumePathsList = new ArrayList<String>();
+                    volumePathsList = new ArrayList<>();
                     path = Environment.getExternalStorageDirectory().getAbsolutePath();
                 }
             }
             try {
                 String primaryVolumePath = primaryVolumePath(paramContext);
-                int i = volumePaths.length;
+                int i = 0;
+                if (volumePaths != null) {
+                    i = volumePaths.length;
+                }
                 for (int j = 0;; j++)
                     if (j < i) {
                         String volumePath = volumePaths[j];
@@ -146,8 +149,8 @@ public class CwmBasedRecovery extends RecoveryInfo {
                             ex.printStackTrace();
                         }
                     } else {
-                        if (volumePathsList.size() == 1) {
-                            dirPath = (String) volumePathsList.get(0);
+                        if (volumePathsList != null && volumePathsList.size() == 1) {
+                            dirPath = volumePathsList.get(0);
                         }
                         return dirPath;
                     }
@@ -158,16 +161,16 @@ public class CwmBasedRecovery extends RecoveryInfo {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return dirPath;
+        return null;
     }
 
     private String[] volumePaths(Context context) {
         try {
             StorageManager localStorageManager = (StorageManager) context
-                    .getSystemService("storage");
-            return (String[]) (String[]) localStorageManager.getClass()
+                    .getSystemService(Context.STORAGE_SERVICE);
+            return (String[]) localStorageManager.getClass()
                     .getMethod("getVolumePaths", new Class[0])
-                    .invoke(localStorageManager, new Object[0]);
+                    .invoke(localStorageManager);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -177,12 +180,12 @@ public class CwmBasedRecovery extends RecoveryInfo {
     private String primaryVolumePath(Context context) {
         try {
             StorageManager localStorageManager = (StorageManager) context
-                    .getSystemService("storage");
+                    .getSystemService(Context.STORAGE_SERVICE);
             Object localObject = localStorageManager.getClass()
                     .getMethod("getPrimaryVolume", new Class[0])
-                    .invoke(localStorageManager, new Object[0]);
+                    .invoke(localStorageManager);
             return (String) localObject.getClass().getMethod("getPath", new Class[0])
-                    .invoke(localObject, new Object[0]);
+                    .invoke(localObject);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

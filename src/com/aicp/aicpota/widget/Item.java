@@ -37,16 +37,16 @@ import com.aicp.aicpota.R;
 
 public class Item extends LinearLayout {
 
-    public static interface OnItemClickListener {
-        public void onClick(int id);
+    public interface OnItemClickListener {
+        void onClick();
     }
 
-    private ImageView mIconView;
-    private TextView mTitleView;
+    private final ImageView mIconView;
+    private final TextView mTitleView;
     private OnItemClickListener mItemClickListener;
-    private ColorStateList mDefaultColors;
-    private int mPressedColor;
-    private int mIconActiveColor;
+    private final ColorStateList mDefaultColors;
+    private final int mPressedColor;
+    private final int mIconActiveColor;
 
     public Item(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -104,7 +104,7 @@ public class Item extends LinearLayout {
                                 android.R.color.transparent));
                         mTitleView.setTextColor(mDefaultColors);
                         if (mItemClickListener != null && !mTouchCancelled) {
-                            mItemClickListener.onClick(Item.this.getId());
+                            mItemClickListener.onClick();
                         }
                         break;
                 }
@@ -135,7 +135,7 @@ public class Item extends LinearLayout {
                 mTitleView.setTextColor(mDefaultColors);
             } else {
                 icon.clearColorFilter();
-                mTitleView.setTextColor(R.color.card_text);
+                mTitleView.setTextColor(getResources().getColor(R.color.card_text));
             }
         }
     }

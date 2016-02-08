@@ -20,10 +20,10 @@
 
 package com.aicp.aicpota.cards;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.aicp.aicpota.R;
@@ -31,11 +31,12 @@ import com.aicp.aicpota.updater.GappsUpdater;
 import com.aicp.aicpota.updater.RomUpdater;
 import com.aicp.aicpota.widget.Card;
 
+@SuppressLint("ViewConstructor")
 public class SystemCard extends Card {
 
-    public SystemCard(Context context, AttributeSet attrs, RomUpdater romUpdater,
-            GappsUpdater gappsUpdater, Bundle savedInstanceState) {
-        super(context, attrs, savedInstanceState);
+    public SystemCard(Context context, RomUpdater romUpdater,
+                      GappsUpdater gappsUpdater, Bundle savedInstanceState) {
+        super(context, savedInstanceState);
 
         setTitle(R.string.system_title);
         setLayoutId(R.layout.card_system);

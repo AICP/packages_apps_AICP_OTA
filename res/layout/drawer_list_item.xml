@@ -33,15 +33,15 @@
         android:duplicateParentState="true"
         android:gravity="center_vertical"
 	    android:paddingLeft="@dimen/drawer_item_padding_left"
-        android:paddingTop="@dimen/drawer_item_padding_top"
-        android:paddingBottom="@dimen/drawer_item_padding_top"
+        android:paddingTop="@dimen/drawer_item_padding_top_small"
+        android:paddingBottom="@dimen/drawer_item_padding_top_small"
         android:textAppearance="?android:attr/textAppearanceListItem" />
 
 	<LinearLayout
 	    android:id="@+id/item_small"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:background="@drawable/drawer_list_item_small_background"
+	    android:background="@color/drawer_list_item_background"
 	    android:gravity="center_vertical"
 	    android:orientation="horizontal"
 	    android:visibility="gone"
@@ -52,7 +52,9 @@
 	    <ImageView
 	        android:id="@+id/icon"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" />
+	        android:layout_height="wrap_content"
+			android:contentDescription="@string/content_description"
+			android:layout_marginRight="5dp" />
 	
 	    <TextView
 	        android:id="@+id/text_small"

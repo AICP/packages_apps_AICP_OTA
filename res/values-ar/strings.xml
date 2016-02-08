@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 AICPAndroid Project
 
@@ -22,14 +22,13 @@
 
     <!-- GENERAL -->
     <string name="app_name">AICP OTA</string>
-    <string name="title_checking">جار التحقق ...</string>
     <string name="check_for_updates">تحقق</string>
     <string name="no_additional_info">لا توجد معلومات إضافية</string>
 
     <!-- SYSTEM ACTIVITY -->
     <string name="check_for_updates_long">التحقق من وجود تحديثات</string>
     <string name="all_up_to_date">نظامك محدث !</string>
-    <string name="rom_scanning">جار التحقق من وجود تحديثات للنظام ...</string>
+    <string name="rom_scanning">جار التحقق من وجود تحديثات للنظام …</string>
     <string name="rom_gapps_new_version">تم العثور على تحديثات للنظام !</string>
     <string name="rom_new_version">تم العثور على تحديث جديد للـ ROM !</string>
     <string name="gapps_new_version">تم العثور على تحديث جديد لتطبيقات Google !</string>
@@ -40,20 +39,10 @@
     <string name="system_title">معلومات النظام</string>
     <string name="system_rom">إصدار ROM : %1$s</string>
     <string name="system_gapps">إصدار تطبيقات Google : %1$s %2$s</string>
-    <string name="settings_gappstype_title">نوع تطبيقات Google</string>
-    <string name="settings_gappstype_summary">اختر بين حزم تطبيقات Google الكاملة ، المصغرة ، والمعكوسة</string>
-    <string name="gapps_type_full">الحزمة الكاملة</string>
-    <string name="gapps_type_mini">الحزمة المصغرة</string>
-    <string name="gapps_type_fullinverted">الحزمة الكاملة المعكوسة</string>
-    <string name="gapps_type_miniinverted">الحزمة المصغرة المعكوسة</string>
-
-    <string name="system_recovery">إصدار الريكفري : %1$s</string>
-    <string name="system_recovery_unknown">غير معروف</string>
 
     <!-- UPDATES -->
     <string name="updates">التحديثات</string>
-    <string name="updates_checking">جار التحقق ...</string>
-    <string name="updates_error">خطأ</string>
+    <string name="updates_checking">جار التحقق …</string>
     <string name="updates_found">تم العثور على تحديث للنظام</string>
     <string name="updates_uptodate">نظامك محدث</string>
     <string name="no_updates_found">لا توجد تحديثات</string>
@@ -69,7 +58,7 @@
     <string name="install_info">التحديث ( التحديثات ) التالية جاهزة للتثبيت . يمكنك إضافة المزيد من ملفات zip بالضغط على زر \" إضافة ملف \" .</string>
     <string name="add_file">إضافة ملف</string>
     <string name="install_now">تثبيت الآن</string>
-    <string name="calculating_md5">جار حساب مجموع MD5 ...</string>
+    <string name="calculating_md5">جار حساب مجموع MD5 …</string>
     <string name="md5_mismatch">عدم تطابق MD5</string>
     <string name="md5_mismatch_summary">تم استلام :\n%1$s\n\n تم حساب :\n%2$s</string>
     <string name="md5_install_anyway">المتابعة على أية حال</string>
@@ -126,31 +115,19 @@
     <string name="error_too_many_redirects">خطأ : عدد كبير جداً من عمليات إعادة التوجيه</string>
     <string name="error_unhandled_http_code">خطأ : رمز http غير معالج</string>
     <string name="error_unknown">خطأ : غير معروف</string>
-    <string name="error_device_not_found_title">لم يتم العثور على الجهاز</string>
-    <string name="error_device_not_found_summary">لم يتم العثور على الـ ROM الخاص بجهازك . الرجاء التحقق يدوياً .</string>
-    <string name="error_device_not_found_server">لم يتم العثور على الـ ROM الخاص بجهازك .</string>
 
     <!-- SETTINGS -->
     <string name="settings">إعدادات</string>
     <string name="settings_checktime_title">اختيار تردد التحديث</string>
     <string name="settings_checktime_summary">تحديد الوقت بين كل فحص للتحديث</string>
-    <string name="settings_checkgapps_title">التحقق من تطبيقات Google</string>
-    <string name="settings_checkgapps_summary">التحقق أيضاً من تطبيقات Google المخصصة لـ AICP</string>
     <string name="time_notifications_never">لا تتحقق</string>
     <string name="time_notifications_half_an_hour">نصف ساعة</string>
     <string name="time_notifications_an_hour">1 ساعة</string>
     <string name="time_notifications_two_hours">2 ساعة</string>
     <string name="time_notifications_five_hours">5 ساعات</string>
     <string name="time_notifications_daily">يومياً</string>
-    <string name="settings_goo">Goo.im</string>
-    <string name="settings_login_goo">تسجيل الدخول في goo.im</string>
-    <string name="username">اسم المستخدم</string>
-    <string name="password">كلمة المرور</string>
-    <string name="logged_out">تسجيل الخروج من goo.im</string>
-    <string name="logged_in">مسجل كـ %1$s</string>
-    <string name="logging_in">جار تسجيل الدخول في goo.im ...</string>
-    <string name="error_logging_invalid">اسم المستخدم / كلمة المرور غير صحيحة</string>
-    <string name="error_logging_down">غير قادر على الوصول إلى الخادم</string>
-    <string name="error_logging_in">خطأ غير معروف في تسجيل الدخول</string>
+    <string name="content_description">content_description</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
 
 </resources>

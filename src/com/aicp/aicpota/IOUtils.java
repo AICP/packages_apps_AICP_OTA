@@ -35,7 +35,7 @@ import java.util.Scanner;
 
 public class IOUtils {
 
-    public static final String SDCARD = Environment.getExternalStorageDirectory()
+    private static final String SDCARD = Environment.getExternalStorageDirectory()
             .getAbsolutePath();
 
     public static final String DOWNLOAD_PATH = new File(Environment
@@ -49,73 +49,16 @@ public class IOUtils {
     private static String sSecondarySdcard;
     private static boolean sSdcardsChecked;
 
-    public static void init(Context context) {
+    public static void init() {
         File downloads = new File(DOWNLOAD_PATH);
+        //noinspection ResultOfMethodCallIgnored
         downloads.mkdirs();
 
-        readMounts(context);
-    }
-
-    public static String[] getDownloadList(Context context) {
-        File downloads = initSettingsHelper(context);
-        ArrayList<String> list = new ArrayList<String>();
-        try {
-            for (File f : downloads.listFiles()) {
-                if (isRom(f.getName())) {
-                    list.add(f.getName());
-                }
-            }
-        } catch (NullPointerException e) {
-            // blah
-        }
-        return list.toArray(new String[list.size()]);
-    }
-
-    public static String[] getDownloadSizes(Context context) {
-        File downloads = initSettingsHelper(context);
-        ArrayList<String> list = new ArrayList<String>();
-        for (File f : downloads.listFiles()) {
-            if (isRom(f.getName())) {
-                list.add(humanReadableByteCount(f.length(), false));
-            }
-        }
-        return list.toArray(new String[list.size()]);
-    }
-
-    public static String getDownloadSize(Context context, String fileName) {
-        File downloads = initSettingsHelper(context);
-        for (String file : getDownloadList(context)) {
-            if (fileName.equals(file)) {
-                File f = new File(downloads, fileName);
-                return humanReadableByteCount(f.length(), false);
-            }
-        }
-        return "0";
-    }
-
-    public static boolean isOnDownloadList(Context context, String fileName) {
-        for (String file : getDownloadList(context)) {
-            if (fileName.equals(file))
-                return true;
-        }
-        return false;
-    }
-
-    public static boolean isRom(String name) {
-        return name.startsWith(PREFIX) && name.endsWith(SUFFIX);
+        readMounts();
     }
 
     public static boolean isExternalStorageAvailable() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
-    }
-
-    public static boolean isInSecondaryStorage(String path) {
-        return !path.startsWith(sPrimarySdcard) && !path.startsWith("/sdcard")
-                && !path.startsWith("/mnt/sdcard");
-    }
-
-    public static boolean hasSecondarySdCard() {
-        return sSecondarySdcard != null;
     }
 
     public static String getPrimarySdCard() {
@@ -126,13 +69,13 @@ public class IOUtils {
         return sSecondarySdcard;
     }
 
-    private static void readMounts(Context context) {
+    private static void readMounts() {
         if (sSdcardsChecked) {
             return;
         }
 
-        ArrayList<String> mounts = new ArrayList<String>();
-        ArrayList<String> vold = new ArrayList<String>();
+        ArrayList<String> mounts = new ArrayList<>();
+        ArrayList<String> vold = new ArrayList<>();
 
         Scanner scanner = null;
         try {
@@ -173,7 +116,7 @@ public class IOUtils {
                             element = element.substring(0, element.indexOf(":"));
                         }
 
-                        if (element.toLowerCase().indexOf("usb") < 0) {
+                        if (!element.toLowerCase().contains("usb")) {
                             vold.add(element);
                         }
                     } else if (line.startsWith("/devices/platform")) {
@@ -184,7 +127,7 @@ public class IOUtils {
                             element = element.substring(0, element.indexOf(":"));
                         }
 
-                        if (element.toLowerCase().indexOf("usb") < 0) {
+                        if (!element.toLowerCase().contains("usb")) {
                             vold.add(element);
                         }
                     }
@@ -215,8 +158,8 @@ public class IOUtils {
 
         for (int i = 0; i < mounts.size(); i++) {
             String mount = mounts.get(i);
-            if (mount.indexOf("sdcard0") < 0 && !mount.equalsIgnoreCase("/mnt/sdcard")
-                    && !mount.equalsIgnoreCase("/sdcard")) {
+            if (!mount.contains("sdcard0") && !mount.equalsIgnoreCase("/mnt/sdcard")
+                    && !mount.equalsIgnoreCase(String.valueOf(R.string.sdcard))) {
                 sSecondarySdcard = mount;
             } else {
                 sPrimarySdcard = mount;
@@ -224,14 +167,14 @@ public class IOUtils {
         }
 
         if (sPrimarySdcard == null) {
-            sPrimarySdcard = "/sdcard";
+            sPrimarySdcard = String.valueOf(R.string.sdcard);
         }
 
         sSdcardsChecked = true;
     }
 
     private static File findFstab() {
-        File file = null;
+        File file;
 
         file = new File("/system/etc/vold.fstab");
         if (file.exists()) {
@@ -239,11 +182,11 @@ public class IOUtils {
         }
 
         String fstab = Utils
-                .exec("grep -ls \"/dev/block/\" * --include=fstab.* --exclude=fstab.goldfish");
+                .exec();
         if (fstab != null) {
             String[] files = fstab.split("\n");
-            for (int i = 0; i < files.length; i++) {
-                file = new File(files[i]);
+            for (String file1 : files) {
+                file = new File(file1);
                 if (file.exists()) {
                     return file;
                 }
@@ -261,22 +204,13 @@ public class IOUtils {
         return sdAvailSize / 1073741824;
     }
 
-    public static String humanReadableByteCount(long bytes, boolean si) {
-        int unit = si ? 1000 : 1024;
-        if (bytes < unit)
-            return bytes + " B";
-        int exp = (int) (Math.log(bytes) / Math.log(unit));
-        String pre = (si ? "kMG" : "KMG").charAt(exp - 1) + (si ? "" : "i");
-        return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre).replace(",", ".");
-    }
-
     public static String md5(File file) {
         InputStream is = null;
         try {
             is = new FileInputStream(file);
             MessageDigest digest = MessageDigest.getInstance("MD5");
             byte[] buffer = new byte[8192];
-            int read = 0;
+            int read;
             while ((read = is.read(buffer)) > 0) {
                 digest.update(buffer, 0, read);
             }
@@ -291,8 +225,10 @@ public class IOUtils {
             throw new RuntimeException(e);
         } finally {
             try {
-                is.close();
-            } catch (Exception e) {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (Exception ignored) {
             }
         }
     }
@@ -309,12 +245,6 @@ public class IOUtils {
         return sDictionary;
     }
 
-    private static File initSettingsHelper(Context context) {
-        File downloads = new File(DOWNLOAD_PATH);
-        downloads.mkdirs();
-        return downloads;
-    }
-
     public static boolean hasAndroidSecure() {
         return folderExists(SDCARD + "/.android-secure");
     }
@@ -323,7 +253,7 @@ public class IOUtils {
         return folderExists("/sd-ext");
     }
 
-    public static boolean folderExists(String path) {
+    private static boolean folderExists(String path) {
         File f = new File(path);
         return f.exists() && f.isDirectory();
     }

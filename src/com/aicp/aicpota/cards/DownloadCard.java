@@ -20,10 +20,10 @@
 
 package com.aicp.aicpota.cards;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,22 +38,25 @@ import com.aicp.aicpota.widget.Card;
 import com.aicp.aicpota.widget.Item;
 import com.aicp.aicpota.widget.Item.OnItemClickListener;
 
+import java.text.MessageFormat;
+
+@SuppressLint("ViewConstructor")
 public class DownloadCard extends Card implements DownloadCallback {
 
     private static final String DOWNLOADING = "DOWNLOADING";
     private static final String DOWNLOAD_PROGRESS = "DOWNLOAD_PROGRESS";
 
-    private MainActivity mActivity;
-    private ProgressBar mWaitProgressBar;
-    private ProgressBar mProgressBar;
-    private TextView mProgress;
-    private Item mCancel;
+    private final MainActivity mActivity;
+    private final ProgressBar mWaitProgressBar;
+    private final ProgressBar mProgressBar;
+    private final TextView mProgress;
+    private final Item mCancel;
     private PackageInfo[] mDownloading;
     private int mDownloadProgress = -1;
 
-    public DownloadCard(Context context, AttributeSet attrs, PackageInfo[] infos,
-            Bundle savedInstanceState) {
-        super(context, attrs, savedInstanceState);
+    public DownloadCard(Context context, PackageInfo[] infos,
+                        Bundle savedInstanceState) {
+        super(context, savedInstanceState);
 
         mActivity = (MainActivity) context;
         mActivity.setDownloadCallback(this);
@@ -74,7 +77,7 @@ public class DownloadCard extends Card implements DownloadCallback {
         mCancel.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onClick(int id) {
+            public void onClick() {
                 DownloadHelper.clearDownloads();
             }
 
@@ -90,7 +93,7 @@ public class DownloadCard extends Card implements DownloadCallback {
             mDownloading = infos;
             if (infos == null) {
                 mDownloadProgress = -1;
-                setInfos(infos, mDownloadProgress);
+                setInfos(null, mDownloadProgress);
                 mCancel.setEnabled(true);
             }
         }
@@ -182,7 +185,7 @@ public class DownloadCard extends Card implements DownloadCallback {
             mProgressBar.setVisibility(View.VISIBLE);
             mProgress.setVisibility(View.VISIBLE);
             mProgressBar.setProgress(progress);
-            mProgress.setText(progress + "%");
+            mProgress.setText(MessageFormat.format("{0}%", progress));
         }
     }
 
