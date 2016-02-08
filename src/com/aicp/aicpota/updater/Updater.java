@@ -22,16 +22,16 @@ package com.aicp.aicpota.updater;
 import android.app.Activity;
 import android.content.Context;
 
+import com.aicp.aicpota.R;
+import com.aicp.aicpota.Utils;
+import com.aicp.aicpota.Version;
+import com.aicp.aicpota.helpers.SettingsHelper;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.aicp.aicpota.R;
-import com.aicp.aicpota.Utils;
-import com.aicp.aicpota.Version;
-import com.aicp.aicpota.helpers.SettingsHelper;
 
 import org.json.JSONObject;
 
@@ -43,75 +43,67 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
 
     public interface PackageInfo extends Serializable {
 
-        public String getMd5();
+        String getMd5();
 
-        public String getFilename();
+        String getFilename();
 
-        public String getPath();
+        String getPath();
 
-        public String getHost();
+        String getHost();
 
-        public String getSize();
+        String getSize();
 
-        public Version getVersion();
+        Version getVersion();
 
-        public boolean isDelta();
-
-        public String getDeltaFilename();
-
-        public String getDeltaPath();
-
-        public String getDeltaMd5();
-
-        public boolean isGapps();
+        boolean isGapps();
     }
 
-    public static final String PROPERTY_DEVICE = "ro.aicp.device";
-    public static final String PROPERTY_DEVICE_EXT = "ro.product.device";
+    static final String PROPERTY_DEVICE = "ro.aicp.device";
+    static final String PROPERTY_DEVICE_EXT = "ro.product.device";
 
     public static final int NOTIFICATION_ID = 122303225;
 
-    public static interface UpdaterListener {
+    public interface UpdaterListener {
 
-        public void startChecking(boolean isRom);
+        void startChecking(boolean isRom);
 
-        public void versionFound(PackageInfo[] info, boolean isRom);
+        void versionFound(PackageInfo[] info, boolean isRom);
 
-        public void checkError(String cause, boolean isRom);
+        void checkError(String cause, boolean isRom);
     }
 
-    private Context mContext;
-    private Server[] mServers;
+    private final Context mContext;
+    private final Server[] mServers;
     private PackageInfo[] mLastUpdates = new PackageInfo[0];
-    private List<UpdaterListener> mListeners = new ArrayList<UpdaterListener>();
-    private RequestQueue mQueue;
+    private final List<UpdaterListener> mListeners = new ArrayList<>();
+    private final RequestQueue mQueue;
     private SettingsHelper mSettingsHelper;
     private Server mServer;
     private boolean mScanning = false;
-    private boolean mFromAlarm;
+    private final boolean mFromAlarm;
     private boolean mServerWorks = false;
     private int mCurrentServer = -1;
 
-    public Updater(Context context, Server[] servers, boolean fromAlarm) {
+    Updater(Context context, Server[] servers, boolean fromAlarm) {
         mContext = context;
         mServers = servers;
         mFromAlarm = fromAlarm;
         mQueue = Volley.newRequestQueue(context);
     }
 
-    public abstract Version getVersion();
+    protected abstract Version getVersion();
 
-    public abstract String getDevice();
+    protected abstract String getDevice();
 
-    public abstract boolean isRom();
+    protected abstract boolean isRom();
 
-    public abstract int getErrorStringId();
+    protected abstract int getErrorStringId();
 
-    protected Context getContext() {
+    Context getContext() {
         return mContext;
     }
 
-    public SettingsHelper getSettingsHelper() {
+    SettingsHelper getSettingsHelper() {
         return mSettingsHelper;
     }
 
@@ -153,7 +145,7 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
         nextServerCheck();
     }
 
-    protected void nextServerCheck() {
+    private void nextServerCheck() {
         mScanning = true;
         mCurrentServer++;
         mServer = mServers[mCurrentServer];
@@ -166,13 +158,13 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
     public void onResponse(JSONObject response) {
         mScanning = false;
         try {
-            PackageInfo[] lastUpdates = null;
+            PackageInfo[] lastUpdates;
             setLastUpdates(null);
             List<PackageInfo> list = mServer.createPackageInfoList(response);
             String error = mServer.getError();
             if (!isRom()) {
                 int gappsType = mSettingsHelper.getGappsType();
-                PackageInfo info = null;
+                PackageInfo info;
                 for (int i = 0; i < list.size(); i++) {
                     info = list.get(i);
                     String fileName = info.getFilename();
@@ -187,7 +179,6 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
                                     .contains("-miniinverted"))) {
                         list.remove(i);
                         i--;
-                        continue;
                     }
                 }
             }
@@ -256,11 +247,7 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
         return mScanning;
     }
 
-    public void removeUpdaterListener(UpdaterListener listener) {
-        mListeners.remove(listener);
-    }
-
-    protected void fireStartChecking() {
+    private void fireStartChecking() {
         if (mContext instanceof Activity) {
             ((Activity) mContext).runOnUiThread(new Runnable() {
 
@@ -273,7 +260,7 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
         }
     }
 
-    protected void fireCheckCompleted(final PackageInfo[] info) {
+    private void fireCheckCompleted(final PackageInfo[] info) {
         if (mContext instanceof Activity) {
             ((Activity) mContext).runOnUiThread(new Runnable() {
 
@@ -286,7 +273,7 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
         }
     }
 
-    protected void fireCheckError(final String cause) {
+    private void fireCheckError(final String cause) {
         if (mContext instanceof Activity) {
             ((Activity) mContext).runOnUiThread(new Runnable() {
 

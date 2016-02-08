@@ -20,6 +20,7 @@
 
 package com.aicp.aicpota.cards;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -28,7 +29,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -48,23 +48,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressLint("ViewConstructor")
 public class InstallCard extends Card implements RequestFileCallback {
 
     private static final String FILES = "FILES";
 
-    private RebootHelper mRebootHelper;
-    private List<File> mFiles = new ArrayList<File>();
-    private LinearLayout mLayout;
-    private Item mAdd;
-    private Item mInstall;
-    private CheckBox mBackup;
-    private CheckBox mWipeData;
-    private CheckBox mWipeCaches;
-    private View mAdditional;
+    private final RebootHelper mRebootHelper;
+    private final List<File> mFiles = new ArrayList<>();
+    private final LinearLayout mLayout;
+    private final Item mAdd;
+    private final Item mInstall;
+    private final CheckBox mBackup;
+    private final CheckBox mWipeData;
+    private final CheckBox mWipeCaches;
+    private final View mAdditional;
 
-    public InstallCard(Context context, AttributeSet attrs, RebootHelper rebootHelper,
-            Bundle savedInstanceState) {
-        super(context, attrs, savedInstanceState);
+    public InstallCard(Context context, RebootHelper rebootHelper,
+                       Bundle savedInstanceState) {
+        super(context, savedInstanceState);
 
         setTitle(R.string.install_title);
         setLayoutId(R.layout.card_install);
@@ -84,7 +85,7 @@ public class InstallCard extends Card implements RequestFileCallback {
         mAdd.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onClick(int id) {
+            public void onClick() {
                 Context context = getContext();
                 Intent intent = new Intent(context, RequestFileActivity.class);
                 context.startActivity(intent);
@@ -95,7 +96,7 @@ public class InstallCard extends Card implements RequestFileCallback {
         mInstall.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onClick(int id) {
+            public void onClick() {
                 String[] items = new String[mFiles.size()];
                 for (int i = 0; i < mFiles.size(); i++) {
                     File file = mFiles.get(i);
@@ -203,7 +204,7 @@ public class InstallCard extends Card implements RequestFileCallback {
         item.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onClick(int id) {
+            public void onClick() {
                 showRemoveDialog(item, file);
             }
 

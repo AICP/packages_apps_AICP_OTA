@@ -23,8 +23,8 @@ package com.aicp.aicpota.activities;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -46,7 +46,7 @@ public class RequestFileActivity extends Activity {
 
     public interface RequestFileCallback extends Serializable {
 
-        public void fileRequested(String filePath);
+        void fileRequested(String filePath);
     }
 
     private static RequestFileCallback sCallback;
@@ -62,8 +62,7 @@ public class RequestFileActivity extends Activity {
         PackageManager packageManager = getPackageManager();
         Intent test = new Intent(Intent.ACTION_GET_CONTENT);
         test.setType("application/zip*");
-        List<ResolveInfo> list = packageManager.queryIntentActivities(test,
-                PackageManager.GET_ACTIVITIES);
+        List<PackageInfo> list = packageManager.getInstalledPackages(PackageManager.GET_ACTIVITIES);
         if (list.size() > 0) {
             Intent intent = new Intent();
             intent.setType("application/zip");
@@ -89,9 +88,8 @@ public class RequestFileActivity extends Activity {
 
             if (!(new File(filePath)).exists()) {
                 ContentResolver cr = getContentResolver();
-                Cursor cursor = cr.query(uri, null, null, null, null);
-                try {
-                    if (cursor.moveToNext()) {
+                try (Cursor cursor = cr.query(uri, null, null, null, null)) {
+                    if (cursor != null && cursor.moveToNext()) {
                         int index = cursor.getColumnIndex(MediaStore.MediaColumns.DATA);
                         if (index >= 0) {
                             filePath = cursor.getString(index);
@@ -117,8 +115,6 @@ public class RequestFileActivity extends Activity {
 
                         }
                     }
-                } finally {
-                    cursor.close();
                 }
             }
 

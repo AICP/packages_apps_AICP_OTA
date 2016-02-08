@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 ParanoidAndroid Project
 
@@ -22,7 +22,6 @@
 
     <!-- GENERAL -->
     <string name="app_name">AICP OTA</string>
-    <string name="title_checking">Kontrol Ediliyor...</string>
     <string name="check_for_updates">Kontrol Et</string>
     <string name="no_additional_info">Başka Bilgi Yok</string>
     <string name="drawer_open">Gezinti Çekmecesini Aç</string>
@@ -31,7 +30,7 @@
     <!-- SYSTEM ACTIVITY -->
     <string name="check_for_updates_long">Güncellemeleri Kontrol Et</string>
     <string name="all_up_to_date">En Güncel Yazılımı Kullanıyorsunuz!</string>
-    <string name="rom_scanning">Sistem Güncellemeleri Kontrol Ediliyor...</string>
+    <string name="rom_scanning">Sistem Güncellemeleri Kontrol Ediliyor…</string>
     <string name="rom_gapps_new_version">Sistem Güncellemesi Bulundu!</string>
     <string name="rom_new_version">Yeni ROM Güncellemesi Bulundu!</string>
     <string name="gapps_new_version">Google Uygulamaları için Güncelleme Bulundu!</string>
@@ -42,13 +41,10 @@
     <string name="system_title">Sistem Bilgileri</string>
     <string name="system_rom">ROM Versiyonu: %1$s</string>
     <string name="system_gapps">Google Uygulamaları Versiyonu: %1$s %2$s</string>
-    <string name="system_recovery">Recovery Versiyonu: %1$s</string>
-    <string name="system_recovery_unknown">Bilinmiyor</string>
 
     <!-- UPDATES -->
     <string name="updates">Güncellemeler</string>
-    <string name="updates_checking">Kontrol Ediliyor...</string>
-    <string name="updates_error">Hata</string>
+    <string name="updates_checking">Kontrol Ediliyor…</string>
     <string name="updates_found">Sistem Güncellemesi Bulundu!</string>
     <string name="updates_uptodate">En Güncel Yazılımı Kullanıyorsunuz!</string>
     <string name="no_updates_found">Güncelleme Bulunamadı</string>
@@ -64,7 +60,7 @@
     <string name="install_info">Aşağıdaki güncelleme(ler) yüklenmeye hazır. \n\nKuyruğa başka zip dosyaları eklemek için \"Dosya Ekle\" butonuna dokunun.</string>
     <string name="add_file">Dosya Ekle</string>
     <string name="install_now">Şimdi Yükle</string>
-    <string name="calculating_md5">MD5 Değeri Hesaplanıyor...</string>
+    <string name="calculating_md5">MD5 Değeri Hesaplanıyor…</string>
     <string name="md5_mismatch">MD5 Eşleşmedi</string>
     <string name="md5_mismatch_summary">Alındı:\n%1$s\n\nHesaplandı:\n%2$s</string>
     <string name="md5_install_anyway">Yine de Devam Et</string>
@@ -96,7 +92,6 @@
     <string name="changelog">Değişiklikler</string>
 
     <!-- GOOGLEPLUS -->
-    <string name="google_plus">Google+</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">Sistem Güncellemesi İndiriliyor</string>
@@ -124,22 +119,11 @@
     <string name="error_too_many_redirects">HATA: Çok Fazla Yeniden Yönlendirme</string>
     <string name="error_unhandled_http_code">HATA: Unhandled http code</string>
     <string name="error_unknown">HATA: Bilinmiyor</string>
-    <string name="error_device_not_found_title">Cihaz Bulunamadı</string>
-    <string name="error_device_not_found_summary">Cihazınıza uygun bir ROM bulunamadı. Lütfen manuel kontrol ediniz.</string>
-    <string name="error_device_not_found_server">Cihazınıza uygun bir ROM bulunamadı.</string>
 
     <!-- SETTINGS -->
     <string name="settings">Ayarlar</string>
     <string name="settings_checktime_title">Güncelleme Kontrol Sıklığı</string>
     <string name="settings_checktime_summary">Her Bir Kontrol Arasındaki Zamanı Belirleyin</string>
-    <string name="settings_checkgapps_title">Google Uygulamaları içni Kontrol Et</string>
-    <string name="settings_checkgapps_summary">PA\'ya Özgü Google Uygulamalarını da Kontrol Et</string>
-    <string name="settings_gappstype_title">Google Uygulamarı Biçimi</string>
-    <string name="settings_gappstype_summary">Full, Mini ve Mikro Google Uygulama Paketlerinden Birini Seçin</string>
-    <string name="gapps_type_full">Full Paket</string>
-    <string name="gapps_type_mini">Mini Paket</string>
-    <string name="gapps_type_fullinverted">Full Inverted Paket</string>
-    <string name="gapps_type_miniinverted">Mini Inverted Paket</string>
     <string name="time_notifications_never">Kontrol Etme</string>
     <string name="time_notifications_half_an_hour">Yarım Saat</string>
     <string name="time_notifications_an_hour">1 Saat</string>

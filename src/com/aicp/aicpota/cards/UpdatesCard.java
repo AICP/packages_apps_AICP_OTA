@@ -20,10 +20,11 @@
 
 package com.aicp.aicpota.cards;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.CheckBox;
@@ -32,6 +33,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aicp.aicpota.MainActivity;
 import com.aicp.aicpota.R;
@@ -48,28 +50,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressLint("ViewConstructor")
 public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChangeListener {
 
     private static final String ROMS = "ROMS";
     private static final String GAPPS = "GAPPS";
 
-    private RomUpdater mRomUpdater;
-    private GappsUpdater mGappsUpdater;
-    private LinearLayout mLayout;
-    private TextView mInfo;
-    private TextView mError;
-    private LinearLayout mAdditional;
-    private TextView mAdditionalText;
-    private Item mCheck;
-    private Item mDownload;
-    private ProgressBar mWaitProgressBar;
+    private final RomUpdater mRomUpdater;
+    private final GappsUpdater mGappsUpdater;
+    private final LinearLayout mLayout;
+    private final TextView mInfo;
+    private final TextView mError;
+    private final LinearLayout mAdditional;
+    private final TextView mAdditionalText;
+    private final Item mCheck;
+    private final Item mDownload;
+    private final ProgressBar mWaitProgressBar;
     private String mErrorRom;
     private String mErrorGapps;
     private int mNumChecked = 0;
 
-    public UpdatesCard(Context context, AttributeSet attrs, RomUpdater romUpdater,
-            GappsUpdater gappsUpdater, Bundle savedInstanceState) {
-        super(context, attrs, savedInstanceState);
+    public UpdatesCard(final Context context, RomUpdater romUpdater,
+                       GappsUpdater gappsUpdater, Bundle savedInstanceState) {
+        super(context, savedInstanceState);
 
         mRomUpdater = romUpdater;
         mRomUpdater.addUpdaterListener(this);
@@ -80,8 +83,12 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             List<PackageInfo> mRoms = (List) savedInstanceState.getSerializable(ROMS);
             List<PackageInfo> mGapps = (List) savedInstanceState.getSerializable(GAPPS);
 
-            mRomUpdater.setLastUpdates(mRoms.toArray(new PackageInfo[mRoms.size()]));
-            mGappsUpdater.setLastUpdates(mGapps.toArray(new PackageInfo[mGapps.size()]));
+            if (mRoms != null) {
+                mRomUpdater.setLastUpdates(mRoms.toArray(new PackageInfo[mRoms.size()]));
+            }
+            if (mGapps != null) {
+                mGappsUpdater.setLastUpdates(mGapps.toArray(new PackageInfo[mGapps.size()]));
+            }
         }
 
         setLayoutId(R.layout.card_updates);
@@ -99,7 +106,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
         mCheck.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onClick(int id) {
+            public void onClick() {
                 MainActivity activity = (MainActivity) getContext();
                 activity.checkUpdates();
             }
@@ -109,10 +116,15 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
         mDownload.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
-            public void onClick(int id) {
-                MainActivity activity = (MainActivity) getContext();
-                activity.setState(MainActivity.STATE_DOWNLOAD, true, getPackages(), null, null,
-                        false, false);
+            public void onClick() {
+
+                if (checkWriteExternalPermission()){
+                    Toast.makeText(context,"Permission to write to external storage not granted",Toast.LENGTH_LONG).show();
+                } else {
+                    MainActivity activity = (MainActivity) getContext();
+                    activity.setState(MainActivity.STATE_DOWNLOAD, true, getPackages(), null, null,
+                            false, false);
+                }
             }
 
         });
@@ -140,7 +152,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
     }
 
     @Override
-    public void collapse() {
+    protected void collapse() {
         super.collapse();
         mAdditional.setVisibility(View.GONE);
     }
@@ -148,8 +160,8 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
     @Override
     public void saveState(Bundle outState) {
         super.saveState(outState);
-        ArrayList<PackageInfo> mRoms = new ArrayList<PackageInfo>();
-        ArrayList<PackageInfo> mGapps = new ArrayList<PackageInfo>();
+        ArrayList<PackageInfo> mRoms = new ArrayList<>();
+        ArrayList<PackageInfo> mGapps = new ArrayList<>();
 
         mRoms.addAll(Arrays.asList(mRomUpdater.getLastUpdates()));
         mGapps.addAll(Arrays.asList(mGappsUpdater.getLastUpdates()));
@@ -269,7 +281,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
     }
 
     private PackageInfo[] getPackages() {
-        List<PackageInfo> list = new ArrayList<PackageInfo>();
+        List<PackageInfo> list = new ArrayList<>();
         for (int i = 0; i < mLayout.getChildCount(); i++) {
             View view = mLayout.getChildAt(i);
             if (view instanceof CheckBox) {
@@ -288,8 +300,8 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
         for (int i = 0; packages != null && i < packages.length; i++) {
             CheckBox check = new CheckBox(context, null);
             check.setTag(R.id.title, packages[i]);
-            check.setText(" " + packages[i].getFilename());
-            check.setTextColor(R.color.card_text);
+            check.setText(String.format(" %s", packages[i].getFilename()));
+            check.setTextColor(getResources().getColor(R.color.card_text));
             check.setOnCheckedChangeListener(this);
             check.setChecked(i == 0);
             mLayout.addView(check);
@@ -297,7 +309,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             text.setText(packages[i].getFilename());
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_medium_text_size));
-            text.setTextColor(R.color.card_text);
+            check.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
@@ -305,7 +317,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             text.setText(packages[i].getSize());
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_small_text_size));
-            text.setTextColor(R.color.card_text);
+            check.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
@@ -313,11 +325,18 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             text.setText(res.getString(R.string.update_host, packages[i].getHost()));
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_small_text_size));
-            text.setTextColor(R.color.card_text);
+            check.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
         }
+    }
+
+    private boolean checkWriteExternalPermission(){
+
+        String permission = "android.permission.WRITE_EXTERNAL_STORAGE";
+        int res = getContext().checkCallingOrSelfPermission(permission);
+        return (res != PackageManager.PERMISSION_GRANTED);
     }
 
 }

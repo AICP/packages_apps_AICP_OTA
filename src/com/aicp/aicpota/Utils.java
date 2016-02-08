@@ -51,9 +51,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Properties;
 
 public class Utils {
@@ -62,15 +62,14 @@ public class Utils {
     public static final String CHECK_DOWNLOADS_FINISHED = "com.aicp.aicpota.Utils.CHECK_DOWNLOADS_FINISHED";
     public static final String CHECK_DOWNLOADS_ID = "com.aicp.aicpota.Utils.CHECK_DOWNLOADS_ID";
     public static final String MOD_VERSION = "ro.modversion";
-    public static final String RO_PA_VERSION = "ro.aicp.version";
-    public static final int ROM_ALARM_ID = 122303221;
-    public static final int GAPPS_ALARM_ID = 122303222;
+    private static final int ROM_ALARM_ID = 122303221;
+    private static final int GAPPS_ALARM_ID = 122303222;
 
     public static final int TWRP = 1;
     public static final int CWM_BASED = 2;
 
-    public static PackageInfo[] sPackageInfosRom = new PackageInfo[0];
-    public static PackageInfo[] sPackageInfosGapps = new PackageInfo[0];
+    private static PackageInfo[] sPackageInfosRom = new PackageInfo[0];
+    private static PackageInfo[] sPackageInfosGapps = new PackageInfo[0];
     private static Typeface sRobotoThin;
 
     public static class NotificationInfo implements Serializable {
@@ -104,23 +103,21 @@ public class Utils {
      * @author Jorrit "Chainfire" Jongma
      * @author The OmniROM Project
      */
-    public static boolean setPermissions(String path, int mode, int uid, int gid) {
+    @SuppressWarnings("JavaDoc")
+    public static boolean setPermissions(String path, int uid) {
         try {
             Class<?> FileUtils = Utils.class.getClassLoader().loadClass("android.os.FileUtils");
-            Method setPermissions = FileUtils.getDeclaredMethod("setPermissions", new Class[] {
-                    String.class,
+            Method setPermissions = FileUtils.getDeclaredMethod("setPermissions", String.class,
                     int.class,
                     int.class,
-                    int.class
-            });
+                    int.class);
+            //noinspection OctalInteger
             return ((Integer) setPermissions.invoke(
                     null,
-                    new Object[] {
-                            path,
-                            Integer.valueOf(mode),
-                            Integer.valueOf(uid),
-                            Integer.valueOf(gid)
-                    }) == 0);
+                    path,
+                    0644,
+                    uid,
+                    2001) == 0);
         } catch (Exception e) {
             // A lot of voodoo could go wrong here, return failure instead of
             // crash
@@ -129,48 +126,15 @@ public class Utils {
         return false;
     }
 
-    public static String getReadableVersion(String version) {
-        try {
-            String number = version.substring(version.indexOf("-") + 1, version.lastIndexOf("-"));
-            String date = version.substring(version.lastIndexOf("-") + 1,
-                    version.endsWith(".zip") ? version.lastIndexOf(".") : version.length());
-
-            SimpleDateFormat curFormater = new SimpleDateFormat("yyyyMMdd");
-            Date dateObj = null;
-            try {
-                dateObj = curFormater.parse(date);
-            } catch (ParseException e) {
-                // ignore
-            }
-            SimpleDateFormat postFormater = new SimpleDateFormat("MMMM dd, yyyy");
-
-            if (dateObj == null) {
-                return number;
-            }
-            String newDateStr = postFormater.format(dateObj);
-
-            StringBuilder b = new StringBuilder(newDateStr);
-            int i = 0;
-            do {
-                b.replace(i, i + 1, b.substring(i, i + 1).toUpperCase());
-                i = b.indexOf(" ", i) + 1;
-            } while (i > 0 && i < b.length());
-            return number + " - " + b.toString();
-        } catch (Exception ex) {
-            // unknown version format
-            return version;
-        }
-    }
-
     public static String translateDeviceName(Context context, String device) {
         Properties dictionary = IOUtils.getDictionary(context);
         String translate = dictionary.getProperty(device);
         if (translate == null) {
             translate = device;
             String[] remove = dictionary.getProperty("@remove").split(",");
-            for (int i = 0; i < remove.length; i++) {
-                if (translate.indexOf(remove[i]) >= 0) {
-                    translate = translate.replace(remove[i], "");
+            for (String aRemove : remove) {
+                if (translate.contains(aRemove)) {
+                    translate = translate.replace(aRemove, "");
                     break;
                 }
             }
@@ -179,7 +143,7 @@ public class Utils {
     }
 
     public static String getDateAndTime() {
-        return new SimpleDateFormat("yyyy-MM-dd.HH.mm.ss").format(new Date(System
+        return new SimpleDateFormat("yyyy-MM-dd.HH.mm.ss", Locale.ENGLISH).format(new Date(System
                 .currentTimeMillis()));
     }
 
@@ -190,10 +154,10 @@ public class Utils {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    public static void setAlarm(Context context, boolean trigger, boolean isRom) {
+    public static void setAlarm(Context context, boolean isRom) {
 
         SettingsHelper helper = new SettingsHelper(context);
-        setAlarm(context, helper.getCheckTime(), trigger, isRom);
+        setAlarm(context, helper.getCheckTime(), true, isRom);
     }
 
     public static void setAlarm(Context context, long time, boolean trigger, boolean isRom) {
@@ -266,18 +230,14 @@ public class Utils {
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_aicp_ota))
                 .setContentIntent(pIntent);
 
-        String contextText = "";
+        String contextText;
         if (infosRom.length + infosGapps.length == 1) {
             String filename = infosRom.length == 1 ? infosRom[0].getFilename() : infosGapps[0]
                     .getFilename();
-            contextText = resources.getString(R.string.new_package_name, new Object[] {
-                    filename
-            });
+            contextText = resources.getString(R.string.new_package_name, filename);
         } else {
-            contextText = resources.getString(R.string.new_packages, new Object[] {
-                    infosRom.length
-                            + infosGapps.length
-            });
+            contextText = resources.getString(R.string.new_packages, infosRom.length
+                    + infosGapps.length);
         }
         builder.setContentText(contextText);
 
@@ -286,11 +246,11 @@ public class Utils {
         if (infosRom.length + infosGapps.length > 1) {
             inboxStyle.addLine(contextText);
         }
-        for (int i = 0; i < infosRom.length; i++) {
-            inboxStyle.addLine(infosRom[i].getFilename());
+        for (PackageInfo anInfosRom : infosRom) {
+            inboxStyle.addLine(anInfosRom.getFilename());
         }
-        for (int i = 0; i < infosGapps.length; i++) {
-            inboxStyle.addLine(infosGapps[i].getFilename());
+        for (PackageInfo infosGapp : infosGapps) {
+            inboxStyle.addLine(infosGapp.getFilename());
         }
         inboxStyle.setSummaryText(resources.getString(R.string.app_name));
         builder.setStyle(inboxStyle);
@@ -307,16 +267,17 @@ public class Utils {
 
     public static boolean isNumeric(String str) {
         try {
+            //noinspection ResultOfMethodCallIgnored
             Double.parseDouble(str);
             return true;
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException ignored) {
         }
         return false;
     }
 
-    public static String exec(String command) {
+    public static String exec() {
         try {
-            Process p = Runtime.getRuntime().exec(command);
+            Process p = Runtime.getRuntime().exec("grep -ls \"/dev/block/\" * --include=fstab.* --exclude=fstab.goldfish");
             DataOutputStream os = new DataOutputStream(p.getOutputStream());
             os.writeBytes("sync\n");
             os.writeBytes("exit\n");

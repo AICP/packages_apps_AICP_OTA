@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 ParanoidAndroid Project
 
@@ -18,7 +18,7 @@
   along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.aicp.aicpota"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -43,7 +43,8 @@
             android:id="@+id/wait_progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:indeterminateTint="@color/app_background" />
 
         <TextView
             android:id="@+id/error"
@@ -69,7 +70,7 @@
             android:layout_height="@dimen/card_separator_height"
             android:layout_marginBottom="@dimen/card_separator_padding"
             android:layout_marginTop="@dimen/card_separator_padding"
-            android:background="@color/card_border" />
+            android:background="@color/card_separator" />
 
         <TextView
             android:id="@+id/additional_text"
@@ -85,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_separator_height"
         android:layout_marginTop="@dimen/card_separator_padding"
-        android:background="@color/card_border" />
+        android:background="@color/card_separator" />
 
     <com.aicp.aicpota.widget.Item
         android:id="@+id/check"
@@ -100,7 +101,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_separator_height"
-        android:background="@color/card_border" />
+        android:background="@color/card_separator" />
 
     <com.aicp.aicpota.widget.Item
         android:id="@+id/download"

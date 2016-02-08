@@ -27,18 +27,18 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class URLStringReader extends AsyncTask<String, Void, Void> {
+class URLStringReader extends AsyncTask<String, Void, Void> {
 
-    public static interface URLStringReaderListener {
+    public interface URLStringReaderListener {
 
-        public void onReadEnd(String buffer);
+        void onReadEnd(String buffer);
 
-        public void onReadError(Exception ex);
+        void onReadError(Exception ex);
     }
 
     private String mBuffer;
     private Exception mException;
-    private URLStringReaderListener mListener;
+    private final URLStringReaderListener mListener;
 
     public URLStringReader(URLStringReaderListener listener) {
         mListener = listener;
@@ -72,7 +72,7 @@ public class URLStringReader extends AsyncTask<String, Void, Void> {
         URL url = new URL(urlStr);
         URLConnection yc = url.openConnection();
         BufferedReader in = null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         try {
             in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
             String inputLine;

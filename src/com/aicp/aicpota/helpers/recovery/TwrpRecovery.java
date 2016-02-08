@@ -19,8 +19,6 @@
 
 package com.aicp.aicpota.helpers.recovery;
 
-import android.content.Context;
-
 import com.aicp.aicpota.IOUtils;
 import com.aicp.aicpota.Utils;
 
@@ -44,11 +42,10 @@ public class TwrpRecovery extends RecoveryInfo {
     }
 
     @Override
-    public String[] getCommands(Context context, String[] items, String[] originalItems,
-            boolean wipeData, boolean wipeCaches, String backupFolder, String backupOptions)
-            throws Exception {
+    public String[] getCommands(String[] items,
+                                boolean wipeData, boolean wipeCaches, String backupFolder, String backupOptions) {
 
-        List<String> commands = new ArrayList<String>();
+        List<String> commands = new ArrayList<>();
 
         int size = items.length, i = 0;
 
@@ -57,26 +54,26 @@ public class TwrpRecovery extends RecoveryInfo {
 
         if (backupFolder != null) {
             String str = "backup ";
-            if (backupOptions != null && backupOptions.indexOf("S") >= 0) {
+            if (backupOptions != null && backupOptions.contains("S")) {
                 str += "S";
             }
-            if (backupOptions != null && backupOptions.indexOf("D") >= 0) {
+            if (backupOptions != null && backupOptions.contains("D")) {
                 str += "D";
             }
-            if (backupOptions != null && backupOptions.indexOf("C") >= 0) {
+            if (backupOptions != null && backupOptions.contains("C")) {
                 str += "C";
             }
-            if (backupOptions != null && backupOptions.indexOf("R") >= 0) {
+            if (backupOptions != null && backupOptions.contains("R")) {
                 str += "R";
             }
             str += "123";
-            if (backupOptions != null && backupOptions.indexOf("B") >= 0) {
+            if (backupOptions != null && backupOptions.contains("B")) {
                 str += "B";
             }
-            if (backupOptions != null && backupOptions.indexOf("A") >= 0 && hasAndroidSecure) {
+            if (backupOptions != null && backupOptions.contains("A") && hasAndroidSecure) {
                 str += "A";
             }
-            if (backupOptions != null && backupOptions.indexOf("E") >= 0 && hasSdExt) {
+            if (backupOptions != null && backupOptions.contains("E") && hasSdExt) {
                 str += "E";
             }
             commands.add(str + "O " + backupFolder);

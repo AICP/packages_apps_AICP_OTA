@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 ParanoidAndroid Project
 
@@ -23,6 +23,7 @@
     android:layout_height="wrap_content" >
 
     <com.aicp.aicpota.widget.PreferenceCategory
+        android:layout="@layout/preferences_category"
         android:title="@string/settings" >
 
         <com.aicp.aicpota.widget.ListPreference

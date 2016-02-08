@@ -20,16 +20,18 @@
 
 package com.aicp.aicpota;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
 public class BootReceiver extends BroadcastReceiver {
 
+    @SuppressLint("UnsafeProtectedBroadcastReceiver")
     @Override
     public void onReceive(Context context, Intent intent) {
-        Utils.setAlarm(context, true, true);
-        Utils.setAlarm(context, true, false);
+        Utils.setAlarm(context, true);
+        Utils.setAlarm(context, false);
     }
 
 }

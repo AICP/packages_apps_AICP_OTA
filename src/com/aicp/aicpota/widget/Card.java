@@ -22,7 +22,6 @@ package com.aicp.aicpota.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -33,17 +32,17 @@ import com.aicp.aicpota.R;
 
 public abstract class Card extends LinearLayout {
 
-    private Context mContext;
-    private View mView;
-    private LinearLayout mCardLayout;
-    private TextView mTitleView;
+    private final Context mContext;
+    private final View mView;
+    private final LinearLayout mCardLayout;
+    private final TextView mTitleView;
     private View mLayoutView;
-    private ImageView mButton;
-    private String mExpandedProperty;
+    private final ImageView mButton;
+    private final String mExpandedProperty;
     private boolean mExpanded = false;
 
-    public Card(Context context, AttributeSet attrs, Bundle savedInstanceState) {
-        super(context, attrs);
+    protected Card(Context context, Bundle savedInstanceState) {
+        super(context, null);
 
         mContext = context;
 
@@ -51,7 +50,7 @@ public abstract class Card extends LinearLayout {
 
         String title = null;
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Card);
+        TypedArray a = context.obtainStyledAttributes(null, R.styleable.Card);
 
         CharSequence s = a.getString(R.styleable.Card_title);
         if (s != null) {
@@ -95,14 +94,14 @@ public abstract class Card extends LinearLayout {
         }
     }
 
-    public void expand() {
+    protected void expand() {
         mExpanded = true;
-        mButton.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_collapse));
+        mButton.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_collapse, null));
     }
 
-    public void collapse() {
+    protected void collapse() {
         mExpanded = false;
-        mButton.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_expand));
+        mButton.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_expand, null));
     }
 
     protected boolean canExpand() {
@@ -117,7 +116,7 @@ public abstract class Card extends LinearLayout {
         outState.putBoolean(mExpandedProperty, mExpanded);
     }
 
-    public void setTitle(int resourceId) {
+    protected void setTitle(int resourceId) {
         mTitleView.setText(resourceId);
     }
 
