@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2014 ParanoidAndroid Project
-
   This file is part of Paranoid OTA.
-
   Paranoid OTA is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-
   Paranoid OTA is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-
   You should have received a copy of the GNU General Public License
   along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
@@ -21,9 +17,9 @@
 <resources>
 
     <!-- GENERAL -->
-    <string name="app_name">OTA AICP</string>
+    <string name="app_name">OTA (MAJ) AICP</string>
     <string name="check_for_updates">Vérifier</string>
-    <string name="no_additional_info">Aucune information supplémentaire</string>
+    <string name="no_additional_info">Pas d\'information supplémentaires</string>
     <string name="drawer_open">Ouvrir le tiroir de navigation</string>
     <string name="drawer_close">Fermer le tiroir de navigation</string>
 
@@ -89,9 +85,10 @@
     <string name="file_not_found">Impossible d\'ajouter le fichier</string>
 
     <!-- CHANGELOG -->
-    <string name="changelog">Changement</string>
+    <string name="changelog">Journal de changement</string>
 
     <!-- GOOGLEPLUS -->
+    <string name="google_plus" translatable="false">Google+</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">Téléchargement de la mise à jour du système</string>
@@ -129,7 +126,16 @@
     <string name="time_notifications_an_hour">1 heure</string>
     <string name="time_notifications_two_hours">2 heures</string>
     <string name="time_notifications_five_hours">5 heures</string>
-    <string name="time_notifications_daily">Tous les jours</string>
+    <string name="time_notifications_daily">Tout les jours</string>
+
+    <!-- Permission check -->
+    <string name="permission_not_granted_dialog_title" translatable="false">Permission refusée</string>
+    <string name="permission_granted_dialog_title" translatable="false">Permission accordée</string>
+
+    <!-- Dummy -->
     <string name="content_description">content_description</string>
+
+    <!--SDCARD Path-->
+    <string name="sdcard" translatable="false">/sdcard</string>
 
 </resources>
