@@ -39,7 +39,7 @@
 	         android:layout_width="match_parent"
 	         android:layout_height="wrap_content"
 	         android:text="@string/app_name"
-	         android:textColor="@color/actionbar_background"
+	         android:textColor="@color/light_blue_text"
 	         android:textSize="@dimen/header_text_size" />
 	 
 	     <View
@@ -71,7 +71,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
-        android:divider="#00000000"
+        android:divider="@color/drawer_divider"
         android:dividerHeight="0dp"
         android:background="@color/app_background"/>
 
