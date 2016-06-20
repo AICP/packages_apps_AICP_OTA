@@ -98,7 +98,7 @@
     <string name="download_title">%1$s</string>
     <string name="cancel_download_alert_title">Download annuleren</string>
     <string name="cancel_rom_download_alert_summary">Wil je de huidige ROM-download echt annuleren?</string>
-    <string name="cancel_gapps_download_alert_summary">Wil je de huidige download van de Google Apps echt annuleren?</string>
+    <string name="cancel_gapps_download_alert_summary">Wil je de huidige Google Apps-download echt annuleren?</string>
     <string name="cancel_download_alert_yes">Ja</string>
     <string name="cancel_download_alert_no">Nee</string>
     <string name="new_system_update">Nieuwe systeem-update gevonden</string>
