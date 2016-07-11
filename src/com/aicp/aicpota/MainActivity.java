@@ -119,6 +119,10 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (!checkStoragePermission()) {
+            requestPermission();
+        }
+
         mContext = this;
         mSavedInstanceState = savedInstanceState;
 
@@ -345,9 +349,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     @Override
     protected void onResume() {
         super.onResume();
-        if (!checkStoragePermission()) {
-            requestPermission();
-        }
         DownloadHelper.registerCallback(this);
     }
 
@@ -490,27 +491,32 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     }
 
     private boolean checkStoragePermission() {
-        int result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        return result == PackageManager.PERMISSION_GRANTED;
+        return checkCallingOrSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            ActivityCompat.requestPermissions(this, new String[] {
-                Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_CODE);
-        }
+        requestPermissions(new String[] {android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                PERMISSION_REQUEST_CODE);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, R.string.permission_granted_dialog_title, Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(this, R.string.permission_not_granted_dialog_title, Toast.LENGTH_LONG).show();
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            for (int i = 0; i < permissions.length; i++ ) {
+                final String permission = permissions[i];
+                final int grantResult = grantResults[i];
+                if (permission.equals(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    if (grantResult == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(this, R.string.permission_granted_dialog_title,
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, R.string.permission_not_granted_dialog_title,
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
+            }
         }
     }
 }
