@@ -34,10 +34,10 @@ import java.util.Properties;
 public class GappsUpdater extends Updater {
 
     private static final String PROPERTIES_FILE = "/system/etc/g.prop";
-    private static final String VERSION_PROPERTY = "ro.addon.aicp_version";
-    private static final String VERSION_PROPERTY_EXT = "ro.addon.version";
-    private static final String PLATFORM_PROPERTY = "ro.build.version.release";
-    private static final String TYPE_PROPERTY = "ro.addon.aicp_type";
+    private static final String VERSION_PROPERTY = "ro.addon.open_version";
+    private static final String VERSION_PROPERTY_EXT = "ro.addon.type";
+    private static final String PLATFORM_PROPERTY = "ro.addon.platform";
+    private static final String TYPE_PROPERTY = "ro.addon.open_type";
 
     private String mPlatform;
     private String mVersion = "0";
@@ -61,6 +61,9 @@ public class GappsUpdater extends Updater {
                 }
                 mType = properties.getProperty(TYPE_PROPERTY);
                 mPlatform = Utils.getProp(PLATFORM_PROPERTY);
+                if (mPlatform != null) {
+                    mPlatform = properties.getProperty(PLATFORM_PROPERTY);
+                }
                 if (mPlatform != null) {
                     mPlatform = mPlatform.replace(".", "");
                 }
