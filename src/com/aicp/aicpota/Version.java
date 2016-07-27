@@ -192,7 +192,8 @@ public class Version implements Serializable {
                 + mMinor
                 + (mMaintenance > 0 ? "."
                         + mMaintenance : "")
-                + (mPhase != STABLE ? " " + getPhaseName() + mPhaseNumber : "")
+                + (mPhase != STABLE ? " " + getPhaseName() : "")
+                + (mPhaseNumber != 0 ? "" + mPhaseNumber : "")
                 + " (" + mDate + ")";
     }
 
