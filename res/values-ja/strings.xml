@@ -91,8 +91,6 @@
     <!-- CHANGELOG -->
     <string name="changelog">更新履歴</string>
 
-    <!-- GOOGLEPLUS -->
-
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">更新をダウンロード</string>
     <string name="download_title">%1$s</string>
@@ -130,6 +128,5 @@
     <string name="time_notifications_two_hours">2時間毎</string>
     <string name="time_notifications_five_hours">5時間毎</string>
     <string name="time_notifications_daily">1日毎</string>
-    <string name="content_description">content_description</string>
 
 </resources>
