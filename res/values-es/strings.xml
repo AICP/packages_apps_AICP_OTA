@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2014 ParanoidAndroid Project
+
+  This file is part of Paranoid OTA.
+
+  Paranoid OTA is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Paranoid OTA is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">AICP OTA</string>
+    <string name="check_for_updates">Comprobar</string>
+    <string name="no_additional_info">No se encontró información adicional</string>
+    <string name="drawer_open">Abrir panel de navegación</string>
+    <string name="drawer_close">Cerrar panel de navegación</string>
+
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">Buscar actualizaciones</string>
+    <string name="all_up_to_date">Dispositivo actualizado!</string>
+    <string name="rom_scanning">Buscando actualizaciones del sistema…</string>
+    <string name="rom_gapps_new_version">Actualizaciones disponibles!</string>
+    <string name="rom_new_version">No hay actualizaciones de la ROM disponibles!</string>
+    <string name="gapps_new_version">Actualización de las apps. de Google disponible!</string>
+    <string name="no_updates">No hay actualizaciones del sistema disponibles</string>
+    <string name="system_update_found">Hay una actualización del sistema disponible lista para descargar.\nConsulta la notificación, te llevará a AicpOTA desde donde podrás descargar e instalar las nuevas actualizacines. Actualizaciones disponibles:\n%1$s</string>
+
+    <!-- SYSTEM -->
+    <string name="system_title">Información del sistema</string>
+    <string name="system_rom">Versión de ROM: %1$s</string>
+    <string name="system_gapps">Versión de aps. de Google: %1$s %2$s</string>
+
+    <!-- UPDATES -->
+    <string name="updates">Actualizaciones</string>
+    <string name="updates_checking">Comprobando…</string>
+    <string name="updates_found">Actualización del sistema disponible</string>
+    <string name="updates_uptodate">Dispositivo actualizado</string>
+    <string name="no_updates_found">No hay actualizaciones disponibles</string>
+    <string name="check_rom_updates_error">Error comprobando actualizaciones de la ROM</string>
+    <string name="check_gapps_updates_error">Error comprobando actualizaciones de aps. de Google</string>
+    <string name="system_update">Actualización del sistema disponible.\nSelecciona la actualización que desees para descargarla.\n\nActualizaciones disponibles::</string>
+    <string name="download_and_install">Descargar e instalar</string>
+    <string name="update_host">Alojada en %1$s</string>
+
+    <!-- INSTALL -->
+    <string name="install">Instalar</string>
+    <string name="install_title">Lista para instalar</string>
+    <string name="install_info">Las siguientes actualizaciones están listas para instalar.\n\nPuedes añadir más zips tocando en el botón \"Añadir fichero\".</string>
+    <string name="add_file">Añadir fichero</string>
+    <string name="install_now">Instalar ahora</string>
+    <string name="calculating_md5">Calculando MD5 sum…</string>
+    <string name="md5_mismatch">MD5 no coincide</string>
+    <string name="md5_mismatch_summary">Recbido:\n%1$s\n\nCalculado:\n%2$s</string>
+    <string name="md5_install_anyway">Continuar de todas formas</string>
+    <string name="select_actions">Elegir la acción a realizar</string>
+    <string name="backup">Backup</string>
+    <string name="wipe_data">Borrar Data</string>
+    <string name="wipe_caches">Borrar Cache &amp; Dalvik</string>
+    <string name="remove_file_title">Borrar fichero</string>
+    <string name="remove_file_summary">¿Eliminar fichero de la lista?\n\n%1$s</string>
+    <string name="file_manager_error">No se encontró ninguna aplicación para seleccionar el fichero. Instale un administrador de ficheros.</string>
+    <string name="alert_backup_space_title">Espacio libre</string>
+    <string name="alert_backup_space_message">Hay menos de %1$sGB de espacio libre en la SD interna. ¿Continuamos con el backup?</string>
+    <string name="alert_backup_title">Backup</string>
+    <string name="alert_backup_message">Especifique el nombre del backup (los caracteres no reconocidos se eliminarán).\n\nLas opciones siguientes sólo funcionaran con TWRP.</string>
+    <string name="system">System</string>
+    <string name="data">Data</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android secure</string>
+    <string name="sdext">SD-Ext</string>
+    <string name="alert_reboot_install_title">Instalar actualizaciones</string>
+    <string name="alert_reboot_one_message">El dispositivo se reiniciará e instalará la actualización.</string>
+    <string name="alert_reboot_more_message">El dispositivo se reiniciará e instalará las actualizaciones.</string>
+    <string name="alert_reboot_now">Instalar ahora</string>
+    <string name="file_not_found">No se pudo añadir el fichero</string>
+
+    <!-- CHANGELOG -->
+    <string name="changelog">Lista de cambios</string>
+
+    <!-- GOOGLEPLUS -->
+    <string name="google_plus" translatable="false">Google+</string>
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">Descargando actualizaciones del sistema</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">Cancelar descarga</string>
+    <string name="cancel_rom_download_alert_summary">¿Cancelar descarga actual de la ROM?</string>
+    <string name="cancel_gapps_download_alert_summary">¿Cancelar descarga actual de aps. de Google?</string>
+    <string name="cancel_download_alert_yes">Si</string>
+    <string name="cancel_download_alert_no">No</string>
+    <string name="new_system_update">Nueva actualización del sistema disponible</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s actualizaciones disponibles para descargar</string>
+    <string name="already_downloading_rom">Ya se está descargando una actualización de la ROM.</string>
+    <string name="already_downloading_gapps">Ya se está descargando una actualización de las aps. de Google.</string>
+    <string name="cancel_download">Cancelar descarga(s)</string>
+    <string name="downloading_info">Descargando actualizaciones:\n%1$s</string>
+
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">Error: La descarga no se pudo continuar</string>
+    <string name="error_device_not_found">Error: Sdcard no disponible</string>
+    <string name="error_file_already_exists">Error: El ficheor ya existe</string>
+    <string name="error_file_error">Error: Problema en el almacenamiento</string>
+    <string name="error_http_data_error">Error: Error Http </string>
+    <string name="error_insufficient_space">Error: No hay espacio libre suficiente</string>
+    <string name="error_too_many_redirects">Error: Demasiadas redirecciones</string>
+    <string name="error_unhandled_http_code">Error: Código http no controlado</string>
+    <string name="error_unknown">Error: Desconocido</string>
+
+    <!-- SETTINGS -->
+    <string name="settings">Configuración</string>
+    <string name="settings_checktime_title">Actualizar frecuencia de comprobación</string>
+    <string name="settings_checktime_summary">Especificar el intervalo de tiempo entre cada comprobación</string>
+    <string name="time_notifications_never">No comprobar</string>
+    <string name="time_notifications_half_an_hour">Media hora</string>
+    <string name="time_notifications_an_hour">1 hora</string>
+    <string name="time_notifications_two_hours">2 horas</string>
+    <string name="time_notifications_five_hours">5 horas</string>
+    <string name="time_notifications_daily">Diariamente</string>
+
+    <!-- Permission check -->
+    <string name="permission_not_granted_dialog_title" translatable="false">Permiso denegado</string>
+    <string name="permission_granted_dialog_title" translatable="false">Permiso concendido</string>
+
+    <!-- Dummy -->
+    <string name="content_description">content_description</string>
+
+    <!--SDCARD Path-->
+    <string name="sdcard" translatable="false">/sdcard</string>
+
+</resources>
