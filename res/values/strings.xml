@@ -91,9 +91,6 @@
     <!-- CHANGELOG -->
     <string name="changelog">Changelog</string>
 
-    <!-- GOOGLEPLUS -->
-    <string name="google_plus" translatable="false">Google+</string>
-
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">Downloading system update</string>
     <string name="download_title">%1$s</string>
