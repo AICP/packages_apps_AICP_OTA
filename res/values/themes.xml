@@ -21,25 +21,28 @@
 <resources>
 
     <style name="ActionBar"
-            parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+            parent="@android:style/Widget.Material.ActionBar.Solid">
         <item name="android:background">@color/actionbar_background</item>
+        <!--
         <item name="android:icon">@drawable/aicp_mono</item>
-        <item name="android:homeAsUpIndicator">@drawable/ic_homeasup</item>
+        -->
     </style>
 
     <style name="Checkbox"
-            parent="@android:style/Widget.Holo.Light.CompoundButton.CheckBox">
+            parent="@android:style/Widget.Material.CompoundButton.CheckBox">
+        <!--
         <item name="android:button">@drawable/checkbox</item>
+        -->
     </style>
   
-   <style name="AppTheme" parent="android:Theme.Material.Light">
+   <style name="AppTheme" parent="android:Theme.Material">
        <item name="android:colorAccent">@color/accent_color</item>
        <item name="android:colorPrimary">@color/actionbar_background</item>
        <item name="android:colorPrimaryDark">@color/primary_dark</item>
        <item name="android:textColorTertiary">@color/actionbar_background</item>
        <item name="android:actionBarStyle">@style/ActionBar</item>
        <item name="android:checkboxStyle">@style/Checkbox</item>
-       <item name="android:textColor">@color/primary_dark</item>
+       <item name="android:textColor">@color/accent_color</item>
    </style>
 
 
