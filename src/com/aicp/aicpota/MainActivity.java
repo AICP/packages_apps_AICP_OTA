@@ -29,6 +29,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -131,7 +132,23 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
-            actionBar.setIcon(R.drawable.aicp_mono);
+
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowCustomEnabled(true);
+            View titleView = getLayoutInflater().inflate(R.layout.actionbar_title, null);
+            titleView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        View logo = v.findViewById(R.id.actionbar_logo);
+                        //if (logo.getVisibility() != View.VISIBLE) {
+                            v.findViewById(R.id.actionbar_logo).setVisibility(View.VISIBLE);
+                        //} else {
+                            getActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.action_bar_bg_sheep)));
+                            getWindow().setStatusBarColor(getColor(R.color.status_bar_bg_sheep));
+                        //}
+                    }
+            });
+            actionBar.setCustomView(titleView);
         }
 
         Resources res = getResources();
