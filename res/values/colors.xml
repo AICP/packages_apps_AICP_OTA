@@ -19,18 +19,18 @@
 -->
 
 <resources>
-    <color name="actionbar_background">#2196F3</color>
-    <color name="app_background">#2196f3</color>
+    <color name="actionbar_background">#212121</color>
+    <color name="app_background">#303030</color>
     <color name="card_text">#f8f8f8</color>
     <color name="card_text_error">#F44336</color>
     <color name="card_title_text">#ffffff</color>
     <color name="card_grid_text">#212121</color>
     <color name="card_separator">#33ffffff</color>
-    <color name="card_border">#1565C0</color>
-    <color name="card_background">#1976D2</color>
+    <color name="card_border">@color/accent_color</color>
+    <color name="card_background">#424242</color>
     <color name="item_pressed">#33ffffff</color>
     <color name="item_action">#FFFFFF</color>
-    <color name="drawer_list_item_background">#ffffff</color>
-    <color name="primary_dark">#1976D2</color>
-    <color name="accent_color">#ff9800</color>
+    <color name="drawer_list_item_background">#303030</color>
+    <color name="primary_dark">#000000</color>
+    <color name="accent_color">#ffab00</color>
 </resources>

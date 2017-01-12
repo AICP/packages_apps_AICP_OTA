@@ -23,7 +23,7 @@
     <color name="holo_blue_dark">@android:color/holo_blue_dark</color>
     <color name="gray_separator">@android:color/darker_gray</color>
     <color name="message_text">#FFFFFF</color>
-    <color name="dark_blue_text">@color/primary_dark</color>
-    <color name="light_blue_text">@color/actionbar_background</color>
+    <color name="dark_blue_text">@color/accent_color</color>
+    <color name="light_blue_text">@color/accent_color</color>
     <color name="drawer_divider">#00000000</color>
 </resources>
