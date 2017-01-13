@@ -140,12 +140,9 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 @Override
                 public void onClick(View v) {
                         View logo = v.findViewById(R.id.actionbar_logo);
-                        //if (logo.getVisibility() != View.VISIBLE) {
-                            v.findViewById(R.id.actionbar_logo).setVisibility(View.VISIBLE);
-                        //} else {
-                            getActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.action_bar_bg_sheep)));
-                            getWindow().setStatusBarColor(getColor(R.color.status_bar_bg_sheep));
-                        //}
+                        v.findViewById(R.id.actionbar_logo).setVisibility(View.VISIBLE);
+                        getActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.action_bar_bg_sheep)));
+                        getWindow().setStatusBarColor(getColor(R.color.status_bar_bg_sheep));
                     }
             });
             actionBar.setCustomView(titleView);
@@ -214,13 +211,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, R.string.drawer_open,
-                R.string.drawer_close) {
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-                Utils.setRobotoThin(mContext, mDrawerLayout);
-            }
-        };
+                R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         Utils.setRobotoThin(mContext, findViewById(R.id.mainlayout));
@@ -529,6 +520,15 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            super.onBackPressed();
         }
     }
 }
