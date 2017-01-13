@@ -218,7 +218,7 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                Utils.setRobotoThin(mContext, mDrawerLayout);
+                //Utils.setRobotoThin(mContext, mDrawerLayout);
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
