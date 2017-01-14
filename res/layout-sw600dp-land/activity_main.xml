@@ -47,7 +47,7 @@
 	         android:layout_height="@dimen/header_underline_size"
 	         android:layout_marginTop="@dimen/header_underline_top_margin"
 	         android:layout_marginBottom="@dimen/header_underline_bottom_margin"
-	         android:background="@color/actionbar_background" />
+	         android:background="@color/header_underline" />
 	 
 	     <ScrollView
 	         android:layout_width="fill_parent"
