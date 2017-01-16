@@ -22,8 +22,10 @@ package com.aicp.aicpota.cards;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -68,6 +70,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
     private final ProgressBar mWaitProgressBar;
     private String mErrorRom;
     private String mErrorGapps;
+    private String mFilePath;
     private int mNumChecked = 0;
 
     public UpdatesCard(final Context context, RomUpdater romUpdater,
@@ -306,15 +309,16 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             check.setChecked(i == 0);
             mLayout.addView(check);
             TextView text = new TextView(context);
-            text.setText(packages[i].getFilename());
+            text.setText(res.getString(R.string.nightly_changelog));
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_medium_text_size));
             check.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
+
             mAdditional.addView(text);
             text = new TextView(context);
-            text.setText(packages[i].getSize());
+            text.setText(res.getString(R.string.nightly_filesize, packages[i].getSize()));
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_small_text_size));
             check.setTextColor(getResources().getColor(R.color.card_text));
@@ -322,13 +326,26 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
             text = new TextView(context);
-            text.setText(res.getString(R.string.update_host, packages[i].getHost()));
+            text.setText(res.getString(R.string.nightly_md5sum, packages[i].getMd5()));
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_small_text_size));
             check.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
+            mFilePath = packages[i].getPath() + ".html";
+            mAdditional.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    String url = mFilePath;
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    context.startActivity(intent);
+                }
+
+            });
+
         }
     }
 
