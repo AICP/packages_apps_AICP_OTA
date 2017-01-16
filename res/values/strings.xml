@@ -53,6 +53,9 @@
     <string name="system_update">System update found.\nSelect the update(s) you want to download.\n\nUpdate(s) found:</string>
     <string name="download_and_install">Download and install</string>
     <string name="update_host">Hosted at %1$s</string>
+    <string name="nightly_changelog">Click for Changelog</string>
+    <string name="nightly_md5sum">Md5sum: %1$s</string>
+    <string name="nightly_filesize">Filesize: %1$s MB</string>
 
     <!-- INSTALL -->
     <string name="install">Install</string>
