@@ -152,7 +152,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         List<String> itemText = new ArrayList<>();
         itemText.add(res.getString(R.string.updates));
         itemText.add(res.getString(R.string.install));
-        itemText.add(res.getString(R.string.changelog));
         itemText.add(res.getString(R.string.settings));
 
         final Drawable[] icons = new Drawable[] {
@@ -320,15 +319,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 setState(STATE_INSTALL, true, false);
                 break;
             case 2:
-                Intent browserIntent;
-                if(mDevice == null || mDevice.isEmpty()) {
-                browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(CHANGELOG));
-                } else {
-                browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(DOWNLOAD + mDevice));
-                }
-                startActivity(browserIntent);
-                break;
-            case 3:
                 Intent intent = new Intent(this, SettingsActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
