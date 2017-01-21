@@ -50,9 +50,12 @@
     <string name="no_updates_found">Keine Updates gefunden</string>
     <string name="check_rom_updates_error">Fehler beim Suchen nach ROM-Updates</string>
     <string name="check_gapps_updates_error">Fehler beim Suchen nach Updates für Google Apps</string>
-    <string name="system_update">System-Update gefunden.\nBitte das/die Update(s) auswählen, die heruntergeladen werden sollen.\n\nGefundene Update(s):</string>
+    <string name="system_update">System-Update gefunden.\nBitte das Update auswählen, das heruntergeladen werden soll.\n\nGefundene Update(s):</string>
     <string name="download_and_install">Herunterladen und installieren</string>
     <string name="update_host">Gehostet von %1$s</string>
+    <string name="nightly_changelog">-- Drücken für... %1$s Änderungsprotokoll</string>
+    <string name="nightly_md5sum">MD5-Summe: %1$s</string>
+    <string name="nightly_filesize">Dateigröße: %1$s MB</string>
 
     <!-- INSTALL -->
     <string name="install">Installation</string>
@@ -89,9 +92,7 @@
     <string name="file_not_found">Kann Datei nicht hinzufügen</string>
 
     <!-- CHANGELOG -->
-    <string name="changelog">Updateübersicht</string>
-
-    <!-- GOOGLEPLUS -->
+    <string name="changelog">Änderungsprotokoll</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">System-Update wird heruntergeladen</string>
@@ -132,10 +133,13 @@
     <string name="time_notifications_daily">Täglich</string>
 
     <!-- Permission check -->
+    <!-- <string name="permission_not_granted_dialog_title" translatable="false">Permission not granted</string>
+    <string name="permission_granted_dialog_title" translatable="false">Permission granted</string> -->
 
     <!-- Dummy -->
     <string name="content_description">content_description</string>
 
     <!--SDCARD Path-->
+    <!-- <string name="sdcard" translatable="false">/sdcard</string> -->
 
 </resources>
