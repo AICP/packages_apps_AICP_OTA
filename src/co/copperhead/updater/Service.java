@@ -1,7 +1,10 @@
 package co.copperhead.updater;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.os.SystemProperties;
 import android.util.Log;
 
@@ -103,7 +106,11 @@ public class Service extends IntentService {
     protected void onHandleIntent(Intent intent) {
         Log.d(TAG, "onHandleIntent");
         String device = SystemProperties.get("ro.product.device");
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
         try {
+            wakeLock.acquire();
+
             InputStream input = fetchData(device);
             BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
 
@@ -140,6 +147,7 @@ public class Service extends IntentService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
+            wakeLock.release();
             TriggerUpdateReceiver.completeWakefulIntent(intent);
         }
     }
