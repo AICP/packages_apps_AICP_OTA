@@ -112,27 +112,32 @@ public class Service extends IntentService {
             wakeLock.acquire();
 
             InputStream input = fetchData(device);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
-
-            String[] metadata = reader.readLine().split(" ");
+            final BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
+            final String[] metadata = reader.readLine().split(" ");
             reader.close();
 
-            String version = metadata[0];
-            long buildDate = Long.parseLong(metadata[1]);
-            long installedBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
+            final String targetIncremental = metadata[0];
+            final long buildDate = Long.parseLong(metadata[1]);
+            final long installedBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
             if (buildDate <= installedBuildDate) {
                 Log.v(TAG, "buildDate: " + buildDate + " lower than installedBuildDate: " + installedBuildDate);
                 return;
             }
 
-            String installedIncremental = SystemProperties.get("ro.build.version.incremental");
-
             if (UPDATE_PATH.exists()) {
                 UPDATE_PATH.delete();
             }
-            OutputStream output = new FileOutputStream(UPDATE_PATH);
+            final OutputStream output = new FileOutputStream(UPDATE_PATH);
 
-            input = fetchData(device + "-ota_update-" + version + ".zip");
+            try {
+                Log.d(TAG, "fetch incremental");
+                final String sourceIncremental = SystemProperties.get("ro.build.version.incremental");
+                input = fetchData(device + "-incremental-" + sourceIncremental + "-" + targetIncremental + ".zip");
+            } catch (IOException e) {
+                Log.d(TAG, "incremental not found, fetch full update");
+                input = fetchData(device + "-ota_update-" + targetIncremental + ".zip");
+            }
+
             int n;
             byte[] buffer = new byte[8192];
             while ((n = input.read(buffer)) != -1) {
