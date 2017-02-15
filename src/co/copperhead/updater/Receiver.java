@@ -14,7 +14,7 @@ import co.copperhead.updater.Service;
 public class Receiver extends WakefulBroadcastReceiver {
     static final String TAG = "Receiver";
     static final int JOB_ID = 1;
-    static final long INTERVAL_MILLIS = 15 * 60 * 1000;
+    static final long INTERVAL_MILLIS = 60 * 60 * 1000;
 
     @Override
     public void onReceive(Context context, Intent intent) {
