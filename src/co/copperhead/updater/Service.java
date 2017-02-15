@@ -27,10 +27,10 @@ import java.util.zip.ZipFile;
 import co.copperhead.updater.Receiver;
 
 public class Service extends IntentService {
-    static final String TAG = "Service";
-    static final int CONNECT_TIMEOUT = 60000;
-    static final int READ_TIMEOUT = 60000;
-    static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
+    private static final String TAG = "Service";
+    private static final int CONNECT_TIMEOUT = 60000;
+    private static final int READ_TIMEOUT = 60000;
+    private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
 
     public Service() {
         super(TAG);

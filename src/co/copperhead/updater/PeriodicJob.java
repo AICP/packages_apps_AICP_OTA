@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 
 public class PeriodicJob extends JobService {
-    static final String TAG = "PeriodicJob";
+    private static final String TAG = "PeriodicJob";
 
     @Override
     public boolean onStartJob(JobParameters params) {
