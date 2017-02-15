@@ -14,6 +14,7 @@ public class BootReceiver extends BroadcastReceiver {
     private static final String TAG = "BootReceiver";
     private static final int JOB_ID = 1;
     private static final long INTERVAL_MILLIS = 60 * 60 * 1000;
+    private static final int NETWORK_TYPE = JobInfo.NETWORK_TYPE_ANY;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -23,7 +24,7 @@ public class BootReceiver extends BroadcastReceiver {
             JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
             JobInfo jobInfo = scheduler.getPendingJob(JOB_ID);
             if (jobInfo != null &&
-                    jobInfo.getNetworkType() == JobInfo.NETWORK_TYPE_ANY &&
+                    jobInfo.getNetworkType() == NETWORK_TYPE &&
                     jobInfo.isPersisted() &&
                     jobInfo.getIntervalMillis() == INTERVAL_MILLIS) {
                 Log.d(TAG, "Job already registered");
@@ -31,7 +32,7 @@ public class BootReceiver extends BroadcastReceiver {
             }
             ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
             jobInfo = new JobInfo.Builder(JOB_ID, serviceName)
-                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                .setRequiredNetworkType(NETWORK_TYPE)
                 .setPersisted(true)
                 .setPeriodic(INTERVAL_MILLIS)
                 .build();
