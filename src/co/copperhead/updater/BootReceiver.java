@@ -2,17 +2,16 @@ package co.copperhead.updater;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
-import android.support.v4.content.WakefulBroadcastReceiver;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
 import co.copperhead.updater.PeriodicJob;
-import co.copperhead.updater.Service;
 
-public class Receiver extends WakefulBroadcastReceiver {
-    private static final String TAG = "Receiver";
+public class BootReceiver extends BroadcastReceiver {
+    private static final String TAG = "BootReceiver";
     private static final int JOB_ID = 1;
     private static final long INTERVAL_MILLIS = 60 * 60 * 1000;
 
@@ -42,9 +41,6 @@ public class Receiver extends WakefulBroadcastReceiver {
             } else {
                 Log.d(TAG, "Job schedule failed");
             }
-        } else if (context.getResources().getString(R.string.trigger_update).equals(action)) {
-            Log.d(TAG, "startWakefulService");
-            startWakefulService(context, new Intent(context, Service.class));
         } else {
             Log.d(TAG, "unhandled action: " + action);
         }

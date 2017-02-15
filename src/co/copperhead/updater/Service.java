@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import co.copperhead.updater.Receiver;
+import co.copperhead.updater.TriggerUpdateReceiver;
 
 public class Service extends IntentService {
     private static final String TAG = "Service";
@@ -140,7 +140,7 @@ public class Service extends IntentService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
-            Receiver.completeWakefulIntent(intent);
+            TriggerUpdateReceiver.completeWakefulIntent(intent);
         }
     }
 }
