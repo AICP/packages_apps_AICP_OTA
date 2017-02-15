@@ -34,6 +34,7 @@ public class Service extends IntentService {
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
+    private boolean running = false;
 
     public Service() {
         super(TAG);
@@ -47,7 +48,7 @@ public class Service extends IntentService {
         return urlConnection.getInputStream();
     }
 
-    static private void onDownloadFinished() throws IOException {
+    private void onDownloadFinished() throws IOException {
         try {
             android.os.RecoverySystem.verifyPackage(UPDATE_PATH, null, null);
         } catch (GeneralSecurityException e) {
@@ -96,6 +97,7 @@ public class Service extends IntentService {
                     Log.v(TAG, "onPayloadApplicationComplete: " + errorCode);
                 }
                 UPDATE_PATH.delete();
+                running = false;
             }
         });
 
@@ -105,11 +107,19 @@ public class Service extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.d(TAG, "onHandleIntent");
-        String device = SystemProperties.get("ro.product.device");
+
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
         try {
             wakeLock.acquire();
+
+            if (running) {
+                Log.d(TAG, "updating already, returning early");
+                return;
+            }
+            running = true;
+
+            String device = SystemProperties.get("ro.product.device");
 
             InputStream input = fetchData(device);
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
@@ -150,6 +160,7 @@ public class Service extends IntentService {
 
             onDownloadFinished();
         } catch (IOException e) {
+            running = false;
             throw new RuntimeException(e);
         } finally {
             wakeLock.release();
