@@ -148,7 +148,7 @@ public class Service extends IntentService {
             final long buildDate = Long.parseLong(metadata[1]);
             final long installedBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
             if (buildDate <= installedBuildDate) {
-                Log.v(TAG, "buildDate: " + buildDate + " lower than installedBuildDate: " + installedBuildDate);
+                Log.v(TAG, "buildDate: " + buildDate + " not higher than installedBuildDate: " + installedBuildDate);
                 return;
             }
 
