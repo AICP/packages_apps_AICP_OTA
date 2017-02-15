@@ -48,21 +48,40 @@ public class Service extends IntentService {
         return urlConnection.getInputStream();
     }
 
-    private void onDownloadFinished() throws IOException {
+    private void onDownloadFinished(long buildDate) throws IOException {
         try {
             android.os.RecoverySystem.verifyPackage(UPDATE_PATH, null, null);
         } catch (GeneralSecurityException e) {
             throw new RuntimeException(e);
         }
 
+        ZipFile zipFile = new ZipFile(UPDATE_PATH);
+
+        ZipEntry entry = zipFile.getEntry("META-INF/com/android/metadata");
+        if (entry == null) {
+            throw new RuntimeException("missing file (!!!)");
+        }
+        BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
+        String line;
+        long timestamp = 0;
+        while ((line = reader.readLine()) != null) {
+            String[] pair = line.split("=");
+            if ("post-timestamp".equals(pair[0])) {
+                timestamp = Long.parseLong(pair[1]);
+                break;
+            }
+        }
+        if (timestamp != buildDate) {
+            throw new RuntimeException("update older than the server claimed (!!!)");
+        }
+
         List<String> lines = new ArrayList<String>();
         long payloadOffset = 0;
 
-        ZipFile zipFile = new ZipFile(UPDATE_PATH);
         Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
         long offset = 0;
         while (zipEntries.hasMoreElements()) {
-            ZipEntry entry = (ZipEntry) zipEntries.nextElement();
+            entry = (ZipEntry) zipEntries.nextElement();
             long fileSize = 0;
             long extra = entry.getExtra() == null ? 0 : entry.getExtra().length;
             final long zipHeaderLength = 30;
@@ -72,8 +91,7 @@ public class Service extends IntentService {
                 if ("payload.bin".equals(entry.getName())) {
                     payloadOffset = offset;
                 } else if ("payload_properties.txt".equals(entry.getName())) {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
-                    String line;
+                    reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
                     while ((line = reader.readLine()) != null) {
                         lines.add(line);
                     }
@@ -158,7 +176,7 @@ public class Service extends IntentService {
 
             UPDATE_PATH.setReadable(true, false);
 
-            onDownloadFinished();
+            onDownloadFinished(buildDate);
         } catch (IOException e) {
             running = false;
             throw new RuntimeException(e);
