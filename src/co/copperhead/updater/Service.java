@@ -113,9 +113,9 @@ public class Service extends IntentService {
                     Log.v(TAG, "onPayloadApplicationComplete success");
                 } else {
                     Log.v(TAG, "onPayloadApplicationComplete: " + errorCode);
+                    running = false;
                 }
                 UPDATE_PATH.delete();
-                running = false;
             }
         });
 
