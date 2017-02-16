@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import co.copperhead.updater.PeriodicJob;
 import co.copperhead.updater.TriggerUpdateReceiver;
 
 public class Service extends IntentService {
@@ -111,6 +112,7 @@ public class Service extends IntentService {
             public void onPayloadApplicationComplete(int errorCode) {
                 if (errorCode == ErrorCodeConstants.SUCCESS) {
                     Log.v(TAG, "onPayloadApplicationComplete success");
+                    PeriodicJob.cancel(Service.this);
                 } else {
                     Log.v(TAG, "onPayloadApplicationComplete: " + errorCode);
                     running = false;

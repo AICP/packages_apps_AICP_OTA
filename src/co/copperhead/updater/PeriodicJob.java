@@ -39,6 +39,11 @@ public class PeriodicJob extends JobService {
         }
     }
 
+    static void cancel(Context context) {
+        JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        scheduler.cancel(JOB_ID);
+    }
+
     @Override
     public boolean onStartJob(JobParameters params) {
         Log.d(TAG, "onStartJob");
