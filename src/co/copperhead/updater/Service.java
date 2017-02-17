@@ -38,6 +38,7 @@ public class Service extends IntentService {
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
+
     private boolean running = false;
 
     public Service() {
@@ -45,8 +46,8 @@ public class Service extends IntentService {
     }
 
     private InputStream fetchData(String path) throws IOException {
-        URL url = new URL(getString(R.string.url) + path);
-        URLConnection urlConnection = url.openConnection();
+        final URL url = new URL(getString(R.string.url) + path);
+        final URLConnection urlConnection = url.openConnection();
         urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
         return urlConnection.getInputStream();
@@ -59,7 +60,7 @@ public class Service extends IntentService {
             throw new RuntimeException(e);
         }
 
-        ZipFile zipFile = new ZipFile(UPDATE_PATH);
+        final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
         ZipEntry entry = zipFile.getEntry("META-INF/com/android/metadata");
         if (entry == null) {
@@ -79,10 +80,10 @@ public class Service extends IntentService {
             throw new RuntimeException("update older than the server claimed (!!!)");
         }
 
-        List<String> lines = new ArrayList<String>();
+        final List<String> lines = new ArrayList<String>();
         long payloadOffset = 0;
 
-        Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
+        final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
         long offset = 0;
         while (zipEntries.hasMoreElements()) {
             entry = (ZipEntry) zipEntries.nextElement();
@@ -104,7 +105,7 @@ public class Service extends IntentService {
             offset += fileSize;
         }
 
-        UpdateEngine engine = new UpdateEngine();
+        final UpdateEngine engine = new UpdateEngine();
         engine.bind(new UpdateEngineCallback() {
             @Override
             public void onStatusUpdate(int status, float percent) {
@@ -142,8 +143,8 @@ public class Service extends IntentService {
     protected void onHandleIntent(Intent intent) {
         Log.d(TAG, "onHandleIntent");
 
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+        final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        final WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
         try {
             wakeLock.acquire();
 
@@ -153,7 +154,7 @@ public class Service extends IntentService {
             }
             running = true;
 
-            String device = SystemProperties.get("ro.product.device");
+            final String device = SystemProperties.get("ro.product.device");
 
             InputStream input = fetchData(device);
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
