@@ -1,6 +1,8 @@
 package co.copperhead.updater;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
@@ -32,6 +34,7 @@ import co.copperhead.updater.TriggerUpdateReceiver;
 
 public class Service extends IntentService {
     private static final String TAG = "Service";
+    private static final int NOTIFICATION_ID = 1;
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
@@ -113,6 +116,7 @@ public class Service extends IntentService {
                 if (errorCode == ErrorCodeConstants.SUCCESS) {
                     Log.v(TAG, "onPayloadApplicationComplete success");
                     PeriodicJob.cancel(Service.this);
+                    annoyUser();
                 } else {
                     Log.v(TAG, "onPayloadApplicationComplete: " + errorCode);
                     running = false;
@@ -122,6 +126,16 @@ public class Service extends IntentService {
         });
 
         engine.applyPayload("file://" + UPDATE_PATH, payloadOffset, 0, lines.toArray(new String[lines.size()]));
+    }
+
+    private void annoyUser() {
+        final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this)
+            .setContentTitle(getString(R.string.notification_title))
+            .setContentText(getString(R.string.notification_text))
+            .setSmallIcon(R.drawable.ic_update_white_24dp)
+            .setOngoing(true)
+            .build());
     }
 
     @Override
