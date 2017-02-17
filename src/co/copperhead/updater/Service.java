@@ -3,6 +3,7 @@ package co.copperhead.updater;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
@@ -35,9 +36,11 @@ import co.copperhead.updater.TriggerUpdateReceiver;
 public class Service extends IntentService {
     private static final String TAG = "Service";
     private static final int NOTIFICATION_ID = 1;
+    private static final int PENDING_REBOOT_ID = 1;
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
+    private static final String REBOOT = "co.copperhead.intent.action.REBOOT";
 
     private boolean running = false;
 
@@ -130,12 +133,14 @@ public class Service extends IntentService {
     }
 
     private void annoyUser() {
+        final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(REBOOT), 0);
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this)
             .setContentTitle(getString(R.string.notification_title))
             .setContentText(getString(R.string.notification_text))
             .setSmallIcon(R.drawable.ic_update_white_24dp)
             .setOngoing(true)
+            .addAction(R.drawable.ic_restart, "Reboot", reboot)
             .build());
     }
 
