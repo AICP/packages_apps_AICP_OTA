@@ -160,8 +160,9 @@ public class Service extends IntentService {
             running = true;
 
             final String device = SystemProperties.get("ro.product.device");
+            final String channel = SystemProperties.get("sys.update.channel", "stable");
 
-            InputStream input = fetchData(device);
+            InputStream input = fetchData(device + "-" + channel);
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
             final String[] metadata = reader.readLine().split(" ");
             reader.close();
