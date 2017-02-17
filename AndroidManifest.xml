@@ -24,12 +24,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".TriggerUpdateReceiver" android:exported="false" >
-            <intent-filter>
-                <action android:name="co.copperhead.intent.action.TRIGGER_UPDATE" />
-            </intent-filter>
-        </receiver>
-
+        <receiver android:name=".TriggerUpdateReceiver" />
         <receiver android:name=".RebootReceiver" />
     </application>
 </manifest>

@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import co.copperhead.updater.TriggerUpdateReceiver;
+
 public class PeriodicJob extends JobService {
     private static final String TAG = "PeriodicJob";
     private static final int JOB_ID = 1;
@@ -47,7 +49,7 @@ public class PeriodicJob extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         Log.d(TAG, "onStartJob");
-        sendBroadcast(new Intent(getString(R.string.trigger_update)));
+        sendBroadcast(new Intent(this, TriggerUpdateReceiver.class));
         return false;
     }
 
