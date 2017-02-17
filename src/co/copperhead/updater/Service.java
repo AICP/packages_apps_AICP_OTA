@@ -201,7 +201,7 @@ public class Service extends IntentService {
             onDownloadFinished(buildDate);
         } catch (IOException e) {
             running = false;
-            throw new RuntimeException(e);
+            Log.e(TAG, "IOException", e);
         } finally {
             wakeLock.release();
             TriggerUpdateReceiver.completeWakefulIntent(intent);
