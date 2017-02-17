@@ -30,10 +30,6 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".RebootReceiver" android:exported="false" >
-            <intent-filter>
-                <action android:name="co.copperhead.intent.action.REBOOT" />
-            </intent-filter>
-        </receiver>
+        <receiver android:name=".RebootReceiver" />
     </application>
 </manifest>

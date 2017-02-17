@@ -31,6 +31,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import co.copperhead.updater.PeriodicJob;
+import co.copperhead.updater.RebootReceiver;
 import co.copperhead.updater.TriggerUpdateReceiver;
 
 public class Service extends IntentService {
@@ -40,7 +41,6 @@ public class Service extends IntentService {
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
-    private static final String REBOOT = "co.copperhead.intent.action.REBOOT";
 
     private boolean running = false;
 
@@ -133,7 +133,7 @@ public class Service extends IntentService {
     }
 
     private void annoyUser() {
-        final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(REBOOT), 0);
+        final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this)
             .setContentTitle(getString(R.string.notification_title))
