@@ -56,18 +56,14 @@ public class Service extends IntentService {
         return urlConnection.getInputStream();
     }
 
-    private void onDownloadFinished(long buildDate) throws IOException {
-        try {
-            android.os.RecoverySystem.verifyPackage(UPDATE_PATH, null, null);
-        } catch (GeneralSecurityException e) {
-            throw new RuntimeException(e);
-        }
+    private void onDownloadFinished(long buildDate) throws IOException, GeneralSecurityException {
+        android.os.RecoverySystem.verifyPackage(UPDATE_PATH, null, null);
 
         final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
         ZipEntry entry = zipFile.getEntry("META-INF/com/android/metadata");
         if (entry == null) {
-            throw new RuntimeException("missing file (!!!)");
+            throw new GeneralSecurityException("missing metadata file");
         }
         BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
         String line;
@@ -80,7 +76,7 @@ public class Service extends IntentService {
             }
         }
         if (timestamp != buildDate) {
-            throw new RuntimeException("update older than the server claimed (!!!)");
+            throw new GeneralSecurityException("update older than the server claimed");
         }
 
         final List<String> lines = new ArrayList<String>();
@@ -200,9 +196,9 @@ public class Service extends IntentService {
             UPDATE_PATH.setReadable(true, false);
 
             onDownloadFinished(buildDate);
-        } catch (IOException e) {
+        } catch (IOException | GeneralSecurityException e) {
             running = false;
-            Log.e(TAG, "IOException", e);
+            Log.e(TAG, "failed to download and install update", e);
         } finally {
             wakeLock.release();
             TriggerUpdateReceiver.completeWakefulIntent(intent);
