@@ -42,7 +42,7 @@ public class Service extends IntentService {
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
 
-    private boolean running = false;
+    private boolean updating = false;
 
     public Service() {
         super(TAG);
@@ -119,7 +119,7 @@ public class Service extends IntentService {
                     annoyUser();
                 } else {
                     Log.v(TAG, "onPayloadApplicationComplete: " + errorCode);
-                    running = false;
+                    updating = false;
                 }
                 UPDATE_PATH.delete();
             }
@@ -149,11 +149,11 @@ public class Service extends IntentService {
         try {
             wakeLock.acquire();
 
-            if (running) {
+            if (updating) {
                 Log.d(TAG, "updating already, returning early");
                 return;
             }
-            running = true;
+            updating = true;
 
             final String device = SystemProperties.get("ro.product.device");
             final String channel = SystemProperties.get("sys.update.channel", "stable");
@@ -197,7 +197,7 @@ public class Service extends IntentService {
 
             onDownloadFinished(buildDate);
         } catch (IOException | GeneralSecurityException e) {
-            running = false;
+            updating = false;
             Log.e(TAG, "failed to download and install update", e);
         } finally {
             wakeLock.release();
