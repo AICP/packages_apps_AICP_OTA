@@ -15,7 +15,6 @@ public class BootReceiver extends BroadcastReceiver {
         final String action = intent.getAction();
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(action)) {
-            Log.d(TAG, "schedule PeriodicJob");
             PeriodicJob.schedule(context);
         } else {
             Log.d(TAG, "unhandled action: " + action);
