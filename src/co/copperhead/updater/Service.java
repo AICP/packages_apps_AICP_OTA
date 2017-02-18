@@ -61,14 +61,13 @@ public class Service extends IntentService {
 
         final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
-        ZipEntry entry = zipFile.getEntry("META-INF/com/android/metadata");
-        if (entry == null) {
+        final ZipEntry metadata = zipFile.getEntry("META-INF/com/android/metadata");
+        if (metadata == null) {
             throw new GeneralSecurityException("missing metadata file");
         }
-        BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
-        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
         long timestamp = 0;
-        while ((line = reader.readLine()) != null) {
+        for (String line; (line = reader.readLine()) != null; ) {
             String[] pair = line.split("=");
             if ("post-timestamp".equals(pair[0])) {
                 timestamp = Long.parseLong(pair[1]);
@@ -85,7 +84,7 @@ public class Service extends IntentService {
         final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
         long offset = 0;
         while (zipEntries.hasMoreElements()) {
-            entry = (ZipEntry) zipEntries.nextElement();
+            final ZipEntry entry = (ZipEntry) zipEntries.nextElement();
             final long extra = entry.getExtra() == null ? 0 : entry.getExtra().length;
             final long zipHeaderLength = 30;
             offset += zipHeaderLength + entry.getName().length() + extra;
@@ -94,7 +93,7 @@ public class Service extends IntentService {
                     payloadOffset = offset;
                 } else if ("payload_properties.txt".equals(entry.getName())) {
                     reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
-                    while ((line = reader.readLine()) != null) {
+                    for (String line; (line = reader.readLine()) != null; ) {
                         lines.add(line);
                     }
                 }
