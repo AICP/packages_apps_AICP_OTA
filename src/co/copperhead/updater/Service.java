@@ -56,7 +56,7 @@ public class Service extends IntentService {
         return urlConnection.getInputStream();
     }
 
-    private void onDownloadFinished(long buildDate) throws IOException, GeneralSecurityException {
+    private void onDownloadFinished(long targetBuildDate) throws IOException, GeneralSecurityException {
         android.os.RecoverySystem.verifyPackage(UPDATE_PATH, null, null);
 
         final ZipFile zipFile = new ZipFile(UPDATE_PATH);
@@ -74,7 +74,7 @@ public class Service extends IntentService {
                 break;
             }
         }
-        if (timestamp != buildDate) {
+        if (timestamp != targetBuildDate) {
             throw new GeneralSecurityException("update older than the server claimed");
         }
 
@@ -161,10 +161,10 @@ public class Service extends IntentService {
             reader.close();
 
             final String targetIncremental = metadata[0];
-            final long buildDate = Long.parseLong(metadata[1]);
-            final long installedBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
-            if (buildDate <= installedBuildDate) {
-                Log.v(TAG, "buildDate: " + buildDate + " not higher than installedBuildDate: " + installedBuildDate);
+            final long targetBuildDate = Long.parseLong(metadata[1]);
+            final long sourceBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
+            if (targetBuildDate <= sourceBuildDate) {
+                Log.v(TAG, "targetBuildDate: " + targetBuildDate + " not higher than sourceBuildDate: " + sourceBuildDate);
                 return;
             }
 
@@ -192,7 +192,7 @@ public class Service extends IntentService {
 
             UPDATE_PATH.setReadable(true, false);
 
-            onDownloadFinished(buildDate);
+            onDownloadFinished(targetBuildDate);
         } catch (IOException | GeneralSecurityException e) {
             updating = false;
             Log.e(TAG, "failed to download and install update", e);
