@@ -159,7 +159,7 @@ public class Service extends IntentService {
             final String channel = SystemProperties.get("sys.update.channel", "stable");
 
             InputStream input = fetchData(device + "-" + channel);
-            final BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
+            final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata = reader.readLine().split(" ");
             reader.close();
 
