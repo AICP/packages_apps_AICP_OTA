@@ -86,12 +86,10 @@ public class Service extends IntentService {
         long offset = 0;
         while (zipEntries.hasMoreElements()) {
             entry = (ZipEntry) zipEntries.nextElement();
-            long fileSize = 0;
-            long extra = entry.getExtra() == null ? 0 : entry.getExtra().length;
+            final long extra = entry.getExtra() == null ? 0 : entry.getExtra().length;
             final long zipHeaderLength = 30;
             offset += zipHeaderLength + entry.getName().length() + extra;
             if (!entry.isDirectory()) {
-                fileSize = entry.getCompressedSize();
                 if ("payload.bin".equals(entry.getName())) {
                     payloadOffset = offset;
                 } else if ("payload_properties.txt".equals(entry.getName())) {
@@ -100,8 +98,8 @@ public class Service extends IntentService {
                         lines.add(line);
                     }
                 }
+                offset += entry.getCompressedSize();
             }
-            offset += fileSize;
         }
 
         final UpdateEngine engine = new UpdateEngine();
