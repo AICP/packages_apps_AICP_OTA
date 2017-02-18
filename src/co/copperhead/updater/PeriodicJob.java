@@ -18,8 +18,8 @@ public class PeriodicJob extends JobService {
     private static final long INTERVAL_MILLIS = 60 * 60 * 1000;
 
     static void schedule(Context context) {
-        JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        JobInfo jobInfo = scheduler.getPendingJob(JOB_ID);
+        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        final JobInfo jobInfo = scheduler.getPendingJob(JOB_ID);
         if (jobInfo != null &&
                 jobInfo.getNetworkType() == NETWORK_TYPE &&
                 jobInfo.isPersisted() &&
@@ -27,13 +27,12 @@ public class PeriodicJob extends JobService {
             Log.d(TAG, "Job already registered");
             return;
         }
-        ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
-        jobInfo = new JobInfo.Builder(JOB_ID, serviceName)
+        final ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
+        final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID, serviceName)
             .setRequiredNetworkType(NETWORK_TYPE)
             .setPersisted(true)
             .setPeriodic(INTERVAL_MILLIS)
-            .build();
-        int result = scheduler.schedule(jobInfo);
+            .build());
         if (result == JobScheduler.RESULT_SUCCESS) {
             Log.d(TAG, "Job schedule success");
         } else {
@@ -42,7 +41,7 @@ public class PeriodicJob extends JobService {
     }
 
     static void cancel(Context context) {
-        JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         scheduler.cancel(JOB_ID);
     }
 
