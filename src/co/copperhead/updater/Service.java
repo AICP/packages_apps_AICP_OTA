@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.RecoverySystem;
@@ -13,6 +14,7 @@ import android.os.SystemProperties;
 import android.os.UpdateEngine;
 import android.os.UpdateEngine.ErrorCodeConstants;
 import android.os.UpdateEngineCallback;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -42,6 +44,8 @@ public class Service extends IntentService {
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
+    private static final String PREFERENCE_DOWNLOADED = "downloaded";
+    private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
 
     private boolean updating = false;
 
@@ -49,11 +53,14 @@ public class Service extends IntentService {
         super(TAG);
     }
 
-    private InputStream fetchData(String path) throws IOException {
+    private InputStream fetchData(String path, long downloaded) throws IOException {
         final URL url = new URL(getString(R.string.url) + path);
         final URLConnection urlConnection = url.openConnection();
         urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
+        if (downloaded != 0) {
+            urlConnection.setRequestProperty("Range", "bytes=" + downloaded + "-");
+        }
         return urlConnection.getInputStream();
     }
 
@@ -167,7 +174,7 @@ public class Service extends IntentService {
             final String device = SystemProperties.get("ro.product.device");
             final String channel = SystemProperties.get("sys.update.channel", "stable");
 
-            InputStream input = fetchData(device + "-" + channel);
+            InputStream input = fetchData(device + "-" + channel, 0);
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata = reader.readLine().split(" ");
             reader.close();
@@ -180,27 +187,56 @@ public class Service extends IntentService {
                 return;
             }
 
-            final OutputStream output = new FileOutputStream(UPDATE_PATH);
+            final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-            try {
-                Log.d(TAG, "fetch incremental");
-                final String sourceIncremental = SystemProperties.get("ro.build.version.incremental");
-                input = fetchData(device + "-incremental-" + sourceIncremental + "-" + targetIncremental + ".zip");
-            } catch (IOException e) {
-                Log.d(TAG, "incremental not found, fetch full update");
-                input = fetchData(device + "-ota_update-" + targetIncremental + ".zip");
+            long downloaded = preferences.getLong(PREFERENCE_DOWNLOADED, 0);
+            String downloadFile = preferences.getString(PREFERENCE_DOWNLOAD_FILE, null);
+
+            final String sourceIncremental = SystemProperties.get("ro.build.version.incremental");
+            final String incrementalUpdate = device + "-incremental-" + sourceIncremental + "-" + targetIncremental + ".zip";
+
+            final String fullUpdate = device + "-ota_update-" + targetIncremental + ".zip";
+
+            if (incrementalUpdate.equals(downloadFile) || fullUpdate.equals(downloadFile)) {
+                Log.d(TAG, "resume fetch of + " + downloadFile + " from " + downloaded + " bytes");
+                input = fetchData(downloadFile, downloaded);
+            } else {
+                try {
+                    Log.d(TAG, "fetch incremental " + incrementalUpdate);
+                    downloadFile = incrementalUpdate;
+                    input = fetchData(downloadFile, 0);
+                } catch (IOException e) {
+                    Log.d(TAG, "incremental not found, fetch full update " + fullUpdate);
+                    downloadFile = fullUpdate;
+                    input = fetchData(downloadFile, 0);
+                }
+                downloaded = 0;
             }
 
+            final OutputStream output = new FileOutputStream(UPDATE_PATH, downloaded != 0);
+            preferences.edit()
+                .putLong(PREFERENCE_DOWNLOADED, downloaded)
+                .putString(PREFERENCE_DOWNLOAD_FILE, downloadFile)
+                .commit();
+
             int n;
-            int total = 0;
             long last = System.nanoTime();
             byte[] buffer = new byte[8192];
-            while ((n = input.read(buffer)) != -1) {
+            while (true) {
+                try {
+                    if ((n = input.read(buffer)) == -1) {
+                        break;
+                    }
+                } catch (IOException e) {
+                    Log.d(TAG, "failed to read data, saving state of " + downloaded + " downloaded bytes");
+                    preferences.edit().putLong(PREFERENCE_DOWNLOADED, downloaded).commit();
+                    throw e;
+                }
                 output.write(buffer, 0, n);
-                total += n;
+                downloaded += n;
                 final long now = System.nanoTime();
                 if (now - last > 1000 * 1000 * 1000) {
-                    Log.d(TAG, "downloaded " + total + " bytes");
+                    Log.d(TAG, "downloaded " + downloaded + " bytes");
                     last = now;
                 }
             }
