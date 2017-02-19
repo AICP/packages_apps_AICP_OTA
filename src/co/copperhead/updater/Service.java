@@ -183,9 +183,17 @@ public class Service extends IntentService {
             }
 
             int n;
+            int total = 0;
+            long last = System.nanoTime();
             byte[] buffer = new byte[8192];
             while ((n = input.read(buffer)) != -1) {
                 output.write(buffer, 0, n);
+                total += n;
+                final long now = System.nanoTime();
+                if (now - last > 1000 * 1000 * 1000) {
+                    Log.d(TAG, "downloaded " + total + " bytes");
+                    last = now;
+                }
             }
             output.close();
             input.close();
