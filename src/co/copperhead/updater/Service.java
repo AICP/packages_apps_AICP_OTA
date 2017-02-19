@@ -57,6 +57,31 @@ public class Service extends IntentService {
         return urlConnection.getInputStream();
     }
 
+    private void applyUpdate(final long payloadOffset, final String[] headerKeyValuePairs) {
+        final UpdateEngine engine = new UpdateEngine();
+        engine.bind(new UpdateEngineCallback() {
+            @Override
+            public void onStatusUpdate(int status, float percent) {
+                Log.d(TAG, "onStatusUpdate: " + status + ", " + percent);
+            }
+
+            @Override
+            public void onPayloadApplicationComplete(int errorCode) {
+                if (errorCode == ErrorCodeConstants.SUCCESS) {
+                    Log.d(TAG, "onPayloadApplicationComplete success");
+                    PeriodicJob.cancel(Service.this);
+                    annoyUser();
+                } else {
+                    Log.d(TAG, "onPayloadApplicationComplete: " + errorCode);
+                    updating = false;
+                }
+                UPDATE_PATH.delete();
+            }
+        });
+        UPDATE_PATH.setReadable(true, false);
+        engine.applyPayload("file://" + UPDATE_PATH, payloadOffset, 0, headerKeyValuePairs);
+    }
+
     private void onDownloadFinished(long targetBuildDate) throws IOException, GeneralSecurityException {
         Log.d(TAG, "download successful");
 
@@ -109,29 +134,7 @@ public class Service extends IntentService {
             }
         }
 
-        final UpdateEngine engine = new UpdateEngine();
-        engine.bind(new UpdateEngineCallback() {
-            @Override
-            public void onStatusUpdate(int status, float percent) {
-                Log.d(TAG, "onStatusUpdate: " + status + ", " + percent);
-            }
-
-            @Override
-            public void onPayloadApplicationComplete(int errorCode) {
-                if (errorCode == ErrorCodeConstants.SUCCESS) {
-                    Log.d(TAG, "onPayloadApplicationComplete success");
-                    PeriodicJob.cancel(Service.this);
-                    annoyUser();
-                } else {
-                    Log.d(TAG, "onPayloadApplicationComplete: " + errorCode);
-                    updating = false;
-                }
-                UPDATE_PATH.delete();
-            }
-        });
-
-        UPDATE_PATH.setReadable(true, false);
-        engine.applyPayload("file://" + UPDATE_PATH, payloadOffset, 0, lines.toArray(new String[lines.size()]));
+        applyUpdate(payloadOffset, lines.toArray(new String[lines.size()]));
     }
 
     private void annoyUser() {
