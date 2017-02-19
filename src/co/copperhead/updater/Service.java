@@ -130,6 +130,7 @@ public class Service extends IntentService {
             }
         });
 
+        UPDATE_PATH.setReadable(true, false);
         engine.applyPayload("file://" + UPDATE_PATH, payloadOffset, 0, lines.toArray(new String[lines.size()]));
     }
 
@@ -205,8 +206,6 @@ public class Service extends IntentService {
             }
             output.close();
             input.close();
-
-            UPDATE_PATH.setReadable(true, false);
 
             onDownloadFinished(targetBuildDate);
         } catch (IOException | GeneralSecurityException e) {
