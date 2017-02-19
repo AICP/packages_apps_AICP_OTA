@@ -180,9 +180,6 @@ public class Service extends IntentService {
                 return;
             }
 
-            if (UPDATE_PATH.exists()) {
-                UPDATE_PATH.delete();
-            }
             final OutputStream output = new FileOutputStream(UPDATE_PATH);
 
             try {
