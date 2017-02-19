@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import android.os.RecoverySystem;
 import android.os.UpdateEngine;
 import android.os.UpdateEngine.ErrorCodeConstants;
 import android.os.UpdateEngineCallback;
@@ -57,7 +58,14 @@ public class Service extends IntentService {
     }
 
     private void onDownloadFinished(long targetBuildDate) throws IOException, GeneralSecurityException {
-        android.os.RecoverySystem.verifyPackage(UPDATE_PATH, null, null);
+        Log.d(TAG, "download successful");
+
+        RecoverySystem.verifyPackage(UPDATE_PATH, new RecoverySystem.ProgressListener() {
+            @Override
+            public void onProgress(int progress) {
+                Log.d(TAG, "verifyPackage: " + progress + "%");
+            }
+        }, null);
 
         final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
@@ -105,17 +113,17 @@ public class Service extends IntentService {
         engine.bind(new UpdateEngineCallback() {
             @Override
             public void onStatusUpdate(int status, float percent) {
-                Log.v(TAG, "onStatusUpdate: " + status + ", " + percent);
+                Log.d(TAG, "onStatusUpdate: " + status + ", " + percent);
             }
 
             @Override
             public void onPayloadApplicationComplete(int errorCode) {
                 if (errorCode == ErrorCodeConstants.SUCCESS) {
-                    Log.v(TAG, "onPayloadApplicationComplete success");
+                    Log.d(TAG, "onPayloadApplicationComplete success");
                     PeriodicJob.cancel(Service.this);
                     annoyUser();
                 } else {
-                    Log.v(TAG, "onPayloadApplicationComplete: " + errorCode);
+                    Log.d(TAG, "onPayloadApplicationComplete: " + errorCode);
                     updating = false;
                 }
                 UPDATE_PATH.delete();
@@ -164,7 +172,7 @@ public class Service extends IntentService {
             final long targetBuildDate = Long.parseLong(metadata[1]);
             final long sourceBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
             if (targetBuildDate <= sourceBuildDate) {
-                Log.v(TAG, "targetBuildDate: " + targetBuildDate + " not higher than sourceBuildDate: " + sourceBuildDate);
+                Log.d(TAG, "targetBuildDate: " + targetBuildDate + " not higher than sourceBuildDate: " + sourceBuildDate);
                 return;
             }
 
