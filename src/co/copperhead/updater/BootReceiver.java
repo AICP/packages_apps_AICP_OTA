@@ -8,16 +8,8 @@ import android.util.Log;
 import co.copperhead.updater.PeriodicJob;
 
 public class BootReceiver extends BroadcastReceiver {
-    private static final String TAG = "BootReceiver";
-
     @Override
     public void onReceive(Context context, Intent intent) {
-        final String action = intent.getAction();
-
-        if (Intent.ACTION_BOOT_COMPLETED.equals(action)) {
-            PeriodicJob.schedule(context);
-        } else {
-            Log.d(TAG, "unhandled action: " + action);
-        }
+        PeriodicJob.schedule(context);
     }
 }
