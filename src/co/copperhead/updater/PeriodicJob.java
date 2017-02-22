@@ -7,6 +7,8 @@ import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import co.copperhead.updater.TriggerUpdateReceiver;
@@ -14,14 +16,19 @@ import co.copperhead.updater.TriggerUpdateReceiver;
 public class PeriodicJob extends JobService {
     private static final String TAG = "PeriodicJob";
     private static final int JOB_ID = 1;
-    private static final int NETWORK_TYPE = JobInfo.NETWORK_TYPE_ANY;
+    private static final String PREFERENCE_NETWORK_TYPE = "network_type";
+    private static final int DEFAULT_NETWORK_TYPE = JobInfo.NETWORK_TYPE_ANY;
     private static final long INTERVAL_MILLIS = 60 * 60 * 1000;
 
     static void schedule(Context context) {
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        final int networkType = preferences.getInt(PREFERENCE_NETWORK_TYPE, DEFAULT_NETWORK_TYPE);
+        Log.d(TAG, "networkType: " + networkType);
+
         final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         final JobInfo jobInfo = scheduler.getPendingJob(JOB_ID);
         if (jobInfo != null &&
-                jobInfo.getNetworkType() == NETWORK_TYPE &&
+                jobInfo.getNetworkType() == networkType &&
                 jobInfo.isPersisted() &&
                 jobInfo.getIntervalMillis() == INTERVAL_MILLIS) {
             Log.d(TAG, "Job already registered");
@@ -29,7 +36,7 @@ public class PeriodicJob extends JobService {
         }
         final ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
         final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID, serviceName)
-            .setRequiredNetworkType(NETWORK_TYPE)
+            .setRequiredNetworkType(networkType)
             .setPersisted(true)
             .setPeriodic(INTERVAL_MILLIS)
             .build());
