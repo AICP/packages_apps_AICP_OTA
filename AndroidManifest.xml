@@ -27,5 +27,16 @@
 
         <receiver android:name=".TriggerUpdateReceiver" android:exported="false" />
         <receiver android:name=".RebootReceiver" android:exported="false" />
+
+        <activity
+            android:name=".Settings"
+            android:launchMode="singleTop"
+            android:label="@string/settings_title"
+            android:excludeFromRecents="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

@@ -12,17 +12,17 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import co.copperhead.updater.TriggerUpdateReceiver;
+import co.copperhead.updater.Settings;
 
 public class PeriodicJob extends JobService {
     private static final String TAG = "PeriodicJob";
     private static final int JOB_ID = 1;
-    private static final String PREFERENCE_NETWORK_TYPE = "network_type";
     private static final int DEFAULT_NETWORK_TYPE = JobInfo.NETWORK_TYPE_ANY;
     private static final long INTERVAL_MILLIS = 60 * 60 * 1000;
 
     static void schedule(Context context) {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        final int networkType = preferences.getInt(PREFERENCE_NETWORK_TYPE, DEFAULT_NETWORK_TYPE);
+        final int networkType = preferences.getInt(Settings.KEY_NETWORK_TYPE, DEFAULT_NETWORK_TYPE);
         Log.d(TAG, "networkType: " + networkType);
 
         final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="network_type_entries" translatable="false">
+        <item>@string/network_type_any</item>
+        <item>@string/network_type_not_roaming</item>
+        <item>@string/network_type_unmetered</item>
+    </string-array>
+
+    <string-array name="network_type_values" translatable="false">
+        <item>1</item>
+        <item>3</item>
+        <item>2</item>
+    </string-array>
+</resources>
