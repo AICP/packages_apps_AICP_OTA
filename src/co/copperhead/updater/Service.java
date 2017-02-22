@@ -148,11 +148,14 @@ public class Service extends IntentService {
         final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this)
+            .addAction(R.drawable.ic_restart, "Reboot", reboot)
+            .setCategory(Notification.CATEGORY_SYSTEM)
             .setContentTitle(getString(R.string.notification_title))
             .setContentText(getString(R.string.notification_text))
-            .setSmallIcon(R.drawable.ic_update_white_24dp)
+            .setDefaults(Notification.DEFAULT_ALL)
             .setOngoing(true)
-            .addAction(R.drawable.ic_restart, "Reboot", reboot)
+            .setPriority(Notification.PRIORITY_HIGH)
+            .setSmallIcon(R.drawable.ic_update_white_24dp)
             .build());
     }
 
