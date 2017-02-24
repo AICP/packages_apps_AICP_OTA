@@ -44,6 +44,7 @@ public class Service extends IntentService {
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
+    private static final String PREFERENCE_CHANNEL = "channel";
     private static final String PREFERENCE_DOWNLOADED = "downloaded";
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
 
@@ -174,9 +175,13 @@ public class Service extends IntentService {
             }
             updating = true;
 
-            final String device = SystemProperties.get("ro.product.device");
-            final String channel = SystemProperties.get("sys.update.channel", "stable");
+            final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+            final String device = SystemProperties.get("ro.product.device");
+            final String channel = SystemProperties.get("sys.update.channel",
+                preferences.getString(PREFERENCE_CHANNEL, "stable"));
+
+            Log.d(TAG, "fetching metadata for " + device + "-" + channel);
             InputStream input = fetchData(device + "-" + channel, 0);
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata = reader.readLine().split(" ");
@@ -189,8 +194,6 @@ public class Service extends IntentService {
                 Log.d(TAG, "targetBuildDate: " + targetBuildDate + " not higher than sourceBuildDate: " + sourceBuildDate);
                 return;
             }
-
-            final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
             long downloaded = preferences.getLong(PREFERENCE_DOWNLOADED, 0);
             String downloadFile = preferences.getString(PREFERENCE_DOWNLOAD_FILE, null);

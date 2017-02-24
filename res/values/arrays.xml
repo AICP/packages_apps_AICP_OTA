@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="channel_entries" translatable="false">
+        <item>@string/channel_stable</item>
+        <item>@string/channel_beta</item>
+    </string-array>
+
+    <string-array name="channel_values" translatable="false">
+        <item>stable</item>
+        <item>beta</item>
+    </string-array>
+
     <string-array name="network_type_entries" translatable="false">
         <item>@string/network_type_any</item>
         <item>@string/network_type_not_roaming</item>
