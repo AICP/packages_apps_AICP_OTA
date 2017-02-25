@@ -203,7 +203,7 @@ public class Service extends IntentService {
             final String fullUpdate = device + "-ota_update-" + targetIncremental + ".zip";
 
             if (incrementalUpdate.equals(downloadFile) || fullUpdate.equals(downloadFile)) {
-                Log.d(TAG, "resume fetch of + " + downloadFile + " from " + downloaded + " bytes");
+                Log.d(TAG, "resume fetch of " + downloadFile + " from " + downloaded + " bytes");
                 input = fetchData(downloadFile, downloaded);
             } else {
                 try {
