@@ -45,7 +45,6 @@ public class Service extends IntentService {
     private static final int READ_TIMEOUT = 60000;
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
     private static final String PREFERENCE_CHANNEL = "channel";
-    private static final String PREFERENCE_DOWNLOADED = "downloaded";
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
 
     private boolean updating = false;
@@ -195,8 +194,8 @@ public class Service extends IntentService {
                 return;
             }
 
-            long downloaded = preferences.getLong(PREFERENCE_DOWNLOADED, 0);
             String downloadFile = preferences.getString(PREFERENCE_DOWNLOAD_FILE, null);
+            long downloaded = UPDATE_PATH.length();
 
             final String sourceIncremental = SystemProperties.get("ro.build.version.incremental");
             final String incrementalUpdate = device + "-incremental-" + sourceIncremental + "-" + targetIncremental + ".zip";
@@ -220,24 +219,12 @@ public class Service extends IntentService {
             }
 
             final OutputStream output = new FileOutputStream(UPDATE_PATH, downloaded != 0);
-            preferences.edit()
-                .putLong(PREFERENCE_DOWNLOADED, downloaded)
-                .putString(PREFERENCE_DOWNLOAD_FILE, downloadFile)
-                .commit();
+            preferences.edit().putString(PREFERENCE_DOWNLOAD_FILE, downloadFile).commit();
 
             int n;
             long last = System.nanoTime();
             byte[] buffer = new byte[8192];
-            while (true) {
-                try {
-                    if ((n = input.read(buffer)) == -1) {
-                        break;
-                    }
-                } catch (IOException e) {
-                    Log.d(TAG, "failed to read data, saving state of " + downloaded + " downloaded bytes");
-                    preferences.edit().putLong(PREFERENCE_DOWNLOADED, downloaded).commit();
-                    throw e;
-                }
+            while ((n = input.read(buffer)) != -1) {
                 output.write(buffer, 0, n);
                 downloaded += n;
                 final long now = System.nanoTime();
