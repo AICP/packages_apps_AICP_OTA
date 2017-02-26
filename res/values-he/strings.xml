@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2014 ParanoidAndroid Project
+
+  This file is part of Paranoid OTA.
+
+  Paranoid OTA is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Paranoid OTA is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">עדכוני AICP</string>
+    <string name="check_for_updates">בדוק</string>
+    <string name="no_additional_info">אין מידע נוסף</string>
+    <string name="drawer_open">פתח את מגירת ניווט</string>
+    <string name="drawer_close">סגור את מגירת ניווט</string>
+
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">בדוק אם יש עדכוני מערכת</string>
+    <string name="all_up_to_date">הגירסה שלך מעודכנת!!</string>
+    <string name="rom_scanning">בודק עם יש עדכוני מערכת…</string>
+    <string name="rom_gapps_new_version">נמצאו עדכוני מערכת!</string>
+    <string name="rom_new_version">נמצא עדכון חדש למערכת!</string>
+    <string name="gapps_new_version">נמצא עדכון חדש ליישומי גוגל!</string>
+    <string name="no_updates">לא נמצאו עדכוני מערכת</string>
+    <string name="system_update_found">עדכון מערכת חדש נמצא והוא מוגן להורדה.\nאנא בדוק את ההתראות שהופיעו. הם יובילו אותך לעידכוני AICP ושם תוכל להוריד להוריד ולהתקין את העדכונים.\n\nעדכונים שנמצאו:\n%1$s</string>
+
+    <!-- SYSTEM -->
+    <string name="system_title">מידע מערכת</string>
+    <string name="system_rom">גרסת מערכת: %1$s</string>
+    <string name="system_gapps">גרסת יישומי גוגל: %1$s %2$s</string>
+
+    <!-- UPDATES -->
+    <string name="updates">עדכונים</string>
+    <string name="updates_checking">בודק…</string>
+    <string name="updates_found">עדכוני מערכת נמצאו</string>
+    <string name="updates_uptodate">הכל מעודכן</string>
+    <string name="no_updates_found">לא נמצאו עדכונים</string>
+    <string name="check_rom_updates_error">שגיאה בעת בדיקת העדכונים למערכת שלך</string>
+    <string name="check_gapps_updates_error">שגיאה בעת בדיקת עדכוני ישומי גוגל</string>
+    <string name="system_update">עדכוני מערכת נמצאו.\nבחר את העדכונים שברצונך להוריד.\nרשימת השינויים של העדכונים זמין בכרטיסיה המורחבת.\n\nעדכונים שנמצאו:</string>
+    <string name="download_and_install">הורד והתקן</string>
+    <string name="update_host">מאוחסן ב־%1$s</string>
+    <string name="nightly_changelog">-- לחץ לקבלת ... %1$s רשימת שינויים</string>
+    <string name="nightly_md5sum">גיבוב MD5: %1$s</string>
+    <string name="nightly_filesize">גודל הקובץ: %1$s MB</string>
+
+    <!-- INSTALL -->
+    <string name="install">התקן</string>
+    <string name="install_title">מוכן להתקנה</string>
+    <string name="install_info">העדכונים הבאים מוכנים להתקנה\n\nתוכל להוסיף עוד קבצי ZIP להתקנה בלחיצה על \"הוסף קובץ\".</string>
+    <string name="add_file">הוסף קובץ</string>
+    <string name="install_now">התקן עכשיו</string>
+    <string name="calculating_md5">מחשב גיבוב MD5…</string>
+    <string name="md5_mismatch">MD5 אינו מתאים (הקובץ פגום)</string>
+    <string name="md5_mismatch_summary">קובץ מרוחק:\n%1$s\n\nקובץ מקומי:\n%2$s</string>
+    <string name="md5_install_anyway">המשך בכל זאת (לא מומלץ!!!)</string>
+    <string name="select_actions">בחר את הפעולה שתרצה לעשות</string>
+    <string name="backup">גיבוי</string>
+    <string name="wipe_data">מחיקת נתונים</string>
+    <string name="wipe_caches">מחיקת Cache &amp; Dalvik</string>
+    <string name="remove_file_title">הסר קובץ</string>
+    <string name="remove_file_summary">להסיר את הקובץ מהרשימה?\n\n%1$s</string>
+    <string name="file_manager_error">לא נמצא יישום לבחירת קובץ. אנא התקן מנהל קבצים.</string>
+    <string name="alert_backup_space_title">מקום נותר</string>
+    <string name="alert_backup_space_message">יש פחות מ־%1$sGB באחסון הפנימי שלך. אתה בטוח שאתה רוצה לגבות?</string>
+    <string name="alert_backup_title">גיבוי</string>
+    <string name="alert_backup_message">ציין את שם הגיבוי (תווים אסורים יוסרו).\n\nהאפשרויות הבאות יעבדו עם TWRP.</string>
+    <string name="system">מערכת</string>
+    <string name="data">נתונים</string>
+    <string name="cache">מטמון (Cache)</string>
+    <string name="recovery">ריקוברי</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android secure</string>
+    <string name="sdext">כרטיס זיכרון חיצוני</string>
+    <string name="alert_reboot_install_title">התקן עדכונ/ים</string>
+    <string name="alert_reboot_one_message">המכשיר שלך יופעל מחדש ויתקין את העדכון.</string>
+    <string name="alert_reboot_more_message">המכשיר שלך יופעל מחדש ויתקין את העדכונים.</string>
+    <string name="alert_reboot_now">התקן עכשיו</string>
+    <string name="file_not_found">אי אפשר להוסיף את הקובץ</string>
+
+    <!-- CHANGELOG -->
+    <string name="changelog">רשימת שינויים</string>
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">הורד עדכוני מערכת</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">בטל הורדה</string>
+    <string name="cancel_rom_download_alert_summary">להבטל את הורדת ה־ROM?</string>
+    <string name="cancel_gapps_download_alert_summary">לבטל את הורדת יישומי גוגל?</string>
+    <string name="cancel_download_alert_yes">כן</string>
+    <string name="cancel_download_alert_no">לא</string>
+    <string name="new_system_update">לא נמצאו עדכוני מערכת</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s עדכונים זמינים להורדה</string>
+    <string name="already_downloading_rom">אתה כבר מוריד את עדכון המערכת.</string>
+    <string name="already_downloading_gapps">אתה כבר מוריד את עדכון יישומי הגוגל.</string>
+    <string name="cancel_download">בטל הורדות</string>
+    <string name="downloading_info">עדכונים שהורדו:\n%1$s</string>
+
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">שגיאה: ההורדה לא יכולה להתחיל שוב</string>
+    <string name="error_device_not_found">שגיאה: כרטיס הזיכרון אינו מוכנס</string>
+    <string name="error_file_already_exists">שגיאה: הקובץ כבר קיים במערכת</string>
+    <string name="error_file_error">שגיאה: תקלת אחסון</string>
+    <string name="error_http_data_error">שגיאה תקלת אינטרנט</string>
+    <string name="error_insufficient_space">שגיאה: לא נותר מקום באחסון</string>
+    <string name="error_too_many_redirects">שגיאה: יותר מידי הפניות בקישור להורדה</string>
+    <string name="error_unhandled_http_code">שגיאה: שגיאת HTTP לא ידועה</string>
+    <string name="error_unknown">שגיאה: לא ידוע</string>
+
+    <!-- SETTINGS -->
+    <string name="settings">הגדרות</string>
+    <string name="settings_checktime_title">תדירות בדיקת עדכונים</string>
+    <string name="settings_checktime_summary">ציין כל כמה זמן יבדקו עידכונים</string>
+    <string name="time_notifications_never">אל תבדוק אוטומטית</string>
+    <string name="time_notifications_half_an_hour">כל חצי שעה</string>
+    <string name="time_notifications_an_hour">כל שעה</string>
+    <string name="time_notifications_two_hours">כל שעתיים</string>
+    <string name="time_notifications_five_hours">כל 5 שעות</string>
+    <string name="time_notifications_daily">כל יום</string>
+
+    <!-- Permission check -->
+    <!-- <string name="permission_not_granted_dialog_title" translatable="false">ההרשאות נדחו</string>
+    <string name="permission_granted_dialog_title" translatable="false">ההרשאות הוענקו</string> -->
+
+    <!-- Dummy -->
+    <string name="content_description">תיאור_תוכן</string>
+
+    <!--SDCARD Path-->
+    <!--<string name="sdcard" translatable="false">/sdcard</string> -->
+
+</resources>
