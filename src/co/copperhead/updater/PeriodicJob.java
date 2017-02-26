@@ -11,9 +11,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import co.copperhead.updater.TriggerUpdateReceiver;
-import co.copperhead.updater.Settings;
-
 public class PeriodicJob extends JobService {
     private static final String TAG = "PeriodicJob";
     private static final int JOB_ID = 1;

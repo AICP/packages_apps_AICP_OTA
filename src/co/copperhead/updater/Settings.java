@@ -8,8 +8,6 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
-import co.copperhead.updater.PeriodicJob;
-
 public class Settings extends PreferenceActivity {
     static final String KEY_NETWORK_TYPE = "network_type";
 

@@ -33,10 +33,6 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import co.copperhead.updater.PeriodicJob;
-import co.copperhead.updater.RebootReceiver;
-import co.copperhead.updater.TriggerUpdateReceiver;
-
 public class Service extends IntentService {
     private static final String TAG = "Service";
     private static final int NOTIFICATION_ID = 1;

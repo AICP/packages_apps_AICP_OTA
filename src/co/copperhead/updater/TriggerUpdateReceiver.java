@@ -4,8 +4,6 @@ import android.support.v4.content.WakefulBroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import co.copperhead.updater.Service;
-
 public class TriggerUpdateReceiver extends WakefulBroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
