@@ -88,12 +88,8 @@ public class Service extends IntentService {
     private void onDownloadFinished(long targetBuildDate) throws IOException, GeneralSecurityException {
         Log.d(TAG, "download successful");
 
-        RecoverySystem.verifyPackage(UPDATE_PATH, new RecoverySystem.ProgressListener() {
-            @Override
-            public void onProgress(int progress) {
-                Log.d(TAG, "verifyPackage: " + progress + "%");
-            }
-        }, null);
+        RecoverySystem.verifyPackage(UPDATE_PATH,
+            (int progress) -> Log.d(TAG, "verifyPackage: " + progress + "%"), null);
 
         final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
