@@ -234,8 +234,9 @@ public class Service extends IntentService {
 
             onDownloadFinished(targetBuildDate);
         } catch (IOException | GeneralSecurityException e) {
-            updating = false;
             Log.e(TAG, "failed to download and install update", e);
+            updating = false;
+            PeriodicJob.scheduleRetry(this);
         } finally {
             wakeLock.release();
             TriggerUpdateReceiver.completeWakefulIntent(intent);
