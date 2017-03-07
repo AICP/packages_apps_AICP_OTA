@@ -39,6 +39,7 @@ public class Service extends IntentService {
     private static final int PENDING_REBOOT_ID = 1;
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
+    private static final File CARE_MAP_PATH = new File("/data/ota_package/care_map.txt");
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
     private static final String PREFERENCE_CHANNEL = "channel";
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
@@ -108,6 +109,25 @@ public class Service extends IntentService {
         }
         if (timestamp != targetBuildDate) {
             throw new GeneralSecurityException("update older than the server claimed");
+        }
+
+        final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
+        if (careMapEntry == null) {
+            Log.w(TAG, "care_map.txt missing");
+            if (CARE_MAP_PATH.exists()) {
+                CARE_MAP_PATH.delete();
+            }
+        } else {
+            final InputStream careMapData = zipFile.getInputStream(careMapEntry);
+            final OutputStream careMap = new FileOutputStream(CARE_MAP_PATH);
+
+            int bytesRead;
+            final byte[] buffer = new byte[8192];
+            while ((bytesRead = careMapData.read(buffer)) != -1) {
+                careMap.write(buffer, 0, bytesRead);
+            }
+            careMap.close();
+            CARE_MAP_PATH.setReadable(true, false);
         }
 
         final List<String> lines = new ArrayList<String>();
@@ -213,12 +233,12 @@ public class Service extends IntentService {
             final OutputStream output = new FileOutputStream(UPDATE_PATH, downloaded != 0);
             preferences.edit().putString(PREFERENCE_DOWNLOAD_FILE, downloadFile).commit();
 
-            int n;
+            int bytesRead;
             long last = System.nanoTime();
-            byte[] buffer = new byte[8192];
-            while ((n = input.read(buffer)) != -1) {
-                output.write(buffer, 0, n);
-                downloaded += n;
+            final byte[] buffer = new byte[8192];
+            while ((bytesRead = input.read(buffer)) != -1) {
+                output.write(buffer, 0, bytesRead);
+                downloaded += bytesRead;
                 final long now = System.nanoTime();
                 if (now - last > 1000 * 1000 * 1000) {
                     Log.d(TAG, "downloaded " + downloaded + " bytes");
