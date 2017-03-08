@@ -28,6 +28,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -62,6 +63,7 @@ public class Service extends IntentService {
     }
 
     private void applyUpdate(final long payloadOffset, final String[] headerKeyValuePairs) {
+        final CountDownLatch monitor = new CountDownLatch(1);
         final UpdateEngine engine = new UpdateEngine();
         engine.bind(new UpdateEngineCallback() {
             @Override
@@ -80,10 +82,14 @@ public class Service extends IntentService {
                     updating = false;
                 }
                 UPDATE_PATH.delete();
+                monitor.countDown();
             }
         });
         UPDATE_PATH.setReadable(true, false);
         engine.applyPayload("file://" + UPDATE_PATH, payloadOffset, 0, headerKeyValuePairs);
+        try {
+            monitor.await();
+        } catch (InterruptedException e) {}
     }
 
     private void onDownloadFinished(long targetBuildDate) throws IOException, GeneralSecurityException {
@@ -259,6 +265,7 @@ public class Service extends IntentService {
             updating = false;
             PeriodicJob.scheduleRetry(this);
         } finally {
+            Log.d(TAG, "release wake locks");
             wakeLock.release();
             TriggerUpdateReceiver.completeWakefulIntent(intent);
         }
