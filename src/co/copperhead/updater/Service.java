@@ -99,16 +99,21 @@ public class Service extends IntentService {
             throw new GeneralSecurityException("missing metadata file");
         }
         BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
+        String device = null;
         long timestamp = 0;
         for (String line; (line = reader.readLine()) != null; ) {
             String[] pair = line.split("=");
             if ("post-timestamp".equals(pair[0])) {
                 timestamp = Long.parseLong(pair[1]);
-                break;
+            } else if ("pre-device".equals(pair[0])) {
+                device = pair[1];
             }
         }
         if (timestamp != targetBuildDate) {
             throw new GeneralSecurityException("update older than the server claimed");
+        }
+        if (!SystemProperties.get("ro.product.device").equals(device)) {
+            throw new GeneralSecurityException("device mismatch");
         }
 
         final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
