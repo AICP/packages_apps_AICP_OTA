@@ -15,16 +15,13 @@ public class Settings extends PreferenceActivity {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
-        Preference networkType = findPreference(KEY_NETWORK_TYPE);
-        networkType.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(final Preference preference, final Object newValue) {
-                final int value = Integer.parseInt((String) newValue);
-                final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Settings.this);
-                preferences.edit().putInt(KEY_NETWORK_TYPE, value).apply();
-                PeriodicJob.schedule(Settings.this);
-                return true;
-            }
+        final Preference networkType = findPreference(KEY_NETWORK_TYPE);
+        networkType.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
+            final int value = Integer.parseInt((String) newValue);
+            final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Settings.this);
+            preferences.edit().putInt(KEY_NETWORK_TYPE, value).apply();
+            PeriodicJob.schedule(Settings.this);
+            return true;
         });
     }
 }
