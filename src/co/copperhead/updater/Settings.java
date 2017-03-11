@@ -2,9 +2,7 @@ package co.copperhead.updater;
 
 import android.os.Bundle;
 import android.content.SharedPreferences;
-import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
