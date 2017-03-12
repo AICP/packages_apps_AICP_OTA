@@ -1,5 +1,7 @@
 package co.copperhead.updater;
 
+import static android.os.Build.DEVICE;
+
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -118,7 +120,7 @@ public class Service extends IntentService {
         if (timestamp != targetBuildDate) {
             throw new GeneralSecurityException("update older than the server claimed");
         }
-        if (!SystemProperties.get("ro.product.device").equals(device)) {
+        if (!DEVICE.equals(device)) {
             throw new GeneralSecurityException("device mismatch");
         }
 
@@ -199,12 +201,11 @@ public class Service extends IntentService {
 
             final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-            final String device = SystemProperties.get("ro.product.device");
             final String channel = SystemProperties.get("sys.update.channel",
                 preferences.getString(PREFERENCE_CHANNEL, "stable"));
 
-            Log.d(TAG, "fetching metadata for " + device + "-" + channel);
-            InputStream input = fetchData(device + "-" + channel, 0);
+            Log.d(TAG, "fetching metadata for " + DEVICE + "-" + channel);
+            InputStream input = fetchData(DEVICE + "-" + channel, 0);
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata = reader.readLine().split(" ");
             reader.close();
@@ -221,9 +222,9 @@ public class Service extends IntentService {
             long downloaded = UPDATE_PATH.length();
 
             final String sourceIncremental = SystemProperties.get("ro.build.version.incremental");
-            final String incrementalUpdate = device + "-incremental-" + sourceIncremental + "-" + targetIncremental + ".zip";
+            final String incrementalUpdate = DEVICE + "-incremental-" + sourceIncremental + "-" + targetIncremental + ".zip";
 
-            final String fullUpdate = device + "-ota_update-" + targetIncremental + ".zip";
+            final String fullUpdate = DEVICE + "-ota_update-" + targetIncremental + ".zip";
 
             if (incrementalUpdate.equals(downloadFile) || fullUpdate.equals(downloadFile)) {
                 Log.d(TAG, "resume fetch of " + downloadFile + " from " + downloaded + " bytes");
