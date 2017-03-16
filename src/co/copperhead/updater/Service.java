@@ -171,7 +171,7 @@ public class Service extends IntentService {
     }
 
     private void annoyUser() {
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences preferences = Settings.getPreferences(this);
         if (preferences.getBoolean(PREFERENCE_IDLE_REBOOT, false)) {
             IdleReboot.schedule(this);
         }
@@ -205,7 +205,7 @@ public class Service extends IntentService {
             }
             updating = true;
 
-            final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            final SharedPreferences preferences = Settings.getPreferences(this);
 
             final String channel = SystemProperties.get("sys.update.channel",
                 preferences.getString(PREFERENCE_CHANNEL, "stable"));

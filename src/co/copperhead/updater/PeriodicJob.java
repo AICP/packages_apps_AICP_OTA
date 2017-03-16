@@ -20,7 +20,7 @@ public class PeriodicJob extends JobService {
     private static final long MIN_LATENCY_MILLIS = 60 * 1000;
 
     static int getNetworkType(final Context context) {
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        final SharedPreferences preferences = Settings.getPreferences(context);
         final int networkType = preferences.getInt(Settings.KEY_NETWORK_TYPE, DEFAULT_NETWORK_TYPE);
         Log.d(TAG, "networkType: " + networkType);
         return networkType;
