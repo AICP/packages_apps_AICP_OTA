@@ -46,6 +46,7 @@ public class Service extends IntentService {
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
     private static final String PREFERENCE_CHANNEL = "channel";
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
+    private static final String PREFERENCE_IDLE_REBOOT = "idle_reboot";
 
     private boolean updating = false;
 
@@ -170,6 +171,11 @@ public class Service extends IntentService {
     }
 
     private void annoyUser() {
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (preferences.getBoolean(PREFERENCE_IDLE_REBOOT, false)) {
+            IdleReboot.schedule(this);
+        }
+
         final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this)

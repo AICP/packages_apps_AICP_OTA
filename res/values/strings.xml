@@ -11,4 +11,6 @@
     <string name="network_type_any">Any</string>
     <string name="network_type_not_roaming">Not roaming</string>
     <string name="network_type_unmetered">Unmetered</string>
+    <string name="idle_reboot_title">Automatic reboot</string>
+    <string name="idle_reboot_summary">Automatically reboot once the device is idle after successfully installing an update</string>
 </resources>
