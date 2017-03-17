@@ -24,6 +24,8 @@ public class Settings extends PreferenceActivity {
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getPreferences(this);
+        getPreferenceManager().setStorageDeviceProtected();
         addPreferencesFromResource(R.xml.settings);
         final Preference networkType = findPreference(KEY_NETWORK_TYPE);
         networkType.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
