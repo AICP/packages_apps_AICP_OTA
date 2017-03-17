@@ -199,13 +199,14 @@ public class Service extends IntentService {
         try {
             wakeLock.acquire();
 
+            // fetched early to trigger migration to device encrypted storage
+            final SharedPreferences preferences = Settings.getPreferences(this);
+
             if (updating) {
                 Log.d(TAG, "updating already, returning early");
                 return;
             }
             updating = true;
-
-            final SharedPreferences preferences = Settings.getPreferences(this);
 
             final String channel = SystemProperties.get("sys.update.channel",
                 preferences.getString(PREFERENCE_CHANNEL, "stable"));
