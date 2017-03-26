@@ -50,9 +50,12 @@
     <string name="no_updates_found">Nie znaleziono żadnych aktualizacji</string>
     <string name="check_rom_updates_error">Błąd podczas sprawdzania aktualizacji ROMu</string>
     <string name="check_gapps_updates_error">Błąd podczas sprawdzania aktualizacji Gapps</string>
-    <string name="system_update">Aktualizacja systemu znaleziona.\nWybierz aktualizacje, które chcesz pobrać.\n\Znalezione aktualizacje:</string>
+    <string name="system_update">Aktualizacja systemu znaleziona.\nWybierz aktualizacje, które chcesz pobrać.\nDzienniki zmian dostępne na rozszerzonej karcie.\n\nZnalezione aktualizacje:</string>
     <string name="download_and_install">Pobierz i zainstaluj</string>
     <string name="update_host">Hostowane na %1$s</string>
+    <string name="nightly_changelog">-- kliknij na ... %1$s aby zobaczyć dziennik zmian.</string>
+    <string name="nightly_md5sum">Md5sum: %1$s</string>
+    <string name="nightly_filesize">Rozmiar pliku: %1$s MB</string>
 
     <!-- INSTALL -->
     <string name="install">Instaluj</string>
