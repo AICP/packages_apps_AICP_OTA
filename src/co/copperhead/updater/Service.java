@@ -96,78 +96,81 @@ public class Service extends IntentService {
     }
 
     private void onDownloadFinished(long targetBuildDate) throws IOException, GeneralSecurityException {
-        Log.d(TAG, "download successful");
+        try {
+            RecoverySystem.verifyPackage(UPDATE_PATH,
+                (int progress) -> Log.d(TAG, "verifyPackage: " + progress + "%"), null);
 
-        RecoverySystem.verifyPackage(UPDATE_PATH,
-            (int progress) -> Log.d(TAG, "verifyPackage: " + progress + "%"), null);
+            final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
-        final ZipFile zipFile = new ZipFile(UPDATE_PATH);
-
-        final ZipEntry metadata = zipFile.getEntry("META-INF/com/android/metadata");
-        if (metadata == null) {
-            throw new GeneralSecurityException("missing metadata file");
-        }
-        BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
-        String device = null;
-        long timestamp = 0;
-        for (String line; (line = reader.readLine()) != null; ) {
-            String[] pair = line.split("=");
-            if ("post-timestamp".equals(pair[0])) {
-                timestamp = Long.parseLong(pair[1]);
-            } else if ("pre-device".equals(pair[0])) {
-                device = pair[1];
+            final ZipEntry metadata = zipFile.getEntry("META-INF/com/android/metadata");
+            if (metadata == null) {
+                throw new GeneralSecurityException("missing metadata file");
             }
-        }
-        if (timestamp != targetBuildDate) {
-            throw new GeneralSecurityException("update older than the server claimed");
-        }
-        if (!DEVICE.equals(device)) {
-            throw new GeneralSecurityException("device mismatch");
-        }
-
-        final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
-        if (careMapEntry == null) {
-            Log.w(TAG, "care_map.txt missing");
-            if (CARE_MAP_PATH.exists()) {
-                CARE_MAP_PATH.delete();
-            }
-        } else {
-            final InputStream careMapData = zipFile.getInputStream(careMapEntry);
-            final OutputStream careMap = new FileOutputStream(CARE_MAP_PATH);
-
-            int bytesRead;
-            final byte[] buffer = new byte[8192];
-            while ((bytesRead = careMapData.read(buffer)) != -1) {
-                careMap.write(buffer, 0, bytesRead);
-            }
-            careMap.close();
-            CARE_MAP_PATH.setReadable(true, false);
-        }
-
-        final List<String> lines = new ArrayList<String>();
-        long payloadOffset = 0;
-
-        final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
-        long offset = 0;
-        while (zipEntries.hasMoreElements()) {
-            final ZipEntry entry = (ZipEntry) zipEntries.nextElement();
-            final long extra = entry.getExtra() == null ? 0 : entry.getExtra().length;
-            final long zipHeaderLength = 30;
-            offset += zipHeaderLength + entry.getName().length() + extra;
-            if (!entry.isDirectory()) {
-                if ("payload.bin".equals(entry.getName())) {
-                    payloadOffset = offset;
-                } else if ("payload_properties.txt".equals(entry.getName())) {
-                    reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
-                    for (String line; (line = reader.readLine()) != null; ) {
-                        lines.add(line);
-                    }
+            BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
+            String device = null;
+            long timestamp = 0;
+            for (String line; (line = reader.readLine()) != null; ) {
+                String[] pair = line.split("=");
+                if ("post-timestamp".equals(pair[0])) {
+                    timestamp = Long.parseLong(pair[1]);
+                } else if ("pre-device".equals(pair[0])) {
+                    device = pair[1];
                 }
-                offset += entry.getCompressedSize();
             }
-        }
+            if (timestamp != targetBuildDate) {
+                throw new GeneralSecurityException("update older than the server claimed");
+            }
+            if (!DEVICE.equals(device)) {
+                throw new GeneralSecurityException("device mismatch");
+            }
 
-        applyUpdate(payloadOffset, lines.toArray(new String[lines.size()]));
+            final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
+            if (careMapEntry == null) {
+                Log.w(TAG, "care_map.txt missing");
+                if (CARE_MAP_PATH.exists()) {
+                    CARE_MAP_PATH.delete();
+                }
+            } else {
+                final InputStream careMapData = zipFile.getInputStream(careMapEntry);
+                final OutputStream careMap = new FileOutputStream(CARE_MAP_PATH);
+
+                int bytesRead;
+                final byte[] buffer = new byte[8192];
+                while ((bytesRead = careMapData.read(buffer)) != -1) {
+                    careMap.write(buffer, 0, bytesRead);
+                }
+                careMap.close();
+                CARE_MAP_PATH.setReadable(true, false);
+            }
+
+            final List<String> lines = new ArrayList<String>();
+            long payloadOffset = 0;
+
+            final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
+            long offset = 0;
+            while (zipEntries.hasMoreElements()) {
+                final ZipEntry entry = (ZipEntry) zipEntries.nextElement();
+                final long extra = entry.getExtra() == null ? 0 : entry.getExtra().length;
+                final long zipHeaderLength = 30;
+                offset += zipHeaderLength + entry.getName().length() + extra;
+                if (!entry.isDirectory()) {
+                    if ("payload.bin".equals(entry.getName())) {
+                        payloadOffset = offset;
+                    } else if ("payload_properties.txt".equals(entry.getName())) {
+                        reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
+                        for (String line; (line = reader.readLine()) != null; ) {
+                            lines.add(line);
+                        }
+                    }
+                    offset += entry.getCompressedSize();
+                }
+            }
+
+            applyUpdate(payloadOffset, lines.toArray(new String[lines.size()]));
+        } catch (GeneralSecurityException e) {
+            UPDATE_PATH.delete();
+            throw e;
+        }
     }
 
     private void annoyUser() {
@@ -267,6 +270,7 @@ public class Service extends IntentService {
             output.close();
             input.close();
 
+            Log.d(TAG, "download successful");
             onDownloadFinished(targetBuildDate);
         } catch (IOException | GeneralSecurityException e) {
             Log.e(TAG, "failed to download and install update", e);
