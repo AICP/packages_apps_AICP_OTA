@@ -55,14 +55,11 @@ public class Service extends IntentService {
         super(TAG);
     }
 
-    private URLConnection fetchData(String path, long downloaded) throws IOException {
+    private URLConnection fetchData(final String path) throws IOException {
         final URL url = new URL(getString(R.string.url) + path);
         final URLConnection urlConnection = url.openConnection();
         urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
-        if (downloaded != 0) {
-            urlConnection.setRequestProperty("Range", "bytes=" + downloaded + "-");
-        }
         return urlConnection;
     }
 
@@ -216,7 +213,7 @@ public class Service extends IntentService {
                 preferences.getString(PREFERENCE_CHANNEL, "stable"));
 
             Log.d(TAG, "fetching metadata for " + DEVICE + "-" + channel);
-            InputStream input = fetchData(DEVICE + "-" + channel, 0).getInputStream();
+            InputStream input = fetchData(DEVICE + "-" + channel).getInputStream();
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata = reader.readLine().split(" ");
             reader.close();
@@ -239,7 +236,8 @@ public class Service extends IntentService {
 
             if (incrementalUpdate.equals(downloadFile) || fullUpdate.equals(downloadFile)) {
                 Log.d(TAG, "resume fetch of " + downloadFile + " from " + downloaded + " bytes");
-                final HttpURLConnection connection = (HttpURLConnection) fetchData(downloadFile, downloaded);
+                final HttpURLConnection connection = (HttpURLConnection) fetchData(downloadFile);
+                connection.setRequestProperty("Range", "bytes=" + downloaded + "-");
                 if (connection.getResponseCode() == 416) {
                     Log.d(TAG, "download completed previously");
                     onDownloadFinished(targetBuildDate);
@@ -250,11 +248,11 @@ public class Service extends IntentService {
                 try {
                     Log.d(TAG, "fetch incremental " + incrementalUpdate);
                     downloadFile = incrementalUpdate;
-                    input = fetchData(downloadFile, 0).getInputStream();
+                    input = fetchData(downloadFile).getInputStream();
                 } catch (IOException e) {
                     Log.d(TAG, "incremental not found, fetch full update " + fullUpdate);
                     downloadFile = fullUpdate;
-                    input = fetchData(downloadFile, 0).getInputStream();
+                    input = fetchData(downloadFile).getInputStream();
                 }
                 downloaded = 0;
             }
