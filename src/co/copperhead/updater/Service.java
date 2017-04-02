@@ -1,6 +1,7 @@
 package co.copperhead.updater;
 
 import static android.os.Build.DEVICE;
+import static android.os.Build.VERSION.INCREMENTAL;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -229,8 +230,7 @@ public class Service extends IntentService {
             String downloadFile = preferences.getString(PREFERENCE_DOWNLOAD_FILE, null);
             long downloaded = UPDATE_PATH.length();
 
-            final String sourceIncremental = SystemProperties.get("ro.build.version.incremental");
-            final String incrementalUpdate = DEVICE + "-incremental-" + sourceIncremental + "-" + targetIncremental + ".zip";
+            final String incrementalUpdate = DEVICE + "-incremental-" + INCREMENTAL + "-" + targetIncremental + ".zip";
 
             final String fullUpdate = DEVICE + "-ota_update-" + targetIncremental + ".zip";
 
