@@ -44,8 +44,7 @@
                 android:directBootAware="true"
                 android:exported="false" />
 
-        <activity
-                android:name=".Settings"
+        <activity android:name=".Settings"
                 android:launchMode="singleTop"
                 android:label="@string/settings_title"
                 android:excludeFromRecents="true"
