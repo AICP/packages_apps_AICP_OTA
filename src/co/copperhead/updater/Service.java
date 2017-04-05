@@ -94,7 +94,7 @@ public class Service extends IntentService {
         } catch (InterruptedException e) {}
     }
 
-    private void onDownloadFinished(long targetBuildDate) throws IOException, GeneralSecurityException {
+    private void onDownloadFinished(final long targetBuildDate) throws IOException, GeneralSecurityException {
         try {
             RecoverySystem.verifyPackage(UPDATE_PATH,
                 (int progress) -> Log.d(TAG, "verifyPackage: " + progress + "%"), null);
@@ -117,7 +117,7 @@ public class Service extends IntentService {
                 }
             }
             if (timestamp != targetBuildDate) {
-                throw new GeneralSecurityException("update older than the server claimed");
+                throw new GeneralSecurityException("timestamp does not match server metadata");
             }
             if (!DEVICE.equals(device)) {
                 throw new GeneralSecurityException("device mismatch");
@@ -229,7 +229,6 @@ public class Service extends IntentService {
             long downloaded = UPDATE_PATH.length();
 
             final String incrementalUpdate = DEVICE + "-incremental-" + INCREMENTAL + "-" + targetIncremental + ".zip";
-
             final String fullUpdate = DEVICE + "-ota_update-" + targetIncremental + ".zip";
 
             if (incrementalUpdate.equals(downloadFile) || fullUpdate.equals(downloadFile)) {
