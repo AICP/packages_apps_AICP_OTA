@@ -14,17 +14,12 @@ public class Settings extends PreferenceActivity {
 
     static SharedPreferences getPreferences(final Context context) {
         final Context deviceContext = context.createDeviceProtectedStorageContext();
-        if (!deviceContext.moveSharedPreferencesFrom(context,
-                PreferenceManager.getDefaultSharedPreferencesName(context))) {
-            Log.e(TAG, "Failed to migrate shared preferences");
-        }
         return PreferenceManager.getDefaultSharedPreferences(deviceContext);
     }
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getPreferences(this);
         getPreferenceManager().setStorageDeviceProtected();
         addPreferencesFromResource(R.xml.settings);
         final Preference networkType = findPreference(KEY_NETWORK_TYPE);
