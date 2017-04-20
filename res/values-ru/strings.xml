@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Copyright 2014 AICPAndroid Project
+  Copyright 2014 ParanoidAndroid Project
 
-  This file is part of AICP OTA.
+  This file is part of Paranoid OTA.
 
-  AICP OTA is free software: you can redistribute it and/or modify
+  Paranoid OTA is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  AICP OTA is distributed in the hope that it will be useful,
+  Paranoid OTA is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with AICP OTA.  If not, see <http://www.gnu.org/licenses/>.
+  along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
-
 <resources>
+    <!-- GENERAL -->
     <string name="app_name">AICP ОТА</string>
     <string name="check_for_updates">Проверить</string>
     <string name="no_additional_info">Нет дополнительной информации</string>
     <string name="drawer_open">Открыть боковое меню</string>
     <string name="drawer_close">Закрыть боковое меню</string>
+
+    <!-- SYSTEM ACTIVITY -->
     <string name="check_for_updates_long">Проверка обновлений</string>
     <string name="all_up_to_date">Вы в курсе!</string>
     <string name="rom_scanning">Проверка обновлений системы…</string>
@@ -32,9 +34,13 @@
     <string name="gapps_new_version">Есть новые обновления приложений Google!</string>
     <string name="no_updates">Системные обновления не найдены</string>
     <string name="system_update_found">"Новые обновления найдены и готовы для загрузки.\nПожалуйста, проверьте уведомления, которые возможно появились. Они приведут вас к AICP OTA откуда вы сможете скачать и/или установить обновление.\n\nОбновление(я) найдено:\n%1$s"</string>
+
+    <!-- SYSTEM -->
     <string name="system_title">Информация о системе</string>
     <string name="system_rom">Версия прошивки: %1$s</string>
     <string name="system_gapps">Версия приложений Google: %1$s %2$s</string>
+
+    <!-- UPDATES -->
     <string name="updates">Обновления</string>
     <string name="updates_checking">Проверка…</string>
     <string name="updates_found">Обновление системы найдены</string>
@@ -45,6 +51,11 @@
     <string name="system_update">"Обновление системы найдены.\nВыберите обновление(я), который вы хотите скачать.\n\nОбновление(я) найдено:"</string>
     <string name="download_and_install">Скачать и установить</string>
     <string name="update_host">Размещается на %1$s</string>
+    <string name="nightly_changelog">-- Нажмите, чтобы смотреть список изменений ... %1$s</string>
+    <string name="nightly_md5sum">Контрольная сумма MВ5: %1$s</string>
+    <string name="nightly_filesize">Размер файла: %1$s МБ</string>
+
+    <!-- INSTALL -->
     <string name="install">Установить</string>
     <string name="install_title">Все готово для установки</string>
     <string name="install_info">"Следующее обновление(я) готовы к установке.\n\nВы можете добавить больше zip, нажав на \"добавить файл."</string>
@@ -77,7 +88,11 @@
     <string name="alert_reboot_more_message">Ваше устройство перезагрузится и установит обновления.</string>
     <string name="alert_reboot_now">Установить сейчас</string>
     <string name="file_not_found">Не получается добавить файл</string>
+
+    <!-- CHANGELOG -->
     <string name="changelog">Список изменений</string>
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">Загрузка системных обновлений</string>
     <string name="download_title">%1$s</string>
     <string name="cancel_download_alert_title">Отменить загрузку</string>
@@ -92,6 +107,8 @@
     <string name="already_downloading_gapps">Вы уже скачали обновление приложения Google.</string>
     <string name="cancel_download">Отмена загрузки</string>
     <string name="downloading_info">"Обновление(я) загрузки:\n%1$s"</string>
+
+    <!-- DOWNLOAD ERRORS -->
     <string name="error_cannot_resume">Ошибка: загрузка не может быть возобновлена</string>
     <string name="error_device_not_found">Ошибка: SD карта не смонтирована</string>
     <string name="error_file_already_exists">Ошибка: файл уже существует</string>
@@ -101,6 +118,8 @@
     <string name="error_too_many_redirects">Ошибка: слишком много перенаправлений</string>
     <string name="error_unhandled_http_code">Ошибка: Необработанное http-код</string>
     <string name="error_unknown">Ошибка: Неизвестно</string>
+
+    <!-- SETTINGS -->
     <string name="settings">Настройки</string>
     <string name="settings_checktime_title">Частота проверки обновлений</string>
     <string name="settings_checktime_summary">Укажите время между каждым обновлением</string>
@@ -110,5 +129,4 @@
     <string name="time_notifications_two_hours">2 часа</string>
     <string name="time_notifications_five_hours">5 часов</string>
     <string name="time_notifications_daily">Ежедневно</string>
-    <string name="content_description">content_description</string>
 </resources>
