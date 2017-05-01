@@ -50,7 +50,7 @@ public class Service extends IntentService {
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
     private static final String PREFERENCE_IDLE_REBOOT = "idle_reboot";
 
-    private boolean updating = false;
+    private boolean mUpdating = false;
 
     public Service() {
         super(TAG);
@@ -81,7 +81,7 @@ public class Service extends IntentService {
                     annoyUser();
                 } else {
                     Log.d(TAG, "onPayloadApplicationComplete: " + errorCode);
-                    updating = false;
+                    mUpdating = false;
                 }
                 UPDATE_PATH.delete();
                 monitor.countDown();
@@ -201,11 +201,11 @@ public class Service extends IntentService {
         try {
             wakeLock.acquire();
 
-            if (updating) {
+            if (mUpdating) {
                 Log.d(TAG, "updating already, returning early");
                 return;
             }
-            updating = true;
+            mUpdating = true;
 
             final SharedPreferences preferences = Settings.getPreferences(this);
             final String channel = SystemProperties.get("sys.update.channel",
@@ -276,7 +276,7 @@ public class Service extends IntentService {
             onDownloadFinished(targetBuildDate);
         } catch (IOException | GeneralSecurityException e) {
             Log.e(TAG, "failed to download and install update", e);
-            updating = false;
+            mUpdating = false;
             PeriodicJob.scheduleRetry(this);
         } finally {
             Log.d(TAG, "release wake locks");
