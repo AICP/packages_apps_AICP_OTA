@@ -27,13 +27,13 @@
 
     <!-- SYSTEM ACTIVITY -->
     <string name="check_for_updates_long">Проверка обновлений</string>
-    <string name="all_up_to_date">Вы в курсе!</string>
+    <string name="all_up_to_date">Вы используете последнюю версию!</string>
     <string name="rom_scanning">Проверка обновлений системы…</string>
-    <string name="rom_gapps_new_version">Системных обновлений не найдено!</string>
+    <string name="rom_gapps_new_version">Обновлений не найдено!</string>
     <string name="rom_new_version">Есть новые обновления!</string>
     <string name="gapps_new_version">Есть новые обновления приложений Google!</string>
     <string name="no_updates">Системные обновления не найдены</string>
-    <string name="system_update_found">"Новые обновления найдены и готовы для загрузки.\nПожалуйста, проверьте уведомления, которые возможно появились. Они приведут вас к AICP OTA откуда вы сможете скачать и/или установить обновление.\n\nОбновление(я) найдено:\n%1$s"</string>
+    <string name="system_update_found">"Новые обновления найдены и готовы для загрузки.\nПожалуйста, проверьте уведомления, которые возможно появились. Они приведут вас к AICP OTA откуда вы сможете скачать и/или установить обновление.\n\nОбновления найдены:\n%1$s"</string>
 
     <!-- SYSTEM -->
     <string name="system_title">Информация о системе</string>
@@ -44,69 +44,63 @@
     <string name="updates">Обновления</string>
     <string name="updates_checking">Проверка…</string>
     <string name="updates_found">Обновление системы найдены</string>
-    <string name="updates_uptodate">Вы в курсе</string>
-    <string name="no_updates_found">Никаких обновлений не найдено</string>
-    <string name="check_rom_updates_error">Ошибка проверки обновления ROM</string>
-    <string name="check_gapps_updates_error">Проверка ошибок для обновления приложений Google</string>
-    <string name="system_update">"Обновление системы найдены.\nВыберите обновление(я), который вы хотите скачать.\n\nОбновление(я) найдено:"</string>
+    <string name="updates_uptodate">Вы используете последнюю версию</string>
+    <string name="no_updates_found">Обновления не найдены</string>
+    <string name="check_rom_updates_error">Ошибка проверки обновлений</string>
+    <string name="check_gapps_updates_error">Ошибка проверки обновлений приложений Google</string>
+    <string name="system_update">"Обновление системы найдены.\nВыберите обновления, которые вы хотите скачать.\n\nНайденные обновления:"</string>
     <string name="download_and_install">Скачать и установить</string>
     <string name="update_host">Размещается на %1$s</string>
     <string name="nightly_changelog">-- Нажмите, чтобы смотреть список изменений ... %1$s</string>
-    <string name="nightly_md5sum">Контрольная сумма MВ5: %1$s</string>
+    <string name="nightly_md5sum">Контрольная сумма md5: %1$s</string>
     <string name="nightly_filesize">Размер файла: %1$s МБ</string>
 
     <!-- INSTALL -->
     <string name="install">Установить</string>
     <string name="install_title">Все готово для установки</string>
-    <string name="install_info">"Следующее обновление(я) готовы к установке.\n\nВы можете добавить больше zip, нажав на \"добавить файл."</string>
+    <string name="install_info">"Следующие обновления готовы к установке.\n\nВы можете добавить больше zip, нажав \"добавить файл\"."</string>
     <string name="add_file">Добавить файл</string>
     <string name="install_now">Установить сейчас</string>
-    <string name="calculating_md5">Вычисление MD5-сумма…</string>
-    <string name="md5_mismatch">Несоответствия MD5</string>
-    <string name="md5_mismatch_summary">"Получили:\n%1$s\n\nРассчитывается:\n%2$s"</string>
+    <string name="calculating_md5">Вычисление MD5-суммы…</string>
+    <string name="md5_mismatch">Несоответствие MD5</string>
+    <string name="md5_mismatch_summary">"MD5 с сервера:\n%1$s\n\nMD5 файла:\n%2$s"</string>
     <string name="md5_install_anyway">Все равно продолжить</string>
     <string name="select_actions">Выберите действия, которые вы хотели бы выполнять</string>
     <string name="backup">Резервное копирование</string>
     <string name="wipe_data">Очистить Data</string>
-    <string name="wipe_caches">Очистить Cache &amp; Dalvik</string>
+    <string name="wipe_caches">Очистить Cache и Dalvik</string>
     <string name="remove_file_title">Удалить файл</string>
     <string name="remove_file_summary">"Вы действительно хотите удалить файл из списка?\n\n%1$s"</string>
-    <string name="file_manager_error">Отсутствие приложения zip-файл. Пожалуйста, установите файловый менеджер.</string>
-    <string name="alert_backup_space_title">Пространство слева</string>
-    <string name="alert_backup_space_message">Менее %1$sGB во внутренней SD-карты. Вы действительно хотите продолжить резервное копирование?</string>
+    <string name="file_manager_error">Отсутствие приложения для просмотра zip-архивов. Пожалуйста, установите файловый менеджер.</string>
+    <string name="alert_backup_space_title">Места на диске</string>
+    <string name="alert_backup_space_message">Менее %1$sGB свободно на внутренней SD-карте. Вы действительно хотите продолжить резервное копирование?</string>
     <string name="alert_backup_title">Резервное копирование</string>
     <string name="alert_backup_message">"Укажите имя резервной копии (недопустимые символы будут удалены).\n\nСледующие параметры будут работать только в twrp."</string>
-    <string name="system">Система</string>
-    <string name="data">Данные</string>
-    <string name="cache">Кэш</string>
-    <string name="recovery">Recovery</string>
-    <string name="boot">Boot</string>
-    <string name="androidsecure">Безопастность Андроид</string>
-    <string name="sdext">SD-Ext</string>
+
     <string name="alert_reboot_install_title">Установите обновление(я)</string>
-    <string name="alert_reboot_one_message">Ваше устройство перезагрузится и установит обновление.</string>
-    <string name="alert_reboot_more_message">Ваше устройство перезагрузится и установит обновления.</string>
-    <string name="alert_reboot_now">Установить сейчас</string>
-    <string name="file_not_found">Не получается добавить файл</string>
+    <string name="alert_reboot_one_message">Ваше устройство будет перезагружено для установки обновления.</string>
+    <string name="alert_reboot_more_message">Ваше устройство будет перезагружено для установки обновлений.</string>
+    <string name="alert_reboot_now">Перезагрузить сейчас</string>
+    <string name="file_not_found">Не удается найти файл</string>
 
     <!-- CHANGELOG -->
     <string name="changelog">Список изменений</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
-    <string name="download_card_title">Загрузка системных обновлений</string>
+    <string name="download_card_title">Загрузка обновлений</string>
     <string name="download_title">%1$s</string>
     <string name="cancel_download_alert_title">Отменить загрузку</string>
-    <string name="cancel_rom_download_alert_summary">Вы действительно хотите отменить загрузку прошивки?</string>
+    <string name="cancel_rom_download_alert_summary">Вы действительно хотите отменить загрузку обновлений?</string>
     <string name="cancel_gapps_download_alert_summary">Вы действительно хотите отменить загрузку приложений Google?</string>
     <string name="cancel_download_alert_yes">Да</string>
     <string name="cancel_download_alert_no">Нет</string>
-    <string name="new_system_update">Новые системные обновления найдены</string>
+    <string name="new_system_update">Новые обновления найдены</string>
     <string name="new_package_name">%1$s</string>
-    <string name="new_packages">%1$s Обновления доступно для загрузки</string>
+    <string name="new_packages">Обновления %1$s доступны для загрузки</string>
     <string name="already_downloading_rom">Вы уже скачали обновление прошивки.</string>
-    <string name="already_downloading_gapps">Вы уже скачали обновление приложения Google.</string>
-    <string name="cancel_download">Отмена загрузки</string>
-    <string name="downloading_info">"Обновление(я) загрузки:\n%1$s"</string>
+    <string name="already_downloading_gapps">Вы уже скачали обновление приложений Google.</string>
+    <string name="cancel_download">Отменить загрузку</string>
+    <string name="downloading_info">"Загруженные обновления:\n%1$s"</string>
 
     <!-- DOWNLOAD ERRORS -->
     <string name="error_cannot_resume">Ошибка: загрузка не может быть возобновлена</string>
@@ -116,13 +110,13 @@
     <string name="error_http_data_error">Ошибка: ошибка Http</string>
     <string name="error_insufficient_space">Ошибка: нет свободного места</string>
     <string name="error_too_many_redirects">Ошибка: слишком много перенаправлений</string>
-    <string name="error_unhandled_http_code">Ошибка: Необработанное http-код</string>
+    <string name="error_unhandled_http_code">Ошибка: необрабатываемый http-код</string>
     <string name="error_unknown">Ошибка: Неизвестно</string>
 
     <!-- SETTINGS -->
     <string name="settings">Настройки</string>
     <string name="settings_checktime_title">Частота проверки обновлений</string>
-    <string name="settings_checktime_summary">Укажите время между каждым обновлением</string>
+    <string name="settings_checktime_summary">Укажите интервал между проверками</string>
     <string name="time_notifications_never">Не проверять</string>
     <string name="time_notifications_half_an_hour">Полчаса</string>
     <string name="time_notifications_an_hour">1 час</string>
