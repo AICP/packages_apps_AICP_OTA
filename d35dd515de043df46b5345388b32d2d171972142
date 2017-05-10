@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da86d52c_2f948d36",
+        "filename": "res/values-ru/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 343
+      },
+      "writtenOn": "2017-05-10T08:56:08Z",
+      "side": 1,
+      "message": "If you write all \"MD5\" in capital letters, why not here?",
+      "range": {
+        "startLine": 55,
+        "startChar": 51,
+        "endLine": 55,
+        "endChar": 55
+      },
+      "revId": "d35dd515de043df46b5345388b32d2d171972142",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": false
+    }
+  ]
+}
