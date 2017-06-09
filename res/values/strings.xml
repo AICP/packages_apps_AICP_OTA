@@ -134,8 +134,8 @@
     <string name="time_notifications_weekly">Weekly</string>
 
     <!-- Permission check -->
-    <string name="permission_not_granted_dialog_title" translatable="false">Permission not granted</string>
-    <string name="permission_granted_dialog_title" translatable="false">Permission granted</string>
+    <string name="permission_not_granted_dialog_title">Permission not granted</string>
+    <string name="permission_granted_dialog_title">Permission granted</string>
 
     <!-- Dummy -->
     <string name="content_description">content_description</string>

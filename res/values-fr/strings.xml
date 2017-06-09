@@ -88,7 +88,7 @@
     <string name="changelog">Journal de changement</string>
 
     <!-- GOOGLEPLUS -->
-    <string name="google_plus" translatable="false">Google+</string>
+    <string name="google_plus">Google+</string>
 
     <!-- DOWNLOADS/NOTIFICATIONS -->
     <string name="download_card_title">Téléchargement de la mise à jour du système</string>
@@ -129,13 +129,10 @@
     <string name="time_notifications_daily">Tout les jours</string>
 
     <!-- Permission check -->
-    <string name="permission_not_granted_dialog_title" translatable="false">Permission refusée</string>
-    <string name="permission_granted_dialog_title" translatable="false">Permission accordée</string>
+    <string name="permission_not_granted_dialog_title">Permission refusée</string>
+    <string name="permission_granted_dialog_title">Permission accordée</string>
 
     <!-- Dummy -->
     <string name="content_description">content_description</string>
-
-    <!--SDCARD Path-->
-    <string name="sdcard" translatable="false">/sdcard</string>
 
 </resources>
