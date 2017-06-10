@@ -248,6 +248,7 @@ public class Service extends IntentService {
             final long sourceBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
             if (targetBuildDate <= sourceBuildDate) {
                 Log.d(TAG, "targetBuildDate: " + targetBuildDate + " not higher than sourceBuildDate: " + sourceBuildDate);
+                mUpdating = false;
                 return;
             }
 
