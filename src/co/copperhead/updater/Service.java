@@ -108,6 +108,7 @@ public class Service extends IntentService {
             BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
             String device = null;
             String serialno = null;
+            String type = null;
             long timestamp = 0;
             for (String line; (line = reader.readLine()) != null; ) {
                 String[] pair = line.split("=");
@@ -117,6 +118,8 @@ public class Service extends IntentService {
                     serialno = pair[1];
                 } else if ("pre-device".equals(pair[0])) {
                     device = pair[1];
+                } else if ("ota-type".equals(pair[0])) {
+                    type = pair[1];
                 }
             }
             if (timestamp != targetBuildDate) {
@@ -127,6 +130,9 @@ public class Service extends IntentService {
             }
             if (serialno != null && !serialno.equals(SystemProperties.get("ro.serialno", ""))) {
                 throw new GeneralSecurityException("serialno mismatch");
+            }
+            if (!"AB".equals(type)) {
+                throw new GeneralSecurityException("package is not an A/B update");
             }
 
             final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
