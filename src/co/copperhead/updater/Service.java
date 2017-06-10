@@ -1,6 +1,7 @@
 package co.copperhead.updater;
 
 import static android.os.Build.DEVICE;
+import static android.os.Build.FINGERPRINT;
 import static android.os.Build.VERSION.INCREMENTAL;
 
 import android.app.IntentService;
@@ -109,9 +110,11 @@ public class Service extends IntentService {
             String device = null;
             String serialno = null;
             String type = null;
+            String sourceIncremental = null;
+            String sourceFingerprint = null;
             long timestamp = 0;
             for (String line; (line = reader.readLine()) != null; ) {
-                String[] pair = line.split("=");
+                final String[] pair = line.split("=");
                 if ("post-timestamp".equals(pair[0])) {
                     timestamp = Long.parseLong(pair[1]);
                 } else if ("serialno".equals(pair[0])) {
@@ -120,6 +123,10 @@ public class Service extends IntentService {
                     device = pair[1];
                 } else if ("ota-type".equals(pair[0])) {
                     type = pair[1];
+                } else if ("pre-build-incremental".equals(pair[0])) {
+                    sourceIncremental = pair[1];
+                } else if ("pre-build".equals(pair[0])) {
+                    sourceFingerprint = pair[1];
                 }
             }
             if (timestamp != targetBuildDate) {
@@ -133,6 +140,12 @@ public class Service extends IntentService {
             }
             if (!"AB".equals(type)) {
                 throw new GeneralSecurityException("package is not an A/B update");
+            }
+            if (sourceIncremental != null && !sourceIncremental.equals(INCREMENTAL)) {
+                throw new GeneralSecurityException("source incremental mismatch");
+            }
+            if (sourceFingerprint != null && !sourceFingerprint.equals(FINGERPRINT)) {
+                throw new GeneralSecurityException("source fingerprint mismatch");
             }
 
             final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
