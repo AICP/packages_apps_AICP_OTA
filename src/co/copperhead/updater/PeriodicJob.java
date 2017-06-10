@@ -67,6 +67,7 @@ public class PeriodicJob extends JobService {
     static void cancel(final Context context) {
         final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         scheduler.cancel(JOB_ID_PERIODIC);
+        scheduler.cancel(JOB_ID_RETRY);
     }
 
     @Override
