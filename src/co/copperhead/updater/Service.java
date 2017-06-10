@@ -107,11 +107,14 @@ public class Service extends IntentService {
             }
             BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
             String device = null;
+            String serialno = null;
             long timestamp = 0;
             for (String line; (line = reader.readLine()) != null; ) {
                 String[] pair = line.split("=");
                 if ("post-timestamp".equals(pair[0])) {
                     timestamp = Long.parseLong(pair[1]);
+                } else if ("serialno".equals(pair[0])) {
+                    serialno = pair[1];
                 } else if ("pre-device".equals(pair[0])) {
                     device = pair[1];
                 }
@@ -121,6 +124,9 @@ public class Service extends IntentService {
             }
             if (!DEVICE.equals(device)) {
                 throw new GeneralSecurityException("device mismatch");
+            }
+            if (serialno != null && !serialno.equals(SystemProperties.get("ro.serialno", ""))) {
+                throw new GeneralSecurityException("serialno mismatch");
             }
 
             final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
