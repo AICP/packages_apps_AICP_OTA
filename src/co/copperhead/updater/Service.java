@@ -2,6 +2,7 @@ package co.copperhead.updater;
 
 import static android.os.Build.DEVICE;
 import static android.os.Build.FINGERPRINT;
+import static android.os.Build.SERIAL;
 import static android.os.Build.VERSION.INCREMENTAL;
 
 import android.app.IntentService;
@@ -135,7 +136,7 @@ public class Service extends IntentService {
             if (!DEVICE.equals(device)) {
                 throw new GeneralSecurityException("device mismatch");
             }
-            if (serialno != null && !serialno.equals(SystemProperties.get("ro.serialno", ""))) {
+            if (serialno != null && !serialno.equals(SERIAL)) {
                 throw new GeneralSecurityException("serialno mismatch");
             }
             if (!"AB".equals(type)) {
