@@ -72,7 +72,7 @@ public class Service extends IntentService {
         engine.bind(new UpdateEngineCallback() {
             @Override
             public void onStatusUpdate(int status, float percent) {
-                Log.d(TAG, "onStatusUpdate: " + status + ", " + percent + "%");
+                Log.d(TAG, "onStatusUpdate: " + status + ", " + percent * 100 + "%");
             }
 
             @Override
