@@ -51,6 +51,7 @@ public class Service extends IntentService {
     private static final String PREFERENCE_CHANNEL = "channel";
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
     private static final String PREFERENCE_IDLE_REBOOT = "idle_reboot";
+    private static final int HTTP_RANGE_NOT_SATISFIABLE = 416;
 
     private boolean mUpdating = false;
 
@@ -262,7 +263,7 @@ public class Service extends IntentService {
                 Log.d(TAG, "resume fetch of " + downloadFile + " from " + downloaded + " bytes");
                 final HttpURLConnection connection = (HttpURLConnection) fetchData(downloadFile);
                 connection.setRequestProperty("Range", "bytes=" + downloaded + "-");
-                if (connection.getResponseCode() == 416) {
+                if (connection.getResponseCode() == HTTP_RANGE_NOT_SATISFIABLE) {
                     Log.d(TAG, "download completed previously");
                     onDownloadFinished(targetBuildDate);
                     return;
