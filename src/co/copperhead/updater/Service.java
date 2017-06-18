@@ -280,6 +280,9 @@ public class Service extends IntentService {
                     input = fetchData(downloadFile).getInputStream();
                 }
                 downloaded = 0;
+                if (UPDATE_PATH.exists()) {
+                    UPDATE_PATH.delete();
+                }
             }
 
             final OutputStream output = new FileOutputStream(UPDATE_PATH, downloaded != 0);
