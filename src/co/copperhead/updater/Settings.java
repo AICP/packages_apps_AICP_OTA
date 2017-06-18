@@ -3,6 +3,7 @@ package co.copperhead.updater;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -30,5 +31,12 @@ public class Settings extends PreferenceActivity {
             PeriodicJob.schedule(Settings.this);
             return true;
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final ListPreference networkType = (ListPreference) findPreference(KEY_NETWORK_TYPE);
+        networkType.setValue(Integer.toString(PeriodicJob.getNetworkType(this)));
     }
 }
