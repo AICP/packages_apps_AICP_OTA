@@ -150,12 +150,12 @@ public class Service extends IntentService {
                 throw new GeneralSecurityException("source fingerprint mismatch");
             }
 
+            if (CARE_MAP_PATH.exists()) {
+                CARE_MAP_PATH.delete();
+            }
             final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
             if (careMapEntry == null) {
                 Log.w(TAG, "care_map.txt missing");
-                if (CARE_MAP_PATH.exists()) {
-                    CARE_MAP_PATH.delete();
-                }
             } else {
                 final InputStream careMapData = zipFile.getInputStream(careMapEntry);
                 final OutputStream careMap = new FileOutputStream(CARE_MAP_PATH);
