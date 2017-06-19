@@ -13,6 +13,7 @@ import android.util.Log;
 public class Settings extends PreferenceActivity {
     private static final String TAG = "Settings";
     static final String KEY_NETWORK_TYPE = "network_type";
+    static final String KEY_IDLE_REBOOT = "idle_reboot";
 
     static SharedPreferences getPreferences(final Context context) {
         final Context deviceContext = context.createDeviceProtectedStorageContext();
@@ -27,12 +28,22 @@ public class Settings extends PreferenceActivity {
         }
         getPreferenceManager().setStorageDeviceProtected();
         addPreferencesFromResource(R.xml.settings);
+
         final Preference networkType = findPreference(KEY_NETWORK_TYPE);
         networkType.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
             final int value = Integer.parseInt((String) newValue);
             final SharedPreferences preferences = getPreferences(Settings.this);
             preferences.edit().putInt(KEY_NETWORK_TYPE, value).apply();
             PeriodicJob.schedule(Settings.this);
+            return true;
+        });
+
+        final Preference idleReboot = findPreference(KEY_IDLE_REBOOT);
+        idleReboot.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
+            final boolean value = (Boolean) newValue;
+            if (!value) {
+                IdleReboot.cancel(this);
+            }
             return true;
         });
     }

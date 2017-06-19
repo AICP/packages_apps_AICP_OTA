@@ -26,6 +26,11 @@ public class IdleReboot extends JobService {
         }
     }
 
+    static void cancel(final Context context) {
+        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        scheduler.cancel(JOB_ID_IDLE_REBOOT);
+    }
+
     @Override
     public boolean onStartJob(final JobParameters params) {
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
