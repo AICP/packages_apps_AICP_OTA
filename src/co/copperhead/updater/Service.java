@@ -179,7 +179,6 @@ public class Service extends IntentService {
                 lines.add(line);
             }
 
-            long payloadOffset = 0;
             final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
             long offset = 0;
             while (zipEntries.hasMoreElements()) {
@@ -189,13 +188,13 @@ public class Service extends IntentService {
                 offset += zipHeaderLength + entry.getName().length() + extra;
                 if (!entry.isDirectory()) {
                     if ("payload.bin".equals(entry.getName())) {
-                        payloadOffset = offset;
+                        applyUpdate(offset, lines.toArray(new String[lines.size()]));
+                        return;
                     }
                     offset += entry.getCompressedSize();
                 }
             }
-
-            applyUpdate(payloadOffset, lines.toArray(new String[lines.size()]));
+            throw new GeneralSecurityException("payload.bin missing");
         } catch (GeneralSecurityException e) {
             UPDATE_PATH.delete();
             throw e;
