@@ -169,9 +169,17 @@ public class Service extends IntentService {
                 CARE_MAP_PATH.setReadable(true, false);
             }
 
+            final ZipEntry payloadProperties = zipFile.getEntry("payload_properties.txt");
+            if (payloadProperties == null) {
+                throw new GeneralSecurityException("payload_properties.txt missing");
+            }
             final List<String> lines = new ArrayList<String>();
-            long payloadOffset = 0;
+            reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(payloadProperties)));
+            for (String line; (line = reader.readLine()) != null; ) {
+                lines.add(line);
+            }
 
+            long payloadOffset = 0;
             final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
             long offset = 0;
             while (zipEntries.hasMoreElements()) {
@@ -182,11 +190,6 @@ public class Service extends IntentService {
                 if (!entry.isDirectory()) {
                     if ("payload.bin".equals(entry.getName())) {
                         payloadOffset = offset;
-                    } else if ("payload_properties.txt".equals(entry.getName())) {
-                        reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(entry)));
-                        for (String line; (line = reader.readLine()) != null; ) {
-                            lines.add(line);
-                        }
                     }
                     offset += entry.getCompressedSize();
                 }
