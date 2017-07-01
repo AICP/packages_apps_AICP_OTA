@@ -97,6 +97,14 @@ public class Service extends IntentService {
         } catch (InterruptedException e) {}
     }
 
+    private static ZipEntry getEntry(final ZipFile zipFile, final String name) throws GeneralSecurityException {
+        final ZipEntry entry = zipFile.getEntry(name);
+        if (entry == null) {
+            throw new GeneralSecurityException("missing zip entry: " + name);
+        }
+        return entry;
+    }
+
     private void onDownloadFinished(final long targetBuildDate) throws IOException, GeneralSecurityException {
         try {
             RecoverySystem.verifyPackage(UPDATE_PATH,
@@ -104,10 +112,7 @@ public class Service extends IntentService {
 
             final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
-            final ZipEntry metadata = zipFile.getEntry("META-INF/com/android/metadata");
-            if (metadata == null) {
-                throw new GeneralSecurityException("missing metadata file");
-            }
+            final ZipEntry metadata = getEntry(zipFile, "META-INF/com/android/metadata");
             BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
             String device = null;
             String serialno = null;
@@ -169,10 +174,7 @@ public class Service extends IntentService {
                 CARE_MAP_PATH.setReadable(true, false);
             }
 
-            final ZipEntry payloadProperties = zipFile.getEntry("payload_properties.txt");
-            if (payloadProperties == null) {
-                throw new GeneralSecurityException("payload_properties.txt missing");
-            }
+            final ZipEntry payloadProperties = getEntry(zipFile, "payload_properties.txt");
             final List<String> lines = new ArrayList<String>();
             reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(payloadProperties)));
             for (String line; (line = reader.readLine()) != null; ) {
