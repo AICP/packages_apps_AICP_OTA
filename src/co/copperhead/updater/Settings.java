@@ -32,9 +32,8 @@ public class Settings extends PreferenceActivity {
         final Preference networkType = findPreference(KEY_NETWORK_TYPE);
         networkType.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
             final int value = Integer.parseInt((String) newValue);
-            final SharedPreferences preferences = getPreferences(Settings.this);
-            preferences.edit().putInt(KEY_NETWORK_TYPE, value).apply();
-            PeriodicJob.schedule(Settings.this);
+            getPreferences(this).edit().putInt(KEY_NETWORK_TYPE, value).apply();
+            PeriodicJob.schedule(this);
             return true;
         });
 
