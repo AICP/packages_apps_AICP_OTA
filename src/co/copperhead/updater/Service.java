@@ -50,7 +50,6 @@ public class Service extends IntentService {
     private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
     private static final String PREFERENCE_CHANNEL = "channel";
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
-    private static final String PREFERENCE_IDLE_REBOOT = "idle_reboot";
     private static final int HTTP_RANGE_NOT_SATISFIABLE = 416;
 
     private boolean mUpdating = false;
@@ -205,7 +204,7 @@ public class Service extends IntentService {
 
     private void annoyUser() {
         final SharedPreferences preferences = Settings.getPreferences(this);
-        if (preferences.getBoolean(PREFERENCE_IDLE_REBOOT, false)) {
+        if (preferences.getBoolean(Settings.KEY_IDLE_REBOOT, false)) {
             IdleReboot.schedule(this);
         }
 
