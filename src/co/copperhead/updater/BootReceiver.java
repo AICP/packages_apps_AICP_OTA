@@ -12,7 +12,6 @@ public class BootReceiver extends BroadcastReceiver {
         if (UserManager.get(context).isSystemUser()) {
             PeriodicJob.schedule(context);
         } else {
-            PeriodicJob.cancel(context);
             context.getPackageManager().setApplicationEnabledSetting(context.getPackageName(),
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0);
         }
