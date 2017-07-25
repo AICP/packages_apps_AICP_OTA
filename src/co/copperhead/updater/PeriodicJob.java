@@ -7,27 +7,17 @@ import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class PeriodicJob extends JobService {
     private static final String TAG = "PeriodicJob";
     private static final int JOB_ID_PERIODIC = 1;
     private static final int JOB_ID_RETRY = 2;
-    private static final int DEFAULT_NETWORK_TYPE = JobInfo.NETWORK_TYPE_ANY;
     private static final long INTERVAL_MILLIS = 60 * 60 * 1000;
     private static final long MIN_LATENCY_MILLIS = 60 * 1000;
 
-    static int getNetworkType(final Context context) {
-        final SharedPreferences preferences = Settings.getPreferences(context);
-        final int networkType = preferences.getInt(Settings.KEY_NETWORK_TYPE, DEFAULT_NETWORK_TYPE);
-        Log.d(TAG, "networkType: " + networkType);
-        return networkType;
-    }
-
     static void schedule(final Context context) {
-        final int networkType = getNetworkType(context);
+        final int networkType = Settings.getNetworkType(context);
         final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         final JobInfo jobInfo = scheduler.getPendingJob(JOB_ID_PERIODIC);
         if (jobInfo != null &&
@@ -54,7 +44,7 @@ public class PeriodicJob extends JobService {
         final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         final ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
         final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID_RETRY, serviceName)
-            .setRequiredNetworkType(getNetworkType(context))
+            .setRequiredNetworkType(Settings.getNetworkType(context))
             .setMinimumLatency(MIN_LATENCY_MILLIS)
             .build());
         if (result == JobScheduler.RESULT_SUCCESS) {
