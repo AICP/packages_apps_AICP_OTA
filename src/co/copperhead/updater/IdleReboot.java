@@ -12,12 +12,14 @@ import android.util.Log;
 public class IdleReboot extends JobService {
     private static final String TAG = "IdleReboot";
     private static final int JOB_ID_IDLE_REBOOT = 3;
+    private static final long MIN_LATENCY_MILLIS = 5 * 60 * 1000;
 
     static void schedule(final Context context) {
         final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         final ComponentName serviceName = new ComponentName(context, IdleReboot.class);
         final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID_IDLE_REBOOT, serviceName)
             .setRequiresDeviceIdle(true)
+            .setMinimumLatency(MIN_LATENCY_MILLIS)
             .build());
         if (result == JobScheduler.RESULT_SUCCESS) {
             Log.d(TAG, "Job schedule success");
