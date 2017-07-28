@@ -33,9 +33,7 @@ public class PeriodicJob extends JobService {
             .setPersisted(true)
             .setPeriodic(INTERVAL_MILLIS)
             .build());
-        if (result == JobScheduler.RESULT_SUCCESS) {
-            Log.d(TAG, "Periodic job schedule success");
-        } else {
+        if (result == JobScheduler.RESULT_FAILURE) {
             Log.d(TAG, "Periodic job schedule failed");
         }
     }
@@ -47,9 +45,7 @@ public class PeriodicJob extends JobService {
             .setRequiredNetworkType(Settings.getNetworkType(context))
             .setMinimumLatency(MIN_LATENCY_MILLIS)
             .build());
-        if (result == JobScheduler.RESULT_SUCCESS) {
-            Log.d(TAG, "Retry job schedule success");
-        } else {
+        if (result == JobScheduler.RESULT_FAILURE) {
             Log.d(TAG, "Retry job schedule failed");
         }
     }

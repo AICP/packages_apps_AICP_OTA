@@ -21,9 +21,7 @@ public class IdleReboot extends JobService {
             .setRequiresDeviceIdle(true)
             .setMinimumLatency(MIN_LATENCY_MILLIS)
             .build());
-        if (result == JobScheduler.RESULT_SUCCESS) {
-            Log.d(TAG, "Job schedule success");
-        } else {
+        if (result == JobScheduler.RESULT_FAILURE) {
             Log.d(TAG, "Job schedule failed");
         }
     }
