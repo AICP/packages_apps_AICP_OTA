@@ -6,7 +6,7 @@ import android.content.Intent;
 
 public class TriggerUpdateReceiver extends WakefulBroadcastReceiver {
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, final Intent intent) {
         startWakefulService(context, new Intent(context, Service.class));
     }
 }

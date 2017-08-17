@@ -223,7 +223,7 @@ public class Service extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
+    protected void onHandleIntent(final Intent intent) {
         Log.d(TAG, "onHandleIntent");
 
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
@@ -308,7 +308,7 @@ public class Service extends IntentService {
 
             Log.d(TAG, "download completed");
             onDownloadFinished(targetBuildDate);
-        } catch (IOException | GeneralSecurityException e) {
+        } catch (GeneralSecurityException | IOException e) {
             Log.e(TAG, "failed to download and install update", e);
             mUpdating = false;
             PeriodicJob.scheduleRetry(this);
