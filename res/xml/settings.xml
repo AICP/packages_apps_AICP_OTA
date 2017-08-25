@@ -19,6 +19,10 @@
             android:entryValues="@array/network_type_values"
             android:defaultValue="1" />
 
+    <SwitchPreference android:key="battery_not_low"
+            android:title="@string/battery_not_low_title"
+            android:summary="@string/battery_not_low_summary" />
+
     <SwitchPreference android:key="idle_reboot"
             android:title="@string/idle_reboot_title"
             android:summary="@string/idle_reboot_summary" />

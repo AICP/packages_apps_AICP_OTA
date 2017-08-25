@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 public class Settings extends PreferenceActivity {
     private static final int DEFAULT_NETWORK_TYPE = JobInfo.NETWORK_TYPE_ANY;
     private static final String KEY_NETWORK_TYPE = "network_type";
+    static final String KEY_BATTERY_NOT_LOW = "battery_not_low";
     static final String KEY_IDLE_REBOOT = "idle_reboot";
 
     static SharedPreferences getPreferences(final Context context) {
@@ -22,6 +23,10 @@ public class Settings extends PreferenceActivity {
 
     static int getNetworkType(final Context context) {
         return getPreferences(context).getInt(KEY_NETWORK_TYPE, DEFAULT_NETWORK_TYPE);
+    }
+
+    static boolean getBatteryNotLow(final Context context) {
+        return getPreferences(context).getBoolean(KEY_BATTERY_NOT_LOW, false);
     }
 
     @Override
@@ -37,6 +42,13 @@ public class Settings extends PreferenceActivity {
         networkType.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
             final int value = Integer.parseInt((String) newValue);
             getPreferences(this).edit().putInt(KEY_NETWORK_TYPE, value).apply();
+            PeriodicJob.schedule(this);
+            return true;
+        });
+
+        final Preference batteryNotLow = findPreference(KEY_BATTERY_NOT_LOW);
+        batteryNotLow.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
+            getPreferences(this).edit().putBoolean(KEY_BATTERY_NOT_LOW, (boolean) newValue).apply();
             PeriodicJob.schedule(this);
             return true;
         });

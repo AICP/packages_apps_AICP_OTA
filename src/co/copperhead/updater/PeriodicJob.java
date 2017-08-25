@@ -18,10 +18,12 @@ public class PeriodicJob extends JobService {
 
     static void schedule(final Context context) {
         final int networkType = Settings.getNetworkType(context);
+        final boolean batteryNotLow = Settings.getBatteryNotLow(context);
         final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         final JobInfo jobInfo = scheduler.getPendingJob(JOB_ID_PERIODIC);
         if (jobInfo != null &&
                 jobInfo.getNetworkType() == networkType &&
+                jobInfo.isRequireBatteryNotLow() == batteryNotLow &&
                 jobInfo.isPersisted() &&
                 jobInfo.getIntervalMillis() == INTERVAL_MILLIS) {
             Log.d(TAG, "Periodic job already registered");
@@ -30,6 +32,7 @@ public class PeriodicJob extends JobService {
         final ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
         final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID_PERIODIC, serviceName)
             .setRequiredNetworkType(networkType)
+            .setRequiresBatteryNotLow(batteryNotLow)
             .setPersisted(true)
             .setPeriodic(INTERVAL_MILLIS)
             .build());
@@ -43,6 +46,7 @@ public class PeriodicJob extends JobService {
         final ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
         final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID_RETRY, serviceName)
             .setRequiredNetworkType(Settings.getNetworkType(context))
+            .setRequiresBatteryNotLow(Settings.getBatteryNotLow(context))
             .setMinimumLatency(MIN_LATENCY_MILLIS)
             .build());
         if (result == JobScheduler.RESULT_FAILURE) {
