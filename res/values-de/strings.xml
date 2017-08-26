@@ -60,7 +60,7 @@
     <!-- INSTALL -->
     <string name="install">Installation</string>
     <string name="install_title">Zur Installation bereit</string>
-    <string name="install_info">Das/Die folgenden Update(s) sind zur Installation bereit.\n\nWeitere ZIP-Dateien hinzufügen, indem auf \"Datei hinzufügen\" gedrückt wird.</string>
+    <string name="install_info">Das folgende Update ist zur Installation bereit.\n\nWeitere ZIP-Dateien hinzufügen, indem auf \"Datei hinzufügen\" gedrückt wird.</string>
     <string name="add_file">Datei hinzufügen</string>
     <string name="install_now">Jetzt installieren</string>
     <string name="calculating_md5">Berechne MD5-Summe…</string>
@@ -134,8 +134,8 @@
     <string name="time_notifications_weekly">Wöchentlich</string>
 
     <!-- Permission check -->
-    <!-- <string name="permission_not_granted_dialog_title" translatable="false">Permission not granted</string>
-    <string name="permission_granted_dialog_title" translatable="false">Permission granted</string> -->
+    <string name="permission_not_granted_dialog_title">Berechtigung nicht gewährt</string>
+    <string name="permission_granted_dialog_title">Berechtigung gewährt</string>
 
     <!-- Dummy -->
     <string name="content_description">content_description</string>
