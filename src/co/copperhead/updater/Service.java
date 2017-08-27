@@ -7,6 +7,7 @@ import static android.os.Build.VERSION.INCREMENTAL;
 
 import android.app.IntentService;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -44,6 +45,7 @@ import java.util.zip.ZipFile;
 public class Service extends IntentService {
     private static final String TAG = "Service";
     private static final int NOTIFICATION_ID = 1;
+    private static final String NOTIFICATION_CHANNEL_ID = "updates";
     private static final int PENDING_REBOOT_ID = 1;
     private static final int PENDING_SETTINGS_ID = 2;
     private static final int CONNECT_TIMEOUT = 60000;
@@ -203,7 +205,11 @@ public class Service extends IntentService {
         final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this)
+        notificationManager.createNotificationChannel(
+                new NotificationChannel(NOTIFICATION_CHANNEL_ID,
+                        getString(R.string.notification_channel),
+                        NotificationManager.IMPORTANCE_HIGH));
+        notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
             .addAction(R.drawable.ic_restart, getString(R.string.notification_reboot_action), reboot)
             .setCategory(Notification.CATEGORY_SYSTEM)
             .setContentIntent(settings)
@@ -211,7 +217,6 @@ public class Service extends IntentService {
             .setContentText(getString(R.string.notification_text))
             .setDefaults(Notification.DEFAULT_ALL)
             .setOngoing(true)
-            .setPriority(Notification.PRIORITY_HIGH)
             .setSmallIcon(R.drawable.ic_update_white_24dp)
             .build());
     }
