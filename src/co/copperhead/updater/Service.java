@@ -156,9 +156,7 @@ public class Service extends IntentService {
                 throw new GeneralSecurityException("source fingerprint mismatch");
             }
 
-            if (CARE_MAP_PATH.exists()) {
-                CARE_MAP_PATH.delete();
-            }
+            Files.deleteIfExists(CARE_MAP_PATH.toPath());
             final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
             if (careMapEntry == null) {
                 Log.w(TAG, "care_map.txt missing");
@@ -279,9 +277,7 @@ public class Service extends IntentService {
                     input = fetchData(downloadFile).getInputStream();
                 }
                 downloaded = 0;
-                if (UPDATE_PATH.exists()) {
-                    UPDATE_PATH.delete();
-                }
+                Files.deleteIfExists(UPDATE_PATH.toPath());
             }
 
             final OutputStream output = new FileOutputStream(UPDATE_PATH, downloaded != 0);
