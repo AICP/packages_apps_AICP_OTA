@@ -32,6 +32,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -162,15 +163,7 @@ public class Service extends IntentService {
             if (careMapEntry == null) {
                 Log.w(TAG, "care_map.txt missing");
             } else {
-                final InputStream careMapData = zipFile.getInputStream(careMapEntry);
-                final OutputStream careMap = new FileOutputStream(CARE_MAP_PATH);
-
-                int bytesRead;
-                final byte[] buffer = new byte[8192];
-                while ((bytesRead = careMapData.read(buffer)) != -1) {
-                    careMap.write(buffer, 0, bytesRead);
-                }
-                careMap.close();
+                Files.copy(zipFile.getInputStream(careMapEntry), CARE_MAP_PATH.toPath());
                 CARE_MAP_PATH.setReadable(true, false);
             }
 
