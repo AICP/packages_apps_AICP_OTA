@@ -122,6 +122,7 @@ public class Service extends IntentService {
             String type = null;
             String sourceIncremental = null;
             String sourceFingerprint = null;
+            String streamingPropertyFiles[] = null;
             long timestamp = 0;
             for (String line; (line = reader.readLine()) != null; ) {
                 final String[] pair = line.split("=");
@@ -133,6 +134,8 @@ public class Service extends IntentService {
                     device = pair[1];
                 } else if ("ota-type".equals(pair[0])) {
                     type = pair[1];
+                } else if ("ota-streaming-property-files".equals(pair[0])) {
+                    streamingPropertyFiles = pair[1].trim().split(",");
                 } else if ("pre-build-incremental".equals(pair[0])) {
                     sourceIncremental = pair[1];
                 } else if ("pre-build".equals(pair[0])) {
@@ -158,6 +161,14 @@ public class Service extends IntentService {
                 throw new GeneralSecurityException("source fingerprint mismatch");
             }
 
+            long payloadOffset = 0;
+            for (final String streamingPropertyFile : streamingPropertyFiles) {
+                final String properties[] = streamingPropertyFile.split(":");
+                if ("payload.bin".equals(properties[0])) {
+                    payloadOffset = Long.parseLong(properties[1]);
+                }
+            }
+
             Files.deleteIfExists(CARE_MAP_PATH.toPath());
             final ZipEntry careMapEntry = zipFile.getEntry("care_map.txt");
             if (careMapEntry == null) {
@@ -174,22 +185,7 @@ public class Service extends IntentService {
                 lines.add(line);
             }
 
-            final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
-            long offset = 0;
-            while (zipEntries.hasMoreElements()) {
-                final ZipEntry entry = (ZipEntry) zipEntries.nextElement();
-                final long extra = entry.getExtra() == null ? 0 : entry.getExtra().length;
-                final long zipHeaderLength = 30;
-                offset += zipHeaderLength + entry.getName().length() + extra;
-                if (!entry.isDirectory()) {
-                    if ("payload.bin".equals(entry.getName())) {
-                        applyUpdate(offset, lines.toArray(new String[lines.size()]));
-                        return;
-                    }
-                    offset += entry.getCompressedSize();
-                }
-            }
-            throw new GeneralSecurityException("payload.bin missing");
+            applyUpdate(payloadOffset, lines.toArray(new String[lines.size()]));
         } catch (GeneralSecurityException e) {
             UPDATE_PATH.delete();
             throw e;
