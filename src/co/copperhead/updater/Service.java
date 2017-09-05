@@ -94,8 +94,15 @@ public class Service extends IntentService {
                 monitor.countDown();
             }
         });
-        UPDATE_PATH.setReadable(true, false);
-        engine.applyPayload("file://" + UPDATE_PATH, payloadOffset, 0, headerKeyValuePairs);
+        if (SystemProperties.getBoolean("sys.update.streaming_test", false)) {
+            Log.d(TAG, "streaming update test");
+            final SharedPreferences preferences = Settings.getPreferences(this);
+            final String downloadFile = preferences.getString(PREFERENCE_DOWNLOAD_FILE, null);
+            engine.applyPayload(getString(R.string.url) + downloadFile, payloadOffset, 0, headerKeyValuePairs);
+        } else {
+            UPDATE_PATH.setReadable(true, false);
+            engine.applyPayload("file://" + UPDATE_PATH, payloadOffset, 0, headerKeyValuePairs);
+        }
         try {
             monitor.await();
         } catch (InterruptedException e) {}
