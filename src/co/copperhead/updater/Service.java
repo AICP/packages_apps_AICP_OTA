@@ -13,6 +13,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.RecoverySystem;
@@ -148,7 +149,7 @@ public class Service extends IntentService {
             if (!DEVICE.equals(device)) {
                 throw new GeneralSecurityException("device mismatch");
             }
-            if (serialno != null && !serialno.equals(SERIAL)) {
+            if (serialno != null && !serialno.equals(Build.getSerial())) {
                 throw new GeneralSecurityException("serialno mismatch");
             }
             if (!"AB".equals(type)) {
