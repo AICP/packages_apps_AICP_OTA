@@ -114,7 +114,7 @@ public class Service extends IntentService {
             final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
             final ZipEntry metadata = getEntry(zipFile, "META-INF/com/android/metadata");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
+            final BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
             String device = null;
             String serialno = null;
             String type = null;
@@ -177,8 +177,8 @@ public class Service extends IntentService {
             }
 
             final ZipEntry payloadProperties = getEntry(zipFile, "payload_properties.txt");
-            reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(payloadProperties)));
-            applyUpdate(payloadOffset, reader.lines().toArray(String[]::new));
+            final BufferedReader propertiesReader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(payloadProperties)));
+            applyUpdate(payloadOffset, propertiesReader.lines().toArray(String[]::new));
         } catch (GeneralSecurityException e) {
             UPDATE_PATH.delete();
             throw e;
