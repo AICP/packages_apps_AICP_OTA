@@ -43,7 +43,8 @@ import java.util.zip.ZipFile;
 public class Service extends IntentService {
     private static final String TAG = "Service";
     private static final int NOTIFICATION_ID = 1;
-    private static final String NOTIFICATION_CHANNEL_ID = "updates";
+    private static final String NOTIFICATION_CHANNEL_ID_OLD = "updates";
+    private static final String NOTIFICATION_CHANNEL_ID = "updates2";
     private static final int PENDING_REBOOT_ID = 1;
     private static final int PENDING_SETTINGS_ID = 2;
     private static final int CONNECT_TIMEOUT = 60000;
@@ -194,17 +195,18 @@ public class Service extends IntentService {
         final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.createNotificationChannel(
-                new NotificationChannel(NOTIFICATION_CHANNEL_ID,
-                        getString(R.string.notification_channel),
-                        NotificationManager.IMPORTANCE_HIGH));
+        final NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID,
+            getString(R.string.notification_channel), NotificationManager.IMPORTANCE_HIGH);
+        channel.enableLights(true);
+        channel.enableVibration(true);
+        notificationManager.deleteNotificationChannel(NOTIFICATION_CHANNEL_ID_OLD);
+        notificationManager.createNotificationChannel(channel);
         notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
             .addAction(R.drawable.ic_restart, getString(R.string.notification_reboot_action), reboot)
             .setCategory(Notification.CATEGORY_SYSTEM)
             .setContentIntent(settings)
             .setContentTitle(getString(R.string.notification_title))
             .setContentText(getString(R.string.notification_text))
-            .setDefaults(Notification.DEFAULT_ALL)
             .setOngoing(true)
             .setSmallIcon(R.drawable.ic_update_white_24dp)
             .build());
