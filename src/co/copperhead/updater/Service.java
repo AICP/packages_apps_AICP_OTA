@@ -36,10 +36,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
-import java.util.Enumeration;
-import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -180,13 +177,8 @@ public class Service extends IntentService {
             }
 
             final ZipEntry payloadProperties = getEntry(zipFile, "payload_properties.txt");
-            final List<String> lines = new ArrayList<String>();
             reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(payloadProperties)));
-            for (String line; (line = reader.readLine()) != null; ) {
-                lines.add(line);
-            }
-
-            applyUpdate(payloadOffset, lines.toArray(new String[lines.size()]));
+            applyUpdate(payloadOffset, reader.lines().toArray(String[]::new));
         } catch (GeneralSecurityException e) {
             UPDATE_PATH.delete();
             throw e;
