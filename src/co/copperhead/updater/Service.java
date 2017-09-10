@@ -2,7 +2,6 @@ package co.copperhead.updater;
 
 import static android.os.Build.DEVICE;
 import static android.os.Build.FINGERPRINT;
-import static android.os.Build.SERIAL;
 import static android.os.Build.VERSION.INCREMENTAL;
 
 import android.app.IntentService;
