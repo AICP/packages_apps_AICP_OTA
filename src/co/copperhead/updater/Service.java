@@ -106,7 +106,7 @@ public class Service extends IntentService {
         return entry;
     }
 
-    private void onDownloadFinished(final long targetBuildDate) throws IOException, GeneralSecurityException {
+    private void onDownloadFinished(final long targetBuildDate, final String channel) throws IOException, GeneralSecurityException {
         try {
             RecoverySystem.verifyPackage(UPDATE_PATH,
                 (int progress) -> Log.d(TAG, "verifyPackage: " + progress + "%"), null);
@@ -146,8 +146,13 @@ public class Service extends IntentService {
             if (!DEVICE.equals(device)) {
                 throw new GeneralSecurityException("device mismatch");
             }
-            if (serialno != null && !serialno.equals(Build.getSerial())) {
-                throw new GeneralSecurityException("serialno mismatch");
+            if (serialno != null) {
+                if ("stable".equals(channel) || "beta".equals(channel)) {
+                    throw new GeneralSecurityException("serialno constraint not permitted for channel " + channel);
+                }
+                if (!serialno.equals(Build.getSerial())) {
+                    throw new GeneralSecurityException("serialno mismatch");
+                }
             }
             if (!"AB".equals(type)) {
                 throw new GeneralSecurityException("package is not an A/B update");
@@ -257,7 +262,7 @@ public class Service extends IntentService {
                 connection.setRequestProperty("Range", "bytes=" + downloaded + "-");
                 if (connection.getResponseCode() == HTTP_RANGE_NOT_SATISFIABLE) {
                     Log.d(TAG, "download completed previously");
-                    onDownloadFinished(targetBuildDate);
+                    onDownloadFinished(targetBuildDate, channel);
                     return;
                 }
                 input = connection.getInputStream();
@@ -294,7 +299,7 @@ public class Service extends IntentService {
             input.close();
 
             Log.d(TAG, "download completed");
-            onDownloadFinished(targetBuildDate);
+            onDownloadFinished(targetBuildDate, channel);
         } catch (GeneralSecurityException | IOException e) {
             Log.e(TAG, "failed to download and install update", e);
             mUpdating = false;
