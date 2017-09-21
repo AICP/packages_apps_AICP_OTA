@@ -15,6 +15,7 @@ public class Settings extends PreferenceActivity {
     private static final String KEY_NETWORK_TYPE = "network_type";
     static final String KEY_BATTERY_NOT_LOW = "battery_not_low";
     static final String KEY_IDLE_REBOOT = "idle_reboot";
+    static final String KEY_WAITING_FOR_REBOOT = "waiting_for_reboot";
 
     static SharedPreferences getPreferences(final Context context) {
         final Context deviceContext = context.createDeviceProtectedStorageContext();
@@ -42,14 +43,18 @@ public class Settings extends PreferenceActivity {
         networkType.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
             final int value = Integer.parseInt((String) newValue);
             getPreferences(this).edit().putInt(KEY_NETWORK_TYPE, value).apply();
-            PeriodicJob.schedule(this);
+            if (!getPreferences(this).getBoolean(KEY_WAITING_FOR_REBOOT, false)) {
+                PeriodicJob.schedule(this);
+            }
             return true;
         });
 
         final Preference batteryNotLow = findPreference(KEY_BATTERY_NOT_LOW);
         batteryNotLow.setOnPreferenceChangeListener((final Preference preference, final Object newValue) -> {
             getPreferences(this).edit().putBoolean(KEY_BATTERY_NOT_LOW, (boolean) newValue).apply();
-            PeriodicJob.schedule(this);
+            if (!getPreferences(this).getBoolean(KEY_WAITING_FOR_REBOOT, false)) {
+                PeriodicJob.schedule(this);
+            }
             return true;
         });
 

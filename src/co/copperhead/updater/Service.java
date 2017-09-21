@@ -81,7 +81,6 @@ public class Service extends IntentService {
             public void onPayloadApplicationComplete(int errorCode) {
                 if (errorCode == ErrorCodeConstants.SUCCESS) {
                     Log.d(TAG, "onPayloadApplicationComplete success");
-                    PeriodicJob.cancel(Service.this);
                     annoyUser();
                 } else {
                     Log.d(TAG, "onPayloadApplicationComplete: " + errorCode);
@@ -191,7 +190,9 @@ public class Service extends IntentService {
     }
 
     private void annoyUser() {
+        PeriodicJob.cancel(this);
         final SharedPreferences preferences = Settings.getPreferences(this);
+        preferences.edit().putBoolean(Settings.KEY_WAITING_FOR_REBOOT, true).apply();
         if (preferences.getBoolean(Settings.KEY_IDLE_REBOOT, false)) {
             IdleReboot.schedule(this);
         }
@@ -229,9 +230,13 @@ public class Service extends IntentService {
                 Log.d(TAG, "updating already, returning early");
                 return;
             }
+            final SharedPreferences preferences = Settings.getPreferences(this);
+            if (preferences.getBoolean(Settings.KEY_WAITING_FOR_REBOOT, false)) {
+                Log.d(TAG, "updated already, waiting for reboot");
+                return;
+            }
             mUpdating = true;
 
-            final SharedPreferences preferences = Settings.getPreferences(this);
             final String channel = SystemProperties.get("sys.update.channel",
                 preferences.getString(PREFERENCE_CHANNEL, "stable"));
 
