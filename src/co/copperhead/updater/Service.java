@@ -213,7 +213,7 @@ public class Service extends IntentService {
             .setContentTitle(getString(R.string.notification_title))
             .setContentText(getString(R.string.notification_text))
             .setOngoing(true)
-            .setSmallIcon(R.drawable.ic_update_white_24dp)
+            .setSmallIcon(R.drawable.ic_system_update_white_24dp)
             .build());
     }
 
