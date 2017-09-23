@@ -19,7 +19,7 @@ public class PeriodicJob extends JobService {
     static void schedule(final Context context) {
         final int networkType = Settings.getNetworkType(context);
         final boolean batteryNotLow = Settings.getBatteryNotLow(context);
-        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        final JobScheduler scheduler = context.getSystemService(JobScheduler.class);
         final JobInfo jobInfo = scheduler.getPendingJob(JOB_ID_PERIODIC);
         if (jobInfo != null &&
                 jobInfo.getNetworkType() == networkType &&
@@ -42,7 +42,7 @@ public class PeriodicJob extends JobService {
     }
 
     static void scheduleRetry(final Context context) {
-        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        final JobScheduler scheduler = context.getSystemService(JobScheduler.class);
         final ComponentName serviceName = new ComponentName(context, PeriodicJob.class);
         final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID_RETRY, serviceName)
             .setRequiredNetworkType(Settings.getNetworkType(context))
@@ -55,7 +55,7 @@ public class PeriodicJob extends JobService {
     }
 
     static void cancel(final Context context) {
-        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        final JobScheduler scheduler = context.getSystemService(JobScheduler.class);
         scheduler.cancel(JOB_ID_PERIODIC);
         scheduler.cancel(JOB_ID_RETRY);
     }

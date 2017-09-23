@@ -15,7 +15,7 @@ public class IdleReboot extends JobService {
     private static final long MIN_LATENCY_MILLIS = 5 * 60 * 1000;
 
     static void schedule(final Context context) {
-        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        final JobScheduler scheduler = context.getSystemService(JobScheduler.class);
         final ComponentName serviceName = new ComponentName(context, IdleReboot.class);
         final int result = scheduler.schedule(new JobInfo.Builder(JOB_ID_IDLE_REBOOT, serviceName)
             .setRequiresDeviceIdle(true)
@@ -27,8 +27,7 @@ public class IdleReboot extends JobService {
     }
 
     static void cancel(final Context context) {
-        final JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        scheduler.cancel(JOB_ID_IDLE_REBOOT);
+        context.getSystemService(JobScheduler.class).cancel(JOB_ID_IDLE_REBOOT);
     }
 
     @Override

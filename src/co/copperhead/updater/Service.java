@@ -212,7 +212,7 @@ public class Service extends IntentService {
 
         final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
-        final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        final NotificationManager notificationManager = getSystemService(NotificationManager.class);
         final NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID,
             getString(R.string.notification_channel), NotificationManager.IMPORTANCE_HIGH);
         channel.enableLights(true);
@@ -234,7 +234,7 @@ public class Service extends IntentService {
     protected void onHandleIntent(final Intent intent) {
         Log.d(TAG, "onHandleIntent");
 
-        final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        final PowerManager pm = getSystemService(PowerManager.class);
         final WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
         try {
             wakeLock.acquire();

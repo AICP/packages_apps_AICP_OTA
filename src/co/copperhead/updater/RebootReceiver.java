@@ -14,8 +14,7 @@ public class RebootReceiver extends BroadcastReceiver {
 
     static void reboot(final Context context) {
         if (Service.isAbUpdate()) {
-            final PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-            pm.reboot(null);
+            context.getSystemService(PowerManager.class).reboot(null);
         } else {
             try {
                 Service.UPDATE_PATH.setReadable(true, false);
