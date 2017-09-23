@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="url" translatable="false">https://release.copperhead.co/</string>
+    <string name="url_legacy" translatable="false">https://legacy.copperhead.co/</string>
 </resources>

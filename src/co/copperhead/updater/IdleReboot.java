@@ -33,8 +33,7 @@ public class IdleReboot extends JobService {
 
     @Override
     public boolean onStartJob(final JobParameters params) {
-        final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        pm.reboot(null);
+        RebootReceiver.reboot(this);
         return false;
     }
 

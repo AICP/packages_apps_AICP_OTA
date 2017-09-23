@@ -49,7 +49,7 @@ public class Service extends IntentService {
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File CARE_MAP_PATH = new File("/data/ota_package/care_map.txt");
-    private static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
+    static final File UPDATE_PATH = new File("/data/ota_package/update.zip");
     private static final String PREFERENCE_CHANNEL = "channel";
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
     private static final int HTTP_RANGE_NOT_SATISFIABLE = 416;
@@ -60,8 +60,12 @@ public class Service extends IntentService {
         super(TAG);
     }
 
+    static boolean isAbUpdate() {
+        return SystemProperties.getBoolean("ro.build.ab_update", false);
+    }
+
     private URLConnection fetchData(final String path) throws IOException {
-        final URL url = new URL(getString(R.string.url) + path);
+        final URL url = new URL(getString(isAbUpdate() ? R.string.url : R.string.url_legacy) + path);
         final URLConnection urlConnection = url.openConnection();
         urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
@@ -153,14 +157,19 @@ public class Service extends IntentService {
                     throw new GeneralSecurityException("serialno mismatch");
                 }
             }
-            if (!"AB".equals(type)) {
-                throw new GeneralSecurityException("package is not an A/B update");
+            if ("AB".equals(type) != isAbUpdate()) {
+                throw new GeneralSecurityException("update type does not match device");
             }
             if (sourceIncremental != null && !sourceIncremental.equals(INCREMENTAL)) {
                 throw new GeneralSecurityException("source incremental mismatch");
             }
             if (sourceFingerprint != null && !sourceFingerprint.equals(FINGERPRINT)) {
                 throw new GeneralSecurityException("source fingerprint mismatch");
+            }
+
+            if (!isAbUpdate()) {
+                annoyUser();
+                return;
             }
 
             long payloadOffset = 0;
@@ -197,6 +206,10 @@ public class Service extends IntentService {
             IdleReboot.schedule(this);
         }
 
+        final String title = getString(isAbUpdate() ? R.string.notification_title : R.string.notification_title_legacy);
+        final String text = getString(isAbUpdate() ? R.string.notification_text : R.string.notification_text_legacy);
+        final String rebootText = getString(isAbUpdate() ? R.string.notification_reboot_action : R.string.notification_reboot_action_legacy);
+
         final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -207,11 +220,11 @@ public class Service extends IntentService {
         notificationManager.deleteNotificationChannel(NOTIFICATION_CHANNEL_ID_OLD);
         notificationManager.createNotificationChannel(channel);
         notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
-            .addAction(R.drawable.ic_restart, getString(R.string.notification_reboot_action), reboot)
+            .addAction(R.drawable.ic_restart, rebootText, reboot)
             .setCategory(Notification.CATEGORY_SYSTEM)
             .setContentIntent(settings)
-            .setContentTitle(getString(R.string.notification_title))
-            .setContentText(getString(R.string.notification_text))
+            .setContentTitle(title)
+            .setContentText(text)
             .setOngoing(true)
             .setSmallIcon(R.drawable.ic_system_update_white_24dp)
             .build());
