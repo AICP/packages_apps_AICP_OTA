@@ -221,7 +221,6 @@ public class Service extends IntentService {
         notificationManager.createNotificationChannel(channel);
         notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
             .addAction(R.drawable.ic_restart, rebootText, reboot)
-            .setCategory(Notification.CATEGORY_SYSTEM)
             .setContentIntent(settings)
             .setContentTitle(title)
             .setContentText(text)
