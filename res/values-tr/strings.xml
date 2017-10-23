@@ -1,4 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2014 ParanoidAndroid Project
+
+  This file is part of Paranoid OTA.
+
+  Paranoid OTA is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Paranoid OTA is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
 <resources>
-    <string name="content_description">content_description</string>
+
+    <!-- GENERAL -->
+    <string name="app_name">AICP OTA</string>
+    <string name="check_for_updates">Kontrol Et</string>
+    <string name="no_additional_info">Başka Bilgi Yok</string>
+    <string name="drawer_open">Gezinti Çekmecesini Aç</string>
+    <string name="drawer_close">Gezinti Çekmecesini Kapat</string>
+
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">Güncellemeleri Kontrol Et</string>
+    <string name="all_up_to_date">En Güncel Yazılımı Kullanıyorsunuz!</string>
+    <string name="rom_scanning">Sistem Güncellemeleri Kontrol Ediliyor…</string>
+    <string name="rom_gapps_new_version">Sistem Güncellemesi Bulundu!</string>
+    <string name="rom_new_version">Yeni ROM Güncellemesi Bulundu!</string>
+    <string name="gapps_new_version">Google Uygulamaları için Güncelleme Bulundu!</string>
+    <string name="no_updates">Sistem Güncellemesi Bulunamadı</string>
+    <string name="system_update_found">Yeni ROM Güncellemesi Bulundu ve İndirmeye Hazır. \nLütfen Uyarıları Kontrol Edin. Sizi indirip yükleyebileceğiniz yere yönlendirecek. \n\nGüncelleme(ler) bulundu:\n%1$s</string>
+
+    <!-- SYSTEM -->
+    <string name="system_title">Sistem Bilgileri</string>
+    <string name="system_rom">ROM Versiyonu: %1$s</string>
+    <string name="system_gapps">Google Uygulamaları Versiyonu: %1$s %2$s</string>
+
+    <!-- UPDATES -->
+    <string name="updates">Güncellemeler</string>
+    <string name="updates_checking">Kontrol Ediliyor…</string>
+    <string name="updates_found">Sistem Güncellemesi Bulundu!</string>
+    <string name="updates_uptodate">En Güncel Yazılımı Kullanıyorsunuz!</string>
+    <string name="no_updates_found">Güncelleme Bulunamadı</string>
+    <string name="check_rom_updates_error">ROM Güncellemesini Kontrol Ederken Hata!</string>
+    <string name="check_gapps_updates_error">Google Uygulama Güncellemesini Kontrol Ederken Hata!</string>
+    <string name="system_update">Sistem Güncellemesi Bulundu \nİndirmek istediğiniz güncelleme(ler)i seçiniz.\n\nGüncelleme(ler) bulundu:</string>
+    <string name="download_and_install">İndir ve Yükle!</string>
+    <string name="update_host">Barındırıldığı Yer: %1$s</string>
+
+    <!-- INSTALL -->
+    <string name="install">Yükle</string>
+    <string name="install_title">Yüklemeye Hazır</string>
+    <string name="install_info">Aşağıdaki güncelleme(ler) yüklenmeye hazır. \n\nKuyruğa başka zip dosyaları eklemek için \"Dosya Ekle\" butonuna dokunun.</string>
+    <string name="add_file">Dosya Ekle</string>
+    <string name="install_now">Şimdi Yükle</string>
+    <string name="calculating_md5">MD5 Değeri Hesaplanıyor…</string>
+    <string name="md5_mismatch">MD5 Eşleşmedi</string>
+    <string name="md5_mismatch_summary">Alındı:\n%1$s\n\nHesaplandı:\n%2$s</string>
+    <string name="md5_install_anyway">Yine de Devam Et</string>
+    <string name="select_actions">İstediğiniz Eylemleri Seçin</string>
+    <string name="backup">Yedekle</string>
+    <string name="wipe_data">Data\'yı Sil</string>
+    <string name="wipe_caches">Cache &amp; Dalvik\'i Sil</string>
+    <string name="remove_file_title">Dosyayı Kaldır</string>
+    <string name="remove_file_summary">Dosyayı listeden kaldırmak istiyor musunuz?\n\n%1$s</string>
+    <string name="file_manager_error">zip dosyasını seçecek uygulama bulunamadı. Bir Dosya Yöneticisi yükleyiniz.</string>
+    <string name="alert_backup_space_title">Yer Kaldı</string>
+    <string name="alert_backup_space_message">Dahili Hafızada %1$sGB\'nin altında yer kaldı. Yedeğiniz ile devam etmek ister misiniz?</string>
+    <string name="alert_backup_title">Yedekle</string>
+    <string name="alert_backup_message">Bir yedek adı girin (uygunsuz karakterler silinecek).\n\nAşağıdaki ayarlar sadece TWRP ile geçerlidir.</string>
+    <string name="system">System</string>
+    <string name="data">Data</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android secure</string>
+    <string name="sdext">SD-Ext</string>
+    <string name="alert_reboot_install_title">Güncelleme(ler)\'i Yükle</string>
+    <string name="alert_reboot_one_message">Cihazınız yeniden başlayacak ve güncellemeyi yükleyecek.</string>
+    <string name="alert_reboot_more_message">Cihazınız yeniden başlayacak ve güncellemeyi yükleyecek..</string>
+    <string name="alert_reboot_now">Şimdi Yükle</string>
+    <string name="file_not_found">Dosya Eklenemiyor!</string>
+
+    <!-- CHANGELOG -->
+    <string name="changelog">Değişiklikler</string>
+
+    <!-- GOOGLEPLUS -->
+
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">Sistem Güncellemesi İndiriliyor</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">İndirmeyi İptal Et</string>
+    <string name="cancel_rom_download_alert_summary">Güncel ROM indirmesini iptal etmek istiyor musunuz?</string>
+    <string name="cancel_gapps_download_alert_summary">Güncel Google Uygulamaları indirmesini iptal etmek istiyor musunuz?</string>
+    <string name="cancel_download_alert_yes">EVET</string>
+    <string name="cancel_download_alert_no">HAYIR</string>
+    <string name="new_system_update">Yeni Sistem Güncellemesi Bulundu</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s adet güncelleme indirilebilir</string>
+    <string name="already_downloading_rom">Zaten bir ROM güncellemesi indiriyorsunuz.</string>
+    <string name="already_downloading_gapps">Zaten bir Google Uygulamaları güncellemesi indiriyorsunuz.</string>
+    <string name="cancel_download">İndirme yi/leri İptal Et</string>
+    <string name="downloading_info">Güncelleme(ler) indiriliyor:\n%1$s</string>
+
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">HATA: İndirme devam ettirilemiyor</string>
+    <string name="error_device_not_found">HATA: SDCard Takılı Değil</string>
+    <string name="error_file_already_exists">HATA: Dosya Zaten Mevcut</string>
+    <string name="error_file_error">HATA: Depolama Hatası</string>
+    <string name="error_http_data_error">HATA: Http Hatası</string>
+    <string name="error_insufficient_space">HATA: Hafıza Dolu</string>
+    <string name="error_too_many_redirects">HATA: Çok Fazla Yeniden Yönlendirme</string>
+    <string name="error_unhandled_http_code">HATA: Unhandled http code</string>
+    <string name="error_unknown">HATA: Bilinmiyor</string>
+
+    <!-- SETTINGS -->
+    <string name="settings">Ayarlar</string>
+    <string name="settings_checktime_title">Güncelleme Kontrol Sıklığı</string>
+    <string name="settings_checktime_summary">Her Bir Kontrol Arasındaki Zamanı Belirleyin</string>
+    <string name="time_notifications_never">Kontrol Etme</string>
+    <string name="time_notifications_half_an_hour">Yarım Saat</string>
+    <string name="time_notifications_an_hour">1 Saat</string>
+    <string name="time_notifications_two_hours">2 Saat</string>
+    <string name="time_notifications_five_hours">5 Saat</string>
+    <string name="time_notifications_daily">Günlük</string>
+
 </resources>
