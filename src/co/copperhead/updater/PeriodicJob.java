@@ -13,7 +13,7 @@ public class PeriodicJob extends JobService {
     private static final String TAG = "PeriodicJob";
     private static final int JOB_ID_PERIODIC = 1;
     private static final int JOB_ID_RETRY = 2;
-    private static final long INTERVAL_MILLIS = 60 * 60 * 1000;
+    private static final long INTERVAL_MILLIS = 4 * 60 * 60 * 1000;
     private static final long MIN_LATENCY_MILLIS = 60 * 1000;
 
     static void schedule(final Context context) {
