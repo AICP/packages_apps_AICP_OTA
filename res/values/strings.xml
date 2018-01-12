@@ -133,6 +133,15 @@
     <string name="time_notifications_daily">Daily</string>
     <string name="time_notifications_weekly">Weekly</string>
 
+    <!-- TYPE OF BUILDS -->
+    <string name="build_type_title">Select type of Build</string>
+    <string name="build_type_summary">Specify the type of build you\'d want to see \nPick one or as  many as you want to see</string>    
+    <string name="build_select_type_nightly">Nighly if available</string>
+    <string name="build_select_type_release">Release if available</string>
+    <string name="build_select_type_stable">Stable if available</string>
+    <string name="build_select_type_weekly">Weekly if available</string>
+
+
     <!-- Permission check -->
     <string name="permission_not_granted_dialog_title">Permission not granted</string>
     <string name="permission_granted_dialog_title">Permission granted</string>

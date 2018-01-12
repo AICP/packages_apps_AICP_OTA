@@ -34,6 +34,15 @@
             android:entries="@array/time_notifications_entries"
             android:entryValues="@array/time_notifications_values" />
 
+        <com.aicp.aicpota.widget.ListPreference
+            android:key="checkbuild"
+            android:title="@string/build_type_title"
+            android:summary="@string/build_type_summary"
+            android:dialogTitle="@string/build_type_title"
+            android:entries="@array/build_notifications_entries"
+            android:entryValues="@array/build_notifications_values" />
+
+
     </com.aicp.aicpota.widget.PreferenceCategory>
 
 </PreferenceScreen>

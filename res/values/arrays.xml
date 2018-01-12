@@ -40,5 +40,20 @@
         <item>604800000</item>
     </string-array>
 
-    <!-- GAPPS TYPE -->
+    <!-- BUILD TYPES -->
+    <string-array name="build_notifications_entries">
+        <item>@string/build_select_type_nightly</item>
+        <item>@string/build_select_type_release</item>
+        <item>@string/build_select_type_stable</item>
+        <item>@string/build_select_type_weekly</item>
+     </string-array>
+     <string-array name="build_notifications_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+
+
 </resources>
