@@ -48,21 +48,21 @@ import java.io.Serializable;
 public class Version implements Serializable {
 
     private final String[] PHASES = {
-            "EXPERIMENTAL", "RELEASE", "NIGHTLY", "STABLE"
+            "NIGHTLY", "RELEASE", "STABLE", "WEEKLY"
     };
 
     private static final String SEPARATOR = "-";
 
-    private static final int EXPERIMENTAL = 0;
+    private static final int NIGHTLY = 0;
     private static final int RELEASE = 1;
-    private static final int NIGHTLY = 2;
-    private static final int STABLE = 3;
+    private static final int STABLE = 2;
+    private static final int WEEKLY = 3;
 
     private String mDevice;
     private int mMajor = 0;
     private int mMinor = 0;
     private int mMaintenance = 0;
-    private int mPhase = STABLE;
+    private int mPhase = NIGHTLY;
     private int mPhaseNumber = 0;
     private String mDate = "0";
 
@@ -121,24 +121,24 @@ public class Version implements Serializable {
             if (!Utils.isNumeric(split[2].substring(0, 1))) {
                 version = split[2];
 
-                if (version.startsWith("E")) {
-                    mPhase = EXPERIMENTAL;
-                    if (version.startsWith("EXPERIMENTAL")) {
-                        version = version.substring(12);
-                    } else {
-                        version = version.substring(1);
-                    }
-                } else if (version.startsWith("N")) {
+                if (version.startsWith("N")) {
                     mPhase = NIGHTLY;
                     if (version.startsWith("NIGHTLY")) {
                         version = version.substring(7);
                     } else {
                         version = version.substring(1);
                     }
+                } else if (version.startsWith("W")) {
+                    mPhase = WEEKLY;
+                    if (version.startsWith("WEEKLY")) {
+                        version = version.substring(6);
+                    } else {
+                        version = version.substring(1);
+                    }
                 } else if (version.startsWith("R")) {
                     mPhase = RELEASE;
                     version = version.substring(7);
-                }
+                } 
                 if (!version.isEmpty()) {
                     mPhaseNumber = Integer.parseInt(version);
                 }
