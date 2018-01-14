@@ -65,7 +65,6 @@ import com.aicp.aicpota.helpers.DownloadHelper;
 import com.aicp.aicpota.helpers.DownloadHelper.DownloadCallback;
 import com.aicp.aicpota.helpers.RebootHelper;
 import com.aicp.aicpota.helpers.RecoveryHelper;
-import com.aicp.aicpota.updater.GappsUpdater;
 import com.aicp.aicpota.updater.RomUpdater;
 import com.aicp.aicpota.updater.Updater;
 import com.aicp.aicpota.updater.Updater.PackageInfo;
@@ -100,7 +99,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
     private InstallCard mInstallCard;
 
     private RomUpdater mRomUpdater;
-    private GappsUpdater mGappsUpdater;
     private NotificationInfo mNotificationInfo;
 
     private LinearLayout mCardsLayout;
@@ -220,8 +218,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
 
         mRomUpdater = new RomUpdater(this, false);
         mRomUpdater.addUpdaterListener(this);
-        mGappsUpdater = new GappsUpdater(this, false);
-        mGappsUpdater.addUpdaterListener(this);
 
         DownloadHelper.init(this, this);
 
@@ -239,7 +235,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                     checkUpdates();
                 } else {
                     mRomUpdater.setLastUpdates(mNotificationInfo.mPackageInfosRom);
-                    mGappsUpdater.setLastUpdates(mNotificationInfo.mPackageInfosGapps);
                 }
             } else {
                 checkUpdates();
@@ -380,11 +375,11 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
         switch (state) {
             case STATE_UPDATES:
                 if (mSystemCard == null) {
-                    mSystemCard = new SystemCard(mContext, mRomUpdater, mGappsUpdater,
+                    mSystemCard = new SystemCard(mContext, mRomUpdater,
                             mSavedInstanceState);
                 }
                 if (mUpdatesCard == null) {
-                    mUpdatesCard = new UpdatesCard(mContext, mRomUpdater, mGappsUpdater,
+                    mUpdatesCard = new UpdatesCard(mContext, mRomUpdater,
                             mSavedInstanceState);
                 }
                 addCards(new Card[] {

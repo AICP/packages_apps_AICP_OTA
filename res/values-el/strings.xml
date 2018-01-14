@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">Έλεγχος για ενημερώσεις</string>
   <string name="all_up_to_date">Είστε ενημερωμένοι</string>
   <string name="rom_scanning">Έλεγχος για ενημερώσεις συστήματος</string>
-  <string name="rom_gapps_new_version">Βρέθηκαν ενημερώσεις συστήματος!</string>
   <string name="rom_new_version">Βρέθηκε νέα ενημέρωση ROM!</string>
-  <string name="gapps_new_version">Βρέθηκε νέα ενημέρωση Google apps!</string>
   <string name="no_updates">Δεν βρέθηκαν ενημερώσεις συστήματος</string>
   <string name="system_update_found">Βρέθηκε ενημέρωση συστήματος και είναι έτοιμη για λήψη.\nΠαρακαλώ ελέγξτε τις ενημερώσεις που μπορεί να έχουν εμφανιστεί. Θα σας πδηγήσουν στο AicpOTA από όπου θα μπορείτε να κατεβάσετε και/ή να εγκαταστήσετε την ενημέρωση.\n\nΒρέθηκε ενημέρωση(σεις):\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">Πληροφορίες συστήματος</string>
   <string name="system_rom">Έκδοση ROM: %1$s</string>
-  <string name="system_gapps">Έκδοση Google apps: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Ενημερώσεις</string>
   <string name="updates_checking">Έλεγχος</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">Είστε ενημερωμένοι</string>
   <string name="no_updates_found">Δεν βρέθηκαν ενημερώσεις</string>
   <string name="check_rom_updates_error">Σφάλμα με τον έλεγχο για ενημερώσεις ROM</string>
-  <string name="check_gapps_updates_error">Σφάλμα με τον έλεγχο για ενημερώσεις Google apps</string>
   <string name="system_update">Βρέθηκε ενημέρωση συστήματος.\nΕπιλέξτε την(ις) ενημέρωση(σεις) που θέλετε να λάβεται.\n\nΒρέθηκε(αν) ενημέρωση(εις):</string>
   <string name="download_and_install">Λήψη και εγκατάσταση</string>
   <string name="update_host">Φιλοξενείται στο %1$s</string>
@@ -89,14 +85,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">Ακύρωση λήψης</string>
   <string name="cancel_rom_download_alert_summary">Θέλετε να ακυρώσετε την λήψη της ROM;</string>
-  <string name="cancel_gapps_download_alert_summary">Θέλετε να ακυρώσετε την λήψη των Google apps;</string>
   <string name="cancel_download_alert_yes">Ναι</string>
   <string name="cancel_download_alert_no">Όχι</string>
   <string name="new_system_update">Βρέθηκε νέα ενημέρωση συστήματος</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s ενημερώσεις διαθέσιμες για λήψη</string>
   <string name="already_downloading_rom">Λαμβάνεται ήδη μία ενημέρωση ROM.</string>
-  <string name="already_downloading_gapps">Λαμβάνεται ήδη μία ενημέρωση Google apps.</string>
   <string name="cancel_download">Ακύρωση λήψης(εων)</string>
   <string name="downloading_info">Λήψη ενημέρωσης(εων):\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

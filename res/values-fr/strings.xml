@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">Vérifier les mises à jour</string>
   <string name="all_up_to_date">Vous êtes à jour !</string>
   <string name="rom_scanning">Vérification des mises à jour système…</string>
-  <string name="rom_gapps_new_version">Mises à jour système trouvées!</string>
   <string name="rom_new_version">Nouvelle mise à jour de la ROM trouvée!</string>
-  <string name="gapps_new_version">Nouvelle mise à jour des apps Google trouvée!</string>
   <string name="no_updates">Aucune mise à jour système trouvée</string>
   <string name="system_update_found">Une nouvelle mise à jour du système a été trouvée et est prête à être téléchargée .\nSvp vérifier les notifications qui ont pu apparaître. Elles vous meneront vers l\'OTA et vous serez en mesure de télécharger et/ou installer la mise à jour. \n\nMaj(s) Trouvée(s):\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">Infos système</string>
   <string name="system_rom">Version de la ROM: %1$s</string>
-  <string name="system_gapps">Version des Gapps: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Mises à jour</string>
   <string name="updates_checking">Vérification…</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">Vous êtes à jour</string>
   <string name="no_updates_found">Aucune mise à jour trouvée</string>
   <string name="check_rom_updates_error">Erreur en vérifiant les mises à jour de la ROM</string>
-  <string name="check_gapps_updates_error">Erreur en vérifiant les mises à jour des apps Google</string>
   <string name="system_update">Mise à jour système trouvée\nSéléctionner la/les mise(s) à jour que vous souhaitez télécharger.\n\Maj(s) trouvée(s):</string>
   <string name="download_and_install">Télécharger et installer</string>
   <string name="update_host">Hébergé sur %1$s</string>
@@ -89,14 +85,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">Annuler le téléchargement</string>
   <string name="cancel_rom_download_alert_summary">Voulez-vous annuler le téléchargement de la ROM?</string>
-  <string name="cancel_gapps_download_alert_summary">Voulez-vous annuler le téléchargement des apps Google?</string>
   <string name="cancel_download_alert_yes">Oui</string>
   <string name="cancel_download_alert_no">Non</string>
   <string name="new_system_update">Nouvelle mise à jour du système trouvée</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s mises à jour disponibles pour le téléchargement</string>
   <string name="already_downloading_rom">Vous êtes déjà en train de télécharger une mise à jour de la ROM.</string>
-  <string name="already_downloading_gapps">Vous êtes déjà en train de télécharger une mise à jour des apps Google.</string>
   <string name="cancel_download">Annuler le/les téléchargement(s)</string>
   <string name="downloading_info">Mise(s) à jour en téléchargement:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

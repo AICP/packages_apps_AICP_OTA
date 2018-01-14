@@ -22,12 +22,9 @@
   <!-- GENERAL -->
   <string name="app_name">AICP OTA</string>
   <!-- SYSTEM ACTIVITY -->
-  <string name="gapps_new_version">Yeni Google uygulamaları güncellemesi bulundu!</string>
   <string name="system_update_found">Yeni bir sistem güncellemesi bulundu ve indirilmeye hazır.\nGörünürdeki bildirimleri lütfen kontrol edin. Bunlar sizi güncellemeyi indirip kurabileceğiniz AicpOTA\'ya götürecek.\n\nBulunan güncelleme(ler):\n%1$s</string>
   <!-- SYSTEM -->
-  <string name="system_gapps">Gapps sürümü: %1$s %2$s</string>
   <!-- UPDATES -->
-  <string name="check_gapps_updates_error">Google apps güncellemeleri kontrolü hatası</string>
   <string name="system_update">Sistem güncellemesi bulundu.\nİndirmek istediğiniz güncelemeyi(leri) seçiniz.\nGüncelleme detaylarını güncelleme kartını açarak görebilirsiniz.\n\nBulunan güncelleme(ler):</string>
   <string name="nightly_filesize">Dosya boyutu: %1$s MB</string>
   <!-- INSTALL -->
@@ -42,8 +39,6 @@
   <string name="alert_reboot_install_title">Güncelleme(leri) yükle</string>
   <!-- CHANGELOG -->
   <!-- DOWNLOADS/NOTIFICATIONS -->
-  <string name="cancel_gapps_download_alert_summary">Gapps indirmesini iptal etmek istiyor musunuz?</string>
-  <string name="already_downloading_gapps">Halen bir Google apps güncellemesi indiriyorsunuz.</string>
   <string name="cancel_download">İndirmey(ler)i iptal et</string>
   <string name="downloading_info">Güncelleme(ler) indiriliyor:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

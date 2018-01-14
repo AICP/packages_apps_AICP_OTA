@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">Sprawdź aktualizacje</string>
   <string name="all_up_to_date">Masz najnowszą wersję systemu!</string>
   <string name="rom_scanning">Sprawdzanie dostępności aktualizacji systemu…</string>
-  <string name="rom_gapps_new_version">Znaleziono aktualizacje systemu!</string>
   <string name="rom_new_version">Znaleziono nową aktualizację ROMu!</string>
-  <string name="gapps_new_version">Znaleziono aktualizację Gapps!</string>
   <string name="no_updates">Nie znaleziono żadnych aktualizacji</string>
   <string name="system_update_found">Nowa aktualizacja systemu została znaleziona i jest gotowa do pobrania.\nProszę sprawdzić, czy pojawiły się nowe powiadomienia. Doprowadzą Cię one do ParanoidOTA, skąd będziesz mógł pobrać i/lub zainstalować aktualizację\n\nZnalezione aktualizacje:\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">Informacje o systemie</string>
   <string name="system_rom">Wersja ROMu: %1$s</string>
-  <string name="system_gapps">Wersja Gapps: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Aktualizacje</string>
   <string name="updates_checking">Sprawdzanie…</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">Masz najnowszą wersję systemu</string>
   <string name="no_updates_found">Nie znaleziono żadnych aktualizacji</string>
   <string name="check_rom_updates_error">Błąd podczas sprawdzania aktualizacji ROMu</string>
-  <string name="check_gapps_updates_error">Błąd podczas sprawdzania aktualizacji Gapps</string>
   <string name="system_update">Aktualizacja systemu znaleziona.\nWybierz aktualizacje, które chcesz pobrać.\nDzienniki zmian dostępne na rozszerzonej karcie.\n\nZnalezione aktualizacje:</string>
   <string name="download_and_install">Pobierz i zainstaluj</string>
   <string name="update_host">Hostowane na %1$s</string>
@@ -92,14 +88,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">Anuluj pobieranie</string>
   <string name="cancel_rom_download_alert_summary">Czy chcesz anulować pobieranie ROMu?</string>
-  <string name="cancel_gapps_download_alert_summary">Czy chcesz anulować pobieranie aplikacji Google?</string>
   <string name="cancel_download_alert_yes">Tak</string>
   <string name="cancel_download_alert_no">Nie</string>
   <string name="new_system_update">Znaleziono nową aktualizację systemu</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s aktualizacji dostępnych do pobrania</string>
   <string name="already_downloading_rom">Jesteś już w trakcie pobierania aktualizacji ROMu.</string>
-  <string name="already_downloading_gapps">Jesteś już w trakcie pobierania Gapps.</string>
   <string name="cancel_download">Anuluj pobieranie</string>
   <string name="downloading_info">Pobierane aktualizacje:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">Naar updates zoeken</string>
   <string name="all_up_to_date">Geen updates gevonden!</string>
   <string name="rom_scanning">Zoeken naar systeem-updates…</string>
-  <string name="rom_gapps_new_version">Nieuwe systeem-update gevonden!</string>
   <string name="rom_new_version">Nieuwe ROM-update gevonden!</string>
-  <string name="gapps_new_version">Nieuwe Google Apps-update gevonden!</string>
   <string name="no_updates">Geen systeem-updates gevonden!</string>
   <string name="system_update_found">Een nieuwe systeem-update is gevonden en staat klaar om te downloaden.\nCheck de notificaties die eventueel verschijnen. Deze leiden je naar AICP OTA, van waaruit deze updates gedownload en geïnstalleerd kunnen worden.\n\nGevonden update(s):\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">Systeeminfo</string>
   <string name="system_rom">ROM-versie: %1$s</string>
-  <string name="system_gapps">Google Apps-versie: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Updates</string>
   <string name="updates_checking">Zoeken…</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">Uw apparaat is up to date</string>
   <string name="no_updates_found">Geen updates gevonden</string>
   <string name="check_rom_updates_error">Fout bij het zoeken naar ROM-updates</string>
-  <string name="check_gapps_updates_error">Fout bij het zoeken naar updates voor Google Apps</string>
   <string name="system_update">Systeem-update gevonden.\nSelecteer de update(s) die gedownload moeten worden.\n\nGevonden update(s):</string>
   <string name="download_and_install">Downloaden en installeren</string>
   <string name="update_host">Gehost op %1$s</string>
@@ -92,14 +88,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">Download annuleren</string>
   <string name="cancel_rom_download_alert_summary">Wil je de huidige ROM-download echt annuleren?</string>
-  <string name="cancel_gapps_download_alert_summary">Wil je de huidige Google Apps-download echt annuleren?</string>
   <string name="cancel_download_alert_yes">Ja</string>
   <string name="cancel_download_alert_no">Nee</string>
   <string name="new_system_update">Nieuwe systeem-update gevonden</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s updates staan klaar om te worden gedownload</string>
   <string name="already_downloading_rom">Er wordt al een ROM-update gedownload</string>
-  <string name="already_downloading_gapps">Er wordt al een Google Apps-update gedownload</string>
   <string name="cancel_download">Downloaden annuleren</string>
   <string name="downloading_info">Bezig met downloaden van update(s):\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

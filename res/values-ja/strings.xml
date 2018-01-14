@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">更新を確認中</string>
   <string name="all_up_to_date">最新のソフトウエアです</string>
   <string name="rom_scanning">更新を確認中です…</string>
-  <string name="rom_gapps_new_version">システム更新があります</string>
   <string name="rom_new_version">システム更新があります</string>
-  <string name="gapps_new_version">システム更新があります</string>
   <string name="no_updates">更新はありません</string>
   <string name="system_update_found">アップデートがあります。\nAICPアップデータの通知によりインストールできます。\n\nUアップデート:\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">システム情報</string>
   <string name="system_rom">ROMバージョン: %1$s</string>
-  <string name="system_gapps">Androidバージョン: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">アップデート</string>
   <string name="updates_checking">更新中</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">最新のソフトウエアを確認する</string>
   <string name="no_updates_found">更新はありません</string>
   <string name="check_rom_updates_error">ROMの更新確認に失敗しました</string>
-  <string name="check_gapps_updates_error">Google Appsの更新確認に失敗しました</string>
   <string name="system_update">更新があります。\nダウンロードするものを選択してください。\n\nアップデート:</string>
   <string name="download_and_install">ダウンロードしてインストールする</string>
   <string name="update_host">Hosted at %1$s</string>
@@ -90,14 +86,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">ダウンロードをキャンセル</string>
   <string name="cancel_rom_download_alert_summary">ROMのダウンロードをキャンセルしますか?</string>
-  <string name="cancel_gapps_download_alert_summary">Google Appsのダウンロードをキャンセルしますか?</string>
   <string name="cancel_download_alert_yes">はい</string>
   <string name="cancel_download_alert_no">いいえ</string>
   <string name="new_system_update">アップデートがあります</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s個のアップデートがダウンロードできます</string>
   <string name="already_downloading_rom">すでにダウンロードしています</string>
-  <string name="already_downloading_gapps">すでにGoogle Appsをダウンロードしています</string>
   <string name="cancel_download">ダウンロードをキャンセル</string>
   <string name="downloading_info">ダウンロード中:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

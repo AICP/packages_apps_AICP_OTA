@@ -34,13 +34,6 @@
         android:textSize="@dimen/card_small_text_size" />
 
     <TextView
-        android:id="@+id/gapps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/card_text"
-        android:textSize="@dimen/card_small_text_size" />
-
-    <TextView
         android:id="@+id/recovery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

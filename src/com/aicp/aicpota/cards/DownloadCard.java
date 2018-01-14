@@ -104,11 +104,10 @@ public class DownloadCard extends Card implements DownloadCallback {
 
         String names = "";
         for (int i = 0; infos != null && i < infos.length; i++) {
-            boolean isRom = !infos[i].isGapps();
+            boolean isRom = !infos[i].isaicp();
             names += infos[i].getFilename() + "\n";
             if (DownloadHelper.isDownloading(isRom)) {
-                int resId = isRom ? R.string.already_downloading_rom
-                        : R.string.already_downloading_gapps;
+                int resId = R.string.already_downloading_rom;
                 Toast.makeText(context, resId, Toast.LENGTH_LONG).show();
                 ((MainActivity) context).setState(MainActivity.STATE_UPDATES,
                         true, null, null, null, false, false);
@@ -123,7 +122,7 @@ public class DownloadCard extends Card implements DownloadCallback {
             DownloadHelper.registerCallback(mActivity);
             DownloadHelper.downloadFile(infos[i].getPath(),
                     infos[i].getFilename(), infos[i].getMd5(),
-                    !infos[i].isGapps());
+                    !infos[i].isaicp());
         }
     }
 

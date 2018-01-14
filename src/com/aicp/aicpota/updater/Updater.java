@@ -55,7 +55,8 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
 
         Version getVersion();
 
-        boolean isGapps();
+        boolean isaicp();
+
     }
 
     static final String PROPERTY_DEVICE = "ro.aicp.device";
@@ -135,7 +136,7 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
         }
         if (mFromAlarm) {
             if (!force && (mSettingsHelper.getCheckTime() < 0
-                    || (!isRom() && !mSettingsHelper.getCheckGapps()))) {
+                    || (!isRom()))) {
                 return;
             }
         }
@@ -163,23 +164,10 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
             List<PackageInfo> list = mServer.createPackageInfoList(response);
             String error = mServer.getError();
             if (!isRom()) {
-                int gappsType = mSettingsHelper.getGappsType();
                 PackageInfo info;
                 for (int i = 0; i < list.size(); i++) {
                     info = list.get(i);
                     String fileName = info.getFilename();
-                    if ((gappsType == SettingsHelper.GAPPS_MINI && !fileName.contains("-mini"))
-                            ||
-                            (gappsType == SettingsHelper.GAPPS_FULLINVERTED && !fileName
-                                    .contains("-fullinverted"))
-                            ||
-                            (gappsType == SettingsHelper.GAPPS_FULL && !fileName.contains("-full"))
-                            ||
-                            (gappsType == SettingsHelper.GAPPS_MINIINVERTED && !fileName
-                                    .contains("-miniinverted"))) {
-                        list.remove(i);
-                        i--;
-                    }
                 }
             }
             lastUpdates = list.toArray(new PackageInfo[list.size()]);
@@ -187,9 +175,7 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
                 mServerWorks = true;
                 if (mFromAlarm) {
                     if (!isRom()) {
-                        Utils.showNotification(getContext(), null, lastUpdates);
-                    } else {
-                        Utils.showNotification(getContext(), lastUpdates, null);
+                        Utils.showNotification(getContext(), lastUpdates);
                     }
                 }
             } else {
@@ -231,11 +217,7 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
             if (error != null) {
                 Utils.showToastOnUiThread(getContext(), getContext().getResources().getString(id)
                         + ": " + error);
-            } else {
-                if (id != R.string.check_gapps_updates_error) {
-                    Utils.showToastOnUiThread(getContext(), id);
-                }
-            }
+            } 
         }
         mCurrentServer = -1;
         fireCheckCompleted(null);

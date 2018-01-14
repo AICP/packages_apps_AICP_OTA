@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">Proveri za nova ažuriranja</string>
   <string name="all_up_to_date">Imate poslednja ažuriranja!</string>
   <string name="rom_scanning">Proveravam ažuriranja sistema…</string>
-  <string name="rom_gapps_new_version">Mađeno sistemsko ažuriranje!</string>
   <string name="rom_new_version">Novo ažuriranje ROM-a dostupno!</string>
-  <string name="gapps_new_version">Dostupna su nova ažuriranja za Google aplikacije!</string>
   <string name="no_updates">Nema sistemskih ažuriranja</string>
   <string name="system_update_found">Novo ažuriranje sistema je spremno za preuzimanje.\nProverite notifikacije koje su se možda pojavile. Odvešće vas na AICP OTA gde ćete ih moći preuzeti i/ili instalirati.\n\nAžuriranja nađeno:\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">Informacije o sistemu</string>
   <string name="system_rom">ROM verzija: %1$s</string>
-  <string name="system_gapps">Verzija Google aplikacija: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Ažuriranja</string>
   <string name="updates_checking">Proveravam…</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">Imate poslednju verziju</string>
   <string name="no_updates_found">Nema ažuriranja</string>
   <string name="check_rom_updates_error">Greška prilikom provere ažuriranja ROM-a</string>
-  <string name="check_gapps_updates_error">Greška prilikom provere ažuriranja Google aplikacija</string>
   <string name="system_update">Nađena ažuriranja sistema.\nOdaberite ažuriranje(a) koja želite da preuzmete.\n\nNađenih ažuriranja:</string>
   <string name="download_and_install">Preuzmi i instaliraj</string>
   <string name="update_host">Hostovano na %1$s</string>
@@ -89,14 +85,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">Prekini download</string>
   <string name="cancel_rom_download_alert_summary">Da li želite da prekinete trenutna preuzimanja ROM-a?</string>
-  <string name="cancel_gapps_download_alert_summary">Da li želite da prekinete trenutna preuzimanja Google aplikacija?</string>
   <string name="cancel_download_alert_yes">Da</string>
   <string name="cancel_download_alert_no">Ne</string>
   <string name="new_system_update">Dostupno novo sistemsko ažuriranje</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s ažuriranja dostupno za preuzimanje</string>
   <string name="already_downloading_rom">Već preuzimate ažuriranja za ROM.</string>
-  <string name="already_downloading_gapps">Već preuzimate ažuriranja za Google aplikacije.</string>
   <string name="cancel_download">Prekini download(e)</string>
   <string name="downloading_info">Preuzimanje ažuriranje(a):\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->
