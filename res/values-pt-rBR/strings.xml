@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">Buscar atualizações</string>
   <string name="all_up_to_date">Você está atualizado!</string>
   <string name="rom_scanning">Verificando por atualizações de sistema…</string>
-  <string name="rom_gapps_new_version">Atualizações do sistema encontradas!</string>
   <string name="rom_new_version">Nova atualização da ROM encontrada!</string>
-  <string name="gapps_new_version">Nova atualização de apps do Google encontrada!</string>
   <string name="no_updates">Nenhuma atualização de sistema encontrada</string>
   <string name="system_update_found">Uma nova atualização de sistema foi encontrada e está pronta para download.\nPor favor verifique as notificações que podem ter aparecido. Elas vão levar você para o AicpOTA de onde você será capaz de fazer o download e/ou instalar a atualização:\n\nAtualizações encontradas:\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">Informações do Sistema</string>
   <string name="system_rom">Versão da ROM: %1$s</string>
-  <string name="system_gapps">Versão do Google apps: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Atualizações</string>
   <string name="updates_checking">Verificando…</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">Você está atualizado</string>
   <string name="no_updates_found">Nenhuma atualização encontrada</string>
   <string name="check_rom_updates_error">Erro ao buscar por atualizações da ROM</string>
-  <string name="check_gapps_updates_error">Erro ao verificar por atualizações do Google apps</string>
   <string name="system_update">Atualização do sistema encontrada. \nSelecione as atualizações que você deseja baixar. \nChangelogs disponível no cartão Sd.\n\nAtualizações encontradas:</string>
   <string name="download_and_install">Baixar e instalar</string>
   <string name="update_host">Hospedado em %1$s</string>
@@ -92,14 +88,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">Cancelar download</string>
   <string name="cancel_rom_download_alert_summary">Você quer cancelar o download atual da ROM?</string>
-  <string name="cancel_gapps_download_alert_summary">Você quer cancelar o atual download de aplicativos do Google?</string>
   <string name="cancel_download_alert_yes">Sim</string>
   <string name="cancel_download_alert_no">Não</string>
   <string name="new_system_update">Nova atualização de sistema encontrada</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s atualizações disponíveis para download</string>
   <string name="already_downloading_rom">Você já está baixando uma atualização da ROM.</string>
-  <string name="already_downloading_gapps">Você já está baixando uma atualização de aplicativos do Google.</string>
   <string name="cancel_download">Cancelar download(s)</string>
   <string name="downloading_info">Baixando atualização(ões):\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

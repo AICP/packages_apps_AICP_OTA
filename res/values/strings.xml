@@ -31,16 +31,13 @@
     <string name="check_for_updates_long">Check for updates</string>
     <string name="all_up_to_date">You\'re up to date!</string>
     <string name="rom_scanning">Checking for system updates…</string>
-    <string name="rom_gapps_new_version">System updates found!</string>
     <string name="rom_new_version">New ROM update found!</string>
-    <string name="gapps_new_version">New Google apps update found!</string>
     <string name="no_updates">No system updates found</string>
     <string name="system_update_found">A new system update was found and is ready to download.\nPlease check the notifications that may have appeared. They will lead you to AicpOTA from where you will be able to download and/or install the update.\n\nUpdate(s) found:\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">System info</string>
     <string name="system_rom">ROM version: %1$s</string>
-    <string name="system_gapps">Google apps version: %1$s %2$s</string>
 
     <!-- UPDATES -->
     <string name="updates">Updates</string>
@@ -49,7 +46,6 @@
     <string name="updates_uptodate">You\'re up to date</string>
     <string name="no_updates_found">No updates found</string>
     <string name="check_rom_updates_error">Error checking for ROM updates</string>
-    <string name="check_gapps_updates_error">Error checking for Google apps updates</string>
     <string name="system_update">System update found.\nSelect the update(s) you want to download.\nChangelogs available on expanded card.\n\nUpdate(s) found:</string>
     <string name="download_and_install">Download and install</string>
     <string name="update_host">Hosted at %1$s</string>
@@ -99,14 +95,12 @@
     <string name="download_title">%1$s</string>
     <string name="cancel_download_alert_title">Cancel download</string>
     <string name="cancel_rom_download_alert_summary">Do you want to cancel the current ROM download?</string>
-    <string name="cancel_gapps_download_alert_summary">Do you want to cancel the current Google apps download?</string>
     <string name="cancel_download_alert_yes">Yes</string>
     <string name="cancel_download_alert_no">No</string>
     <string name="new_system_update">New system update found</string>
     <string name="new_package_name">%1$s</string>
     <string name="new_packages">%1$s updates available for download</string>
     <string name="already_downloading_rom">You are already downloading a ROM update.</string>
-    <string name="already_downloading_gapps">You are already downloading a Google apps update.</string>
     <string name="cancel_download">Cancel download(s)</string>
     <string name="downloading_info">Update(s) downloading:\n%1$s</string>
 

@@ -25,28 +25,17 @@ import android.preference.PreferenceManager;
 
 public class SettingsHelper {
 
-    public static final int GAPPS_FULL = 0;
-    public static final int GAPPS_MINI = 1;
-    public static final int GAPPS_FULLINVERTED = 2;
-    public static final int GAPPS_MINIINVERTED = 3;
 
     public static final String PROPERTY_CHECK_TIME = "checktime";
-    private static final String PROPERTY_CHECK_GAPPS = "checkgapps";
-    private static final String PROPERTY_GAPPS_TYPE = "gappstype";
     private static final String PROPERTY_LOGIN = "goologin";
     private static final String PROPERTY_LOGIN_USERNAME = "goologinusername";
 
     private static final String DOWNLOAD_ROM_ID = "download_rom_id";
-    private static final String DOWNLOAD_GAPPS_ID = "download_gapps_id";
     private static final String DOWNLOAD_ROM_MD5 = "download_rom_md5";
-    private static final String DOWNLOAD_GAPPS_MD5 = "download_gapps_md5";
     private static final String DOWNLOAD_ROM_FILENAME = "download_rom_filaname";
-    private static final String DOWNLOAD_GAPPS_FILENAME = "download_gapps_filename";
 
     private static final String DEFAULT_CHECK_TIME = "18000000"; // five hours
-    private static final boolean DEFAULT_CHECK_GAPPS = true;
 
-    private static int DEFAULT_GAPPS_TYPE = GAPPS_FULL;
 
     private final SharedPreferences settings;
 
@@ -57,23 +46,6 @@ public class SettingsHelper {
 
     public long getCheckTime() {
         return Long.parseLong(settings.getString(PROPERTY_CHECK_TIME, DEFAULT_CHECK_TIME));
-    }
-
-    public boolean getCheckGapps() {
-        return settings.getBoolean(PROPERTY_CHECK_GAPPS, DEFAULT_CHECK_GAPPS);
-    }
-
-    public int getGappsType() {
-        return getGappsType(DEFAULT_GAPPS_TYPE);
-    }
-
-    public int getGappsType(int defaultValue) {
-        if (defaultValue < 0 || defaultValue > 3) {
-            defaultValue = GAPPS_FULL;
-        }
-        DEFAULT_GAPPS_TYPE = defaultValue;
-        return Integer.parseInt(settings.getString(PROPERTY_GAPPS_TYPE,
-                String.valueOf(defaultValue)));
     }
 
     public void setDownloadRomId(Long id, String md5, String fileName) {
@@ -98,30 +70,6 @@ public class SettingsHelper {
 
     public String getDownloadRomName() {
         return settings.getString(DOWNLOAD_ROM_FILENAME, null);
-    }
-
-    public void setDownloadGappsId(Long id, String md5, String fileName) {
-        if (id == null) {
-            removePreference(DOWNLOAD_GAPPS_ID);
-            removePreference(DOWNLOAD_GAPPS_MD5);
-            removePreference(DOWNLOAD_GAPPS_FILENAME);
-        } else {
-            savePreference(DOWNLOAD_GAPPS_ID, String.valueOf(id));
-            savePreference(DOWNLOAD_GAPPS_MD5, md5);
-            savePreference(DOWNLOAD_GAPPS_FILENAME, fileName);
-        }
-    }
-
-    public long getDownloadGappsId() {
-        return Long.parseLong(settings.getString(DOWNLOAD_GAPPS_ID, "-1"));
-    }
-
-    public String getDownloadGappsMd5() {
-        return settings.getString(DOWNLOAD_GAPPS_MD5, null);
-    }
-
-    public String getDownloadGappsName() {
-        return settings.getString(DOWNLOAD_GAPPS_FILENAME, null);
     }
 
     public boolean isLogged() {

@@ -30,7 +30,6 @@ import android.widget.TextView;
 
 import com.aicp.aicpota.R;
 import com.aicp.aicpota.Utils;
-import com.aicp.aicpota.updater.GappsUpdater;
 import com.aicp.aicpota.updater.RomUpdater;
 import com.aicp.aicpota.updater.Updater.PackageInfo;
 import com.aicp.aicpota.updater.Updater.UpdaterListener;
@@ -38,10 +37,8 @@ import com.aicp.aicpota.updater.Updater.UpdaterListener;
 public class SystemActivity extends Activity implements UpdaterListener {
 
     private RomUpdater mRomUpdater;
-    private GappsUpdater mGappsUpdater;
 
     private PackageInfo mRom;
-    private PackageInfo mGapps;
 
     private TextView mTitle;
     private TextView mMessage;
@@ -65,21 +62,16 @@ public class SystemActivity extends Activity implements UpdaterListener {
             @Override
             public void onClick(View v) {
                 mRomUpdater.check(true);
-                mGappsUpdater.check(true);
             }
 
         });
 
         mRom = null;
-        mGapps = null;
 
         mRomUpdater = new RomUpdater(this, true);
         mRomUpdater.addUpdaterListener(this);
-        mGappsUpdater = new GappsUpdater(this, true);
-        mGappsUpdater.addUpdaterListener(this);
 
         mRomUpdater.check(true);
-        mGappsUpdater.check(true);
     }
 
     @Override
@@ -100,35 +92,21 @@ public class SystemActivity extends Activity implements UpdaterListener {
         if (info != null && info.length > 0) {
             if (isRom) {
                 mRom = info.length > 0 ? info[0] : null;
-            } else {
-                mGapps = info.length > 0 ? info[0] : null;
             }
         }
         Resources res = getResources();
-        boolean checking = mRomUpdater.isScanning() || mGappsUpdater.isScanning();
+        boolean checking = mRomUpdater.isScanning();
         if (checking) {
             mTitle.setText(R.string.all_up_to_date);
             mMessage.setText(R.string.rom_scanning);
             mButton.setVisibility(View.GONE);
         } else {
             mButton.setVisibility(View.VISIBLE);
-            if (mRom != null && mGapps != null) {
-                mTitle.setText(R.string.rom_gapps_new_version);
-                mMessage.setText(res.getString(R.string.system_update_found,
-                        new Object[] {
-                            mRom.getFilename() + "\n" + mGapps.getFilename()
-                        }));
-            } else if (mRom != null) {
+            if (mRom != null) {
                 mTitle.setText(R.string.rom_new_version);
                 mMessage.setText(res.getString(R.string.system_update_found,
                         new Object[] {
                             mRom.getFilename()
-                        }));
-            } else if (mGapps != null) {
-                mTitle.setText(R.string.gapps_new_version);
-                mMessage.setText(res.getString(R.string.system_update_found,
-                        new Object[] {
-                            mGapps.getFilename()
                         }));
             } else {
                 mTitle.setText(R.string.all_up_to_date);
