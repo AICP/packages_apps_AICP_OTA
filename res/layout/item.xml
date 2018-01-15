@@ -24,7 +24,10 @@
     android:gravity="center"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/card_horizontal_margin"
-    android:paddingRight="@dimen/card_horizontal_margin">
+    android:paddingRight="@dimen/card_horizontal_margin"
+    android:paddingTop="@dimen/card_separator_padding"
+    android:paddingBottom="@dimen/card_separator_padding"
+    android:background="?android:attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/icon"
@@ -43,7 +46,6 @@
         android:fadingEdge="horizontal"
         android:paddingRight="@dimen/item_padding"
         android:singleLine="true"
-        android:textColor="@color/card_title_text"
         android:textSize="@dimen/card_medium_text_size" />
 
 </LinearLayout>

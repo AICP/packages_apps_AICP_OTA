@@ -96,12 +96,12 @@ public abstract class Card extends LinearLayout {
 
     protected void expand() {
         mExpanded = true;
-        mButton.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_collapse, null));
+        mButton.setImageDrawable(mContext.getDrawable(R.drawable.ic_collapse));
     }
 
     protected void collapse() {
         mExpanded = false;
-        mButton.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_expand, null));
+        mButton.setImageDrawable(mContext.getDrawable(R.drawable.ic_expand));
     }
 
     protected boolean canExpand() {

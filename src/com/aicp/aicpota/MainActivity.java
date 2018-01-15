@@ -22,7 +22,6 @@ package com.aicp.aicpota;
 
 import android.Manifest;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -74,7 +73,7 @@ import com.aicp.aicpota.widget.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements UpdaterListener, DownloadCallback,
+public class MainActivity extends BaseActivity implements UpdaterListener, DownloadCallback,
         OnItemClickListener {
 
     private static final String CHANGELOG = "https://plus.google.com/app/basic/communities/101008638920580274588";
@@ -139,7 +138,12 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 public void onClick(View v) {
                         View logo = v.findViewById(R.id.actionbar_logo);
                         v.findViewById(R.id.actionbar_logo).setVisibility(View.VISIBLE);
-                        getActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.action_bar_bg_sheep)));
+                        ColorDrawable background =
+                                new ColorDrawable(getColor(R.color.action_bar_bg_sheep));
+                        int foreground = getColor(R.color.action_bar_fg_sheep);
+                        getActionBar().setBackgroundDrawable(background);
+                        ((TextView) (((ViewGroup) v).findViewById(R.id.actionbar_title)))
+                                .setTextColor(foreground);
                         getWindow().setStatusBarColor(getColor(R.color.status_bar_bg_sheep));
                     }
             });
