@@ -36,7 +36,6 @@
             android:text="@string/install_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/card_text"
             android:textSize="@dimen/card_small_text_size"
             android:paddingBottom="@dimen/card_separator_padding" />
 
@@ -57,13 +56,12 @@
             android:layout_height="@dimen/card_separator_height"
             android:layout_marginBottom="@dimen/card_separator_padding"
             android:layout_marginTop="@dimen/card_separator_padding"
-            android:background="@color/card_border" />
+            android:background="?android:attr/colorBackgroundFloating" />
 
         <TextView
             android:text="@string/select_actions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/card_text"
             android:textSize="@dimen/card_small_text_size" />
 
         <CheckBox
@@ -72,7 +70,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:textColor="@color/card_text"
             android:text="@string/backup" />
 
         <CheckBox
@@ -81,7 +78,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:textColor="@color/card_text"
             android:text="@string/wipe_data" />
 
         <CheckBox
@@ -90,7 +86,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:textColor="@color/card_text"
             android:text="@string/wipe_caches" />
 
     </LinearLayout>
@@ -99,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_separator_height"
         android:layout_marginTop="@dimen/card_separator_padding"
-        android:background="@color/card_border" />
+        android:background="?android:attr/listDivider" />
 
     <com.aicp.aicpota.widget.Item
         android:id="@+id/add"
@@ -114,7 +109,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_separator_height"
-        android:background="@color/card_border" />
+        android:background="?android:attr/listDivider" />
 
     <com.aicp.aicpota.widget.Item
         android:id="@+id/install"
