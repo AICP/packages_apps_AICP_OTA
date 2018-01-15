@@ -68,7 +68,6 @@ public class Utils {
     public static final int CWM_BASED = 2;
 
     private static PackageInfo[] sPackageInfosRom = new PackageInfo[0];
-    private static Typeface sRobotoThin;
 
     public static class NotificationInfo implements Serializable {
 
@@ -296,24 +295,5 @@ public class Utils {
             out = buffer.toString();
         }
         return out;
-    }
-
-    public static void setRobotoThin(Context context, View view) {
-        if (sRobotoThin == null) {
-            sRobotoThin = Typeface.createFromAsset(context.getAssets(),
-                    "Roboto-Regular.ttf");
-        }
-        setFont(view, sRobotoThin);
-    }
-
-    private static void setFont(View view, Typeface robotoTypeFace) {
-        if (view instanceof ViewGroup) {
-            int count = ((ViewGroup) view).getChildCount();
-            for (int i = 0; i < count; i++) {
-                setFont(((ViewGroup) view).getChildAt(i), robotoTypeFace);
-            }
-        } else if (view instanceof TextView) {
-            ((TextView) view).setTypeface(robotoTypeFace);
-        }
     }
 }

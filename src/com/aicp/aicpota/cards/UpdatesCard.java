@@ -194,7 +194,6 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
                 mInfo.setText(res.getString(R.string.system_update));
                 addPackages(roms);
             }
-            Utils.setRobotoThin(context, mLayout);
         }
         String error = mErrorRom;
         if (error != null) {

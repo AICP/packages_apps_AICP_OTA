@@ -22,11 +22,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
-    <com.aicp.aicpota.widget.PreferenceCategory
-        android:layout="@layout/preferences_category"
+    <PreferenceCategory
         android:title="@string/settings" >
 
-        <com.aicp.aicpota.widget.ListPreference
+        <ListPreference
             android:key="checktime"
             android:title="@string/settings_checktime_title"
             android:summary="@string/settings_checktime_summary"
@@ -34,6 +33,6 @@
             android:entries="@array/time_notifications_entries"
             android:entryValues="@array/time_notifications_values" />
 
-    </com.aicp.aicpota.widget.PreferenceCategory>
+    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -211,8 +211,6 @@ public class MainActivity extends Activity implements UpdaterListener, DownloadC
                 R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        Utils.setRobotoThin(mContext, findViewById(R.id.mainlayout));
-
         RecoveryHelper mRecoveryHelper = new RecoveryHelper(this);
         mRebootHelper = new RebootHelper(mRecoveryHelper);
 

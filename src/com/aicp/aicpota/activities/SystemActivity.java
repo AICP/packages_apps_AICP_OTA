@@ -50,8 +50,6 @@ public class SystemActivity extends Activity implements UpdaterListener {
 
         setContentView(R.layout.activity_system);
 
-        Utils.setRobotoThin(this, findViewById(R.id.mainlayout));
-
         mTitle = (TextView) findViewById(R.id.title);
         mMessage = (TextView) findViewById(R.id.message);
         mButton = (Button) findViewById(R.id.button);

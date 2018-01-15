@@ -42,7 +42,9 @@
        <item name="android:textColorTertiary">@color/actionbar_background</item>
        <item name="android:actionBarStyle">@style/ActionBar</item>
        <item name="android:checkboxStyle">@style/Checkbox</item>
+       <!--
        <item name="android:textColor">@color/accent_color</item>
+       -->
    </style>
 
 </resources>
