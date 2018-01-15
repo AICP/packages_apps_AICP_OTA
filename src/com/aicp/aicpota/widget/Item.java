@@ -44,9 +44,6 @@ public class Item extends LinearLayout {
     private final ImageView mIconView;
     private final TextView mTitleView;
     private OnItemClickListener mItemClickListener;
-    private final ColorStateList mDefaultColors;
-    private final int mPressedColor;
-    private final int mIconActiveColor;
 
     public Item(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -73,44 +70,10 @@ public class Item extends LinearLayout {
 
         mTitleView = (TextView) view.findViewById(R.id.title);
         mTitleView.setText(title);
-        mDefaultColors = mTitleView.getTextColors();
-        mPressedColor = context.getResources().getColor(R.color.item_pressed);
-        mIconActiveColor = context.getResources().getColor(R.color.item_action);
-        if (icon != null) {
-            icon.setColorFilter(mIconActiveColor, PorterDuff.Mode.SRC_ATOP);
-        }
 
         mIconView = (ImageView) view.findViewById(R.id.icon);
         mIconView.setImageDrawable(icon);
 
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                if (!isEnabled()) {
-                    return true;
-                }
-
-                Rect mViewRect = new Rect(view.getLeft(), view.getTop(), view.getRight(),
-                        view.getBottom());
-                boolean mTouchCancelled = !mViewRect.contains(view.getLeft() + (int) event.getX(),
-                        view.getTop() + (int) event.getY());
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        setBackgroundColor(mPressedColor);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        setBackgroundColor(context.getResources().getColor(
-                                android.R.color.transparent));
-                        mTitleView.setTextColor(mDefaultColors);
-                        if (mItemClickListener != null && !mTouchCancelled) {
-                            mItemClickListener.onClick();
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
     public void setOnItemClickListener(OnItemClickListener itemClickListener) {
@@ -129,14 +92,8 @@ public class Item extends LinearLayout {
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         if (mIconView != null && mTitleView != null) {
-            Drawable icon = mIconView.getDrawable();
-            if (enabled) {
-                icon.setColorFilter(mIconActiveColor, PorterDuff.Mode.SRC_ATOP);
-                mTitleView.setTextColor(mDefaultColors);
-            } else {
-                icon.clearColorFilter();
-                mTitleView.setTextColor(getResources().getColor(R.color.card_text));
-            }
+            mIconView.setEnabled(enabled);
+            mTitleView.setEnabled(enabled);
         }
     }
 }

@@ -22,7 +22,6 @@ package com.aicp.aicpota;
 
 import android.Manifest;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -74,7 +73,7 @@ import com.aicp.aicpota.widget.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements UpdaterListener, DownloadCallback,
+public class MainActivity extends BaseActivity implements UpdaterListener, DownloadCallback,
         OnItemClickListener {
 
     private static final String CHANGELOG = "https://plus.google.com/app/basic/communities/101008638920580274588";
