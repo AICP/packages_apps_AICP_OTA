@@ -20,7 +20,6 @@
 
 package com.aicp.aicpota.activities;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -28,13 +27,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.aicp.aicpota.BaseActivity;
 import com.aicp.aicpota.R;
 import com.aicp.aicpota.Utils;
 import com.aicp.aicpota.updater.RomUpdater;
 import com.aicp.aicpota.updater.Updater.PackageInfo;
 import com.aicp.aicpota.updater.Updater.UpdaterListener;
 
-public class SystemActivity extends Activity implements UpdaterListener {
+public class SystemActivity extends BaseActivity implements UpdaterListener {
 
     private RomUpdater mRomUpdater;
 

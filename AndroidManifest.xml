@@ -40,8 +40,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_aicp_ota"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:label="@string/app_name">
 
         <activity
             android:name="com.aicp.aicpota.MainActivity"
@@ -60,8 +59,7 @@
         </activity>
 
         <activity
-            android:name=".activities.SystemActivity"
-            android:theme="@android:style/Theme.Holo.NoActionBar">
+            android:name=".activities.SystemActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

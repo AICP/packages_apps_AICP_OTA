@@ -271,7 +271,6 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             CheckBox check = new CheckBox(context, null);
             check.setTag(R.id.title, packages[i]);
             check.setText(String.format(" %s", packages[i].getFilename()));
-            check.setTextColor(getResources().getColor(R.color.card_text));
             check.setOnCheckedChangeListener(this);
             check.setChecked(i == 0);
             mLayout.addView(check);
@@ -280,7 +279,6 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
                     packages[i].getFilename().toString().split("-")[3]));
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_medium_text_size));
-            text.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             text.setTag(packages[i].getPath() + ".html");
@@ -298,7 +296,6 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             text.setText(res.getString(R.string.nightly_filesize, packages[i].getSize()));
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_small_text_size));
-            check.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
@@ -306,7 +303,6 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             text.setText(res.getString(R.string.nightly_md5sum, packages[i].getMd5()));
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     res.getDimension(R.dimen.card_small_text_size));
-            check.setTextColor(getResources().getColor(R.color.card_text));
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);

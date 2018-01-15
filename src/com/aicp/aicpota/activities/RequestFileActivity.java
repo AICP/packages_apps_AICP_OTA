@@ -20,7 +20,6 @@
 
 package com.aicp.aicpota.activities;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -32,6 +31,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Toast;
 
+import com.aicp.aicpota.BaseActivity;
 import com.aicp.aicpota.IOUtils;
 import com.aicp.aicpota.R;
 
@@ -39,7 +39,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
-public class RequestFileActivity extends Activity {
+public class RequestFileActivity extends BaseActivity {
 
     private static final String ROOT_ID_PRIMARY_EMULATED = "primary";
     private static final int REQUEST_PICK_FILE = 203;
