@@ -3,7 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:theme="?android:attr/actionBarTheme" >
 
     <ImageView
         android:id="@+id/actionbar_logo"
@@ -18,7 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?android:attr/textColorPrimary"
-        android:textSize="@*android:dimen/text_size_title_material_toolbar"
+        android:theme="?android:attr/titleTextStyle"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:text="@string/app_name"/>
 
 </LinearLayout>
