@@ -315,7 +315,7 @@ public class Utils {
     public static void setRobotoThin(Context context, View view) {
         if (sRobotoThin == null) {
             sRobotoThin = Typeface.createFromAsset(context.getAssets(),
-                    "Roboto-Light.ttf");
+                    "Roboto-Regular.ttf");
         }
         setFont(view, sRobotoThin);
     }
