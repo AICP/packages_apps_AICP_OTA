@@ -28,15 +28,12 @@
   <string name="check_for_updates_long">Zkontrolovat aktualizace</string>
   <string name="all_up_to_date">Váš systém je aktuální!</string>
   <string name="rom_scanning">Kontrolování systémových aktualizací…</string>
-  <string name="rom_gapps_new_version">Aktualizace systému nalezeny!</string>
   <string name="rom_new_version">Byla nalezena aktualizace ROM!</string>
-  <string name="gapps_new_version">Nová aktualizace Google apps nalezena!</string>
   <string name="no_updates">Nebyly nalezeny žádné aktualizace</string>
   <string name="system_update_found">Nová aktualizace systému byla nalezena a je připravena ke stažení. \nProsím, zkontrolujte oznámení, které se objevily. Dovedou vás k AicpOTA, odkud budete moci stáhnout a/nebo nainstalovat aktualizaci.\n\nAktualizace nalezena(y):\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">Informace o systému</string>
   <string name="system_rom">Verze ROM: %1$s</string>
-  <string name="system_gapps">Verze Google Apps: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Aktualizace</string>
   <string name="updates_checking">Probíhá kontrola…</string>
@@ -44,7 +41,6 @@
   <string name="updates_uptodate">Váš systém je aktuální</string>
   <string name="no_updates_found">Nebyly nalezeny žádné aktualizace</string>
   <string name="check_rom_updates_error">Chyba při kontrole aktualizací ROM</string>
-  <string name="check_gapps_updates_error">Chyba při kontrole Google apps aktualizací</string>
   <string name="system_update">Byla nalezena aktualizace systému.\nVyberte aktualizaci(e), které chcete stáhnout.\nSeznam změn je dostupný na rozšířené kartě.\n\nNalezena(y) aktualizace:</string>
   <string name="download_and_install">Stáhnout a nainstalovat</string>
   <string name="update_host">Hostováno na %1$s</string>
@@ -90,13 +86,11 @@
   <string name="download_card_title">Stahování aktualizace systému</string>
   <string name="cancel_download_alert_title">Zrušit stahování</string>
   <string name="cancel_rom_download_alert_summary">Opravdu chcete přerušit stahování aktualizace ROM?</string>
-  <string name="cancel_gapps_download_alert_summary">Opravdu chcete přerušit stahování aktualizace Google Apps?</string>
   <string name="cancel_download_alert_yes">Ano</string>
   <string name="cancel_download_alert_no">Ne</string>
   <string name="new_system_update">Nalezena nová systémová aktualizace</string>
   <string name="new_packages">%1$s aktualizace je k dispozici ke stažení</string>
   <string name="already_downloading_rom">Již stahujete aktualizaci ROM.</string>
-  <string name="already_downloading_gapps">Již stahujete aktualizaci Google apps.</string>
   <string name="cancel_download">Zrušit stahování</string>
   <string name="downloading_info">Stahování aktualizace(í):\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

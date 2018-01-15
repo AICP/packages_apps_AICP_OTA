@@ -29,7 +29,7 @@ import java.io.Serializable;
  * pa_A-B-C.DE-FG-H.zip<br>
  * where<br>
  * A = device name, required<br>
- * B = extra information, not required (for gapps)<br>
+ * B = extra information, not required 
  * C = major, integer from 0 to n, required<br>
  * D = minor, integer from 0 to 9, required<br>
  * E = maintenance, integer from 0 to n, not required<br>
@@ -37,13 +37,13 @@ import java.io.Serializable;
  * gold/production<br>
  * G = phase number, integer from 0 to n, not required<br>
  * H = date, YYYYMMDD, not required, the format can be YYYYMMDDx where x is a
- * letter (for gapps)
+ * letter 
  * <p>
  * All the default values not specified above are 0
  * <p>
  * Examples<br>
  * pa_find5-3.99-RC2-20140212.zip<br>
- * pa_gapps-modular-mini-4.3-20141010-signed.zip
+ * 
  */
 public class Version implements Serializable {
 
@@ -82,7 +82,7 @@ public class Version implements Serializable {
 
         mDevice = split[0];
 
-        // remove gapps extra names (modular, full, mini, etc)
+        
         while (split[1].matches("\\w+\\.?")) {
             String[] newSplit = new String[split.length - 1];
             newSplit[0] = split[0];
@@ -195,11 +195,6 @@ public class Version implements Serializable {
                 + (mPhase != STABLE ? " " + getPhaseName() : "")
                 + (mPhaseNumber != 0 ? "" + mPhaseNumber : "")
                 + " (" + mDate + ")";
-    }
-
-    public static Version fromGapps(String platform, String version) {
-        return new Version("gapps-" + platform.substring(0, 1) + "."
-                + (platform.length() > 1 ? platform.substring(1) : "") + "-" + version);
     }
 
     public static int compare(Version v1, Version v2) {

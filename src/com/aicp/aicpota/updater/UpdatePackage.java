@@ -32,7 +32,7 @@ public class UpdatePackage implements PackageInfo, Serializable {
     private String mHost = null;
     private String mSize = null;
     private final Version mVersion;
-    private boolean mIsGapps = false;
+    private boolean mIsaicp = false;
 
     public UpdatePackage(String name, Version version, String size, String url,
                          String md5) {
@@ -41,7 +41,6 @@ public class UpdatePackage implements PackageInfo, Serializable {
         this.mSize = size;
         this.mPath = url;
         this.mMd5 = md5;
-        this.mIsGapps = false;
         mHost = mPath.replace("http://", "");
         mHost = mHost.replace("https://", "");
         mHost = mHost.substring(0, mHost.indexOf("/"));
@@ -76,9 +75,10 @@ public class UpdatePackage implements PackageInfo, Serializable {
     public String getSize() {
         return mSize;
     }
-
     @Override
-    public boolean isGapps() {
-        return mIsGapps;
+    public boolean isaicp() {
+        return mIsaicp;
     }
+
+
 }

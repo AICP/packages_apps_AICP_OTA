@@ -28,15 +28,12 @@
   <string name="check_for_updates_long">檢查更新</string>
   <string name="all_up_to_date">您已是最新版本！</string>
   <string name="rom_scanning">正在檢查系統更新...</string>
-  <string name="rom_gapps_new_version">發現系統更新 ！</string>
   <string name="rom_new_version">找到新的 ROM 更新！</string>
-  <string name="gapps_new_version">找到新的 Google 應用程式更新！</string>
   <string name="no_updates">沒有新的系統更新</string>
   <string name="system_update_found">發現系統更新，並準備下載。\n請檢查通知可能已經出現，將會引導您到 AicpOTA 下載 並/或 安裝更新。\n\n發現系統更新：\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">系統資訊</string>
   <string name="system_rom">ROM 版本：%1$s</string>
-  <string name="system_gapps">Google 應用程式版本：%1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">更新</string>
   <string name="updates_checking">檢查中…</string>
@@ -44,7 +41,6 @@
   <string name="updates_uptodate">您已是最新版本</string>
   <string name="no_updates_found">沒有找到有更新</string>
   <string name="check_rom_updates_error">ROM 更新檢查錯誤</string>
-  <string name="check_gapps_updates_error">Google 應用程式更新檢查錯誤</string>
   <string name="system_update">已找到系統更新。\n選擇您要下載的更新。\n記憶卡上有更改日誌。\n\n發現系統更新：</string>
   <string name="download_and_install">下載及安裝</string>
   <string name="update_host">寄存於 %1$s</string>
@@ -90,13 +86,11 @@
   <string name="download_card_title">正在下載系統更新</string>
   <string name="cancel_download_alert_title">取消下載</string>
   <string name="cancel_rom_download_alert_summary">您想取消目前下載中的 ROM 嗎？</string>
-  <string name="cancel_gapps_download_alert_summary">您想取消目前下載中的 Google 應用程式嗎？</string>
   <string name="cancel_download_alert_yes">是</string>
   <string name="cancel_download_alert_no">否</string>
   <string name="new_system_update">發現新的系統更新</string>
   <string name="new_packages">%1$s 個更新可供下載</string>
   <string name="already_downloading_rom">您正在下載 ROM 的更新。</string>
-  <string name="already_downloading_gapps">您正在下載 Google 應用程式的更新。</string>
   <string name="cancel_download">取消下載</string>
   <string name="downloading_info">更新正在下載：\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

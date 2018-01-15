@@ -27,7 +27,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.aicp.aicpota.R;
-import com.aicp.aicpota.updater.GappsUpdater;
 import com.aicp.aicpota.updater.RomUpdater;
 import com.aicp.aicpota.widget.Card;
 
@@ -35,7 +34,7 @@ import com.aicp.aicpota.widget.Card;
 public class SystemCard extends Card {
 
     public SystemCard(Context context, RomUpdater romUpdater,
-                      GappsUpdater gappsUpdater, Bundle savedInstanceState) {
+                      Bundle savedInstanceState) {
         super(context, savedInstanceState);
 
         setTitle(R.string.system_title);
@@ -47,9 +46,6 @@ public class SystemCard extends Card {
         romView.setText(res.getString(R.string.system_rom,
                 romUpdater.getVersion().toString(false)));
 
-        TextView gappsView = (TextView) findLayoutViewById(R.id.gapps);
-        gappsView.setText(res.getString(R.string.system_gapps, gappsUpdater.getType(), gappsUpdater
-                .getVersion().toString(false)));
     }
 
     @Override

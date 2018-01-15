@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">Nach Updates suchen</string>
   <string name="all_up_to_date">Keine Updates gefunden!</string>
   <string name="rom_scanning">Nach System-Updates suchen…</string>
-  <string name="rom_gapps_new_version">Neue System-Updates gefunden!</string>
   <string name="rom_new_version">Neues ROM-Update gefunden!</string>
-  <string name="gapps_new_version">Neues Update für Google Apps gefunden!</string>
   <string name="no_updates">Keine System-Updates gefunden</string>
   <string name="system_update_found">Ein neues System-Update wurde gefunden und ist nun zum Herunterladen bereit.\nBitte prüfe die Benachrichtigungen, falls solche erscheinen. Diese führen dann zu AICP OTA, von wo aus die Updates dann heruntergeladen oder/und installiert werden können.\n\nGefundene Update(s):\n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">System Info</string>
   <string name="system_rom">ROM Version: %1$s</string>
-  <string name="system_gapps">Google Apps Version: %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">Updates</string>
   <string name="updates_checking">Suche…</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">Du bist auf dem neuesten Stand</string>
   <string name="no_updates_found">Keine Updates gefunden</string>
   <string name="check_rom_updates_error">Fehler beim Suchen nach ROM-Updates</string>
-  <string name="check_gapps_updates_error">Fehler beim Suchen nach Updates für Google Apps</string>
   <string name="system_update">System-Update gefunden.\nBitte das Update auswählen, das heruntergeladen werden soll.\n\nGefundene Update(s):</string>
   <string name="download_and_install">Herunterladen und installieren</string>
   <string name="update_host">Gehostet von %1$s</string>
@@ -92,14 +88,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">Download abbrechen</string>
   <string name="cancel_rom_download_alert_summary">Möchtest du den aktuellen ROM-Download abbrechen?</string>
-  <string name="cancel_gapps_download_alert_summary">Möchtest du den aktuellen Download der Google Apps abbrechen?</string>
   <string name="cancel_download_alert_yes">Ja</string>
   <string name="cancel_download_alert_no">Nein</string>
   <string name="new_system_update">Neues System-Update gefunden</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s Updates sind bereit zum Herunterladen</string>
   <string name="already_downloading_rom">Es wird bereits ein ROM-Update heruntergeladen.</string>
-  <string name="already_downloading_gapps">Es wird bereits ein Update für Google Apps heruntergeladen.</string>
   <string name="cancel_download">Herunterladen abbrechen</string>
   <string name="downloading_info">Update(s) wird/werden heruntergeladen:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->

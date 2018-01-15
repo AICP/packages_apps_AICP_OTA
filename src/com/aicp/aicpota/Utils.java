@@ -63,20 +63,17 @@ public class Utils {
     public static final String CHECK_DOWNLOADS_ID = "com.aicp.aicpota.Utils.CHECK_DOWNLOADS_ID";
     public static final String MOD_VERSION = "ro.modversion";
     private static final int ROM_ALARM_ID = 122303221;
-    private static final int GAPPS_ALARM_ID = 122303222;
 
     public static final int TWRP = 1;
     public static final int CWM_BASED = 2;
 
     private static PackageInfo[] sPackageInfosRom = new PackageInfo[0];
-    private static PackageInfo[] sPackageInfosGapps = new PackageInfo[0];
     private static Typeface sRobotoThin;
 
     public static class NotificationInfo implements Serializable {
 
         public int mNotificationId;
         public PackageInfo[] mPackageInfosRom;
-        public PackageInfo[] mPackageInfosGapps;
     }
 
     public static String getProp(String prop) {
@@ -166,7 +163,7 @@ public class Utils {
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         PendingIntent pi = PendingIntent.getBroadcast(context,
-                isRom ? ROM_ALARM_ID : GAPPS_ALARM_ID, i,
+                ROM_ALARM_ID, i,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -177,8 +174,8 @@ public class Utils {
     }
 
     public static boolean alarmExists(Context context, boolean isRom) {
-        return (PendingIntent.getBroadcast(context, isRom ? ROM_ALARM_ID
-                : GAPPS_ALARM_ID, new Intent(context, NotificationAlarm.class),
+        return (PendingIntent.getBroadcast(context, ROM_ALARM_ID , new Intent(context, NotificationAlarm.class),
+
                 PendingIntent.FLAG_NO_CREATE) != null);
     }
 
@@ -200,8 +197,7 @@ public class Utils {
         });
     }
 
-    public static void showNotification(Context context, Updater.PackageInfo[] infosRom,
-            Updater.PackageInfo[] infosGapps) {
+    public static void showNotification(Context context, Updater.PackageInfo[] infosRom) {
         Resources resources = context.getResources();
 
         if (infosRom != null) {
@@ -209,17 +205,11 @@ public class Utils {
         } else {
             infosRom = sPackageInfosRom;
         }
-        if (infosGapps != null) {
-            sPackageInfosGapps = infosGapps;
-        } else {
-            infosGapps = sPackageInfosGapps;
-        }
 
         Intent intent = new Intent(context, MainActivity.class);
         NotificationInfo fileInfo = new NotificationInfo();
         fileInfo.mNotificationId = Updater.NOTIFICATION_ID;
         fileInfo.mPackageInfosRom = infosRom;
-        fileInfo.mPackageInfosGapps = infosGapps;
         intent.putExtra(FILES_INFO, fileInfo);
         PendingIntent pIntent = PendingIntent.getActivity(context, Updater.NOTIFICATION_ID, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
@@ -231,26 +221,22 @@ public class Utils {
                 .setContentIntent(pIntent);
 
         String contextText;
-        if (infosRom.length + infosGapps.length == 1) {
-            String filename = infosRom.length == 1 ? infosRom[0].getFilename() : infosGapps[0]
-                    .getFilename();
+        if (infosRom.length == 1) {
+            String filename = infosRom[0].getFilename(); 
+
             contextText = resources.getString(R.string.new_package_name, filename);
         } else {
-            contextText = resources.getString(R.string.new_packages, infosRom.length
-                    + infosGapps.length);
+            contextText = resources.getString(R.string.new_packages, infosRom.length);
         }
         builder.setContentText(contextText);
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.setBigContentTitle(context.getResources().getString(R.string.new_system_update));
-        if (infosRom.length + infosGapps.length > 1) {
+        if (infosRom.length > 1) {
             inboxStyle.addLine(contextText);
         }
         for (PackageInfo anInfosRom : infosRom) {
             inboxStyle.addLine(anInfosRom.getFilename());
-        }
-        for (PackageInfo infosGapp : infosGapps) {
-            inboxStyle.addLine(infosGapp.getFilename());
         }
         inboxStyle.setSummaryText(resources.getString(R.string.app_name));
         builder.setStyle(inboxStyle);

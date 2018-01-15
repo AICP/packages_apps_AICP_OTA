@@ -29,15 +29,12 @@
   <string name="check_for_updates_long">التحقق من وجود تحديثات</string>
   <string name="all_up_to_date">نظامك محدث !</string>
   <string name="rom_scanning">جار التحقق من وجود تحديثات للنظام …</string>
-  <string name="rom_gapps_new_version">تم العثور على تحديثات للنظام !</string>
   <string name="rom_new_version">تم العثور على تحديث جديد للـ ROM !</string>
-  <string name="gapps_new_version">تم العثور على تحديث جديد لتطبيقات Google !</string>
   <string name="no_updates">لم يتم العثور على تحديثات للنظام</string>
   <string name="system_update_found">تم العثور على تحديث جديد للنظام وهو جاهز للتحميل . الرجاء التحقق من الإشعارات التي ظهرت . سوف تقودك إلى AICP OTA والذي من خلاله يمكنك تحميل و / أو تثبيت التحديث . تم العثور على التحديث ( التحديثات ) : \n%1$s</string>
   <!-- SYSTEM -->
   <string name="system_title">معلومات النظام</string>
   <string name="system_rom">إصدار ROM : %1$s</string>
-  <string name="system_gapps">إصدار تطبيقات Google : %1$s %2$s</string>
   <!-- UPDATES -->
   <string name="updates">التحديثات</string>
   <string name="updates_checking">جار التحقق …</string>
@@ -45,7 +42,6 @@
   <string name="updates_uptodate">نظامك محدث</string>
   <string name="no_updates_found">لا توجد تحديثات</string>
   <string name="check_rom_updates_error">خطأ في التحقق من وجود تحديثات للـ ROM</string>
-  <string name="check_gapps_updates_error">خطأ في التحقق من وجود تحديثات لتطبيقات Google</string>
   <string name="system_update">تم العثور على تحديث للنظام . يجب أن تستخدم ريكفري TWRP لتركيب التحديث ، أو ركبه يدوياً عبر CWM !!! حدد التحديث ( التحديثات ) التي ترغب في تحميلها . تم العثور على التحديث ( التحديثات ) :</string>
   <string name="download_and_install">تحميل وتثبيت</string>
   <string name="update_host">مستضاف في %1$s</string>
@@ -89,14 +85,12 @@
   <string name="download_title">%1$s</string>
   <string name="cancel_download_alert_title">إلغاء التحميل</string>
   <string name="cancel_rom_download_alert_summary">هل تريد إلغاء تحميل الـ ROM الحالي ؟</string>
-  <string name="cancel_gapps_download_alert_summary">هل تريد إلغاء تحميل تطبيقات Google الحالية ؟</string>
   <string name="cancel_download_alert_yes">نعم</string>
   <string name="cancel_download_alert_no">لا</string>
   <string name="new_system_update">تم العثور على تحديث جديد للنظام</string>
   <string name="new_package_name">%1$s</string>
   <string name="new_packages">%1$s تحديثات متاحة للتحميل</string>
   <string name="already_downloading_rom">أنت تقوم بتحميل تحديث الـ ROM بالفعل .</string>
-  <string name="already_downloading_gapps">أنت تقوم بتحميل تحديث تطبيقات Google بالفعل .</string>
   <string name="cancel_download">إلغاء التحميل ( التحميلات )</string>
   <string name="downloading_info">جار تحميل التحديث ( التحديثات ) : \n%1$s</string>
   <!-- DOWNLOAD ERRORS -->
