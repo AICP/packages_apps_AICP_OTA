@@ -29,7 +29,6 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/drawer_list_item_background"
         android:duplicateParentState="true"
         android:gravity="center_vertical"
 	    android:paddingLeft="@dimen/drawer_item_padding_left"
@@ -41,7 +40,6 @@
 	    android:id="@+id/item_small"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:background="@color/drawer_list_item_background"
 	    android:gravity="center_vertical"
 	    android:orientation="horizontal"
 	    android:visibility="gone"
@@ -55,15 +53,14 @@
 	        android:layout_height="wrap_content"
 			android:contentDescription="@string/content_description"
 			android:layout_marginRight="5dp" />
-	
+
 	    <TextView
 	        android:id="@+id/text_small"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:duplicateParentState="true"
 	        android:gravity="center_vertical"
-	        android:textAppearance="?android:attr/textAppearanceListItemSmall"
-	        android:textColor="@color/card_grid_text" />
+	        android:textAppearance="?android:attr/textAppearanceListItemSmall" />
 
 	</LinearLayout>
 

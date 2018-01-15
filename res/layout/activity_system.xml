@@ -29,7 +29,6 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/holo_blue_dark"
         android:textSize="40sp" />
 
     <View
@@ -37,14 +36,13 @@
         android:layout_height="1dp"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
-        android:background="@color/gray_separator" />
+        android:background="?android:attr/listDivider" />
 
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/message_text" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <View
         android:layout_width="match_parent"

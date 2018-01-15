@@ -49,4 +49,6 @@
     <integer name="anim_duration">400</integer>
 
     <dimen name="action_bar_sheep_size">72dp</dimen>
+
+    <dimen name="zero">0dp</dimen>
 </resources>

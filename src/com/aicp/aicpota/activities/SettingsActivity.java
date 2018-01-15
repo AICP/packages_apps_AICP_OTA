@@ -24,15 +24,15 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.ListPreference;
-import android.preference.PreferenceActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
+import com.aicp.aicpota.BasePreferenceActivity;
 import com.aicp.aicpota.R;
 import com.aicp.aicpota.Utils;
 import com.aicp.aicpota.helpers.SettingsHelper;
  
-public class SettingsActivity extends PreferenceActivity implements
+public class SettingsActivity extends BasePreferenceActivity implements
          OnSharedPreferenceChangeListener {
  
     private SettingsHelper mSettingsHelper;

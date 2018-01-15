@@ -35,7 +35,6 @@
             android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/card_text"
             android:textSize="@dimen/card_small_text_size" />
 
         <ProgressBar
@@ -55,7 +54,6 @@
             android:id="@+id/progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/card_text"
             android:textSize="@dimen/card_small_text_size" />
 
     </LinearLayout>
@@ -64,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_separator_height"
         android:layout_marginTop="@dimen/card_separator_padding"
-        android:background="@color/card_border" />
+        android:background="?android:attr/listDivider" />
 
     <com.aicp.aicpota.widget.Item
         android:id="@+id/cancel"
