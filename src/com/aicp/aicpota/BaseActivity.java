@@ -47,8 +47,14 @@ public abstract class BaseActivity extends Activity {
     protected int getThemeRes() {
         int pref = Settings.System.getInt(getContentResolver(), Settings.System.AE_THEME, 0);
         switch (pref) {
+            /*
             case 1:
                 return R.style.AppTheme_DarkAmber;
+            */
+            case 2:
+                return R.style.AppTheme_Light;
+            case 3:
+                return R.style.AppTheme_Dark;
             default:
                 return R.style.AppTheme_Default;
         }
