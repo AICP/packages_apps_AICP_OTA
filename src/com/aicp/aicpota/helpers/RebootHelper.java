@@ -234,7 +234,7 @@ public class RebootHelper {
                 i++;
             }
 
-            ((PowerManager) context.getSystemService(Activity.POWER_SERVICE)).reboot("recovery");
+            ((PowerManager) context.getSystemService(Activity.POWER_SERVICE)).reboot("recovery-update");
 
         } catch (Exception e) {
             e.printStackTrace();
