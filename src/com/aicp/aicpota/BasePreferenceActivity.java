@@ -52,8 +52,10 @@ public abstract class BasePreferenceActivity extends PreferenceActivity {
                 return R.style.AppTheme_DarkAmber;
             */
             case 2:
+            case 4:
                 return R.style.AppTheme_Light;
             case 3:
+            case 5:
                 return R.style.AppTheme_Dark;
             default:
                 return R.style.AppTheme_Default;
