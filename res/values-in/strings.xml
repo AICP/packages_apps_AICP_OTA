@@ -21,13 +21,49 @@
 <resources>
   <!-- GENERAL -->
   <!-- SYSTEM ACTIVITY -->
+  <string name="rom_scanning">Memeriksa pembaruan sistem...</string>
+  <string name="system_update_found">Sebuah update sistem baru ditemukan dan siap untuk diunduh.\nSilakan periksa pemberitahuan yang mungkin telah muncul. Mereka akan membawa Anda ke Aicpota dari mana Anda dapat mendownload dan/atau menginstal pembaruan.\n\nPembaruan ditemukan:\n%1$s</string>
   <!-- SYSTEM -->
+  <string name="system_rom">Versi ROM: %1$s</string>
   <!-- UPDATES -->
+  <string name="updates_checking">Memeriksa...</string>
+  <string name="system_update">Pembaruan sistem ditemukan.\nPilih pembaruan yang ingin Anda download.\nChangelog tersedia pada kartu yang diperluas.\n\nPembaruan ditemukan:</string>
+  <string name="download_and_install">Unduh dan pasang</string>
+  <string name="update_host">Diselenggarakan di %1$s</string>
+  <string name="nightly_changelog">-- Klik untuk... %1$s Changelog</string>
+  <string name="nightly_md5sum">Md5sum: %1$s</string>
+  <string name="nightly_filesize">Filesize: %1$s MB</string>
   <!-- INSTALL -->
+  <string name="install_title">Siap untuk menginstal</string>
+  <string name="install_info">Pembaruan berikut siap untuk diinstal.\n\nAnda dapat menambahkan lebih banyak ritsleting dengan mengklik tombol \"Add file\".</string>
+  <string name="calculating_md5">Menghitung jumlah MD5...</string>
+  <string name="md5_mismatch">Ketidakcocokan MD5</string>
+  <string name="md5_mismatch_summary">Diterima:\n%1$s\n\n Dihitung:\n%2$s</string>
+  <string name="wipe_caches">Usap Cache &amp; Dalvik</string>
+  <string name="remove_file_summary">Apakah Anda ingin menghapus file dari daftar?\n\n%1$s</string>
+  <string name="file_manager_error">Tidak ada aplikasi yang ditemukan untuk memilih file zip. Silahkan install sebuah file manager.</string>
+  <string name="alert_backup_space_message">Ada kurang dari %1$s GB di kartu SD internal. Apakah Anda ingin melanjutkan backup?</string>
+  <string name="alert_backup_message">Tentukan nama cadangan (karakter ilegal akan dihapus).\n\nPilihan berikut hanya akan bekerja di TWRP.</string>
+  <string name="alert_reboot_install_title">Pasang update</string>
+  <string name="alert_reboot_one_message">Perangkat Anda akan melakukan boot ulang dan menginstal pembaruan.</string>
+  <string name="alert_reboot_more_message">Perangkat Anda akan melakukan boot ulang dan menginstal pembaruan.</string>
   <!-- CHANGELOG -->
   <!-- DOWNLOADS/NOTIFICATIONS -->
+  <string name="download_card_title">Mengunduh pembaruan sistem</string>
+  <string name="cancel_download_alert_title">Batalkan unduhan</string>
+  <string name="cancel_rom_download_alert_summary">Apakah Anda ingin membatalkan unduhan ROM saat ini?</string>
+  <string name="cancel_download_alert_yes">iya nih</string>
+  <string name="new_packages">Pembaruan %1$s tersedia untuk diunduh</string>
+  <string name="already_downloading_rom">Anda sudah mendownload pembaruan ROM.</string>
+  <string name="cancel_download">Batalkan unduhan</string>
+  <string name="downloading_info">Update (download):\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->
+  <string name="error_cannot_resume">Kesalahan: Unduhan tidak dapat dilanjutkan</string>
+  <string name="error_device_not_found">Kesalahan: Sdcard tidak terpasang</string>
+  <string name="error_http_data_error">Kesalahan: Http error</string>
+  <string name="error_unhandled_http_code">Kesalahan: Kode http tidak tertangani</string>
   <!-- SETTINGS -->
+  <string name="settings_checktime_title">Perbarui frekuensi periksa</string>
   <!-- Permission check -->
   <!-- Dummy -->
   <!--SDCARD Path-->

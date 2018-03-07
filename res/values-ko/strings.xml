@@ -114,6 +114,7 @@
   <string name="time_notifications_five_hours">5시간</string>
   <string name="time_notifications_daily">매일</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">사용권한 부여 되지 않음</string>
   <!-- Dummy -->
   <!--SDCARD Path-->
 </resources>

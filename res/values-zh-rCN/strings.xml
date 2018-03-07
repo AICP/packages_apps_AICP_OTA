@@ -50,6 +50,9 @@
 选择你要下载的更新:\"</string>
   <string name="download_and_install">下载并安装</string>
   <string name="update_host">主机时间 %1$s</string>
+  <string name="nightly_changelog">--点击... %1$s 日志</string>
+  <string name="nightly_md5sum">Md5sum: %1$s</string>
+  <string name="nightly_filesize">文件大小: %1$s mb</string>
   <!-- INSTALL -->
   <string name="install">安装</string>
   <string name="install_title">准备安装</string>
@@ -129,6 +132,7 @@
   <string name="time_notifications_two_hours">2小时</string>
   <string name="time_notifications_five_hours">5小时</string>
   <string name="time_notifications_daily">每日</string>
+  <string name="time_notifications_weekly">每周</string>
   <!-- Permission check -->
   <string name="permission_not_granted_dialog_title">未授予权限</string>
   <string name="permission_granted_dialog_title">授予权限</string>

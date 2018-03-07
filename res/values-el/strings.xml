@@ -45,6 +45,9 @@
   <string name="system_update">Βρέθηκε ενημέρωση συστήματος.\nΕπιλέξτε την(ις) ενημέρωση(σεις) που θέλετε να λάβεται.\n\nΒρέθηκε(αν) ενημέρωση(εις):</string>
   <string name="download_and_install">Λήψη και εγκατάσταση</string>
   <string name="update_host">Φιλοξενείται στο %1$s</string>
+  <string name="nightly_changelog">--Κλικ για... %1$s Αρχείο καταγραφής αλλαγών</string>
+  <string name="nightly_md5sum">Md5sum: %1$s</string>
+  <string name="nightly_filesize">Μέγεθος αρχείου: %1$s MB</string>
   <!-- INSTALL -->
   <string name="install">Εγκατάσταση</string>
   <string name="install_title">Έτοιμο για εγκατάσταση</string>
@@ -113,7 +116,10 @@
   <string name="time_notifications_two_hours">2 ώρες</string>
   <string name="time_notifications_five_hours">5 ώρες</string>
   <string name="time_notifications_daily">Ημερησίως</string>
+  <string name="time_notifications_weekly">Εβδομαδιαία</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">Δεν χορηγήθηκαν δικαιώματα</string>
+  <string name="permission_granted_dialog_title">Χορηγήθηκαν δικαιώματα</string>
   <!-- Dummy -->
   <string name="content_description">περιγραφή_περιεχομένου</string>
   <!--SDCARD Path-->
