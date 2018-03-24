@@ -9,7 +9,6 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v7-appcompat \
     android-support-v13 \
 
-LOCAL_SDK_VERSION := current
 LOCAL_PACKAGE_NAME := AICP_OTA
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
