@@ -20,100 +20,103 @@
 -->
 <resources>
   <!-- GENERAL -->
-  <string name="check_for_updates">Memeriksa</string>
+  <string name="check_for_updates">Periksa</string>
   <string name="no_additional_info">Tidak ada informasi tambahan</string>
   <string name="drawer_open">Buka laci navigasi</string>
   <string name="drawer_close">Tutup laci navigasi</string>
   <!-- SYSTEM ACTIVITY -->
   <string name="check_for_updates_long">Periksa pembaruan</string>
-  <string name="all_up_to_date">Anda memiliki sistem baru!</string>
+  <string name="all_up_to_date">Anda memiliki sistem yang terbaru!</string>
   <string name="rom_scanning">Memeriksa pembaruan sistem...</string>
-  <string name="rom_new_version">Update ROM baru ditemukan!</string>
-  <string name="no_updates">Tidak ada update sistem yang ditemukan</string>
-  <string name="system_update_found">Sebuah update sistem baru ditemukan dan siap untuk diunduh.\nSilakan periksa pemberitahuan yang mungkin telah muncul. Mereka akan membawa Anda ke Aicpota dari mana Anda dapat mendownload dan/atau menginstal pembaruan.\n\nPembaruan ditemukan:\n%1$s</string>
+  <string name="rom_new_version">Terdapat pembaruan ROM!</string>
+  <string name="no_updates">Tidak ada pembaruan sistem</string>
+  <string name="system_update_found">Terdapat pembaruan sistem yang siap diunduh.\nSilakan memeriksa pemberitahuan yang telah muncul. Pemberitahuan tersebut akan membawa Anda ke AicpOTA di mana Anda dapat mengunduh dan/atau memasang pembaruan.\n\nPembaruan ditemukan:\n%1$s</string>
   <!-- SYSTEM -->
-  <string name="system_title">Sistem Informasi</string>
+  <string name="system_title">Informasi sistem</string>
   <string name="system_rom">Versi ROM: %1$s</string>
   <!-- UPDATES -->
   <string name="updates">Pembaruan</string>
   <string name="updates_checking">Memeriksa...</string>
-  <string name="updates_found">Pembaruan sistem ditemukan</string>
-  <string name="updates_uptodate">Kamu sudah up to date</string>
-  <string name="no_updates_found">Tidak ada update yang ditemukan</string>
-  <string name="check_rom_updates_error">Kesalahan memeriksa pembaruan ROM</string>
-  <string name="system_update">Pembaruan sistem ditemukan.\nPilih pembaruan yang ingin Anda download.\nChangelog tersedia pada kartu yang diperluas.\n\nPembaruan ditemukan:</string>
+  <string name="updates_found">Terdapat pembaruan sistem</string>
+  <string name="updates_uptodate">Anda memiliki sistem yang terbaru</string>
+  <string name="no_updates_found">Tidak ada pembaruan ditemukan</string>
+  <string name="check_rom_updates_error">Kesalahan saat memeriksa pembaruan ROM</string>
+  <string name="system_update">Pembaruan sistem ditemukan.\nPilih pembaruan yang ingin Anda unduh.\nPerubahan tersedia pada kartu yang diperluas.\n\nPembaruan ditemukan:</string>
   <string name="download_and_install">Unduh dan pasang</string>
-  <string name="update_host">Diselenggarakan di %1$s</string>
-  <string name="nightly_changelog">-- Klik untuk... %1$s Changelog</string>
+  <string name="update_host">Host di %1$s</string>
+  <string name="nightly_changelog">-- Klik untuk... Perubahan %1$s</string>
   <string name="nightly_md5sum">Md5sum: %1$s</string>
-  <string name="nightly_filesize">Filesize: %1$s MB</string>
+  <string name="nightly_filesize">Ukuran berkas: %1$s MB</string>
   <!-- INSTALL -->
-  <string name="install">Memasang</string>
-  <string name="install_title">Siap untuk menginstal</string>
-  <string name="install_info">Pembaruan berikut siap untuk diinstal.\n\nAnda dapat menambahkan lebih banyak ritsleting dengan mengklik tombol \"Add file\".</string>
+  <string name="install">Pasang</string>
+  <string name="install_title">Siap untuk memasang</string>
+  <string name="install_info">Pembaruan berikut siap untuk dipasang.\n\nAnda dapat menambahkan berkas zips lain dengan mengklik tombol \"Tambah berkas\".</string>
   <string name="add_file">Tambah berkas</string>
   <string name="install_now">Pasang sekarang</string>
-  <string name="calculating_md5">Menghitung jumlah MD5...</string>
-  <string name="md5_mismatch">Ketidakcocokan MD5</string>
-  <string name="md5_mismatch_summary">Diterima:\n%1$s\n\n Dihitung:\n%2$s</string>
-  <string name="md5_install_anyway">Lanjutkan saja</string>
+  <string name="calculating_md5">Mengkalkulasi MD5 sum…</string>
+  <string name="md5_mismatch">MD5 tidak cocok</string>
+  <string name="md5_mismatch_summary">Diterima:\n%1$s\n\nDikalkulasi:\n%2$s</string>
+  <string name="md5_install_anyway">Tetap lanjutkan</string>
   <string name="select_actions">Pilih tindakan yang ingin Anda lakukan</string>
   <string name="backup">Cadangan</string>
   <string name="wipe_data">Hapus Data</string>
-  <string name="wipe_caches">Usap Cache &amp; Dalvik</string>
-  <string name="remove_file_title">Hapus file</string>
-  <string name="remove_file_summary">Apakah Anda ingin menghapus file dari daftar?\n\n%1$s</string>
-  <string name="file_manager_error">Tidak ada aplikasi yang ditemukan untuk memilih file zip. Silahkan install sebuah file manager.</string>
-  <string name="alert_backup_space_title">Ruang kiri</string>
-  <string name="alert_backup_space_message">Ada kurang dari %1$s GB di kartu SD internal. Apakah Anda ingin melanjutkan backup?</string>
+  <string name="wipe_caches">Hapus Cache &amp; Dalvik</string>
+  <string name="remove_file_title">Hapus berkas</string>
+  <string name="remove_file_summary">Apakah Anda ingin menghapus berkas dari daftar?\n\n%1$s</string>
+  <string name="file_manager_error">Tidak ada aplikasi yang ditemukan untuk memilih berkas zip. Silahkan pasang pengelola berkas.</string>
+  <string name="alert_backup_space_title">Ruang tersisa</string>
+  <string name="alert_backup_space_message">Hanya terdapat kurang dari %1$s GB di penyimpanan internal. Apakah Anda ingin tetap melanjutkan mencadangkan?</string>
   <string name="alert_backup_title">Cadangan</string>
   <string name="alert_backup_message">Tentukan nama cadangan (karakter ilegal akan dihapus).\n\nPilihan berikut hanya akan bekerja di TWRP.</string>
   <string name="system">Sistem</string>
   <string name="data">Data</string>
   <string name="cache">Cache</string>
-  <string name="recovery">Pemulihan</string>
+  <string name="recovery">Recovery</string>
   <string name="boot">Boot</string>
-  <string name="androidsecure">Android aman</string>
+  <string name="androidsecure">Pengamanan Android</string>
   <string name="sdext">SD-Ext</string>
-  <string name="alert_reboot_install_title">Pasang update</string>
-  <string name="alert_reboot_one_message">Perangkat Anda akan melakukan boot ulang dan menginstal pembaruan.</string>
-  <string name="alert_reboot_more_message">Perangkat Anda akan melakukan boot ulang dan menginstal pembaruan.</string>
+  <string name="alert_reboot_install_title">Memasang pembaruan</string>
+  <string name="alert_reboot_one_message">Perangkat Anda akan dimulai ulang dan memasang pembaruan.</string>
+  <string name="alert_reboot_more_message">Perangkat Anda akan dimulai ulang dan memasang pembaruan.</string>
   <string name="alert_reboot_now">Pasang sekarang</string>
-  <string name="file_not_found">Tidak dapat menambahkan file</string>
+  <string name="file_not_found">Tidak dapat menambahkan berkas</string>
   <!-- CHANGELOG -->
   <string name="changelog">Perubahan</string>
   <!-- DOWNLOADS/NOTIFICATIONS -->
   <string name="download_card_title">Mengunduh pembaruan sistem</string>
   <string name="cancel_download_alert_title">Batalkan unduhan</string>
-  <string name="cancel_rom_download_alert_summary">Apakah Anda ingin membatalkan unduhan ROM saat ini?</string>
-  <string name="cancel_download_alert_yes">iya nih</string>
+  <string name="cancel_rom_download_alert_summary">Apakah Anda ingin membatalkan pengunduhan ROM ini?</string>
+  <string name="cancel_download_alert_yes">Ya</string>
   <string name="cancel_download_alert_no">Tidak</string>
-  <string name="new_system_update">Update sistem baru ditemukan</string>
-  <string name="new_packages">Pembaruan %1$s tersedia untuk diunduh</string>
-  <string name="already_downloading_rom">Anda sudah mendownload pembaruan ROM.</string>
+  <string name="new_system_update">Terdapat pembaruan sistem</string>
+  <string name="new_packages">%1$s pembaruan tersedia untuk diunduh</string>
+  <string name="already_downloading_rom">Anda sudah mengunduh pembaruan ROM.</string>
   <string name="cancel_download">Batalkan unduhan</string>
-  <string name="downloading_info">Update (download):\n%1$s</string>
+  <string name="downloading_info">Pengunduhan pembaruan:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->
   <string name="error_cannot_resume">Kesalahan: Unduhan tidak dapat dilanjutkan</string>
   <string name="error_device_not_found">Kesalahan: Sdcard tidak terpasang</string>
-  <string name="error_file_already_exists">Kesalahan: File sudah ada</string>
+  <string name="error_file_already_exists">Kesalahan: Berkas sudah tersedia</string>
   <string name="error_file_error">Kesalahan: Kesalahan penyimpanan</string>
-  <string name="error_http_data_error">Kesalahan: Http error</string>
+  <string name="error_http_data_error">Kesalahan: Kesalahan http</string>
   <string name="error_insufficient_space">Kesalahan: Tidak ada ruang tersisa</string>
   <string name="error_too_many_redirects">Kesalahan: Terlalu banyak pengalihan</string>
   <string name="error_unhandled_http_code">Kesalahan: Kode http tidak tertangani</string>
-  <string name="error_unknown">Kesalahan: tidak diketahui</string>
+  <string name="error_unknown">Kesalahan: Tidak diketahui</string>
   <!-- SETTINGS -->
-  <string name="settings">Pengaturan</string>
-  <string name="settings_checktime_title">Perbarui frekuensi periksa</string>
-  <string name="settings_checktime_summary">Tentukan waktu antara setiap cek pembaruan</string>
-  <string name="time_notifications_never">Jangan cek</string>
+  <string name="settings">Setelan</string>
+  <string name="settings_checktime_title">Frekuensi pemeriksaan pembaruan</string>
+  <string name="settings_checktime_summary">Menentukan selang waktu antara setiap pemeriksaan pembaruan</string>
+  <string name="time_notifications_never">Jangan periksa</string>
   <string name="time_notifications_half_an_hour">Setengah jam</string>
   <string name="time_notifications_an_hour">1 jam</string>
   <string name="time_notifications_two_hours">2 jam</string>
   <string name="time_notifications_five_hours">5 jam</string>
   <string name="time_notifications_daily">Harian</string>
+  <string name="time_notifications_weekly">Mingguan</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">Izin tidak diberikan</string>
+  <string name="permission_granted_dialog_title">Izin diberikan</string>
   <!-- Dummy -->
   <!--SDCARD Path-->
 </resources>
