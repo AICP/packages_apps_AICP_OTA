@@ -48,12 +48,12 @@ import java.io.Serializable;
 public class Version implements Serializable {
 
     private final String[] PHASES = {
-            "EXPERIMENTAL", "RELEASE", "NIGHTLY", "STABLE"
+            "WEEKLY", "RELEASE", "NIGHTLY", "STABLE"
     };
 
     private static final String SEPARATOR = "-";
 
-    private static final int EXPERIMENTAL = 0;
+    private static final int WEEKLY = 0;
     private static final int RELEASE = 1;
     private static final int NIGHTLY = 2;
     private static final int STABLE = 3;
@@ -121,10 +121,10 @@ public class Version implements Serializable {
             if (!Utils.isNumeric(split[2].substring(0, 1))) {
                 version = split[2];
 
-                if (version.startsWith("E")) {
-                    mPhase = EXPERIMENTAL;
-                    if (version.startsWith("EXPERIMENTAL")) {
-                        version = version.substring(12);
+                if (version.startsWith("W")) {
+                    mPhase = WEEKLY;
+                    if (version.startsWith("WEEKLY")) {
+                        version = version.substring(6);
                     } else {
                         version = version.substring(1);
                     }
