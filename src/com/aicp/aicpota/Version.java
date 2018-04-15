@@ -29,7 +29,7 @@ import java.io.Serializable;
  * pa_A-B-C.DE-FG-H.zip<br>
  * where<br>
  * A = device name, required<br>
- * B = extra information, not required 
+ * B = extra information, not required
  * C = major, integer from 0 to n, required<br>
  * D = minor, integer from 0 to 9, required<br>
  * E = maintenance, integer from 0 to n, not required<br>
@@ -37,18 +37,18 @@ import java.io.Serializable;
  * gold/production<br>
  * G = phase number, integer from 0 to n, not required<br>
  * H = date, YYYYMMDD, not required, the format can be YYYYMMDDx where x is a
- * letter 
+ * letter
  * <p>
  * All the default values not specified above are 0
  * <p>
  * Examples<br>
  * pa_find5-3.99-RC2-20140212.zip<br>
- * 
+ *
  */
 public class Version implements Serializable {
 
     private final String[] PHASES = {
-            "EXPERIMENTAL", "RELEASE", "NIGHTLY", "STABLE"
+            "EXPERIMENTAL", "RELEASE", "NIGHTLY", "STABLE", "WEEKLY"
     };
 
     private static final String SEPARATOR = "-";
@@ -57,6 +57,7 @@ public class Version implements Serializable {
     private static final int RELEASE = 1;
     private static final int NIGHTLY = 2;
     private static final int STABLE = 3;
+    private static final int WEEKLY = 4;
 
     private String mDevice;
     private int mMajor = 0;
@@ -82,7 +83,7 @@ public class Version implements Serializable {
 
         mDevice = split[0];
 
-        
+
         while (split[1].matches("\\w+\\.?")) {
             String[] newSplit = new String[split.length - 1];
             newSplit[0] = split[0];
@@ -132,6 +133,13 @@ public class Version implements Serializable {
                     mPhase = NIGHTLY;
                     if (version.startsWith("NIGHTLY")) {
                         version = version.substring(7);
+                    } else {
+                        version = version.substring(1);
+                    }
+                } else if (version.startsWith("W")) {
+                    mPhase = WEEKLY;
+                    if (version.startsWith("WEEKLY")) {
+                        version = version.substring(6);
                     } else {
                         version = version.substring(1);
                     }
