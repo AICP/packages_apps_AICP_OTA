@@ -9,7 +9,7 @@
             android:summary="%s"
             android:entries="@array/channel_entries"
             android:entryValues="@array/channel_values"
-            android:defaultValue="stable" />
+            android:defaultValue="WEEKLY" />
 
     <ListPreference android:key="network_type"
             android:persistent="false"

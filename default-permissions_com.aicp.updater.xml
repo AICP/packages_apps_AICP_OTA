@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <exceptions>
-    <exception package="co.copperhead.updater">
+    <exception package="com.aicp.updater">
         <permission name="android.permission.READ_PHONE_STATE" fixed="true"/>
     </exception>
 </exceptions>

@@ -1,4 +1,4 @@
-package co.copperhead.updater;
+package com.aicp.updater;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

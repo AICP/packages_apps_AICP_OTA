@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CopperheadOS Updater</string>
+    <string name="app_name">AICP OTA Updater</string>
     <string name="notification_channel">Updates</string>
     <string name="notification_title">Update successfully installed</string>
     <string name="notification_title_legacy">Update successfully downloaded</string>
@@ -8,10 +8,10 @@
     <string name="notification_text_legacy">Please install the latest OS release.</string>
     <string name="notification_reboot_action">Reboot</string>
     <string name="notification_reboot_action_legacy">Reboot and install</string>
-    <string name="settings_title">System update settings</string>
-    <string name="channel_title">Release channel</string>
-    <string name="channel_stable">Stable</string>
-    <string name="channel_beta">Beta</string>
+    <string name="settings_title">AICP OTA settings</string>
+    <string name="channel_title">Release Type</string>
+    <string name="channel_incremental">Incremental</string>
+    <string name="channel_weekly">Weekly</string>
     <string name="network_type_title">Permitted networks</string>
     <string name="network_type_any">Any</string>
     <string name="network_type_not_roaming">Not roaming</string>

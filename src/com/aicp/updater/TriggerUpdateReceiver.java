@@ -1,4 +1,4 @@
-package co.copperhead.updater;
+package com.aicp.updater;
 
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.content.Context;

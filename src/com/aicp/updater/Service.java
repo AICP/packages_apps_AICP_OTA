@@ -1,4 +1,4 @@
-package co.copperhead.updater;
+package com.aicp.updater;
 
 import static android.os.Build.DEVICE;
 import static android.os.Build.FINGERPRINT;
@@ -54,6 +54,10 @@ public class Service extends IntentService {
     private static final String PREFERENCE_DOWNLOAD_FILE = "download_file";
     private static final int HTTP_RANGE_NOT_SATISFIABLE = 416;
 
+    final String AICP_DEVICE = SystemProperties.get("ro.aicp.device");
+
+    final String MOD_VERSION = SystemProperties.get("ro.aicp.version.update", "unknown");
+
     private boolean mUpdating = false;
 
     public Service() {
@@ -71,6 +75,15 @@ public class Service extends IntentService {
         urlConnection.setReadTimeout(READ_TIMEOUT);
         return urlConnection;
     }
+
+    private URLConnection fetchROM(final String path) throws IOException {
+        final URL url = new URL(getString(R.string.url_download) + path);
+        final URLConnection urlConnection = url.openConnection();
+        urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
+        urlConnection.setReadTimeout(READ_TIMEOUT);
+        return urlConnection;
+    }
+
 
     private void applyUpdate(final long payloadOffset, final String[] headerKeyValuePairs) {
         final CountDownLatch monitor = new CountDownLatch(1);
@@ -154,10 +167,10 @@ public class Service extends IntentService {
                 throw new GeneralSecurityException("timestamp does not match server metadata");
             }
             if (!DEVICE.equals(device)) {
-                throw new GeneralSecurityException("device mismatch");
+                throw new GeneralSecurityException("device mismatch, is \"" + device + "\" instead of \"" + DEVICE);
             }
             if (serialno != null) {
-                if ("stable".equals(channel) || "beta".equals(channel)) {
+                if ("INCREMENTAL".equals(channel) || "WEEKLY".equals(channel)) {
                     throw new GeneralSecurityException("serialno constraint not permitted for channel " + channel);
                 }
                 if (!serialno.equals(Build.getSerial())) {
@@ -257,10 +270,10 @@ public class Service extends IntentService {
             mUpdating = true;
 
             final String channel = SystemProperties.get("sys.update.channel",
-                preferences.getString(PREFERENCE_CHANNEL, "stable"));
+                preferences.getString(PREFERENCE_CHANNEL, "WEEKLY"));
 
-            Log.d(TAG, "fetching metadata for " + DEVICE + "-" + channel);
-            InputStream input = fetchData(DEVICE + "-" + channel).getInputStream();
+            Log.d(TAG, "fetching metadata for " + AICP_DEVICE + " in " + channel + " with version: " + MOD_VERSION);
+            InputStream input = fetchData(AICP_DEVICE + "&type=" + channel).getInputStream();
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata = reader.readLine().split(" ");
             reader.close();
@@ -277,12 +290,12 @@ public class Service extends IntentService {
             String downloadFile = preferences.getString(PREFERENCE_DOWNLOAD_FILE, null);
             long downloaded = UPDATE_PATH.length();
 
-            final String incrementalUpdate = DEVICE + "-incremental-" + INCREMENTAL + "-" + targetIncremental + ".zip";
-            final String fullUpdate = DEVICE + "-ota_update-" + targetIncremental + ".zip";
+            final String incrementalUpdate = "aicp_" + AICP_DEVICE + "-incremental-" + INCREMENTAL + "-" + targetIncremental + ".zip";
+            final String fullUpdate = "aicp_" + AICP_DEVICE + "_" + MOD_VERSION + "-" + channel + "-" + targetIncremental + ".zip";
 
             if (incrementalUpdate.equals(downloadFile) || fullUpdate.equals(downloadFile)) {
                 Log.d(TAG, "resume fetch of " + downloadFile + " from " + downloaded + " bytes");
-                final HttpURLConnection connection = (HttpURLConnection) fetchData(downloadFile);
+                final HttpURLConnection connection = (HttpURLConnection) fetchROM("device" + "/" + AICP_DEVICE + "/" +  channel + "/" + downloadFile);
                 connection.setRequestProperty("Range", "bytes=" + downloaded + "-");
                 if (connection.getResponseCode() == HTTP_RANGE_NOT_SATISFIABLE) {
                     Log.d(TAG, "download completed previously");
@@ -294,11 +307,11 @@ public class Service extends IntentService {
                 try {
                     Log.d(TAG, "fetch incremental " + incrementalUpdate);
                     downloadFile = incrementalUpdate;
-                    input = fetchData(downloadFile).getInputStream();
+                    input = fetchROM("device" + "/" + AICP_DEVICE + "/" +  channel + "/" + downloadFile).getInputStream();
                 } catch (IOException e) {
                     Log.d(TAG, "incremental not found, fetch full update " + fullUpdate);
                     downloadFile = fullUpdate;
-                    input = fetchData(downloadFile).getInputStream();
+                    input = fetchROM("device" + "/" + AICP_DEVICE + "/" +  channel + "/" + downloadFile).getInputStream();
                 }
                 downloaded = 0;
                 Files.deleteIfExists(UPDATE_PATH.toPath());
