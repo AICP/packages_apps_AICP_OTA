@@ -18,11 +18,16 @@ public class PeriodicJob extends JobService {
 
 
     static void schedule(final Context context) {
+        final JobScheduler scheduler = context.getSystemService(JobScheduler.class);
+        if (!Settings.getAutoUpdate(context)) {
+            scheduler.cancel(JOB_ID_PERIODIC);
+            scheduler.cancel(JOB_ID_RETRY);
+            return;
+        }
         final int networkType = Settings.getNetworkType(context);
         final String checktime1  = Settings.getCheckTime(context);
         long checktime = Long.valueOf(checktime1);
         final boolean batteryNotLow = Settings.getBatteryNotLow(context);
-        final JobScheduler scheduler = context.getSystemService(JobScheduler.class);
         final JobInfo jobInfo = scheduler.getPendingJob(JOB_ID_PERIODIC);
         if (jobInfo != null &&
                 jobInfo.getNetworkType() == networkType &&

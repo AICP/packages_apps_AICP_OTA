@@ -1,0 +1,32 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical|start"
+    android:theme="?android:attr/actionBarTheme" >
+
+    <ImageView
+        android:id="@+id/actionbar_logo"
+        android:layout_width="@dimen/action_bar_sheep_size"
+        android:layout_height="@dimen/action_bar_sheep_size"
+        android:paddingRight="8dp"
+        android:src="@drawable/aicp_sheep"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/actionbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorPrimary"
+        android:theme="?android:attr/actionBarStyle"
+        android:elevation="0dp"
+        android:background="@null"
+        android:backgroundStacked="@null"
+        android:backgroundSplit="@null"
+        android:textAppearance="?android:attr/titleTextStyle"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="@string/app_name"/>
+
+</LinearLayout>

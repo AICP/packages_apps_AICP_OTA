@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AICP OTA Updater</string>
-    <string name="notification_channel">Updates</string>
+    <string name="notification_channel_update_available">New update</string>
+    <string name="notification_channel_update_prompt">Update prompt</string>
+    <string name="notification_channel_update_progress">Progress</string>
     <string name="notification_title">Update successfully installed</string>
     <string name="notification_title_legacy">Update successfully downloaded</string>
     <string name="notification_text">Please reboot the device to run the latest OS release.</string>
     <string name="notification_text_legacy">Please install the latest OS release.</string>
+    <string name="notification_title_download">Update available</string>
+    <string name="notification_text_download">System update available for download.</string>
+    <string name="notification_title_progress">Downloading system update</string>
+    <string name="notification_text_progress">%dMB done</string>
+    <string name="notification_title_error">Update download failed</string>
+    <string name="notification_text_error">Error retrieving update from server</string>
     <string name="notification_reboot_action">Reboot</string>
     <string name="notification_reboot_action_legacy">Reboot and install</string>
+    <string name="notification_download_action">Download</string>
+    <string name="notification_abort_action">Abort</string>
     <string name="settings_title">AICP OTA settings</string>
     <string name="channel_title">Release Type</string>
     <string name="channel_incremental">Incremental</string>
@@ -29,4 +39,24 @@
     <string name="time_notifications_five_hours">5 hours</string>
     <string name="time_notifications_daily">Daily</string>
     <string name="time_notifications_weekly">Weekly</string>
+    <string name="auto_update_category">Automatic update</string>
+    <string name="auto_update_enable_title">Enable automatic updates</string>
+    <string name="auto_update_enable_summary">Periodically check for updates</string>
+    <string name="auto_update_prompt_download_title">Ask before download</string>
+    <string name="auto_update_prompt_download_summary">Show a notification before downloading</string>
+    <string name="update_status_category">Update status</string>
+    <string name="update_status_downloading_title">Downloading update</string>
+    <string name="udpate_status_downloading_summary">Download progress: %dMB</string>
+    <string name="update_status_up_to_date_title">Up to date</string>
+    <string name="update_status_up_to_date_summary">No available update found</string>
+    <string name="update_status_download_pending_title">Update available</string>
+    <string name="update_status_download_pending_summary">Start download</string>
+    <string name="update_status_update_pending_title">Update pending</string>
+    <string name="update_status_update_pending_summary">Resume update</string>
+    <string name="update_status_update_ready_title">Update ready</string>
+    <string name="update_status_update_ready_summary">Install update</string>
+    <string name="update_status_none_title">Check for updates</string>
+    <string name="update_status_none_summary">Search for available updates</string>
+    <string name="update_status_error_title">Communication error</string>
+    <string name="update_status_error_summary">Error retrieving update from server</string>
 </resources>

@@ -21,6 +21,7 @@ import android.os.UpdateEngine;
 import android.os.UpdateEngine.ErrorCodeConstants;
 import android.os.UpdateEngineCallback;
 import android.preference.PreferenceManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -35,17 +36,41 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.security.GeneralSecurityException;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.CountDownLatch;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class Service extends IntentService {
-    private static final String TAG = "Service";
-    private static final int NOTIFICATION_ID = 1;
-    private static final String NOTIFICATION_CHANNEL_ID_OLD = "updates";
-    private static final String NOTIFICATION_CHANNEL_ID = "updates2";
+
+    private static final boolean DEBUG_ALWAYS_UPDATE = false;
+
+    public static final String INTENT_UPDATE = "com.aicp.updater.update";
+    public static final String EXTRA_PROGRESS = "com.aicp.updater.progress";
+    public static final String EXTRA_INFO = "com.aicp.updater.info";
+    public static final String EXTRA_FILENAME = "com.aicp.updater.filename";
+    public static final String ACTION_INFO = "com.aicp.updater.action.info";
+    public static final String ACTION_DOWNLOAD = "com.aicp.updater.action.download";
+    public static final String ACTION_ABORT = "com.aicp.updater.action.abort";
+
+    public static final int INFO_NONE = 0;
+    public static final int INFO_DOWNLOADING = 1;
+    public static final int INFO_UP_TO_DATE = 2;
+    public static final int INFO_UPDATE_PENDING = 3;
+    public static final int INFO_DOWNLOAD_PENDING = 4;
+    public static final int INFO_ERROR = 100;
+
+    private static final String TAG = "OTAService";
+    private static final int NOTIFICATION_ID_AVAILABLE = 1;
+    private static final int NOTIFICATION_ID_PROMPT = 2;
+    private static final int NOTIFICATION_ID_PROGRESS = 3;
+    private static final String NOTIFICATION_CHANNEL_ID_UPDATE_AVAILABLE = "updates_available";
+    private static final String NOTIFICATION_CHANNEL_ID_UPDATE_PROMPT = "update_prompt";
+    private static final String NOTIFICATION_CHANNEL_ID_UPDATE_PROGRESS = "update_progress";
     private static final int PENDING_REBOOT_ID = 1;
     private static final int PENDING_SETTINGS_ID = 2;
+    private static final int PENDING_DOWNLOAD_ID = 3;
+    private static final int PENDING_ABORT_ID = 4;
     private static final int CONNECT_TIMEOUT = 60000;
     private static final int READ_TIMEOUT = 60000;
     private static final File CARE_MAP_PATH = new File("/data/ota_package/care_map.txt");
@@ -58,7 +83,13 @@ public class Service extends IntentService {
 
     final String MOD_VERSION = SystemProperties.get("ro.aicp.version.update", "unknown");
 
-    private boolean mUpdating = false;
+    private static final int STATUS_NONE = 0;
+    private static final int STATUS_UPDATING = 1;
+    private static final int STATUS_ABORT_PENDING = 2;
+    private static final int STATUS_UPDATE_PENDING = 3;
+    private static AtomicInteger mUpdatingStatus = new AtomicInteger(STATUS_NONE);
+    private static long mDownloaded = 0;
+    private static volatile int mUpdateInfo = INFO_NONE;
 
     public Service() {
         super(TAG);
@@ -101,7 +132,7 @@ public class Service extends IntentService {
                     annoyUser();
                 } else {
                     Log.d(TAG, "onPayloadApplicationComplete: " + errorCode);
-                    mUpdating = false;
+                    mUpdatingStatus.set(STATUS_NONE);
                 }
                 UPDATE_PATH.delete();
                 monitor.countDown();
@@ -233,13 +264,12 @@ public class Service extends IntentService {
         final PendingIntent reboot = PendingIntent.getBroadcast(this, PENDING_REBOOT_ID, new Intent(this, RebootReceiver.class), 0);
         final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
         final NotificationManager notificationManager = getSystemService(NotificationManager.class);
-        final NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID,
-            getString(R.string.notification_channel), NotificationManager.IMPORTANCE_HIGH);
+        final NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID_UPDATE_PROMPT,
+            getString(R.string.notification_channel_update_prompt), NotificationManager.IMPORTANCE_HIGH);
         channel.enableLights(true);
         channel.enableVibration(true);
-        notificationManager.deleteNotificationChannel(NOTIFICATION_CHANNEL_ID_OLD);
         notificationManager.createNotificationChannel(channel);
-        notificationManager.notify(NOTIFICATION_ID, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID)
+        notificationManager.notify(NOTIFICATION_ID_PROMPT, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID_UPDATE_PROMPT)
             .addAction(R.drawable.ic_restart, rebootText, reboot)
             .setContentIntent(settings)
             .setContentTitle(title)
@@ -248,18 +278,61 @@ public class Service extends IntentService {
             .setSmallIcon(R.drawable.ic_system_update_white_24dp)
             .build());
     }
+    private void promptDownload() {
+        PeriodicJob.cancel(this);
+
+        final String title = getString(R.string.notification_title_download);
+        final String text = getString(R.string.notification_text_download);
+        final String downloadText = getString(R.string.notification_download_action);
+
+        final PendingIntent download = PendingIntent.getBroadcast(this, PENDING_DOWNLOAD_ID, new Intent(this, TriggerUpdateReceiver.class).setAction(ACTION_DOWNLOAD), 0);
+        final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
+
+        final NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        final NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID_UPDATE_AVAILABLE,
+            getString(R.string.notification_channel_update_available), NotificationManager.IMPORTANCE_DEFAULT);
+        channel.enableLights(true);
+        channel.enableVibration(false);
+        notificationManager.createNotificationChannel(channel);
+        notificationManager.notify(NOTIFICATION_ID_AVAILABLE, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID_UPDATE_AVAILABLE)
+            .addAction(R.drawable.ic_download, downloadText, download)
+            .setContentIntent(settings)
+            .setContentTitle(title)
+            .setContentText(text)
+            .setOngoing(false)
+            .setSmallIcon(R.drawable.ic_system_update_white_24dp)
+            .build());
+    }
+    private void cancelNotification(int id) {
+        final NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        notificationManager.cancel(id);
+    }
 
     @Override
     protected void onHandleIntent(final Intent intent) {
-        Log.d(TAG, "onHandleIntent");
+        Log.d(TAG, "onHandleIntent: " + intent.getAction());
+
+        if (ACTION_INFO.equals(intent.getAction())) {
+            publishProgress();
+            return;
+        } else if (ACTION_ABORT.equals(intent.getAction())) {
+            requestStop();
+            cancelNotification(NOTIFICATION_ID_PROGRESS);
+            return;
+        }
+        boolean startDownload = ACTION_DOWNLOAD.equals(intent.getAction());
+        if (startDownload) {
+            cancelNotification(NOTIFICATION_ID_AVAILABLE);
+        }
 
         final PowerManager pm = getSystemService(PowerManager.class);
         final WakeLock wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
         try {
             wakeLock.acquire();
 
-            if (mUpdating) {
-                Log.d(TAG, "updating already, returning early");
+            if (!mUpdatingStatus.compareAndSet(STATUS_UPDATE_PENDING, STATUS_UPDATING)) {
+                Log.d(TAG, "updating not allowed, status is " + mUpdatingStatus.get() +
+                        ", returning early");
                 return;
             }
             final SharedPreferences preferences = Settings.getPreferences(this);
@@ -267,7 +340,6 @@ public class Service extends IntentService {
                 Log.d(TAG, "updated already, waiting for reboot");
                 return;
             }
-            mUpdating = true;
 
             final String channel = SystemProperties.get("sys.update.channel",
                 preferences.getString(PREFERENCE_CHANNEL, "WEEKLY"));
@@ -287,20 +359,31 @@ public class Service extends IntentService {
             final long sourceBuildDate = SystemProperties.getLong("ro.build.date.utc", 0);
             if (targetBuildDate <= sourceBuildDate) {
                 Log.d(TAG, "targetBuildDate: " + targetBuildDate + " not higher than sourceBuildDate: " + sourceBuildDate);
-                mUpdating = false;
+                if (!DEBUG_ALWAYS_UPDATE) {
+                    mUpdateInfo = INFO_UP_TO_DATE;
+                    publishProgress();
+                    return;
+                }
+            }
+
+            if (!startDownload && Settings.getAutoUpdatePromptDownloadRequired(this)) {
+                mUpdateInfo = INFO_DOWNLOAD_PENDING;
+                promptDownload();
                 return;
             }
 
             String downloadFile = preferences.getString(PREFERENCE_DOWNLOAD_FILE, null);
-            long downloaded = UPDATE_PATH.length();
+            mDownloaded = UPDATE_PATH.length();
+            mUpdateInfo = INFO_DOWNLOADING;
+            publishProgress();
 
             final String incrementalUpdate = "aicp_" + AICP_DEVICE + "-incremental-" + INCREMENTAL + "-" + targetIncremental + ".zip";
             final String fullUpdate = "aicp_" + AICP_DEVICE + "_" + MOD_VERSION + "-" + channel + "-" + targetIncremental + ".zip";
 
             if (incrementalUpdate.equals(downloadFile) || fullUpdate.equals(downloadFile)) {
-                Log.d(TAG, "resume fetch of " + downloadFile + " from " + downloaded + " bytes");
+                Log.d(TAG, "resume fetch of " + downloadFile + " from " + mDownloaded + " bytes");
                 final HttpURLConnection connection = (HttpURLConnection) fetchROM("device" + "/" + AICP_DEVICE + "/" +  channel + "/" + downloadFile);
-                connection.setRequestProperty("Range", "bytes=" + downloaded + "-");
+                connection.setRequestProperty("Range", "bytes=" + mDownloaded + "-");
                 if (connection.getResponseCode() == HTTP_RANGE_NOT_SATISFIABLE) {
                     Log.d(TAG, "download completed previously");
                     onDownloadFinished(targetBuildDate, channel);
@@ -317,11 +400,11 @@ public class Service extends IntentService {
                     downloadFile = fullUpdate;
                     input = fetchROM("device" + "/" + AICP_DEVICE + "/" +  channel + "/" + downloadFile).getInputStream();
                 }
-                downloaded = 0;
+                mDownloaded = 0;
                 Files.deleteIfExists(UPDATE_PATH.toPath());
             }
 
-            final OutputStream output = new FileOutputStream(UPDATE_PATH, downloaded != 0);
+            final OutputStream output = new FileOutputStream(UPDATE_PATH, mDownloaded != 0);
             preferences.edit().putString(PREFERENCE_DOWNLOAD_FILE, downloadFile).commit();
 
             int bytesRead;
@@ -329,11 +412,17 @@ public class Service extends IntentService {
             final byte[] buffer = new byte[8192];
             while ((bytesRead = input.read(buffer)) != -1) {
                 output.write(buffer, 0, bytesRead);
-                downloaded += bytesRead;
+                mDownloaded += bytesRead;
                 final long now = System.nanoTime();
                 if (now - last > 1000 * 1000 * 1000) {
-                    Log.d(TAG, "downloaded " + downloaded + " bytes");
+                    Log.d(TAG, "downloaded " + mDownloaded + " bytes");
                     last = now;
+                    publishProgress(downloadFile);
+                }
+                if (mUpdatingStatus.get() != STATUS_UPDATING) {
+                    // status is i.e. STATUS_ABORT_PENDING
+                    Log.d(TAG, "Update aborted");
+                    return;
                 }
             }
             output.close();
@@ -343,12 +432,87 @@ public class Service extends IntentService {
             onDownloadFinished(targetBuildDate, channel);
         } catch (Exception e) {
             Log.e(TAG, "failed to download and install update", e);
-            mUpdating = false;
             PeriodicJob.scheduleRetry(this);
+            mUpdateInfo = INFO_ERROR;
+            publishProgress();
         } finally {
+            publishProgress();
+            mUpdatingStatus.set(STATUS_NONE);
+            if (mUpdateInfo == INFO_DOWNLOADING) {
+                mUpdateInfo = INFO_UPDATE_PENDING;
+                publishProgress();
+            }
             Log.d(TAG, "release wake locks");
             wakeLock.release();
             TriggerUpdateReceiver.completeWakefulIntent(intent);
         }
+    }
+
+    private void publishProgress() {
+        publishProgress(null);
+    }
+    private void publishProgress(String downloadFile) {
+        Intent update = new Intent(INTENT_UPDATE);
+        update.putExtra(EXTRA_PROGRESS, mDownloaded);
+        update.putExtra(EXTRA_INFO, mUpdateInfo);
+        if (downloadFile != null) {
+            update.putExtra(EXTRA_FILENAME, downloadFile);
+        }
+        LocalBroadcastManager.getInstance(this).sendBroadcast(update);
+        final SharedPreferences preferences = Settings.getPreferences(this);
+        final NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        final NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID_UPDATE_PROGRESS,
+            getString(R.string.notification_channel_update_prompt), NotificationManager.IMPORTANCE_LOW);
+        channel.enableLights(false);
+        channel.enableVibration(false);
+
+        if (mUpdateInfo == INFO_DOWNLOADING) {
+            final String title = getString(R.string.notification_title_progress);
+            final String text = getString(R.string.notification_text_progress, mDownloaded/1_000_000);
+            final String abortText = getString(R.string.notification_abort_action);
+            final PendingIntent abort = PendingIntent.getBroadcast(this, PENDING_ABORT_ID, new Intent(this, TriggerUpdateReceiver.class).setAction(ACTION_ABORT), 0);
+            final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
+            notificationManager.createNotificationChannel(channel);
+            notificationManager.notify(NOTIFICATION_ID_PROGRESS, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID_UPDATE_PROGRESS)
+                .addAction(R.drawable.ic_abort, abortText, abort)
+                .setContentIntent(settings)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setOngoing(true)
+                .setSmallIcon(R.drawable.ic_system_update_white_24dp)
+                .build());
+        } else if (mUpdateInfo == INFO_ERROR) {
+            final String title = getString(R.string.notification_title_error);
+            final String text = getString(R.string.notification_text_error);
+            final PendingIntent settings = PendingIntent.getActivity(this, PENDING_SETTINGS_ID, new Intent(this, Settings.class), 0);
+            notificationManager.createNotificationChannel(channel);
+            notificationManager.notify(NOTIFICATION_ID_PROGRESS, new Notification.Builder(this, NOTIFICATION_CHANNEL_ID_UPDATE_PROGRESS)
+                .setContentIntent(settings)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setOngoing(false)
+                .setSmallIcon(R.drawable.ic_system_update_white_24dp)
+                .build());
+        } else {
+            cancelNotification(NOTIFICATION_ID_PROGRESS);
+        }
+    }
+
+    /**
+     * Request download service to stop.
+     * @return true if ongoing update should get cancelled, false if no update active
+     */
+    public static boolean requestStop() {
+        return mUpdatingStatus.compareAndSet(STATUS_UPDATING, STATUS_ABORT_PENDING);
+    }
+
+    /**
+     * Set service ready to start.
+     * If not done, startService will be ignored. Call once to ensure only scheduling one action.
+     * @return true if preparing service to start was successful, false if not allowed
+     * (i.e. already active)
+     */
+    public static boolean allowStart() {
+        return mUpdatingStatus.compareAndSet(STATUS_NONE, STATUS_UPDATE_PENDING);
     }
 }
