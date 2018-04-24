@@ -275,8 +275,12 @@ public class Service extends IntentService {
             Log.d(TAG, "fetching metadata for " + AICP_DEVICE + " in " + channel + " with version: " + MOD_VERSION);
             InputStream input = fetchData(AICP_DEVICE + "&type=" + channel).getInputStream();
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            final String[] metadata = reader.readLine().split(" ");
-            reader.close();
+            final String[] metadata;
+            try {
+                metadata = reader.readLine().split(" ");
+            } finally {
+                reader.close();
+            }
 
             final String targetIncremental = metadata[0];
             final long targetBuildDate = Long.parseLong(metadata[1]);
@@ -337,7 +341,7 @@ public class Service extends IntentService {
 
             Log.d(TAG, "download completed");
             onDownloadFinished(targetBuildDate, channel);
-        } catch (GeneralSecurityException | IOException e) {
+        } catch (Exception e) {
             Log.e(TAG, "failed to download and install update", e);
             mUpdating = false;
             PeriodicJob.scheduleRetry(this);
