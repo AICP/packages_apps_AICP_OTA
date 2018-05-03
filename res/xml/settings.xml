@@ -27,4 +27,12 @@
             android:title="@string/idle_reboot_title"
             android:summary="@string/idle_reboot_summary" />
 
+    <ListPreference android:key="checktime"
+            android:title="@string/settings_checktime_title"
+            android:summary="@string/settings_checktime_summary"
+            android:dialogTitle="@string/settings_checktime_title"
+            android:entries="@array/time_notifications_entries"
+            android:entryValues="@array/time_notifications_values"
+            android:defaultValue="86400000" />
+
 </PreferenceScreen>

@@ -13,6 +13,8 @@ import android.preference.PreferenceManager;
 public class Settings extends PreferenceActivity {
     private static final int DEFAULT_NETWORK_TYPE = JobInfo.NETWORK_TYPE_ANY;
     private static final String KEY_NETWORK_TYPE = "network_type";
+    private static final String PROPERTY_CHECK_TIME = "checktime";
+    private static final String DEFAULT_CHECK_TIME = "86400000"; // One day
     static final String KEY_BATTERY_NOT_LOW = "battery_not_low";
     static final String KEY_IDLE_REBOOT = "idle_reboot";
     static final String KEY_WAITING_FOR_REBOOT = "waiting_for_reboot";
@@ -26,9 +28,15 @@ public class Settings extends PreferenceActivity {
         return getPreferences(context).getInt(KEY_NETWORK_TYPE, DEFAULT_NETWORK_TYPE);
     }
 
+
     static boolean getBatteryNotLow(final Context context) {
         return getPreferences(context).getBoolean(KEY_BATTERY_NOT_LOW, false);
     }
+
+    static String getCheckTime(final Context context) {
+        return getPreferences(context).getString(PROPERTY_CHECK_TIME, DEFAULT_CHECK_TIME);
+    }
+
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {

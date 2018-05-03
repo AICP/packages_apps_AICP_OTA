@@ -10,14 +10,17 @@ import android.content.Intent;
 import android.util.Log;
 
 public class PeriodicJob extends JobService {
-    private static final String TAG = "PeriodicJob";
+    private static final String TAG = "Updater_PeriodicJob";
     private static final int JOB_ID_PERIODIC = 1;
     private static final int JOB_ID_RETRY = 2;
-    private static final long INTERVAL_MILLIS = 4 * 60 * 60 * 1000;
     private static final long MIN_LATENCY_MILLIS = 4 * 60 * 1000;
+
+
 
     static void schedule(final Context context) {
         final int networkType = Settings.getNetworkType(context);
+        final String checktime1  = Settings.getCheckTime(context);
+        long checktime = Long.valueOf(checktime1);
         final boolean batteryNotLow = Settings.getBatteryNotLow(context);
         final JobScheduler scheduler = context.getSystemService(JobScheduler.class);
         final JobInfo jobInfo = scheduler.getPendingJob(JOB_ID_PERIODIC);
@@ -25,7 +28,7 @@ public class PeriodicJob extends JobService {
                 jobInfo.getNetworkType() == networkType &&
                 jobInfo.isRequireBatteryNotLow() == batteryNotLow &&
                 jobInfo.isPersisted() &&
-                jobInfo.getIntervalMillis() == INTERVAL_MILLIS) {
+                jobInfo.getIntervalMillis() ==  checktime) {
             Log.d(TAG, "Periodic job already registered");
             return;
         }
@@ -34,7 +37,7 @@ public class PeriodicJob extends JobService {
             .setRequiredNetworkType(networkType)
             .setRequiresBatteryNotLow(batteryNotLow)
             .setPersisted(true)
-            .setPeriodic(INTERVAL_MILLIS)
+            .setPeriodic(checktime)
             .build());
         if (result == JobScheduler.RESULT_FAILURE) {
             Log.d(TAG, "Periodic job schedule failed");

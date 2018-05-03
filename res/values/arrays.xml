@@ -21,4 +21,24 @@
         <item>3</item>
         <item>2</item>
     </string-array>
+
+    <!-- CHECK UPDATES FREQUENCY -->
+    <string-array name="time_notifications_entries">
+        <item>@string/time_notifications_half_an_hour</item>
+        <item>@string/time_notifications_an_hour</item>
+        <item>@string/time_notifications_two_hours</item>
+        <item>@string/time_notifications_five_hours</item>
+        <item>@string/time_notifications_daily</item>
+        <item>@string/time_notifications_weekly</item>
+    </string-array>
+    <string-array name="time_notifications_values" translatable="false">
+        <item>1800000</item>
+        <item>3600000</item>
+        <item>7200000</item>
+        <item>18000000</item>
+        <item>86400000</item>
+        <item>604800000</item>
+    </string-array>
+
+
 </resources>
