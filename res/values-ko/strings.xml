@@ -49,6 +49,7 @@
   <string name="system_update">시스템 업데이트를 찾았습니다.\n다운로드할 업데이트를 선택하세요.\n\n찾은 업데이트:</string>
   <string name="download_and_install">다운로드 및 설치</string>
   <string name="update_host">%1$s에서 호스팅</string>
+  <string name="nightly_filesize">파일 크기: %1$s MB</string>
   <!-- INSTALL -->
   <string name="install">설치</string>
   <string name="install_title">설치가 준비 됨</string>
@@ -119,7 +120,10 @@
   <string name="time_notifications_two_hours">2시간</string>
   <string name="time_notifications_five_hours">5시간</string>
   <string name="time_notifications_daily">매일</string>
+  <string name="time_notifications_weekly">주간</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">사용권한 부여 되지 않음</string>
+  <string name="permission_granted_dialog_title">사용 권한 부여됨</string>
   <!-- Dummy -->
   <!--SDCARD Path-->
 </resources>
