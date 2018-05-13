@@ -49,6 +49,9 @@
   <string name="system_update">تم العثور على تحديث للنظام . يجب أن تستخدم ريكفري TWRP لتركيب التحديث ، أو ركبه يدوياً عبر CWM !!! حدد التحديث ( التحديثات ) التي ترغب في تحميلها . تم العثور على التحديث ( التحديثات ) :</string>
   <string name="download_and_install">تحميل وتثبيت</string>
   <string name="update_host">مستضاف في %1$s</string>
+  <string name="nightly_changelog">--انقر للحصول على... %1$s سجل التغييرات</string>
+  <string name="nightly_md5sum">Md5sum: %1$s</string>
+  <string name="nightly_filesize">حجم الملف- %1$s MB</string>
   <!-- INSTALL -->
   <string name="install">تثبيت</string>
   <string name="install_title">جاهز للتثبيت</string>
@@ -119,7 +122,10 @@
   <string name="time_notifications_two_hours">2 ساعة</string>
   <string name="time_notifications_five_hours">5 ساعات</string>
   <string name="time_notifications_daily">يومياً</string>
+  <string name="time_notifications_weekly">أسبوعي</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">لم يتم منح الإذن</string>
+  <string name="permission_granted_dialog_title">تم منح الإذن</string>
   <!-- Dummy -->
   <string name="content_description">content_description</string>
   <!--SDCARD Path-->

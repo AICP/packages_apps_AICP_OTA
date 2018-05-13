@@ -21,37 +21,109 @@
 <resources>
   <!-- GENERAL -->
   <string name="app_name">AICP OTA</string>
+  <string name="check_for_updates">Kontrol et</string>
+  <string name="no_additional_info">Ek bilgi yok</string>
+  <string name="drawer_open">Gezinme çekmecesini aç</string>
+  <string name="drawer_close">Gezinme çekmecesini kapat</string>
   <!-- SYSTEM ACTIVITY -->
+  <string name="check_for_updates_long">Güncellemeleri denetle</string>
+  <string name="all_up_to_date">Sisteminiz güncel!</string>
+  <string name="rom_scanning">Sistem güncellemeleri denetleniyor…</string>
+  <string name="rom_gapps_new_version">Sistem güncellemeleri bulundu!</string>
+  <string name="rom_new_version">Yeni ROM güncellemesi bulundu!</string>
   <string name="gapps_new_version">Yeni Google uygulamaları güncellemesi bulundu!</string>
+  <string name="no_updates">Sistem güncellemesi bulunamadı</string>
   <string name="system_update_found">Yeni bir sistem güncellemesi bulundu ve indirilmeye hazır.\nGörünürdeki bildirimleri lütfen kontrol edin. Bunlar sizi güncellemeyi indirip kurabileceğiniz AicpOTA\'ya götürecek.\n\nBulunan güncelleme(ler):\n%1$s</string>
   <!-- SYSTEM -->
+  <string name="system_title">Sistem bilgisi</string>
+  <string name="system_rom">ROM sürümü: %1$s</string>
   <string name="system_gapps">Gapps sürümü: %1$s %2$s</string>
   <!-- UPDATES -->
+  <string name="updates">Güncellemeler</string>
+  <string name="updates_checking">Kontrol ediliyor…</string>
+  <string name="updates_found">Sistem güncellemesi bulundu</string>
+  <string name="updates_uptodate">Sisteminiz güncel</string>
+  <string name="no_updates_found">Güncelleme bulunamadı</string>
+  <string name="check_rom_updates_error">ROM güncellemeleri denetiminde hata</string>
   <string name="check_gapps_updates_error">Google apps güncellemeleri kontrolü hatası</string>
   <string name="system_update">Sistem güncellemesi bulundu.\nİndirmek istediğiniz güncelemeyi(leri) seçiniz.\nGüncelleme detaylarını güncelleme kartını açarak görebilirsiniz.\n\nBulunan güncelleme(ler):</string>
+  <string name="download_and_install">İndir ve yükle</string>
+  <string name="update_host">%1$s de barındırılıyor</string>
+  <string name="nightly_changelog">-- ... %1$s Güncelleme Detayları için tıklayınız</string>
+  <string name="nightly_md5sum">Md5sum: %1$s</string>
   <string name="nightly_filesize">Dosya boyutu: %1$s MB</string>
   <!-- INSTALL -->
+  <string name="install">Yükle</string>
+  <string name="install_title">Yüklenmeye hazır</string>
   <string name="install_info">Aşağıdaki güncelleme(ler) yüklenmeye hazır.\n\n\"Dosya ekle\" düğmesiyle yüklenecek ilave dosya seçebilirsiniz.</string>
+  <string name="add_file">Dosya ekle</string>
+  <string name="install_now">Şimdi yükle</string>
+  <string name="calculating_md5">MD5sum hesaplanıyor…</string>
+  <string name="md5_mismatch">MD5 uyuşmuyor</string>
+  <string name="md5_mismatch_summary">Alınan:\n%1$s\n\nHesaplanan:\n%2$s</string>
+  <string name="md5_install_anyway">Yine de devam et</string>
+  <string name="select_actions">Gerçekleştirmek istediğiniz eylemleri seçin</string>
+  <string name="backup">Yedekle</string>
+  <string name="wipe_data">Kullanıcı Verilerini Sil</string>
   <string name="wipe_caches">Önbellek &amp; Dalvik sil</string>
+  <string name="remove_file_title">Dosyayı kaldır</string>
+  <string name="remove_file_summary">Dosyayı listeden kaldırmak istiyor musunuz?\n\n%1$s</string>
   <string name="file_manager_error">Zip dosyasını seçmek için herhangi bir uygulama bulunamadı. Lütfen bir dosya yöneticisi yükleyin.</string>
+  <string name="alert_backup_space_title">Kalan boşluk</string>
   <string name="alert_backup_space_message">Telefon hafızasında %1$sGB\'tan daha az yer var. Yedeklemeye devam etmek istiyor musunuz?</string>
+  <string name="alert_backup_title">Yedek</string>
   <string name="alert_backup_message">Yedek ismini belirtin (geçersiz karakterler silinecek).\n\nSonraki yönergeler sadece TWRP\'de çalışacak.</string>
+  <string name="system">Sistem</string>
+  <string name="data">Veri</string>
+  <string name="cache">Önbellek</string>
+  <string name="recovery">Kurtarma modu</string>
   <string name="boot">Boot</string>
   <string name="androidsecure">Android secure</string>
   <string name="sdext">SD-Ext</string>
   <string name="alert_reboot_install_title">Güncelleme(leri) yükle</string>
+  <string name="alert_reboot_one_message">Cihazınız yeniden başlatılacak ve güncelleme yüklenecek.</string>
+  <string name="alert_reboot_more_message">Cihazınız yeniden başlatılacak ve güncellemeler yüklenecek.</string>
+  <string name="alert_reboot_now">Şimdi yükle</string>
+  <string name="file_not_found">Dosya eklenemiyor</string>
   <!-- CHANGELOG -->
+  <string name="changelog">Değişiklikler</string>
   <!-- DOWNLOADS/NOTIFICATIONS -->
+  <string name="download_card_title">Sistem güncellemesi indiriliyor</string>
+  <string name="cancel_download_alert_title">İndirmeyi iptal et</string>
+  <string name="cancel_rom_download_alert_summary">ROM indirmesini iptal etmek istiyor musunuz?</string>
   <string name="cancel_gapps_download_alert_summary">Gapps indirmesini iptal etmek istiyor musunuz?</string>
+  <string name="cancel_download_alert_yes">Evet</string>
+  <string name="cancel_download_alert_no">Hayır</string>
+  <string name="new_system_update">Yeni sistem güncellemesi bulundu</string>
+  <string name="new_packages">%1$s adet güncelleme indirilmeye hazır</string>
+  <string name="already_downloading_rom">Halen bir ROM güncellemesi indiriyorsunuz.</string>
   <string name="already_downloading_gapps">Halen bir Google apps güncellemesi indiriyorsunuz.</string>
   <string name="cancel_download">İndirmey(ler)i iptal et</string>
   <string name="downloading_info">Güncelleme(ler) indiriliyor:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->
-  <string name="error_device_not_found">Hata: Sdcard ulaşılabilir değil</string>
+  <string name="error_cannot_resume">Hata: İndirme sürdürülemiyor</string>
+  <string name="error_device_not_found">Hata: Sd Kart takılı değil</string>
+  <string name="error_file_already_exists">Hata: Dosya zaten var</string>
+  <string name="error_file_error">Hata: Depolama hatası</string>
   <string name="error_http_data_error">Hata: Http hatası</string>
+  <string name="error_insufficient_space">Hata: Boş alan yok</string>
+  <string name="error_too_many_redirects">Hata: Çok fazla yönlendirme</string>
   <string name="error_unhandled_http_code">Hata: İşlenmemiş http kodu</string>
+  <string name="error_unknown">Hata: Tanımlanmamış</string>
   <!-- SETTINGS -->
+  <string name="settings">Ayarlar</string>
+  <string name="settings_checktime_title">Güncelleme denetim sıklığı</string>
+  <string name="settings_checktime_summary">Güncelleme denetimleri arasındaki zamanı belirleyin</string>
+  <string name="time_notifications_never">Kontrol etme</string>
+  <string name="time_notifications_half_an_hour">Yarım saat</string>
+  <string name="time_notifications_an_hour">1 saat</string>
+  <string name="time_notifications_two_hours">2 Saat</string>
+  <string name="time_notifications_five_hours">5 saat</string>
+  <string name="time_notifications_daily">Günde bir</string>
+  <string name="time_notifications_weekly">Haftada bir</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">İzin verilmedi</string>
+  <string name="permission_granted_dialog_title">İzin verildi</string>
   <!-- Dummy -->
   <string name="content_description">content_description</string>
   <!--SDCARD Path-->

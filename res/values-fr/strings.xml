@@ -49,6 +49,9 @@
   <string name="system_update">Mise à jour système trouvée\nSéléctionner la/les mise(s) à jour que vous souhaitez télécharger.\n\Maj(s) trouvée(s):</string>
   <string name="download_and_install">Télécharger et installer</string>
   <string name="update_host">Hébergé sur %1$s</string>
+  <string name="nightly_changelog">--Cliquez ici pour... %1$s Changelog</string>
+  <string name="nightly_md5sum">Md5sum : %1$s</string>
+  <string name="nightly_filesize">Taille du fichier : %1$s MB</string>
   <!-- INSTALL -->
   <string name="install">Installer</string>
   <string name="install_title">Prêt à installer</string>
@@ -119,6 +122,7 @@
   <string name="time_notifications_two_hours">2 heures</string>
   <string name="time_notifications_five_hours">5 heures</string>
   <string name="time_notifications_daily">Tout les jours</string>
+  <string name="time_notifications_weekly">Hebdomadaire</string>
   <!-- Permission check -->
   <string name="permission_not_granted_dialog_title">Permission refusée</string>
   <string name="permission_granted_dialog_title">Permission accordée</string>

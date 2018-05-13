@@ -122,7 +122,10 @@
   <string name="time_notifications_two_hours">Co 2 godziny</string>
   <string name="time_notifications_five_hours">Co 5 godzin</string>
   <string name="time_notifications_daily">Codziennie</string>
+  <string name="time_notifications_weekly">Co tydzień</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">Nie przyznano uprawnień</string>
+  <string name="permission_granted_dialog_title">Uprawnienia Przyznane</string>
   <!-- Dummy -->
   <string name="content_description">content_description</string>
   <!--SDCARD Path-->
