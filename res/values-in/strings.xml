@@ -20,6 +20,7 @@
 -->
 <resources>
   <!-- GENERAL -->
+  <string name="app_name">AICP OTA</string>
   <string name="check_for_updates">Periksa</string>
   <string name="no_additional_info">Tidak ada informasi tambahan</string>
   <string name="drawer_open">Buka laci navigasi</string>

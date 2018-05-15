@@ -20,15 +20,15 @@
 -->
 <resources>
   <!-- GENERAL -->
-  <string name="app_name">AICP OTA</string>
+  <string name="app_name">AICP Güncellemeleri</string>
   <string name="check_for_updates">Kontrol et</string>
   <string name="no_additional_info">Ek bilgi yok</string>
   <string name="drawer_open">Gezinme çekmecesini aç</string>
   <string name="drawer_close">Gezinme çekmecesini kapat</string>
   <!-- SYSTEM ACTIVITY -->
-  <string name="check_for_updates_long">Güncellemeleri denetle</string>
+  <string name="check_for_updates_long">Güncellemeleri kontrol et</string>
   <string name="all_up_to_date">Sisteminiz güncel!</string>
-  <string name="rom_scanning">Sistem güncellemeleri denetleniyor…</string>
+  <string name="rom_scanning">Sistem güncellemeleri kontrol ediliyor…</string>
   <string name="rom_new_version">Yeni ROM güncellemesi bulundu!</string>
   <string name="no_updates">Sistem güncellemesi bulunamadı</string>
   <string name="system_update_found">Yeni bir sistem güncellemesi bulundu ve indirilmeye hazır.\nGörünürdeki bildirimleri lütfen kontrol edin. Bunlar sizi güncellemeyi indirip kurabileceğiniz AicpOTA\'ya götürecek.\n\nBulunan güncelleme(ler):\n%1$s</string>
@@ -41,7 +41,7 @@
   <string name="updates_found">Sistem güncellemesi bulundu</string>
   <string name="updates_uptodate">Sisteminiz güncel</string>
   <string name="no_updates_found">Güncelleme bulunamadı</string>
-  <string name="check_rom_updates_error">ROM güncellemeleri denetiminde hata</string>
+  <string name="check_rom_updates_error">ROM güncellemeleri kontrol edilirken hata oluştu</string>
   <string name="system_update">Sistem güncellemesi bulundu.\nİndirmek istediğiniz güncelemeyi(leri) seçiniz.\nGüncelleme detaylarını güncelleme kartını açarak görebilirsiniz.\n\nBulunan güncelleme(ler):</string>
   <string name="download_and_install">İndir ve yükle</string>
   <string name="update_host">%1$s de barındırılıyor</string>
@@ -51,7 +51,7 @@
   <!-- INSTALL -->
   <string name="install">Yükle</string>
   <string name="install_title">Yüklenmeye hazır</string>
-  <string name="install_info">Aşağıdaki güncelleme(ler) yüklenmeye hazır.\n\n\"Dosya ekle\" düğmesiyle yüklenecek ilave dosya seçebilirsiniz.</string>
+  <string name="install_info">Aşağıdaki güncelleme(ler) yüklenmeye hazır.\n\n\"Dosya ekle\" tuşuna tıklayarak daha fazla zip ekleyebilirsiniz.</string>
   <string name="add_file">Dosya ekle</string>
   <string name="install_now">Şimdi yükle</string>
   <string name="calculating_md5">MD5sum hesaplanıyor…</string>
@@ -60,20 +60,20 @@
   <string name="md5_install_anyway">Yine de devam et</string>
   <string name="select_actions">Gerçekleştirmek istediğiniz eylemleri seçin</string>
   <string name="backup">Yedekle</string>
-  <string name="wipe_data">Kullanıcı Verilerini Sil</string>
-  <string name="wipe_caches">Önbellek &amp; Dalvik sil</string>
+  <string name="wipe_data">Kullanıcı verilerini sil</string>
+  <string name="wipe_caches">Önbelleği ve Dalvik\'i sil</string>
   <string name="remove_file_title">Dosyayı kaldır</string>
   <string name="remove_file_summary">Dosyayı listeden kaldırmak istiyor musunuz?\n\n%1$s</string>
   <string name="file_manager_error">Zip dosyasını seçmek için herhangi bir uygulama bulunamadı. Lütfen bir dosya yöneticisi yükleyin.</string>
   <string name="alert_backup_space_title">Kalan boşluk</string>
-  <string name="alert_backup_space_message">Telefon hafızasında %1$sGB\'tan daha az yer var. Yedeklemeye devam etmek istiyor musunuz?</string>
-  <string name="alert_backup_title">Yedek</string>
-  <string name="alert_backup_message">Yedek ismini belirtin (geçersiz karakterler silinecek).\n\nSonraki yönergeler sadece TWRP\'de çalışacak.</string>
+  <string name="alert_backup_space_message">Telefon hafızasında %1$sGB\'den daha az yer var. Yedeklemeye devam etmek istiyor musunuz?</string>
+  <string name="alert_backup_title">Yedekleme</string>
+  <string name="alert_backup_message">Yedekleme adını belirtin (geçersiz karakterler silinecek).\n\nSonraki yönergeler sadece TWRP\'de çalışacak.</string>
   <string name="system">Sistem</string>
   <string name="data">Veri</string>
   <string name="cache">Önbellek</string>
-  <string name="recovery">Kurtarma modu</string>
-  <string name="boot">Boot</string>
+  <string name="recovery">Kurtarma</string>
+  <string name="boot">Ön yükleme</string>
   <string name="androidsecure">Android secure</string>
   <string name="sdext">SD-Ext</string>
   <string name="alert_reboot_install_title">Güncelleme(leri) yükle</string>
@@ -92,13 +92,13 @@
   <string name="new_system_update">Yeni sistem güncellemesi bulundu</string>
   <string name="new_packages">%1$s adet güncelleme indirilmeye hazır</string>
   <string name="already_downloading_rom">Halen bir ROM güncellemesi indiriyorsunuz.</string>
-  <string name="cancel_download">İndirmey(ler)i iptal et</string>
+  <string name="cancel_download">İndirme(ler)i iptal et</string>
   <string name="downloading_info">Güncelleme(ler) indiriliyor:\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->
-  <string name="error_cannot_resume">Hata: İndirme sürdürülemiyor</string>
+  <string name="error_cannot_resume">Hata: İndirmeye devam edilemiyor</string>
   <string name="error_device_not_found">Hata: Sd Kart takılı değil</string>
   <string name="error_file_already_exists">Hata: Dosya zaten var</string>
-  <string name="error_file_error">Hata: Depolama hatası</string>
+  <string name="error_file_error">Hata: Depolama alanı hatası</string>
   <string name="error_http_data_error">Hata: Http hatası</string>
   <string name="error_insufficient_space">Hata: Boş alan yok</string>
   <string name="error_too_many_redirects">Hata: Çok fazla yönlendirme</string>
@@ -107,8 +107,8 @@
   <!-- SETTINGS -->
   <string name="settings">Ayarlar</string>
   <string name="settings_checktime_title">Güncelleme denetim sıklığı</string>
-  <string name="settings_checktime_summary">Güncelleme denetimleri arasındaki zamanı belirleyin</string>
-  <string name="time_notifications_never">Kontrol etme</string>
+  <string name="settings_checktime_summary">Her güncelleme denetimi arasındaki süreyi belirtin</string>
+  <string name="time_notifications_never">Kontrol yok</string>
   <string name="time_notifications_half_an_hour">Yarım saat</string>
   <string name="time_notifications_an_hour">1 saat</string>
   <string name="time_notifications_two_hours">2 Saat</string>

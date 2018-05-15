@@ -20,6 +20,7 @@
 -->
 <resources>
   <!-- GENERAL -->
+  <string name="app_name">AICP OTA</string>
   <string name="check_for_updates">Skontrolovať</string>
   <string name="no_additional_info">Žiadne ďalšie informácie</string>
   <string name="drawer_open">Otvoriť navigačný panel</string>
@@ -118,5 +119,6 @@
   <string name="permission_not_granted_dialog_title">Povolenie nebolo udelené</string>
   <string name="permission_granted_dialog_title">Povolenie bolo udelené</string>
   <!-- Dummy -->
+  <string name="content_description">content_description</string>
   <!--SDCARD Path-->
 </resources>
