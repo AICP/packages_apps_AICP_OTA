@@ -45,13 +45,13 @@
   <string name="system_update">Pembaruan sistem ditemukan.\nPilih pembaruan yang ingin Anda unduh.\nPerubahan tersedia pada kartu yang diperluas.\n\nPembaruan ditemukan:</string>
   <string name="download_and_install">Unduh dan pasang</string>
   <string name="update_host">Host di %1$s</string>
-  <string name="nightly_changelog">-- Klik untuk... Perubahan %1$s</string>
+  <string name="nightly_changelog">-- Tekan untuk... Perubahan %1$s</string>
   <string name="nightly_md5sum">Md5sum: %1$s</string>
   <string name="nightly_filesize">Ukuran berkas: %1$s MB</string>
   <!-- INSTALL -->
   <string name="install">Pasang</string>
   <string name="install_title">Siap untuk memasang</string>
-  <string name="install_info">Pembaruan berikut siap untuk dipasang.\n\nAnda dapat menambahkan berkas zips lain dengan mengklik tombol \"Tambah berkas\".</string>
+  <string name="install_info">Pembaruan berikut siap untuk dipasang.\n\nAnda dapat menambahkan berkas zips lain dengan menekan tombol \"Tambah berkas\".</string>
   <string name="add_file">Tambah berkas</string>
   <string name="install_now">Pasang sekarang</string>
   <string name="calculating_md5">Mengkalkulasi MD5 sum…</string>
@@ -66,7 +66,7 @@
   <string name="remove_file_summary">Apakah Anda ingin menghapus berkas dari daftar?\n\n%1$s</string>
   <string name="file_manager_error">Tidak ada aplikasi yang ditemukan untuk memilih berkas zip. Silahkan pasang pengelola berkas.</string>
   <string name="alert_backup_space_title">Ruang tersisa</string>
-  <string name="alert_backup_space_message">Hanya terdapat kurang dari %1$s GB di penyimpanan internal. Apakah Anda ingin tetap melanjutkan mencadangkan?</string>
+  <string name="alert_backup_space_message">Hanya terdapat kurang dari %1$sGB di penyimpanan internal. Apakah Anda ingin tetap melanjutkan mencadangkan?</string>
   <string name="alert_backup_title">Cadangan</string>
   <string name="alert_backup_message">Tentukan nama cadangan (karakter ilegal akan dihapus).\n\nPilihan berikut hanya akan bekerja di TWRP.</string>
   <string name="system">Sistem</string>

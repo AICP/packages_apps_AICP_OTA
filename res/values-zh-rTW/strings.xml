@@ -20,6 +20,7 @@
 -->
 <resources>
   <!-- GENERAL -->
+  <string name="app_name">AICP OTA</string>
   <string name="check_for_updates">檢查</string>
   <string name="no_additional_info">沒有額外資訊</string>
   <string name="drawer_open">開啟導覽清單</string>
@@ -118,5 +119,6 @@
   <string name="permission_not_granted_dialog_title">未授予權限</string>
   <string name="permission_granted_dialog_title">授予權限</string>
   <!-- Dummy -->
+  <string name="content_description">內容_描述</string>
   <!--SDCARD Path-->
 </resources>
