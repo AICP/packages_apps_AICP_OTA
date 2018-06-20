@@ -121,5 +121,6 @@
   <string name="permission_not_granted_dialog_title">Permissão não concedida</string>
   <string name="permission_granted_dialog_title">Permissão concedida</string>
   <!-- Dummy -->
+  <string name="content_description">Descrição do conteúdo</string>
   <!--SDCARD Path-->
 </resources>
