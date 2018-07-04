@@ -121,5 +121,6 @@
   <string name="permission_not_granted_dialog_title">権限が付与されていません</string>
   <string name="permission_granted_dialog_title">権限を付与しました</string>
   <!-- Dummy -->
+  <string name="content_description">content_description</string>
   <!--SDCARD Path-->
 </resources>
