@@ -41,8 +41,11 @@
   <string name="updates_uptodate">Du er oppdatert</string>
   <string name="no_updates_found">Ingen oppdatering tilgjengelig</string>
   <string name="check_rom_updates_error">Feil under søk etter ROM-oppdatering</string>
+  <string name="system_update">Systemoppdatering er tilgjengelig.\nVelg oppdatering(er) du ønsker å laste ned.\nEndringslogg tilgjenglig på utvidet kort.\n\nOppdatering(er) tilgjengelig:</string>
   <string name="download_and_install">Last ned og installer</string>
   <string name="update_host">Tilgjengelig via %1$s</string>
+  <string name="nightly_changelog">-- Trykk for... %1$s Endringslogg</string>
+  <string name="nightly_filesize">Filstørrelse: %1$s MB</string>
   <!-- INSTALL -->
   <string name="install">Installer</string>
   <string name="install_title">Klar til å installere</string>
@@ -69,6 +72,8 @@
   <string name="cache">Mellomlager</string>
   <string name="recovery">Gjenoppretting</string>
   <string name="boot">Oppstart</string>
+  <string name="androidsecure">Sikker Android-lagring</string>
+  <string name="sdext">Eksternt SD-kort</string>
   <string name="alert_reboot_install_title">Installer oppdatering(er)</string>
   <string name="alert_reboot_one_message">Din enhet vil starte på nytt og installere oppdateringen.</string>
   <string name="alert_reboot_more_message">Din enhet vil starte på nytt og installere oppdateringene.</string>
