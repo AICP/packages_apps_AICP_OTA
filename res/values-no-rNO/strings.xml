@@ -20,6 +20,7 @@
 -->
 <resources>
   <!-- GENERAL -->
+  <string name="app_name">AICP OTA</string>
   <string name="check_for_updates">Sjekk</string>
   <string name="no_additional_info">Ingen ekstra informasjon</string>
   <string name="drawer_open">Åpne navigasjonsskuff</string>
@@ -45,6 +46,7 @@
   <string name="download_and_install">Last ned og installer</string>
   <string name="update_host">Tilgjengelig via %1$s</string>
   <string name="nightly_changelog">-- Trykk for... %1$s Endringslogg</string>
+  <string name="nightly_md5sum">Md5sum : %1$s</string>
   <string name="nightly_filesize">Filstørrelse: %1$s MB</string>
   <!-- INSTALL -->
   <string name="install">Installer</string>
@@ -117,5 +119,6 @@
   <string name="permission_not_granted_dialog_title">Tillatelse ikke gitt</string>
   <string name="permission_granted_dialog_title">Tillatelse gitt</string>
   <!-- Dummy -->
+  <string name="content_description">content_description</string>
   <!--SDCARD Path-->
 </resources>

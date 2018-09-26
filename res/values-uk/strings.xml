@@ -20,15 +20,75 @@
 -->
 <resources>
   <!-- GENERAL -->
+  <string name="app_name">AICP ОТА</string>
+  <string name="check_for_updates">Перевірити</string>
+  <string name="no_additional_info">Немає додаткової інформації</string>
+  <string name="drawer_open">Відкрити панель навігації</string>
+  <string name="drawer_close">Закрити панель навігації</string>
   <!-- SYSTEM ACTIVITY -->
+  <string name="check_for_updates_long">Перевірка оновлень</string>
+  <string name="all_up_to_date">Ви вже оновлені!</string>
+  <string name="rom_scanning">Перевірка оновлень системи…</string>
+  <string name="rom_new_version">Знайдено оновлення прошивки!</string>
+  <string name="no_updates">Оновлення системи не знайдені</string>
+  <string name="system_update_found">Оновлення системи знайдено і готове до завантаження.\nБудь ласка перевірте повідомлення, які могли з\'явитися. Вони приведуть вас до програми оновлень AicpOTA, за допомогою якої Ви зможете завантажити і/або встановити оновлення.\n\nОновлення(нь) знайдено:\n%1$s</string>
   <!-- SYSTEM -->
+  <string name="system_title">Систем. інфо</string>
+  <string name="system_rom">Версія ROM: %1$s</string>
   <!-- UPDATES -->
+  <string name="updates">Оновлення</string>
+  <string name="updates_checking">Перевірка…</string>
+  <string name="updates_found">Знайдено оновлення системи</string>
+  <string name="updates_uptodate">Ви вже оновлені</string>
+  <string name="no_updates_found">Оновлення не знайдено</string>
+  <string name="download_and_install">Завантажити та встановити</string>
+  <string name="nightly_md5sum">Md5sum: %1$s</string>
+  <string name="nightly_filesize">Розмір файлу: %1$s МБ</string>
   <!-- INSTALL -->
+  <string name="install">Встановити</string>
+  <string name="install_title">Готовий до встановлення</string>
+  <string name="add_file">Додати файл</string>
+  <string name="install_now">Встановити зараз</string>
+  <string name="backup">Резервне копіювання</string>
+  <string name="wipe_data">Очистити Data</string>
+  <string name="wipe_caches">Стерти Dalvik &amp; кеш</string>
+  <string name="remove_file_title">Видалити файл</string>
+  <string name="recovery">Recovery</string>
+  <string name="boot">Boot</string>
+  <string name="androidsecure">Безпека Android</string>
+  <string name="alert_reboot_install_title">Встановити оновлення</string>
+  <string name="alert_reboot_one_message">Пристрій буде перезавантажений та буде встановлено оновлення.</string>
+  <string name="alert_reboot_more_message">Пристрій буде перезавантажений та будуть встановлені оновлення.</string>
+  <string name="alert_reboot_now">Встановити зараз</string>
   <!-- CHANGELOG -->
+  <string name="changelog">Журнал змін</string>
   <!-- DOWNLOADS/NOTIFICATIONS -->
+  <string name="cancel_download_alert_yes">Так</string>
+  <string name="cancel_download_alert_no">Ні</string>
+  <string name="cancel_download">Скасувати завантаження</string>
+  <string name="downloading_info">Оновлення завантажуются(ється):\n%1$s</string>
   <!-- DOWNLOAD ERRORS -->
+  <string name="error_file_already_exists">Помилка. Файл вже існує</string>
+  <string name="error_file_error">Помилка: Помилка зберігання</string>
+  <string name="error_http_data_error">Помилка: Помилка Http</string>
+  <string name="error_insufficient_space">Помилка: Немає місця</string>
+  <string name="error_too_many_redirects">Помилка: Занадто багато перенаправлень</string>
+  <string name="error_unhandled_http_code">Помилки: Необроблений http код</string>
+  <string name="error_unknown">Помилка: Невідома</string>
   <!-- SETTINGS -->
+  <string name="settings">Налаштування</string>
+  <string name="settings_checktime_title">Частота перевірки оновлень</string>
+  <string name="settings_checktime_summary">Укажіть проміжок часу між перевірками оновлення</string>
+  <string name="time_notifications_never">Не перевіряти</string>
+  <string name="time_notifications_half_an_hour">Через півгодини</string>
+  <string name="time_notifications_an_hour">1 година</string>
+  <string name="time_notifications_two_hours">2 години</string>
+  <string name="time_notifications_five_hours">5 години</string>
+  <string name="time_notifications_daily">Щодня</string>
+  <string name="time_notifications_weekly">Щотижня</string>
   <!-- Permission check -->
+  <string name="permission_not_granted_dialog_title">Дозвіл не надано</string>
+  <string name="permission_granted_dialog_title">Дозвіл надано</string>
   <!-- Dummy -->
   <!--SDCARD Path-->
 </resources>
