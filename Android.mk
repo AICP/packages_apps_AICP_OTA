@@ -30,5 +30,6 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_REQUIRED_MODULES := default-permissions_com.aicp.updater.xml permissions_com.aicp.updater.xml whitelist_com.aicp.updater.xml
 LOCAL_PRIVILEGED_MODULE := true
-LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4
+LOCAL_STATIC_ANDROID_LIBRARIES := android-support-v4
+LOCAL_PRIVATE_PLATFORM_APIS := true
 include $(BUILD_PACKAGE)
