@@ -4,12 +4,14 @@
         android:title="@string/settings_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+<!--
     <ListPreference android:key="channel"
             android:title="@string/channel_title"
             android:summary="%s"
             android:entries="@array/channel_entries"
             android:entryValues="@array/channel_values"
             android:defaultValue="WEEKLY" />
+-->
 
     <ListPreference android:key="network_type"
             android:persistent="false"
