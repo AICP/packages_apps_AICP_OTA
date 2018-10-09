@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme_Default" parent="android:Theme.DeviceDefault.Settings">
+   </style>
+
+   <style name="AppTheme_Light" parent="android:Theme.Material.Light">
+        <!-- White navbar -->
+        <item name="android:navigationBarDividerColor">#1f000000</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="android:windowLightNavigationBar">true</item>
+   </style>
+
+   <style name="AppTheme_Dark" parent="android:Theme.Material">
+   </style>
+</resources>
