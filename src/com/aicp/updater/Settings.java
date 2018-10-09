@@ -12,14 +12,13 @@ import android.os.Bundle;
 import android.os.UserManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class Settings extends PreferenceActivity {
+public class Settings extends BaseSettingsActivity {
     private static final int DEFAULT_NETWORK_TYPE = JobInfo.NETWORK_TYPE_UNMETERED;
     private static final String KEY_AUTO_UPDATE = "auto_update";
     private static final String KEY_AUTO_UPDATE_PROMPT_DOWNLOAD = "auto_update_prompt_download";
