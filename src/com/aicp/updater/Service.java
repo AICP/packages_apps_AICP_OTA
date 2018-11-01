@@ -36,8 +36,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.security.GeneralSecurityException;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.CountDownLatch;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -197,8 +199,9 @@ public class Service extends IntentService {
             if (timestamp != targetBuildDate) {
                 throw new GeneralSecurityException("timestamp does not match server metadata");
             }
-            if (!DEVICE.equals(device)) {
-                throw new GeneralSecurityException("device mismatch, is \"" + device + "\" instead of \"" + DEVICE);
+            String[] devicelist = device.split(",");
+            if (!Arrays.asList(devicelist).contains(DEVICE)) {
+                throw new GeneralSecurityException("device mismatch, \"" + DEVICE + "\" not contained in \"" + device);
             }
             if (serialno != null) {
                 if ("INCREMENTAL".equals(channel) || "WEEKLY".equals(channel)) {
