@@ -207,6 +207,10 @@ public class Settings extends BaseSettingsActivity {
                 mUpdateStatusPref.setTitle(R.string.update_status_download_pending_title);
                 mUpdateStatusPref.setSummary(R.string.update_status_download_pending_summary);
                 break;
+            case Service.INFO_NO_BUILDS_AVAILABLE:
+                mUpdateStatusPref.setTitle(R.string.update_status_no_builds_title);
+                mUpdateStatusPref.setSummary(R.string.update_status_no_builds_summary);
+                break;
             case Service.INFO_ERROR:
                 mUpdateStatusPref.setTitle(R.string.update_status_error_title);
                 mUpdateStatusPref.setSummary(R.string.update_status_error_summary);

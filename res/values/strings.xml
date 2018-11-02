@@ -51,6 +51,8 @@
     <string name="update_status_up_to_date_summary">No available update found</string>
     <string name="update_status_download_pending_title">Update available</string>
     <string name="update_status_download_pending_summary">Start download</string>
+    <string name="update_status_no_builds_title">No update found</string>
+    <string name="update_status_no_builds_summary">No builds for this device available on the server</string>
     <string name="update_status_update_pending_title">Update pending</string>
     <string name="update_status_update_pending_summary">Resume update</string>
     <string name="update_status_update_ready_title">Update ready</string>

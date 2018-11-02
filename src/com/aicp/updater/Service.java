@@ -60,6 +60,7 @@ public class Service extends IntentService {
     public static final int INFO_UP_TO_DATE = 2;
     public static final int INFO_UPDATE_PENDING = 3;
     public static final int INFO_DOWNLOAD_PENDING = 4;
+    public static final int INFO_NO_BUILDS_AVAILABLE = 5;
     public static final int INFO_ERROR = 100;
 
     private static final String TAG = "OTAService";
@@ -351,11 +352,14 @@ public class Service extends IntentService {
             InputStream input = fetchData(AICP_DEVICE + "&type=" + channel).getInputStream();
             final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata;
-            try {
-                metadata = reader.readLine().split(" ");
-            } finally {
-                reader.close();
+            String metadataResponse = reader.readLine();
+            if (metadataResponse == null) {
+                // Device not supported?
+                mUpdateInfo = INFO_NO_BUILDS_AVAILABLE;
+                publishProgress();
+                return;
             }
+            metadata = metadataResponse.split(" ");
 
             final String targetIncremental = metadata[0];
             final long targetBuildDate = Long.parseLong(metadata[1]);
