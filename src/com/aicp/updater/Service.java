@@ -350,6 +350,11 @@ public class Service extends IntentService {
             final String[] metadata;
             try {
                 metadata = reader.readLine().split(" ");
+            }catch (Exception e){
+                Log.d(TAG, "no update found");
+                mUpdateInfo = INFO_UP_TO_DATE;
+                publishProgress();
+                return;
             } finally {
                 reader.close();
             }
