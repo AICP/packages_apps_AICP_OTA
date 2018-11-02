@@ -353,6 +353,11 @@ public class Service extends IntentService {
             final String[] metadata;
             try {
                 metadata = reader.readLine().split(" ");
+            } catch (Exception e) {
+                Log.d(TAG, "Parsing metadata failed", e);
+                mUpdateInfo = INFO_ERROR;
+                publishProgress();
+                return;
             } finally {
                 reader.close();
             }
