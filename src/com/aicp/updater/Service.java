@@ -171,7 +171,6 @@ public class Service extends IntentService {
             final ZipFile zipFile = new ZipFile(UPDATE_PATH);
 
             final ZipEntry metadata = getEntry(zipFile, "META-INF/com/android/metadata");
-            final BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)));
             String device = null;
             String serialno = null;
             String type = null;
@@ -179,22 +178,24 @@ public class Service extends IntentService {
             String sourceFingerprint = null;
             String streamingPropertyFiles[] = null;
             long timestamp = 0;
-            for (String line; (line = reader.readLine()) != null; ) {
-                final String[] pair = line.split("=");
-                if ("post-timestamp".equals(pair[0])) {
-                    timestamp = Long.parseLong(pair[1]);
-                } else if ("serialno".equals(pair[0])) {
-                    serialno = pair[1];
-                } else if ("pre-device".equals(pair[0])) {
-                    device = pair[1];
-                } else if ("ota-type".equals(pair[0])) {
-                    type = pair[1];
-                } else if ("ota-streaming-property-files".equals(pair[0])) {
-                    streamingPropertyFiles = pair[1].trim().split(",");
-                } else if ("pre-build-incremental".equals(pair[0])) {
-                    sourceIncremental = pair[1];
-                } else if ("pre-build".equals(pair[0])) {
-                    sourceFingerprint = pair[1];
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(metadata)))) {
+                for (String line; (line = reader.readLine()) != null; ) {
+                    final String[] pair = line.split("=");
+                    if ("post-timestamp".equals(pair[0])) {
+                        timestamp = Long.parseLong(pair[1]);
+                    } else if ("serialno".equals(pair[0])) {
+                        serialno = pair[1];
+                    } else if ("pre-device".equals(pair[0])) {
+                        device = pair[1];
+                    } else if ("ota-type".equals(pair[0])) {
+                        type = pair[1];
+                    } else if ("ota-streaming-property-files".equals(pair[0])) {
+                        streamingPropertyFiles = pair[1].trim().split(",");
+                    } else if ("pre-build-incremental".equals(pair[0])) {
+                        sourceIncremental = pair[1];
+                    } else if ("pre-build".equals(pair[0])) {
+                        sourceFingerprint = pair[1];
+                    }
                 }
             }
             if (timestamp != targetBuildDate) {
@@ -245,8 +246,9 @@ public class Service extends IntentService {
             }
 
             final ZipEntry payloadProperties = getEntry(zipFile, "payload_properties.txt");
-            final BufferedReader propertiesReader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(payloadProperties)));
-            applyUpdate(payloadOffset, propertiesReader.lines().toArray(String[]::new));
+            try (BufferedReader propertiesReader = new BufferedReader(new InputStreamReader(zipFile.getInputStream(payloadProperties)))) {
+                applyUpdate(payloadOffset, propertiesReader.lines().toArray(String[]::new));
+            }
         } catch (GeneralSecurityException e) {
             UPDATE_PATH.delete();
             throw e;
@@ -350,9 +352,11 @@ public class Service extends IntentService {
 
             Log.d(TAG, "fetching metadata for " + AICP_DEVICE + " in " + channel + " with version: " + MOD_VERSION);
             InputStream input = fetchData(AICP_DEVICE + "&type=" + channel).getInputStream();
-            final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata;
-            String metadataResponse = reader.readLine();
+            String metadataResponse = null;
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))){
+                metadataResponse = reader.readLine();
+            }
             if (metadataResponse == null) {
                 // Device not supported?
                 mUpdateInfo = INFO_NO_BUILDS_AVAILABLE;
