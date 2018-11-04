@@ -350,9 +350,14 @@ public class Service extends IntentService {
 
             Log.d(TAG, "fetching metadata for " + AICP_DEVICE + " in " + channel + " with version: " + MOD_VERSION);
             InputStream input = fetchData(AICP_DEVICE + "&type=" + channel).getInputStream();
-            final BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             final String[] metadata;
-            String metadataResponse = reader.readLine();
+            String metadataResponse = null;
+            try ( BufferedReader reader = new BufferedReader(new InputStreamReader(input))){
+                metadataResponse = reader.readLine();
+            } catch (IOException ioe) {
+                Log.e(TAG, "failed to read stream from server", ioe);
+            }
+
             if (metadataResponse == null) {
                 // Device not supported?
                 mUpdateInfo = INFO_NO_BUILDS_AVAILABLE;
