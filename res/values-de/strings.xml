@@ -19,108 +19,108 @@
   along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-  <!-- GENERAL -->
-  <string name="app_name">AICP OTA</string>
-  <string name="check_for_updates">Suchen</string>
-  <string name="no_additional_info">Keine weiteren Informationen</string>
-  <string name="drawer_open">Navigationsbereich öffnen</string>
-  <string name="drawer_close">Navigationsbereich schließen</string>
-  <!-- SYSTEM ACTIVITY -->
-  <string name="check_for_updates_long">Nach Updates suchen</string>
-  <string name="all_up_to_date">Keine Updates gefunden!</string>
-  <string name="rom_scanning">Nach System-Updates suchen…</string>
-  <string name="rom_new_version">Neues ROM-Update gefunden!</string>
-  <string name="no_updates">Keine System-Updates gefunden</string>
-  <string name="system_update_found">Ein neues System-Update wurde gefunden und ist nun zum Herunterladen bereit.\nBitte prüfe die Benachrichtigungen, falls solche erscheinen. Diese führen dann zu AICP OTA, von wo aus die Updates dann heruntergeladen oder/und installiert werden können.\n\nGefundene Update(s):\n%1$s</string>
-  <!-- SYSTEM -->
-  <string name="system_title">System Info</string>
-  <string name="system_rom">ROM Version: %1$s</string>
-  <!-- UPDATES -->
-  <string name="updates">Updates</string>
-  <string name="updates_checking">Suche…</string>
-  <string name="updates_found">System-Update gefunden</string>
-  <string name="updates_uptodate">Du bist auf dem neuesten Stand</string>
-  <string name="no_updates_found">Keine Updates gefunden</string>
-  <string name="check_rom_updates_error">Fehler beim Suchen nach ROM-Updates</string>
-  <string name="system_update">System-Update gefunden.\nBitte das Update auswählen, das heruntergeladen werden soll.\n\nGefundene Update(s):</string>
-  <string name="download_and_install">Herunterladen und installieren</string>
-  <string name="update_host">Gehostet von %1$s</string>
-  <string name="nightly_changelog">-- Drücken für... %1$s Änderungsprotokoll</string>
-  <string name="nightly_md5sum">MD5-Summe: %1$s</string>
-  <string name="nightly_filesize">Dateigröße: %1$s MB</string>
-  <!-- INSTALL -->
-  <string name="install">Installation</string>
-  <string name="install_title">Zur Installation bereit</string>
-  <string name="install_info">Das folgende Update ist zur Installation bereit.\n\nWeitere ZIP-Dateien hinzufügen, indem auf \"Datei hinzufügen\" gedrückt wird.</string>
-  <string name="add_file">Datei hinzufügen</string>
-  <string name="install_now">Jetzt installieren</string>
-  <string name="calculating_md5">Berechne MD5-Summe…</string>
-  <string name="md5_mismatch">MD5-Summe stimmt nicht überein</string>
-  <string name="md5_mismatch_summary">Empfangen:\n%1$s\n\nBerechnet:\n%2$s</string>
-  <string name="md5_install_anyway">Trotzdem fortsetzen</string>
-  <string name="select_actions">Wähle die Optionen, die ausgeführt werden sollen</string>
-  <string name="backup">Sicherung</string>
-  <string name="wipe_data">Lösche \"Data\"</string>
-  <string name="wipe_caches">Lösche \"Cache\" &amp; \"Dalvik\"</string>
-  <string name="remove_file_title">Datei entfernen</string>
-  <string name="remove_file_summary">Folgende Datei von der Liste entfernen?\n\n%1$s</string>
-  <string name="file_manager_error">Keine App zum Auswählen einer ZIP-Datei gefunden. Bitte einen Datei-Manager installieren.</string>
-  <string name="alert_backup_space_title">freier Speicherplatz</string>
-  <string name="alert_backup_space_message">Es ist weniger als %1$sGB freier Speicherplatz auf der internen SD-Karte verfügbar. Mit der Sicherung (Backup) trotzdem fortfahren?</string>
-  <string name="alert_backup_title">Sicherung</string>
-  <string name="alert_backup_message">Name der Sicherung auswählen (nicht erlaubte Zeichen werden entfernt).\n\nDie folgenden Optionen funktionieren nur mit TWRP.</string>
-  <string name="system">System</string>
-  <string name="data">Data</string>
-  <string name="cache">Cache</string>
-  <string name="recovery">Recovery</string>
-  <string name="boot">Boot</string>
-  <string name="androidsecure">Sicherer Android-Speicher</string>
-  <string name="sdext">Externe SD-Karte</string>
-  <string name="alert_reboot_install_title">Installiere Update(s)</string>
-  <string name="alert_reboot_one_message">Dein Gerät wird sich neustarten und das Update installieren.</string>
-  <string name="alert_reboot_more_message">Dein Gerät wird sich neustarten und die Updates installieren.</string>
-  <string name="alert_reboot_now">Jetzt installieren</string>
-  <string name="file_not_found">Kann Datei nicht hinzufügen</string>
-  <!-- CHANGELOG -->
-  <string name="changelog">Änderungsprotokoll</string>
-  <!-- DOWNLOADS/NOTIFICATIONS -->
-  <string name="download_card_title">System-Update wird heruntergeladen</string>
-  <string name="download_title">%1$s</string>
-  <string name="cancel_download_alert_title">Download abbrechen</string>
-  <string name="cancel_rom_download_alert_summary">Möchtest du den aktuellen ROM-Download abbrechen?</string>
-  <string name="cancel_download_alert_yes">Ja</string>
-  <string name="cancel_download_alert_no">Nein</string>
-  <string name="new_system_update">Neues System-Update gefunden</string>
-  <string name="new_package_name">%1$s</string>
-  <string name="new_packages">%1$s Updates sind bereit zum Herunterladen</string>
-  <string name="already_downloading_rom">Es wird bereits ein ROM-Update heruntergeladen.</string>
-  <string name="cancel_download">Herunterladen abbrechen</string>
-  <string name="downloading_info">Update(s) wird/werden heruntergeladen:\n%1$s</string>
-  <!-- DOWNLOAD ERRORS -->
-  <string name="error_cannot_resume">Fehler: Download kann nicht fortgesetzt werden</string>
-  <string name="error_device_not_found">Fehler: SD-Karte ist nicht eingehängt</string>
-  <string name="error_file_already_exists">Fehler: Datei ist bereits vorhanden</string>
-  <string name="error_file_error">Fehler: Speicherfehler</string>
-  <string name="error_http_data_error">Fehler: HTTP-Fehler</string>
-  <string name="error_insufficient_space">Fehler: Speicherplatz voll</string>
-  <string name="error_too_many_redirects">Fehler: Zu viele Weiterleitungen</string>
-  <string name="error_unhandled_http_code">Fehler: Unbekannter HTTP-Code</string>
-  <string name="error_unknown">Fehler: Unbekannt</string>
-  <!-- SETTINGS -->
-  <string name="settings">Einstellungen</string>
-  <string name="settings_checktime_title">Update-Intervall</string>
-  <string name="settings_checktime_summary">Zeitspanne nach welcher erneut nach Updates gesucht wird</string>
-  <string name="time_notifications_never">Niemals suchen</string>
-  <string name="time_notifications_half_an_hour">30 Minuten</string>
-  <string name="time_notifications_an_hour">1 Stunde</string>
-  <string name="time_notifications_two_hours">2 Stunden</string>
-  <string name="time_notifications_five_hours">5 Stunden</string>
-  <string name="time_notifications_daily">Täglich</string>
-  <string name="time_notifications_weekly">Wöchentlich</string>
-  <!-- Permission check -->
-  <string name="permission_not_granted_dialog_title">Berechtigung nicht gewährt</string>
-  <string name="permission_granted_dialog_title">Berechtigung gewährt</string>
-  <!-- Dummy -->
-  <string name="content_description">content_description</string>
-  <!--SDCARD Path-->
+    <!-- GENERAL -->
+    <string name="app_name">AICP OTA</string>
+    <string name="check_for_updates">Suchen</string>
+    <string name="no_additional_info">Keine weiteren Informationen</string>
+    <string name="drawer_open">Navigationsbereich öffnen</string>
+    <string name="drawer_close">Navigationsbereich schließen</string>
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">Nach Updates suchen</string>
+    <string name="all_up_to_date">Keine Updates gefunden!</string>
+    <string name="rom_scanning">Nach System-Updates suchen…</string>
+    <string name="rom_new_version">Neues ROM-Update gefunden!</string>
+    <string name="no_updates">Keine System-Updates gefunden</string>
+    <string name="system_update_found">Ein neues System-Update wurde gefunden und ist nun zum Herunterladen bereit.\nBitte prüfe die Benachrichtigungen, falls solche erscheinen. Diese führen dann zu AICP OTA, von wo aus die Updates dann heruntergeladen oder/und installiert werden können.\n\nGefundene Update(s):\n%1$s</string>
+    <!-- SYSTEM -->
+    <string name="system_title">System Info</string>
+    <string name="system_rom">ROM Version: %1$s</string>
+    <!-- UPDATES -->
+    <string name="updates">Updates</string>
+    <string name="updates_checking">Suche…</string>
+    <string name="updates_found">System-Update gefunden</string>
+    <string name="updates_uptodate">Du bist auf dem neuesten Stand</string>
+    <string name="no_updates_found">Keine Updates gefunden</string>
+    <string name="check_rom_updates_error">Fehler beim Suchen nach ROM-Updates</string>
+    <string name="system_update">System-Update gefunden.\nBitte das Update auswählen, das heruntergeladen werden soll.\n\nGefundene Update(s):</string>
+    <string name="download_and_install">Herunterladen und installieren</string>
+    <string name="update_host">Gehostet von %1$s</string>
+    <string name="nightly_changelog">-- Drücken für... %1$s Änderungsprotokoll</string>
+    <string name="nightly_md5sum">MD5-Summe: %1$s</string>
+    <string name="nightly_filesize">Dateigröße: %1$s MB</string>
+    <!-- INSTALL -->
+    <string name="install">Installation</string>
+    <string name="install_title">Zur Installation bereit</string>
+    <string name="install_info">Das folgende Update ist zur Installation bereit.\n\nWeitere ZIP-Dateien hinzufügen, indem auf \"Datei hinzufügen\" gedrückt wird.</string>
+    <string name="add_file">Datei hinzufügen</string>
+    <string name="install_now">Jetzt installieren</string>
+    <string name="calculating_md5">Berechne MD5-Summe…</string>
+    <string name="md5_mismatch">MD5-Summe stimmt nicht überein</string>
+    <string name="md5_mismatch_summary">Empfangen:\n%1$s\n\nBerechnet:\n%2$s</string>
+    <string name="md5_install_anyway">Trotzdem fortsetzen</string>
+    <string name="select_actions">Wähle die Optionen, die ausgeführt werden sollen</string>
+    <string name="backup">Sicherung</string>
+    <string name="wipe_data">Lösche \"Data\"</string>
+    <string name="wipe_caches">Lösche \"Cache\" &amp; \"Dalvik\"</string>
+    <string name="remove_file_title">Datei entfernen</string>
+    <string name="remove_file_summary">Folgende Datei von der Liste entfernen?\n\n%1$s</string>
+    <string name="file_manager_error">Keine App zum Auswählen einer ZIP-Datei gefunden. Bitte einen Datei-Manager installieren.</string>
+    <string name="alert_backup_space_title">freier Speicherplatz</string>
+    <string name="alert_backup_space_message">Es ist weniger als %1$sGB freier Speicherplatz auf der internen SD-Karte verfügbar. Mit der Sicherung (Backup) trotzdem fortfahren?</string>
+    <string name="alert_backup_title">Sicherung</string>
+    <string name="alert_backup_message">Name der Sicherung auswählen (nicht erlaubte Zeichen werden entfernt).\n\nDie folgenden Optionen funktionieren nur mit TWRP.</string>
+    <string name="system">System</string>
+    <string name="data">Data</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Sicherer Android-Speicher</string>
+    <string name="sdext">Externe SD-Karte</string>
+    <string name="alert_reboot_install_title">Installiere Update(s)</string>
+    <string name="alert_reboot_one_message">Dein Gerät wird sich neustarten und das Update installieren.</string>
+    <string name="alert_reboot_more_message">Dein Gerät wird sich neustarten und die Updates installieren.</string>
+    <string name="alert_reboot_now">Jetzt installieren</string>
+    <string name="file_not_found">Kann Datei nicht hinzufügen</string>
+    <!-- CHANGELOG -->
+    <string name="changelog">Änderungsprotokoll</string>
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">System-Update wird heruntergeladen</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">Download abbrechen</string>
+    <string name="cancel_rom_download_alert_summary">Möchtest du den aktuellen ROM-Download abbrechen?</string>
+    <string name="cancel_download_alert_yes">Ja</string>
+    <string name="cancel_download_alert_no">Nein</string>
+    <string name="new_system_update">Neues System-Update gefunden</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s Updates sind bereit zum Herunterladen</string>
+    <string name="already_downloading_rom">Es wird bereits ein ROM-Update heruntergeladen.</string>
+    <string name="cancel_download">Herunterladen abbrechen</string>
+    <string name="downloading_info">Update(s) wird/werden heruntergeladen:\n%1$s</string>
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">Fehler: Download kann nicht fortgesetzt werden</string>
+    <string name="error_device_not_found">Fehler: SD-Karte ist nicht eingehängt</string>
+    <string name="error_file_already_exists">Fehler: Datei ist bereits vorhanden</string>
+    <string name="error_file_error">Fehler: Speicherfehler</string>
+    <string name="error_http_data_error">Fehler: HTTP-Fehler</string>
+    <string name="error_insufficient_space">Fehler: Speicherplatz voll</string>
+    <string name="error_too_many_redirects">Fehler: Zu viele Weiterleitungen</string>
+    <string name="error_unhandled_http_code">Fehler: Unbekannter HTTP-Code</string>
+    <string name="error_unknown">Fehler: Unbekannt</string>
+    <!-- SETTINGS -->
+    <string name="settings">Einstellungen</string>
+    <string name="settings_checktime_title">Update-Intervall</string>
+    <string name="settings_checktime_summary">Zeitspanne nach welcher erneut nach Updates gesucht wird</string>
+    <string name="time_notifications_never">Niemals suchen</string>
+    <string name="time_notifications_half_an_hour">30 Minuten</string>
+    <string name="time_notifications_an_hour">1 Stunde</string>
+    <string name="time_notifications_two_hours">2 Stunden</string>
+    <string name="time_notifications_five_hours">5 Stunden</string>
+    <string name="time_notifications_daily">Täglich</string>
+    <string name="time_notifications_weekly">Wöchentlich</string>
+    <!-- Permission check -->
+    <string name="permission_not_granted_dialog_title">Berechtigung nicht gewährt</string>
+    <string name="permission_granted_dialog_title">Berechtigung gewährt</string>
+    <!-- Dummy -->
+    <string name="content_description">content_description</string>
+    <!--SDCARD Path-->
 </resources>

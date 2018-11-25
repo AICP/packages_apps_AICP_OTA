@@ -19,108 +19,108 @@
   along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-  <!-- GENERAL -->
-  <string name="app_name">AICPアップデータ</string>
-  <string name="check_for_updates">更新</string>
-  <string name="no_additional_info">追加情報はありません</string>
-  <string name="drawer_open">追加情報を開く</string>
-  <string name="drawer_close">追加情報を閉じる</string>
-  <!-- SYSTEM ACTIVITY -->
-  <string name="check_for_updates_long">更新を確認中</string>
-  <string name="all_up_to_date">最新のソフトウエアです</string>
-  <string name="rom_scanning">更新を確認中です…</string>
-  <string name="rom_new_version">システム更新があります</string>
-  <string name="no_updates">更新はありません</string>
-  <string name="system_update_found">アップデートがあります。\nAICPアップデータの通知によりインストールできます。\n\nUアップデート:\n%1$s</string>
-  <!-- SYSTEM -->
-  <string name="system_title">システム情報</string>
-  <string name="system_rom">ROMバージョン: %1$s</string>
-  <!-- UPDATES -->
-  <string name="updates">アップデート</string>
-  <string name="updates_checking">更新中</string>
-  <string name="updates_found">更新があります</string>
-  <string name="updates_uptodate">最新のソフトウエアを確認する</string>
-  <string name="no_updates_found">更新はありません</string>
-  <string name="check_rom_updates_error">ROMの更新確認に失敗しました</string>
-  <string name="system_update">更新があります。\nダウンロードするものを選択してください。\n\nアップデート:</string>
-  <string name="download_and_install">ダウンロードしてインストールする</string>
-  <string name="update_host">Hosted at %1$s</string>
-  <string name="nightly_changelog">-- %1$s の更新履歴</string>
-  <string name="nightly_md5sum">MD5: %1$s</string>
-  <string name="nightly_filesize">ファイルサイズ: %1$s MB</string>
-  <!-- INSTALL -->
-  <string name="install">インストール</string>
-  <string name="install_title">インストールを準備</string>
-  <string name="install_info">選択したアップデートが適用されます。\n「ファイルの追加」からインストール対象を追加できます。</string>
-  <string name="add_file">ファイルの追加</string>
-  <string name="install_now">今すぐインストール</string>
-  <string name="calculating_md5">MD5チェックサムを実行しています</string>
-  <string name="md5_mismatch">MD5チェックサムが正しくありません</string>
-  <string name="md5_mismatch_summary">受け取った値:\n%1$s\n\n計算した値:\n%2$s</string>
-  <string name="md5_install_anyway">無視してインストールする</string>
-  <string name="select_actions">実行したいものを選んでください</string>
-  <string name="backup">バックアップ</string>
-  <string name="wipe_data">ユーザーデータの削除</string>
-  <string name="wipe_caches">Dalvikキャッシュ及びキャッシュの削除</string>
-  <string name="remove_file_title">ファイル削除</string>
-  <string name="remove_file_summary">これらを削除しても問題ありませんか？\n\n%1$s</string>
-  <string name="file_manager_error">ZIPファイルを選択するためのファイルマネージャーがありません</string>
-  <string name="alert_backup_space_title">空き容量がありません</string>
-  <string name="alert_backup_space_message">バックアップは内臓ストレージに保存され、%1$sGB使用されます。続行しますか?</string>
-  <string name="alert_backup_title">バックアップ</string>
-  <string name="alert_backup_message">バックアップ名を設定できます。(特殊文字は自動的に排除されます)\n\nこれらのオプションはTWRPでのみ有効です。</string>
-  <string name="system">システム</string>
-  <string name="data">ユーザーデータ</string>
-  <string name="cache">キャッシュ</string>
-  <string name="recovery">リカバリー</string>
-  <string name="boot">ブート</string>
-  <string name="androidsecure">Androidセキュア</string>
-  <string name="sdext">外部SD</string>
-  <string name="alert_reboot_install_title">アップデートインストール</string>
-  <string name="alert_reboot_one_message">デバイスは再起動され、更新が適用されます</string>
-  <string name="alert_reboot_more_message">デバイスは再起動され、更新が適用されます</string>
-  <string name="alert_reboot_now">今すぐインストール</string>
-  <string name="file_not_found">ファイルがありませんでした</string>
-  <!-- CHANGELOG -->
-  <string name="changelog">更新履歴</string>
-  <!-- DOWNLOADS/NOTIFICATIONS -->
-  <string name="download_card_title">更新をダウンロード</string>
-  <string name="download_title">%1$s</string>
-  <string name="cancel_download_alert_title">ダウンロードをキャンセル</string>
-  <string name="cancel_rom_download_alert_summary">ROMのダウンロードをキャンセルしますか?</string>
-  <string name="cancel_download_alert_yes">はい</string>
-  <string name="cancel_download_alert_no">いいえ</string>
-  <string name="new_system_update">アップデートがあります</string>
-  <string name="new_package_name">%1$s</string>
-  <string name="new_packages">%1$s個のアップデートがダウンロードできます</string>
-  <string name="already_downloading_rom">すでにダウンロードしています</string>
-  <string name="cancel_download">ダウンロードをキャンセル</string>
-  <string name="downloading_info">ダウンロード中:\n%1$s</string>
-  <!-- DOWNLOAD ERRORS -->
-  <string name="error_cannot_resume">エラー: ダウンロードを再開できませんでした</string>
-  <string name="error_device_not_found">エラー: マウントされていません/</string>
-  <string name="error_file_already_exists">エラー: すでにファイルがあります</string>
-  <string name="error_file_error">エラー: ストレージエラー</string>
-  <string name="error_http_data_error">エラー: HTTPエラー</string>
-  <string name="error_insufficient_space">エラー: 空き容量がありません</string>
-  <string name="error_too_many_redirects">エラー: リダイレクトが多すぎます</string>
-  <string name="error_unhandled_http_code">エラー: 認識できないHTTPコード</string>
-  <string name="error_unknown">エラー: 不明なエラー</string>
-  <!-- SETTINGS -->
-  <string name="settings">設定</string>
-  <string name="settings_checktime_title">更新頻度</string>
-  <string name="settings_checktime_summary">更新を自動的に行う頻度を選択して下さい</string>
-  <string name="time_notifications_never">確認しない</string>
-  <string name="time_notifications_half_an_hour">30分毎</string>
-  <string name="time_notifications_an_hour">1時間毎</string>
-  <string name="time_notifications_two_hours">2時間毎</string>
-  <string name="time_notifications_five_hours">5時間毎</string>
-  <string name="time_notifications_daily">1日毎</string>
-  <string name="time_notifications_weekly">毎週</string>
-  <!-- Permission check -->
-  <string name="permission_not_granted_dialog_title">権限が付与されていません</string>
-  <string name="permission_granted_dialog_title">権限を付与しました</string>
-  <!-- Dummy -->
-  <string name="content_description">content_description</string>
-  <!--SDCARD Path-->
+    <!-- GENERAL -->
+    <string name="app_name">AICPアップデータ</string>
+    <string name="check_for_updates">更新</string>
+    <string name="no_additional_info">追加情報はありません</string>
+    <string name="drawer_open">追加情報を開く</string>
+    <string name="drawer_close">追加情報を閉じる</string>
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">更新を確認中</string>
+    <string name="all_up_to_date">最新のソフトウエアです</string>
+    <string name="rom_scanning">更新を確認中です…</string>
+    <string name="rom_new_version">システム更新があります</string>
+    <string name="no_updates">更新はありません</string>
+    <string name="system_update_found">アップデートがあります。\nAICPアップデータの通知によりインストールできます。\n\nUアップデート:\n%1$s</string>
+    <!-- SYSTEM -->
+    <string name="system_title">システム情報</string>
+    <string name="system_rom">ROMバージョン: %1$s</string>
+    <!-- UPDATES -->
+    <string name="updates">アップデート</string>
+    <string name="updates_checking">更新中</string>
+    <string name="updates_found">更新があります</string>
+    <string name="updates_uptodate">最新のソフトウエアを確認する</string>
+    <string name="no_updates_found">更新はありません</string>
+    <string name="check_rom_updates_error">ROMの更新確認に失敗しました</string>
+    <string name="system_update">更新があります。\nダウンロードするものを選択してください。\n\nアップデート:</string>
+    <string name="download_and_install">ダウンロードしてインストールする</string>
+    <string name="update_host">Hosted at %1$s</string>
+    <string name="nightly_changelog">-- %1$s の更新履歴</string>
+    <string name="nightly_md5sum">MD5: %1$s</string>
+    <string name="nightly_filesize">ファイルサイズ: %1$s MB</string>
+    <!-- INSTALL -->
+    <string name="install">インストール</string>
+    <string name="install_title">インストールを準備</string>
+    <string name="install_info">選択したアップデートが適用されます。\n「ファイルの追加」からインストール対象を追加できます。</string>
+    <string name="add_file">ファイルの追加</string>
+    <string name="install_now">今すぐインストール</string>
+    <string name="calculating_md5">MD5チェックサムを実行しています</string>
+    <string name="md5_mismatch">MD5チェックサムが正しくありません</string>
+    <string name="md5_mismatch_summary">受け取った値:\n%1$s\n\n計算した値:\n%2$s</string>
+    <string name="md5_install_anyway">無視してインストールする</string>
+    <string name="select_actions">実行したいものを選んでください</string>
+    <string name="backup">バックアップ</string>
+    <string name="wipe_data">ユーザーデータの削除</string>
+    <string name="wipe_caches">Dalvikキャッシュ及びキャッシュの削除</string>
+    <string name="remove_file_title">ファイル削除</string>
+    <string name="remove_file_summary">これらを削除しても問題ありませんか？\n\n%1$s</string>
+    <string name="file_manager_error">ZIPファイルを選択するためのファイルマネージャーがありません</string>
+    <string name="alert_backup_space_title">空き容量がありません</string>
+    <string name="alert_backup_space_message">バックアップは内臓ストレージに保存され、%1$sGB使用されます。続行しますか?</string>
+    <string name="alert_backup_title">バックアップ</string>
+    <string name="alert_backup_message">バックアップ名を設定できます。(特殊文字は自動的に排除されます)\n\nこれらのオプションはTWRPでのみ有効です。</string>
+    <string name="system">システム</string>
+    <string name="data">ユーザーデータ</string>
+    <string name="cache">キャッシュ</string>
+    <string name="recovery">リカバリー</string>
+    <string name="boot">ブート</string>
+    <string name="androidsecure">Androidセキュア</string>
+    <string name="sdext">外部SD</string>
+    <string name="alert_reboot_install_title">アップデートインストール</string>
+    <string name="alert_reboot_one_message">デバイスは再起動され、更新が適用されます</string>
+    <string name="alert_reboot_more_message">デバイスは再起動され、更新が適用されます</string>
+    <string name="alert_reboot_now">今すぐインストール</string>
+    <string name="file_not_found">ファイルがありませんでした</string>
+    <!-- CHANGELOG -->
+    <string name="changelog">更新履歴</string>
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">更新をダウンロード</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">ダウンロードをキャンセル</string>
+    <string name="cancel_rom_download_alert_summary">ROMのダウンロードをキャンセルしますか?</string>
+    <string name="cancel_download_alert_yes">はい</string>
+    <string name="cancel_download_alert_no">いいえ</string>
+    <string name="new_system_update">アップデートがあります</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s個のアップデートがダウンロードできます</string>
+    <string name="already_downloading_rom">すでにダウンロードしています</string>
+    <string name="cancel_download">ダウンロードをキャンセル</string>
+    <string name="downloading_info">ダウンロード中:\n%1$s</string>
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">エラー: ダウンロードを再開できませんでした</string>
+    <string name="error_device_not_found">エラー: マウントされていません/</string>
+    <string name="error_file_already_exists">エラー: すでにファイルがあります</string>
+    <string name="error_file_error">エラー: ストレージエラー</string>
+    <string name="error_http_data_error">エラー: HTTPエラー</string>
+    <string name="error_insufficient_space">エラー: 空き容量がありません</string>
+    <string name="error_too_many_redirects">エラー: リダイレクトが多すぎます</string>
+    <string name="error_unhandled_http_code">エラー: 認識できないHTTPコード</string>
+    <string name="error_unknown">エラー: 不明なエラー</string>
+    <!-- SETTINGS -->
+    <string name="settings">設定</string>
+    <string name="settings_checktime_title">更新頻度</string>
+    <string name="settings_checktime_summary">更新を自動的に行う頻度を選択して下さい</string>
+    <string name="time_notifications_never">確認しない</string>
+    <string name="time_notifications_half_an_hour">30分毎</string>
+    <string name="time_notifications_an_hour">1時間毎</string>
+    <string name="time_notifications_two_hours">2時間毎</string>
+    <string name="time_notifications_five_hours">5時間毎</string>
+    <string name="time_notifications_daily">1日毎</string>
+    <string name="time_notifications_weekly">毎週</string>
+    <!-- Permission check -->
+    <string name="permission_not_granted_dialog_title">権限が付与されていません</string>
+    <string name="permission_granted_dialog_title">権限を付与しました</string>
+    <!-- Dummy -->
+    <string name="content_description">content_description</string>
+    <!--SDCARD Path-->
 </resources>

@@ -19,124 +19,124 @@
   along with Paranoid OTA.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-  <!-- GENERAL -->
-  <string name="app_name">AICP OTA</string>
-  <string name="check_for_updates">检查</string>
-  <string name="no_additional_info">没有额外的信息</string>
-  <string name="drawer_open">打开导航抽屉</string>
-  <string name="drawer_close">关闭导航抽屉</string>
-  <!-- SYSTEM ACTIVITY -->
-  <string name="check_for_updates_long">检查更新</string>
-  <string name="all_up_to_date">已是最新版本!</string>
-  <string name="rom_scanning">检查系统更新…</string>
-  <string name="rom_new_version">找到新的 ROM 更新!</string>
-  <string name="no_updates">没有发现系统更新</string>
-  <string name="system_update_found">\"一个新系统更新被发现和准备下载。　　
+    <!-- GENERAL -->
+    <string name="app_name">AICP OTA</string>
+    <string name="check_for_updates">检查</string>
+    <string name="no_additional_info">没有额外的信息</string>
+    <string name="drawer_open">打开导航抽屉</string>
+    <string name="drawer_close">关闭导航抽屉</string>
+    <!-- SYSTEM ACTIVITY -->
+    <string name="check_for_updates_long">检查更新</string>
+    <string name="all_up_to_date">已是最新版本!</string>
+    <string name="rom_scanning">检查系统更新…</string>
+    <string name="rom_new_version">找到新的 ROM 更新!</string>
+    <string name="no_updates">没有发现系统更新</string>
+    <string name="system_update_found">\"一个新系统更新被发现和准备下载。　　
 请检查可能出现的通知。他们会使你从 Aicp Ota 那里下载和安装更新。
 
 找到更新:
 %1$s\"</string>
-  <!-- SYSTEM -->
-  <string name="system_title">系统信息</string>
-  <string name="system_rom">ROM 版本: %1$s</string>
-  <!-- UPDATES -->
-  <string name="updates">更新</string>
-  <string name="updates_checking">检查…</string>
-  <string name="updates_found">找到系统更新</string>
-  <string name="updates_uptodate">已是最新的版本</string>
-  <string name="no_updates_found">没有找到更新</string>
-  <string name="check_rom_updates_error">ROM 更新检查错误</string>
-  <string name="system_update">\"找到系统更新.
+    <!-- SYSTEM -->
+    <string name="system_title">系统信息</string>
+    <string name="system_rom">ROM 版本: %1$s</string>
+    <!-- UPDATES -->
+    <string name="updates">更新</string>
+    <string name="updates_checking">检查…</string>
+    <string name="updates_found">找到系统更新</string>
+    <string name="updates_uptodate">已是最新的版本</string>
+    <string name="no_updates_found">没有找到更新</string>
+    <string name="check_rom_updates_error">ROM 更新检查错误</string>
+    <string name="system_update">\"找到系统更新.
 选择你要下载的更新:\"</string>
-  <string name="download_and_install">下载并安装</string>
-  <string name="update_host">主机时间 %1$s</string>
-  <string name="nightly_changelog">--点击... %1$s 日志</string>
-  <string name="nightly_md5sum">Md5sum: %1$s</string>
-  <string name="nightly_filesize">文件大小: %1$s mb</string>
-  <!-- INSTALL -->
-  <string name="install">安装</string>
-  <string name="install_title">准备安装</string>
-  <string name="install_info">\"以下更新正在准备安装.
+    <string name="download_and_install">下载并安装</string>
+    <string name="update_host">主机时间 %1$s</string>
+    <string name="nightly_changelog">--点击... %1$s 日志</string>
+    <string name="nightly_md5sum">Md5sum: %1$s</string>
+    <string name="nightly_filesize">文件大小: %1$s mb</string>
+    <!-- INSTALL -->
+    <string name="install">安装</string>
+    <string name="install_title">准备安装</string>
+    <string name="install_info">\"以下更新正在准备安装.
 点击右侧箭头有更多选项.
 点击\"添加文件\"按钮.\"可以添加更多的安装包(zip)</string>
-  <string name="add_file">添加文件</string>
-  <string name="install_now">现在安装</string>
-  <string name="calculating_md5">正在计算检查MD5…</string>
-  <string name="md5_mismatch">MD5不匹配</string>
-  <string name="md5_mismatch_summary">\"接受:
+    <string name="add_file">添加文件</string>
+    <string name="install_now">现在安装</string>
+    <string name="calculating_md5">正在计算检查MD5…</string>
+    <string name="md5_mismatch">MD5不匹配</string>
+    <string name="md5_mismatch_summary">\"接受:
 %1$s
 
 估计:
 %2$s\"</string>
-  <string name="md5_install_anyway">仍然继续</string>
-  <string name="select_actions">选择您想要执行的操作</string>
-  <string name="backup">备份</string>
-  <string name="wipe_data">清除data</string>
-  <string name="wipe_caches">清除Cache&amp;Dalvik</string>
-  <string name="remove_file_title">移除文件</string>
-  <string name="remove_file_summary">\"你想从列表中删除该文件吗?
+    <string name="md5_install_anyway">仍然继续</string>
+    <string name="select_actions">选择您想要执行的操作</string>
+    <string name="backup">备份</string>
+    <string name="wipe_data">清除data</string>
+    <string name="wipe_caches">清除Cache&amp;Dalvik</string>
+    <string name="remove_file_title">移除文件</string>
+    <string name="remove_file_summary">\"你想从列表中删除该文件吗?
 
 %1$s\"</string>
-  <string name="file_manager_error">没有发现应用程序用来选择zip文件。请安装一个文件管理器。</string>
-  <string name="alert_backup_space_title">剩余空间</string>
-  <string name="alert_backup_space_message">内置SD卡只有不到1GB的储存空间，你确定要继续备份？</string>
-  <string name="alert_backup_title">备份</string>
-  <string name="alert_backup_message">\"指定备份名称(非法字符将被删除)
+    <string name="file_manager_error">没有发现应用程序用来选择zip文件。请安装一个文件管理器。</string>
+    <string name="alert_backup_space_title">剩余空间</string>
+    <string name="alert_backup_space_message">内置SD卡只有不到1GB的储存空间，你确定要继续备份？</string>
+    <string name="alert_backup_title">备份</string>
+    <string name="alert_backup_message">\"指定备份名称(非法字符将被删除)
 
 以下选项只有在TWRP(recovery)中使用.\"</string>
-  <string name="system">System</string>
-  <string name="data">Data</string>
-  <string name="cache">Cache</string>
-  <string name="recovery">Recovery</string>
-  <string name="boot">Boot</string>
-  <string name="androidsecure">Android 密码</string>
-  <string name="sdext">SD-Ext</string>
-  <string name="alert_reboot_install_title">安装更新</string>
-  <string name="alert_reboot_one_message">你的设备将通过重启来安装更新.</string>
-  <string name="alert_reboot_more_message">你的设备将通过重启来安装这些更新.</string>
-  <string name="alert_reboot_now">立即安装</string>
-  <string name="file_not_found">无法添加文件</string>
-  <!-- CHANGELOG -->
-  <string name="changelog">历史版本</string>
-  <!-- DOWNLOADS/NOTIFICATIONS -->
-  <string name="download_card_title">下载系统更新</string>
-  <string name="download_title">%1$s</string>
-  <string name="cancel_download_alert_title">取消下载</string>
-  <string name="cancel_rom_download_alert_summary">你想取消当前 ROM 下载?</string>
-  <string name="cancel_download_alert_yes">是</string>
-  <string name="cancel_download_alert_no">否</string>
-  <string name="new_system_update">找到新的系统更新</string>
-  <string name="new_package_name">%1$s</string>
-  <string name="new_packages">%1$s可供下载的更新</string>
-  <string name="already_downloading_rom">你已经下载了 ROM 的更新</string>
-  <string name="cancel_download">取消下载</string>
-  <string name="downloading_info">\"下载更新:
+    <string name="system">System</string>
+    <string name="data">Data</string>
+    <string name="cache">Cache</string>
+    <string name="recovery">Recovery</string>
+    <string name="boot">Boot</string>
+    <string name="androidsecure">Android 密码</string>
+    <string name="sdext">SD-Ext</string>
+    <string name="alert_reboot_install_title">安装更新</string>
+    <string name="alert_reboot_one_message">你的设备将通过重启来安装更新.</string>
+    <string name="alert_reboot_more_message">你的设备将通过重启来安装这些更新.</string>
+    <string name="alert_reboot_now">立即安装</string>
+    <string name="file_not_found">无法添加文件</string>
+    <!-- CHANGELOG -->
+    <string name="changelog">历史版本</string>
+    <!-- DOWNLOADS/NOTIFICATIONS -->
+    <string name="download_card_title">下载系统更新</string>
+    <string name="download_title">%1$s</string>
+    <string name="cancel_download_alert_title">取消下载</string>
+    <string name="cancel_rom_download_alert_summary">你想取消当前 ROM 下载?</string>
+    <string name="cancel_download_alert_yes">是</string>
+    <string name="cancel_download_alert_no">否</string>
+    <string name="new_system_update">找到新的系统更新</string>
+    <string name="new_package_name">%1$s</string>
+    <string name="new_packages">%1$s可供下载的更新</string>
+    <string name="already_downloading_rom">你已经下载了 ROM 的更新</string>
+    <string name="cancel_download">取消下载</string>
+    <string name="downloading_info">\"下载更新:
 %1$s\"</string>
-  <!-- DOWNLOAD ERRORS -->
-  <string name="error_cannot_resume">错误: 下载无法恢复</string>
-  <string name="error_device_not_found">错误: Sdcard未安装</string>
-  <string name="error_file_already_exists">错误: 文件已存在</string>
-  <string name="error_file_error">错误: 存储错误</string>
-  <string name="error_http_data_error">错误: Http 错误</string>
-  <string name="error_insufficient_space">错误: No space left</string>
-  <string name="error_too_many_redirects">错误: Too many redirects</string>
-  <string name="error_unhandled_http_code">错误: 未处理的http代码</string>
-  <string name="error_unknown">错误: 未知</string>
-  <!-- SETTINGS -->
-  <string name="settings">设置</string>
-  <string name="settings_checktime_title">更新检查频率</string>
-  <string name="settings_checktime_summary">指定每个更新之间的时间检查</string>
-  <string name="time_notifications_never">不检查</string>
-  <string name="time_notifications_half_an_hour">半小时</string>
-  <string name="time_notifications_an_hour">1小时</string>
-  <string name="time_notifications_two_hours">2小时</string>
-  <string name="time_notifications_five_hours">5小时</string>
-  <string name="time_notifications_daily">每日</string>
-  <string name="time_notifications_weekly">每周</string>
-  <!-- Permission check -->
-  <string name="permission_not_granted_dialog_title">未授予权限</string>
-  <string name="permission_granted_dialog_title">授予权限</string>
-  <!-- Dummy -->
-  <string name="content_description">目录_简介</string>
-  <!--SDCARD Path-->
+    <!-- DOWNLOAD ERRORS -->
+    <string name="error_cannot_resume">错误: 下载无法恢复</string>
+    <string name="error_device_not_found">错误: Sdcard未安装</string>
+    <string name="error_file_already_exists">错误: 文件已存在</string>
+    <string name="error_file_error">错误: 存储错误</string>
+    <string name="error_http_data_error">错误: Http 错误</string>
+    <string name="error_insufficient_space">错误: No space left</string>
+    <string name="error_too_many_redirects">错误: Too many redirects</string>
+    <string name="error_unhandled_http_code">错误: 未处理的http代码</string>
+    <string name="error_unknown">错误: 未知</string>
+    <!-- SETTINGS -->
+    <string name="settings">设置</string>
+    <string name="settings_checktime_title">更新检查频率</string>
+    <string name="settings_checktime_summary">指定每个更新之间的时间检查</string>
+    <string name="time_notifications_never">不检查</string>
+    <string name="time_notifications_half_an_hour">半小时</string>
+    <string name="time_notifications_an_hour">1小时</string>
+    <string name="time_notifications_two_hours">2小时</string>
+    <string name="time_notifications_five_hours">5小时</string>
+    <string name="time_notifications_daily">每日</string>
+    <string name="time_notifications_weekly">每周</string>
+    <!-- Permission check -->
+    <string name="permission_not_granted_dialog_title">未授予权限</string>
+    <string name="permission_granted_dialog_title">授予权限</string>
+    <!-- Dummy -->
+    <string name="content_description">目录_简介</string>
+    <!--SDCARD Path-->
 </resources>
