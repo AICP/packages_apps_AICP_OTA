@@ -25,12 +25,15 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -85,6 +88,8 @@ public class Service extends IntentService {
     final String AICP_DEVICE = SystemProperties.get("ro.aicp.device");
 
     final String MOD_VERSION = SystemProperties.get("ro.aicp.version.update", "unknown");
+
+    final String AICP_CREATE_ORS_FILE = SystemProperties.get("ro.aicp.create.ors.file","false");
 
     private static final int STATUS_NONE = 0;
     private static final int STATUS_UPDATING = 1;
@@ -441,7 +446,22 @@ public class Service extends IntentService {
 
             Log.d(TAG, "download completed");
             onDownloadFinished(targetBuildDate, channel);
-        } catch (Exception e) {
+
+	    if (AICP_CREATE_ORS_FILE.equals("true"))
+               {
+	       Log.d(TAG, "Property: ro.aicp.create.ors.file: " + AICP_CREATE_ORS_FILE + " - writing openrecoveryscript file manually");
+               Writer writer = null;
+               try {
+                  writer = new BufferedWriter(new OutputStreamWriter(
+                  new FileOutputStream("/cache/recovery/openrecoveryscript"), "utf-8"));
+                  writer.write("install @/cache/recovery/block.map");
+               } catch (IOException ex) {
+	          Log.e(TAG, "failed to write openrecoveryscript", ex);
+               } finally {
+                  try {writer.close();} catch (Exception ex) {/*ignore*/}
+               }
+            }
+	 } catch (Exception e) {
             Log.e(TAG, "failed to download and install update", e);
             PeriodicJob.scheduleRetry(this);
             mUpdateInfo = INFO_ERROR;
