@@ -1,3 +1,5 @@
+ifneq ($(NO_AUTO_UPDATER), true)
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -33,3 +35,5 @@ LOCAL_PRIVILEGED_MODULE := true
 LOCAL_STATIC_ANDROID_LIBRARIES := android-support-v4
 LOCAL_PRIVATE_PLATFORM_APIS := true
 include $(BUILD_PACKAGE)
+
+endif
