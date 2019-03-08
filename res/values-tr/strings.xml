@@ -31,7 +31,6 @@
     <string name="battery_not_low_summary">Sadece indir / pil uyarı seviyesinin üzerindeyken güncellemeleri yükleyin</string>
     <string name="idle_reboot_title">Otomatik yeniden başlat</string>
     <string name="idle_reboot_summary">Bir güncellemeyi başarıyla yükledikten sonra cihaz boşta kaldığında otomatik olarak yeniden başlat</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Güncelleme denetim sıklığı</string>
     <string name="settings_checktime_summary">Her güncelleme denetimi arasındaki süreyi belirtin</string>
     <string name="time_notifications_half_an_hour">Yarım saat</string>

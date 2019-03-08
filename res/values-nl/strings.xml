@@ -31,7 +31,6 @@
     <string name="battery_not_low_summary">Updates alleen downloaden en installeren als de acculading boven het waarschuwingsniveau is</string>
     <string name="idle_reboot_title">Automatisch herstarten</string>
     <string name="idle_reboot_summary">Automatisch herstarten als het apparaat na succesvolle installatie van een update in rust is</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Update-interval</string>
     <string name="settings_checktime_summary">Bepaal de tijd waarna opnieuw naar updates gezocht moet worden</string>
     <string name="time_notifications_half_an_hour">30 minuten</string>

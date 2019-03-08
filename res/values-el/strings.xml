@@ -3,7 +3,6 @@
 <resources>
     <string name="notification_title_progress">Λήψη ενημέρωσης συστήματος</string>
     <string name="channel_weekly">Εβδομαδιαία</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Συχνότητα ελέγχου ενημερώσεων</string>
     <string name="settings_checktime_summary">Προσδιορίστε το χρονικό διάστημα ανάμεσα σε κάθε έλεγχο ενημέρωσης</string>
     <string name="time_notifications_half_an_hour">Μισή ώρα</string>

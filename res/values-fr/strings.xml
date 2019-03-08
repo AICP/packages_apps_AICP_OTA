@@ -3,7 +3,6 @@
 <resources>
     <string name="notification_title_progress">Téléchargement de la mise à jour du système</string>
     <string name="channel_weekly">Hebdomadaire</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Fréquence de vérification des mises à jour</string>
     <string name="settings_checktime_summary">Spécifier le temps entre chaque vérification de mise à jour</string>
     <string name="time_notifications_half_an_hour">Une demi-heure</string>

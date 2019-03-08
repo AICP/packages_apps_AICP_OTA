@@ -9,7 +9,6 @@
     <string name="network_type_title">Redes permitidas</string>
     <string name="idle_reboot_title">Reinicialização automática</string>
     <string name="idle_reboot_summary">Reinicie automaticamente quando o dispositivo estiver ocioso após instalar com êxito uma atualização</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Frequência de verificação de atualização</string>
     <string name="settings_checktime_summary">Introduza o tempo entre cada verificação de actualização</string>
     <string name="time_notifications_half_an_hour">Meia hora</string>

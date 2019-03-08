@@ -31,7 +31,6 @@
     <string name="battery_not_low_summary">僅在電池高於警告級別時下載/安裝更新</string>
     <string name="idle_reboot_title">自動重新啟動</string>
     <string name="idle_reboot_summary">成功安裝更新後，裝置空閒後自動重新啟動</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">更新檢查頻率</string>
     <string name="settings_checktime_summary">指定每次更新檢查之間的時間</string>
     <string name="time_notifications_half_an_hour">每半小時</string>

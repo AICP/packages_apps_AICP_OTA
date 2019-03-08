@@ -3,7 +3,6 @@
 <resources>
     <string name="notification_title_progress">시스템 업데이트 다운로드 중</string>
     <string name="channel_weekly">주간</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">업데이트 확인 간격</string>
     <string name="settings_checktime_summary">업데이트를 확인하는 시간 간격을 지정</string>
     <string name="time_notifications_half_an_hour">30분</string>

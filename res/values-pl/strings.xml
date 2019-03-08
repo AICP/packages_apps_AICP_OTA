@@ -3,7 +3,6 @@
 <resources>
     <string name="notification_title_progress">Pobieranie aktualizacji systemu</string>
     <string name="channel_weekly">Co tydzień</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Częstotliwość sprawdzania aktualizacji</string>
     <string name="settings_checktime_summary">Określ, jak często ma być sprawdzana dostępność nowych aktualizacji</string>
     <string name="time_notifications_half_an_hour">Co 30 minut</string>

@@ -21,7 +21,6 @@
     <string name="channel_weekly">Mingguan</string>
     <string name="network_type_any">Semua</string>
     <string name="idle_reboot_title">Mulai ulang otomatis</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Frekuensi pemeriksaan pembaruan</string>
     <string name="settings_checktime_summary">Menentukan selang waktu antara setiap pemeriksaan pembaruan</string>
     <string name="time_notifications_half_an_hour">Setengah jam</string>

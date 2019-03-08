@@ -31,7 +31,6 @@
     <string name="battery_not_low_summary">Csak akkor tölthet le és telepíthet, ha az akkumulátorszint a figyelmeztetési érték felett van</string>
     <string name="idle_reboot_title">Automatikus újraindítás</string>
     <string name="idle_reboot_summary">A frissítés sikeres telepítése után automatikusan indítsa újra a készüléket, ha az készen áll rá</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Frissítés-ellenőrzés gyakorisága</string>
     <string name="settings_checktime_summary">Adja meg a az ellenőrzések gyakoriságát</string>
     <string name="time_notifications_half_an_hour">Fél óra</string>

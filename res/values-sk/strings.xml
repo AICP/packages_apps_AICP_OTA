@@ -31,7 +31,6 @@
     <string name="battery_not_low_summary">Len stiahnuť / nainštalovať aktualizácie, keď je batéria nad úrovňou upozornenia</string>
     <string name="idle_reboot_title">Automaticky reštartovať</string>
     <string name="idle_reboot_summary">Automaticky reštartovať, akonáhle je zariadenie po úspešnej inštalácii aktualizácie v nečinnosti</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">Frekvencia kontrolovania aktualizácií</string>
     <string name="settings_checktime_summary">Zadajte čas medzi jednotlivými kontrolami aktualizácií</string>
     <string name="time_notifications_half_an_hour">Pol hodiny</string>

@@ -31,7 +31,6 @@
     <string name="battery_not_low_summary">警告レベル以上のバッテリー残量がある時だけアップデートをダウンロード / インストールします</string>
     <string name="idle_reboot_title">自動再起動</string>
     <string name="idle_reboot_summary">アップデートをインストール後、端末のアイドル時に自動的に再起動します</string>
-    <!-- SETTINGS -->
     <string name="settings_checktime_title">更新頻度</string>
     <string name="settings_checktime_summary">更新を自動的に行う頻度を選択して下さい</string>
     <string name="time_notifications_half_an_hour">30分毎</string>
