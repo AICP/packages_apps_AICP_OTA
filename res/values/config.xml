@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="url" translatable="false">https://updates2.aicp-rom.com/update.php?device=</string>
-    <string name="url_legacy" translatable="false">https://legacy.aicp-rom.com/update.php?device=</string>
-    <string name="url_download" translatable="false">https://dwnld.aicp-rom.com/</string>
+    <string name="url" translatable="false">https://va2.androidfilehost.com/dl/qM7gZaA5-E8tgn8BJQ15bA/1560585063/6006931924117893894/aicp_mido_p-14.0-UNOFFICIAL-20190610.zip</string>
+    <string name="url_legacy" translatable="false">https://va2.androidfilehost.com/dl/qM7gZaA5-E8tgn8BJQ15bA/1560585063/6006931924117893894/aicp_mido_p-14.0-UNOFFICIAL-20190610.zip</string>
+    <string name="url_download" translatable="false">https://va2.androidfilehost.com/dl/qM7gZaA5-E8tgn8BJQ15bA/1560585063/6006931924117893894/aicp_mido_p-14.0-UNOFFICIAL-20190610.zip</string>
 </resources>
